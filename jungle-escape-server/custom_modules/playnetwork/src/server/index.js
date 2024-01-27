@@ -141,7 +141,6 @@ class PlayNetwork extends pc.EventHandler {
                 if (e.msg.name === '_authenticate') return socket.emit('_authenticate', e.msg.data, callback);
 
                 const sender = e.msg.userId ? await this.users.get(e.msg.userId) : user;
-
                 await this._onMessage(e.msg, sender, callback);
             });
 
@@ -252,7 +251,6 @@ class PlayNetwork extends pc.EventHandler {
                 target = this.networkEntities.get(msg.scope.id);
                 break;
         }
-
 
         if (!target) {
             const serverId = parseInt(await this.redis.HGET(`_route:${msg.scope?.type}`, msg.scope.id.toString()));

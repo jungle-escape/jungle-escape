@@ -134,10 +134,6 @@ class Room extends pc.EventHandler {
       const id = data[i].id;
       const networkEntity = this.networkEntities.get(id);
       if (!networkEntity) continue;
-      // if (networkEntity.entity.name.includes('User')) {
-      //   console.log(`networkEntity found: ${networkEntity.entity.name}. sending data[i]: `);
-      //   console.dir(data[i]);
-      // }
       networkEntity.setState(data[i]);
     }
   }
@@ -474,19 +470,12 @@ class PlayNetwork extends pc.EventHandler {
 
       this._lastId++;
     }
-    
-    // if (msg.data?.hasOwnProperty('animState')) {
-    //   console.log(`message sent from _send: ${msg.data.animState}`);
-    // }
+
     this.socket.send(JSON.stringify(msg));
   }
 
   _onMessage(data) {
     const msg = JSON.parse(data);
-    if (msg.data?.hasOwnProperty('animState')) {
-      console.log(`message received from _onMessage: ${msg.data.animState}`);
-    }
-    
 
     if (msg.id) {
       const callback = this._callbacks.get(msg.id);
@@ -512,14 +501,6 @@ class PlayNetwork extends pc.EventHandler {
 
     if (msg.id) return;
 
-    // let users;
-    // if (msg.data && msg.data.length > 0) {
-    //   users = msg.data?.filter(d => d.owner !== "");
-    // }
-    // if (users.length > 0) {
-    //   console.log(`message received from _onMessage: ${msg.name}`);
-    //   console.dir(users);
-    // }
     switch (msg.scope?.type) {
       case 'user':
         this.me?.fire(msg.name, msg.data);

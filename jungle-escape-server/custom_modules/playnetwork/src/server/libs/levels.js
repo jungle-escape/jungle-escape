@@ -6,7 +6,7 @@ class Levels {
 
     async initialize(provider) {
         this.provider = provider;
-        
+
         pn.on('_level:save', async (sender, data, callback) => {
             await this.save(data.scene, data);
             callback();

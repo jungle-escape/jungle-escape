@@ -4,7 +4,7 @@ import pn from '../../index.js';
 import entityToData from './entity-parser.js';
 
 export default class NetworkEntities extends pc.EventHandler {
-    index = this.index = new Map();
+    index = new Map();
     entitiesInProcess = 0;
 
     constructor(app) {
