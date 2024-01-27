@@ -1,0 +1,851 @@
+{
+	"scene": {
+		"version": 1,
+		"assets": {
+			"renders": [
+
+			],
+			"materials": [
+
+			]
+		},
+		"entities": {
+			"0": {
+				"name": "RootNode",
+				"parent": -1,
+				"position": [
+					0,
+					0,
+					0
+				],
+				"rotation": [
+					0,
+					0,
+					0
+				],
+				"scale": [
+					0.01,
+					0.01,
+					0.01
+				],
+				"scaleCompensation": false,
+				"children": [
+					1
+				]
+			},
+			"1": {
+				"name": "PB",
+				"parent": 0,
+				"position": [
+					0,
+					25.75,
+					-1.459
+				],
+				"rotation": [
+					-90,
+					-110.675,
+					0
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					2
+				]
+			},
+			"2": {
+				"name": "PB Pelvis",
+				"parent": 1,
+				"position": [
+					0,
+					0,
+					0
+				],
+				"rotation": [
+					-89.999,
+					-85,
+					-0.000912903
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					3
+				]
+			},
+			"3": {
+				"name": "PB Spine",
+				"parent": 2,
+				"position": [
+					3.02831,
+					-0.270863,
+					0.0019443
+				],
+				"rotation": [
+					-18.1612,
+					-3.22235,
+					-9.09942
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					4,
+					28,
+					32
+				]
+			},
+			"4": {
+				"name": "PB Spine1",
+				"parent": 3,
+				"position": [
+					7.82528,
+					-0.00612938,
+					0
+				],
+				"rotation": [
+					-0.00012908,
+					-0.023933,
+					-10.3715
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					5
+				]
+			},
+			"5": {
+				"name": "PB Spine2",
+				"parent": 4,
+				"position": [
+					7.8282,
+					-0.00739002,
+					-4.76837e-07
+				],
+				"rotation": [
+					0.00047737,
+					-0.0479035,
+					13.7341
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					6
+				]
+			},
+			"6": {
+				"name": "PB Neck",
+				"parent": 5,
+				"position": [
+					9.55817,
+					-0.0109079,
+					2.38419e-07
+				],
+				"rotation": [
+					-0.00805646,
+					-10.0001,
+					29.0007
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					7,
+					8,
+					18
+				]
+			},
+			"7": {
+				"name": "PB Head",
+				"parent": 6,
+				"position": [
+					15.5683,
+					3.00888,
+					-9.53674e-07
+				],
+				"rotation": [
+					33.7817,
+					7.32462,
+					-23.462
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+
+				]
+			},
+			"8": {
+				"name": "PB L Clavicle",
+				"parent": 6,
+				"position": [
+					0.160709,
+					0.0123425,
+					0.911442
+				],
+				"rotation": [
+					153.621,
+					-79.0781,
+					-2.71051
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					9
+				]
+			},
+			"9": {
+				"name": "PB L UpperArm",
+				"parent": 8,
+				"position": [
+					19.923,
+					1.43051e-06,
+					0
+				],
+				"rotation": [
+					20.6088,
+					70.5924,
+					20.8433
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					10
+				]
+			},
+			"10": {
+				"name": "PB L Forearm",
+				"parent": 9,
+				"position": [
+					13.8063,
+					0,
+					-3.8147e-06
+				],
+				"rotation": [
+					4.26887e-07,
+					6.83019e-06,
+					-18.7258
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					11
+				]
+			},
+			"11": {
+				"name": "PB L Hand",
+				"parent": 10,
+				"position": [
+					3.79202,
+					0,
+					0
+				],
+				"rotation": [
+					-84.7652,
+					1.25773,
+					-6.00251
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					12,
+					14,
+					16
+				]
+			},
+			"12": {
+				"name": "PB L Finger0",
+				"parent": 11,
+				"position": [
+					13.057,
+					-0.216808,
+					-5.92829
+				],
+				"rotation": [
+					43.4332,
+					46.1217,
+					13.3154
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					13
+				]
+			},
+			"13": {
+				"name": "PB L Finger01",
+				"parent": 12,
+				"position": [
+					4.2558,
+					0,
+					0
+				],
+				"rotation": [
+					0,
+					3.41509e-06,
+					47.5
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+
+				]
+			},
+			"14": {
+				"name": "PB L Finger1",
+				"parent": 11,
+				"position": [
+					15.3884,
+					-0.000896454,
+					-1.12593
+				],
+				"rotation": [
+					1.11611,
+					8.17565,
+					8.11535
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					15
+				]
+			},
+			"15": {
+				"name": "PB L Finger11",
+				"parent": 14,
+				"position": [
+					5.0402,
+					0,
+					4.76837e-07
+				],
+				"rotation": [
+					1.4941e-06,
+					1.70755e-06,
+					18
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+
+				]
+			},
+			"16": {
+				"name": "PB L Finger2",
+				"parent": 11,
+				"position": [
+					16.097,
+					0.00286484,
+					3.59262
+				],
+				"rotation": [
+					-0.0452383,
+					0.00589275,
+					7.42308
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					17
+				]
+			},
+			"17": {
+				"name": "PB L Finger21",
+				"parent": 16,
+				"position": [
+					4.64717,
+					0,
+					2.38419e-06
+				],
+				"rotation": [
+					1.4941e-06,
+					-3.41509e-06,
+					18
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+
+				]
+			},
+			"18": {
+				"name": "PB R Clavicle",
+				"parent": 6,
+				"position": [
+					-0.160713,
+					0.0126038,
+					-0.911439
+				],
+				"rotation": [
+					32.1457,
+					80.8965,
+					-176.856
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					19
+				]
+			},
+			"19": {
+				"name": "PB R UpperArm",
+				"parent": 18,
+				"position": [
+					19.923,
+					0,
+					-3.8147e-06
+				],
+				"rotation": [
+					-25.4626,
+					-76.6474,
+					27.1108
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					20
+				]
+			},
+			"20": {
+				"name": "PB R Forearm",
+				"parent": 19,
+				"position": [
+					13.8063,
+					-1.43051e-06,
+					0
+				],
+				"rotation": [
+					4.26887e-07,
+					4.26887e-06,
+					-24.2564
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					21
+				]
+			},
+			"21": {
+				"name": "PB R Hand",
+				"parent": 20,
+				"position": [
+					3.79202,
+					-9.53674e-07,
+					0
+				],
+				"rotation": [
+					74.108,
+					3.1348,
+					2.38589
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					22,
+					24,
+					26
+				]
+			},
+			"22": {
+				"name": "PB R Finger0",
+				"parent": 21,
+				"position": [
+					13.057,
+					-0.216808,
+					5.92828
+				],
+				"rotation": [
+					-43.4332,
+					-46.1217,
+					13.3154
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					23
+				]
+			},
+			"23": {
+				"name": "PB R Finger01",
+				"parent": 22,
+				"position": [
+					4.2558,
+					3.8147e-06,
+					1.90735e-06
+				],
+				"rotation": [
+					-4.26887e-07,
+					-0,
+					37
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+
+				]
+			},
+			"24": {
+				"name": "PB R Finger1",
+				"parent": 21,
+				"position": [
+					15.3884,
+					-0.000896454,
+					1.12593
+				],
+				"rotation": [
+					-1.1161,
+					-8.17566,
+					8.11536
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					25
+				]
+			},
+			"25": {
+				"name": "PB R Finger11",
+				"parent": 24,
+				"position": [
+					5.0402,
+					-3.8147e-06,
+					-1.90735e-06
+				],
+				"rotation": [
+					-2.66804e-07,
+					-1.70755e-06,
+					18
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+
+				]
+			},
+			"26": {
+				"name": "PB R Finger2",
+				"parent": 21,
+				"position": [
+					16.097,
+					0.00286102,
+					-3.59262
+				],
+				"rotation": [
+					0.0452421,
+					-0.00589616,
+					7.42308
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					27
+				]
+			},
+			"27": {
+				"name": "PB R Finger21",
+				"parent": 26,
+				"position": [
+					4.64717,
+					0,
+					-4.76837e-07
+				],
+				"rotation": [
+					-7.47052e-07,
+					8.53774e-07,
+					18
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+
+				]
+			},
+			"28": {
+				"name": "PB L Thigh",
+				"parent": 3,
+				"position": [
+					-2.57486,
+					-2.76419,
+					7.74813
+				],
+				"rotation": [
+					153.204,
+					-22.9121,
+					162.954
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					29
+				]
+			},
+			"29": {
+				"name": "PB L Calf",
+				"parent": 28,
+				"position": [
+					10.6618,
+					-9.53674e-07,
+					0
+				],
+				"rotation": [
+					-1.60083e-06,
+					-1.70755e-06,
+					-37.8845
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					30
+				]
+			},
+			"30": {
+				"name": "PB L Foot",
+				"parent": 29,
+				"position": [
+					8.19998,
+					2.38419e-07,
+					9.53674e-07
+				],
+				"rotation": [
+					-10.4789,
+					-7.37497,
+					8.73742
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					31
+				]
+			},
+			"31": {
+				"name": "PB L Toe0",
+				"parent": 30,
+				"position": [
+					3.04093,
+					3.91354,
+					-9.53674e-07
+				],
+				"rotation": [
+					-8.33763e-10,
+					5.16442e-07,
+					90
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+
+				]
+			},
+			"32": {
+				"name": "PB R Thigh",
+				"parent": 3,
+				"position": [
+					-3.48185,
+					2.25725,
+					-7.55965
+				],
+				"rotation": [
+					172.331,
+					7.19318,
+					168.402
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					33
+				]
+			},
+			"33": {
+				"name": "PB R Calf",
+				"parent": 32,
+				"position": [
+					10.6618,
+					4.76837e-07,
+					0
+				],
+				"rotation": [
+					-3.84198e-06,
+					-1.70755e-06,
+					-43.656
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					34
+				]
+			},
+			"34": {
+				"name": "PB R Foot",
+				"parent": 33,
+				"position": [
+					8.19998,
+					4.76837e-07,
+					9.53674e-07
+				],
+				"rotation": [
+					4.77427,
+					10.045,
+					27.5535
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+					35
+				]
+			},
+			"35": {
+				"name": "PB R Toe0",
+				"parent": 34,
+				"position": [
+					3.04093,
+					3.91354,
+					9.53674e-07
+				],
+				"rotation": [
+					5.33609e-08,
+					2.31786e-07,
+					90
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"scaleCompensation": false,
+				"children": [
+
+				]
+			}
+		}
+	}
+}
