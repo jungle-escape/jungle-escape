@@ -1,6 +1,6 @@
-import equal from 'fast-deep-equal';
-import parsers from './parsers.js';
-import { roundTo } from '../../libs/utils.js';
+import equal from "fast-deep-equal";
+import parsers from "./parsers.js";
+import { roundTo } from "../../libs/utils.js";
 
 /**
  * @class NetworkEntity
@@ -33,95 +33,105 @@ import { roundTo } from '../../libs/utils.js';
  * @param {responseCallback} callback Callback that can be called to respond to a message.
  */
 
-const NetworkEntity = pc.createScript('networkEntity');
+const NetworkEntity = pc.createScript("networkEntity");
 
-NetworkEntity.attributes.add('id', { type: 'string', default: -1 });
-NetworkEntity.attributes.add('owner', { type: 'string' });
-NetworkEntity.attributes.add('properties', {
-    title: 'Properties',
-    type: 'json',
-    array: true,
-    description: 'List of property paths to be synchronised',
-    schema: [
-        { type: 'string', name: 'path' },
-        { type: 'boolean', name: 'interpolate' },
-        { type: 'boolean', name: 'ignoreForOwner' }
-    ]
+NetworkEntity.attributes.add("id", { type: "string", default: -1 });
+NetworkEntity.attributes.add("owner", { type: "string" });
+NetworkEntity.attributes.add("properties", {
+  title: "Properties",
+  type: "json",
+  array: true,
+  description: "List of property paths to be synchronised",
+  schema: [
+    { type: "string", name: "path" },
+    { type: "boolean", name: "interpolate" },
+    { type: "boolean", name: "ignoreForOwner" },
+  ],
 });
 
-NetworkEntity.prototype.initialize = function() {
-    this.entity.networkEntity = this;
-    this.user = this.app.room.users.get(this.owner);
+NetworkEntity.prototype.initialize = function () {
+  this.entity.networkEntity = this;
+  this.user = this.app.room.users.get(this.owner);
 
-    this._pathParts = {};
-    this.cachedState = {};
-    this.invalidPaths = new Set();
+  this._pathParts = {};
+  this.cachedState = {};
+  this.invalidPaths = new Set();
 
-    // special rules
-    this.rules = {
-        parent: () => {
-            return this.entity.parent?.getGuid() || null;
-        },
-        localPosition: () => {
-            const value = this.entity.getLocalPosition();
-            return { x: roundTo(value.x), y: roundTo(value.y), z: roundTo(value.z) };
-        },
-        localRotation: () => {
-            const value = this.entity.getLocalRotation();
-            return { x: roundTo(value.x), y: roundTo(value.y), z: roundTo(value.z), w: roundTo(value.w) };
-        },
-        position: () => {
-            const value = this.entity.getPosition();
-            return { x: roundTo(value.x), y: roundTo(value.y), z: roundTo(value.z) };
-        },
-        rotation: () => {
-            const value = this.entity.getRotation();
-            return { x: roundTo(value.x), y: roundTo(value.y), z: roundTo(value.z), w: roundTo(value.w) };
-        },
-        scale: () => {
-            const value = this.entity.getLocalScale();
-            return { x: roundTo(value.x), y: roundTo(value.y), z: roundTo(value.z) };
-        },
-        // Privately added
-        animState: () => {
-            const value = this.entity.animState;
-            return value;
-        },
-        modelRotation: () => {
-            const value = this.entity.modelRotation;
-            if (value) {
-                return { x: value.x, y: value.y, z: value.z};
-            }
-        }
-    };
+  // special rules
+  this.rules = {
+    parent: () => {
+      return this.entity.parent?.getGuid() || null;
+    },
+    localPosition: () => {
+      const value = this.entity.getLocalPosition();
+      return { x: roundTo(value.x), y: roundTo(value.y), z: roundTo(value.z) };
+    },
+    localRotation: () => {
+      const value = this.entity.getLocalRotation();
+      return {
+        x: roundTo(value.x),
+        y: roundTo(value.y),
+        z: roundTo(value.z),
+        w: roundTo(value.w),
+      };
+    },
+    position: () => {
+      const value = this.entity.getPosition();
+      return { x: roundTo(value.x), y: roundTo(value.y), z: roundTo(value.z) };
+    },
+    rotation: () => {
+      const value = this.entity.getRotation();
+      return {
+        x: roundTo(value.x),
+        y: roundTo(value.y),
+        z: roundTo(value.z),
+        w: roundTo(value.w),
+      };
+    },
+    scale: () => {
+      const value = this.entity.getLocalScale();
+      return { x: roundTo(value.x), y: roundTo(value.y), z: roundTo(value.z) };
+    },
+    // Privately added
+    animState: () => {
+      const value = this.entity.animState;
+      return value;
+    },
+    modelRotation: () => {
+      const value = this.entity.modelRotation;
+      if (value) {
+        return { x: value.x, y: value.y, z: value.z };
+      }
+    },
+  };
 
-    this.once('destroy', this.onDestroy, this);
+  this.once("destroy", this.onDestroy, this);
 };
 
-NetworkEntity.prototype.postInitialize = function() {
-    if (this.id) return;
+NetworkEntity.prototype.postInitialize = function () {
+  if (this.id) return;
 
-    let parent = this.entity.parent;
+  let parent = this.entity.parent;
 
-    while (parent) {
-        if (parent.networkEntity && !parent.networkEntity.id) return;
-        parent = parent.parent;
-    }
+  while (parent) {
+    if (parent.networkEntity && !parent.networkEntity.id) return;
+    parent = parent.parent;
+  }
 
-    this.app.room.networkEntities.create(this);
+  this.app.room.networkEntities.create(this);
 };
 
-NetworkEntity.prototype.swap = function(old) {
-    this.user = old.user;
-    this._pathParts = old._pathParts;
-    this.cachedState = old.cachedState;
-    this.invalidPaths = old.invalidPaths;
-    this.rules = old.rules;
+NetworkEntity.prototype.swap = function (old) {
+  this.user = old.user;
+  this._pathParts = old._pathParts;
+  this.cachedState = old.cachedState;
+  this.invalidPaths = old.invalidPaths;
+  this.rules = old.rules;
 
-    // TODO: remove when playcanvas application will be destroyed properly
-    // https://github.com/playcanvas/engine/issues/4135
-    old.off('destroy', old.onDestroy, old);
-    this.once('destroy', this.onDestroy, this);
+  // TODO: remove when playcanvas application will be destroyed properly
+  // https://github.com/playcanvas/engine/issues/4135
+  old.off("destroy", old.onDestroy, old);
+  this.once("destroy", this.onDestroy, this);
 };
 
 /**
@@ -131,109 +141,113 @@ NetworkEntity.prototype.swap = function(old) {
  * @param {string} name Name of a message.
  * @param {object|array|string|number|boolean} [data] JSON friendly message data.
  */
-NetworkEntity.prototype.send = function(name, data) {
-    for (const user of this.app.room.users.values()) {
-        user._send(name, data, 'networkEntity', this.id);
-    }
+NetworkEntity.prototype.send = function (name, data) {
+  for (const user of this.app.room.users.values()) {
+    user._send(name, data, "networkEntity", this.id);
+  }
 };
 
-NetworkEntity.prototype.onDestroy = function() {
-    // TODO: remove when playcanvas application will be destroyed properly
-    // https://github.com/playcanvas/engine/issues/4135
-    this.user = null;
+NetworkEntity.prototype.onDestroy = function () {
+  // TODO: remove when playcanvas application will be destroyed properly
+  // https://github.com/playcanvas/engine/issues/4135
+  this.user = null;
 };
 
-NetworkEntity.prototype.propertyAdd = function(path) {
-    if (this.properties.findIndex(p => p.path === path) === -1)
-        return;
+NetworkEntity.prototype.propertyAdd = function (path) {
+  if (this.properties.findIndex((p) => p.path === path) === -1) return;
 
-    this.properties.push({ path });
+  this.properties.push({ path });
 };
 
-NetworkEntity.prototype.propertyRemove = function(path) {
-    const ind = this.properties.findIndex(p => p.path === path);
-    if (this.id === -1) return;
-    this.properties.splice(ind, 1);
+NetworkEntity.prototype.propertyRemove = function (path) {
+  const ind = this.properties.findIndex((p) => p.path === path);
+  if (this.id === -1) return;
+  this.properties.splice(ind, 1);
 };
 
-NetworkEntity.prototype.getState = function(force) {
-    const state = {};
+NetworkEntity.prototype.getState = function (force) {
+  const state = {};
 
-    for (let i = 0; i < this.properties.length; i++) {
-        const path = this.properties[i].path;
-        const parts = this._makePathParts(path);
-        const rule = this.rules[path];
+  for (let i = 0; i < this.properties.length; i++) {
+    const path = this.properties[i].path;
+    const parts = this._makePathParts(path);
+    const rule = this.rules[path];
 
-        let node = this.entity;
-        let cachedStateNode = this.cachedState;
-        let stateNode = state;
+    let node = this.entity;
+    let cachedStateNode = this.cachedState;
+    let stateNode = state;
 
-        for (let p = 0; p < parts.length; p++) {
-            const part = parts[p];
+    for (let p = 0; p < parts.length; p++) {
+      const part = parts[p];
 
-            if (!rule && (node === null || node === undefined || node === {} || node[part] === undefined)) {
-                if (!this.invalidPaths.has(path)) {
-                    console.warn(`Network entity "${this.entity.name}", id: ${this.id}. Property path "${path}" is leading to unexisting data`);
-                    this.invalidPaths.add(path);
-                }
-
-                break;
-            }
-
-            let value = null;
-
-            if (p === (parts.length - 1)) {
-                if (rule) {
-                    value = rule();
-                } else if (typeof (node[part]) === 'object' && node[part]) {
-                    const parser = parsers.get(node[part].constructor);
-                    if (!parser) continue;
-                    value = parser(node[part]);
-                } else {
-                    value = node[part];
-                }
-
-                if (force || !equal(value, cachedStateNode[part])) {
-                    cachedStateNode[part] = value;
-
-                    for (let i = 0; i < p; i++) {
-                        if (!stateNode[parts[i]])
-                            stateNode[parts[i]] = {};
-
-                        stateNode = stateNode[parts[i]];
-                    }
-
-                    stateNode[part] = value;
-                }
-            } else {
-                if (!cachedStateNode[part])
-                    cachedStateNode[part] = {};
-
-                if (typeof (node[part]) === 'function') {
-                    node = node[part]();
-                } else {
-                    node = node[part];
-                }
-
-                cachedStateNode = cachedStateNode[part];
-            }
+      if (
+        !rule &&
+        (node === null ||
+          node === undefined ||
+          node === {} ||
+          node[part] === undefined)
+      ) {
+        if (!this.invalidPaths.has(path)) {
+          console.warn(
+            `Network entity "${this.entity.name}", id: ${this.id}. Property path "${path}" is leading to unexisting data`
+          );
+          this.invalidPaths.add(path);
         }
+
+        break;
+      }
+
+      let value = null;
+
+      if (p === parts.length - 1) {
+        if (rule) {
+          value = rule();
+        } else if (typeof node[part] === "object" && node[part]) {
+          const parser = parsers.get(node[part].constructor);
+          if (!parser) continue;
+          value = parser(node[part]);
+        } else {
+          value = node[part];
+        }
+
+        if (force || !equal(value, cachedStateNode[part])) {
+          cachedStateNode[part] = value;
+
+          for (let i = 0; i < p; i++) {
+            if (!stateNode[parts[i]]) stateNode[parts[i]] = {};
+
+            stateNode = stateNode[parts[i]];
+          }
+
+          stateNode[part] = value;
+        }
+      } else {
+        if (!cachedStateNode[part]) cachedStateNode[part] = {};
+
+        if (typeof node[part] === "function") {
+          node = node[part]();
+        } else {
+          node = node[part];
+        }
+
+        cachedStateNode = cachedStateNode[part];
+      }
     }
+  }
 
-    if (Object.keys(state).length === 0)
-        return null;
+  if (Object.keys(state).length === 0) return null;
 
-    state.id = this.id;
-    state.owner = this.owner;
+  state.id = this.id;
+  state.owner = this.owner;
 
-    return state;
+  return state;
 };
 
-NetworkEntity.prototype._makePathParts = function(path) {
-    let parts = this._pathParts[path];
-    if (!parts) {
-        parts = path.split('.');
-        this._pathParts[path] = parts;
-    }
-    return parts;
+NetworkEntity.prototype._makePathParts = function (path) {
+  let parts = this._pathParts[path];
+  if (!parts) {
+    parts = path.split(".");
+    this._pathParts[path] = parts;
+  }
+  return parts;
 };
