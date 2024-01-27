@@ -163,7 +163,9 @@
                 "642a1124-50df-4045-981b-eb16a52fecd5",
                 "2dc6c9d3-d33d-44e6-8680-a7011b1541a3",
                 "d70765f1-cf8f-47fa-b05d-f812114c5b2e",
-                "ca21a9c9-add5-426a-9bf2-af9cbbead75b"
+                "5e6abdd6-cd0c-47fb-8d92-8f924f8e5a7b",
+                "5de5a756-0119-4d4b-959b-3f5f33304737",
+                "ce413dc1-0d43-4f71-be44-479a8bc42e01"
             ]
         },
         "f98b0ed0-6355-4a81-98bb-e597d549d6e4": {
@@ -281,7 +283,9 @@
                 "3139fe7e-970c-46e3-8cf2-498366f9cacd",
                 "2130b79d-1e51-49e3-a3ca-1ac12d127d06",
                 "60128f81-9225-4b4e-a343-62df14255354",
-                "eae5821f-1311-4476-b9af-d48262c13430"
+                "a332f3ad-8ef1-40dd-b046-cfbc9ee1e367",
+                "eae5821f-1311-4476-b9af-d48262c13430",
+                "3d454058-003c-440e-bbcb-2c161363f77d"
             ],
             "position": [
                 0,
@@ -697,8 +701,7 @@
             "resource_id": "f76cf45c-5378-4c11-ada6-251581df00c2",
             "parent": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
             "children": [
-                "4a7ae288-0e17-474e-a8d4-ea7f929979b7",
-                "6a6bd803-64da-4b80-9254-77ff7873a07b"
+                "4a7ae288-0e17-474e-a8d4-ea7f929979b7"
             ],
             "position": [
                 -1.7763568394002505e-15,
@@ -726,133 +729,6 @@
             "children": [],
             "position": [
                 6,
-                2.75,
-                0
-            ],
-            "rotation": [
-                0,
-                90,
-                0
-            ],
-            "scale": [
-                0.25,
-                5,
-                12
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "box",
-                    "asset": null,
-                    "materialAssets": [
-                        165184687
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "static",
-                    "mass": 1,
-                    "linearDamping": 0,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 1,
-                    "restitution": 0
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "box",
-                    "halfExtents": [
-                        0.125,
-                        2.5,
-                        6
-                    ],
-                    "radius": 0.5,
-                    "axis": 1,
-                    "height": 5,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "networkEntity",
-                        "gate"
-                    ],
-                    "scripts": {
-                        "gate": {
-                            "enabled": true,
-                            "attributes": {
-                                "positionYCurve": {
-                                    "keys": [
-                                        0,
-                                        0,
-                                        1,
-                                        -4.6
-                                    ],
-                                    "type": 4
-                                }
-                            }
-                        },
-                        "networkEntity": {
-                            "enabled": true,
-                            "attributes": {
-                                "id": "",
-                                "owner": "",
-                                "properties": [
-                                    {
-                                        "path": "position",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "6a6bd803-64da-4b80-9254-77ff7873a07b": {
-            "name": "Gate",
-            "tags": [],
-            "enabled": true,
-            "resource_id": "6a6bd803-64da-4b80-9254-77ff7873a07b",
-            "parent": "f76cf45c-5378-4c11-ada6-251581df00c2",
-            "children": [],
-            "position": [
-                -6,
                 2.75,
                 0
             ],
@@ -1440,7 +1316,7 @@
                                     "player"
                                 ],
                                 "triggerEntity": "a376b046-c2c3-40a6-97a3-e5e411c9831d",
-                                "connectedEntity": "6a6bd803-64da-4b80-9254-77ff7873a07b",
+                                "connectedEntity": null,
                                 "positionYCurve": {
                                     "keys": [
                                         0,
@@ -2317,6 +2193,370 @@
                 }
             }
         },
+        "60128f81-9225-4b4e-a343-62df14255354": {
+            "name": "Ground",
+            "tags": [
+                "ground"
+            ],
+            "enabled": true,
+            "resource_id": "60128f81-9225-4b4e-a343-62df14255354",
+            "parent": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
+            "children": [],
+            "position": [
+                -26.16474724461984,
+                0,
+                -4.440892098500626e-15
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                25,
+                1,
+                25
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "asset": null,
+                    "materialAssets": [
+                        165184687
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        12.5,
+                        0.5,
+                        12.5
+                    ],
+                    "radius": 12.5,
+                    "axis": 1,
+                    "height": 1,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "static",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0
+                }
+            }
+        },
+        "a332f3ad-8ef1-40dd-b046-cfbc9ee1e367": {
+            "name": "Ground_jw",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "a332f3ad-8ef1-40dd-b046-cfbc9ee1e367",
+            "parent": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
+            "children": [],
+            "position": [
+                1.2448907077552018,
+                0,
+                -60
+            ],
+            "rotation": [
+                0,
+                40,
+                0
+            ],
+            "scale": [
+                50,
+                1,
+                150
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        165188357
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        25,
+                        0.5,
+                        75
+                    ],
+                    "radius": 12.5,
+                    "axis": 1,
+                    "height": 1,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "static",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.7,
+                    "restitution": 0
+                }
+            }
+        },
+        "eae5821f-1311-4476-b9af-d48262c13430": {
+            "name": "Ground",
+            "tags": [
+                "icy"
+            ],
+            "enabled": true,
+            "resource_id": "eae5821f-1311-4476-b9af-d48262c13430",
+            "parent": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
+            "children": [],
+            "position": [
+                -12.051555633544918,
+                0,
+                -22.18579327046379
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                25,
+                1,
+                25
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "asset": null,
+                    "materialAssets": [
+                        null
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        12.5,
+                        0.5,
+                        12.5
+                    ],
+                    "radius": 12.5,
+                    "axis": 1,
+                    "height": 1,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "static",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0
+                }
+            }
+        },
+        "3d454058-003c-440e-bbcb-2c161363f77d": {
+            "name": "Ground",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "3d454058-003c-440e-bbcb-2c161363f77d",
+            "parent": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
+            "children": [],
+            "position": [
+                -25.080247798984722,
+                0,
+                -4.440892098500626e-15
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                25,
+                1,
+                25
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "asset": null,
+                    "materialAssets": [
+                        165184687
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        12.5,
+                        0.5,
+                        12.5
+                    ],
+                    "radius": 12.5,
+                    "axis": 1,
+                    "height": 1,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "static",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0
+                }
+            }
+        },
         "9f7b268d-e5a2-4183-943d-2eef19dc9d30": {
             "name": "Object",
             "tags": [],
@@ -2324,6 +2564,7 @@
             "resource_id": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
             "parent": "8b10d931-16bf-46f6-b856-a5943a5eccdc",
             "children": [
+                "c7b35a14-f93b-4196-9c29-a4dcac87d9cb",
                 "cbfe1b6c-0434-4ce6-83f7-bc1c5bb5aede",
                 "4ed46d20-1198-402e-84fb-0c5a8f55790e",
                 "dc10dbd4-aa82-46e1-888e-cb51057308f3",
@@ -2333,7 +2574,9 @@
                 "93a8f72d-f4d5-4ab7-9655-91b701df48ab",
                 "6b3e79a6-51ba-43c9-a98a-d1d5e639efb1",
                 "ea4be3d3-976c-42a1-a000-a22bbcac4152",
-                "d7011021-ad4d-4abf-b0df-6fe66ebc62f2"
+                "fc84620b-2e70-44dd-b81f-17c12a3a43db",
+                "d7011021-ad4d-4abf-b0df-6fe66ebc62f2",
+                "9d1eb716-82c3-4a57-918a-821dc5ccb43b"
             ],
             "position": [
                 0,
@@ -2351,6 +2594,658 @@
                 1
             ],
             "components": {}
+        },
+        "c7b35a14-f93b-4196-9c29-a4dcac87d9cb": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "8f37aba6-f7ab-4dda-b91f-3e031a614559",
+                "633c9788-beb0-4130-8c2e-de7f582141dd",
+                "b1033c91-9591-4b27-a7d7-d241ee010a91",
+                "4c7d4489-2a10-4b12-89a4-65cd99804a5c",
+                "2a8b6b79-56c6-48c5-bcc1-818254d0e0d4",
+                "cff4b3d5-f35f-461a-9b9a-3da01bdfc21a"
+            ],
+            "position": [
+                33.5331039428711,
+                0.8360629975795746,
+                -44.33942031860351
+            ],
+            "rotation": [
+                0,
+                90,
+                0
+            ],
+            "scale": [
+                0.01,
+                0.01,
+                0.01
+            ],
+            "resource_id": "c7b35a14-f93b-4196-9c29-a4dcac87d9cb",
+            "name": "barrels_fbx",
+            "components": {},
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30"
+        },
+        "8f37aba6-f7ab-4dda-b91f-3e031a614559": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                -786.6440206768202,
+                -39.779,
+                -1099.1398895224902
+            ],
+            "rotation": [
+                0,
+                -53.7213,
+                0
+            ],
+            "scale": [
+                10,
+                10,
+                10
+            ],
+            "resource_id": "8f37aba6-f7ab-4dda-b91f-3e031a614559",
+            "name": "drum1_static",
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "asset",
+                    "asset": 165188404,
+                    "materialAssets": [
+                        165188403
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.9,
+                    "axis": 1,
+                    "height": 2.4,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        1.2,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "static",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                }
+            },
+            "parent": "c7b35a14-f93b-4196-9c29-a4dcac87d9cb"
+        },
+        "633c9788-beb0-4130-8c2e-de7f582141dd": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                -1344.076926961748,
+                -4.434065580368042,
+                37.25494384765625
+            ],
+            "rotation": [
+                0,
+                -14.2466,
+                0
+            ],
+            "scale": [
+                10,
+                10,
+                10
+            ],
+            "resource_id": "633c9788-beb0-4130-8c2e-de7f582141dd",
+            "name": "drum2_dyn",
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "asset",
+                    "asset": 165188402,
+                    "materialAssets": [
+                        165188409
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.9,
+                    "axis": 1,
+                    "height": 2.4,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        1.2,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.7,
+                    "restitution": 0.5
+                }
+            },
+            "parent": "c7b35a14-f93b-4196-9c29-a4dcac87d9cb"
+        },
+        "b1033c91-9591-4b27-a7d7-d241ee010a91": {
+            "name": "drum2_dyn",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "b1033c91-9591-4b27-a7d7-d241ee010a91",
+            "parent": "c7b35a14-f93b-4196-9c29-a4dcac87d9cb",
+            "children": [],
+            "position": [
+                -1008.676533456267,
+                -18.49109393214553,
+                37.25494384765625
+            ],
+            "rotation": [
+                0,
+                -14.246599641103263,
+                0
+            ],
+            "scale": [
+                10,
+                10,
+                10
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "asset",
+                    "asset": 165188402,
+                    "materialAssets": [
+                        165188409
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.9,
+                    "axis": 1,
+                    "height": 2.4,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        1.2,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.7,
+                    "restitution": 0.5
+                }
+            }
+        },
+        "4c7d4489-2a10-4b12-89a4-65cd99804a5c": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                -3808.3408293848074,
+                -39.77897620201111,
+                -487.6717795114564
+            ],
+            "rotation": [
+                0,
+                -32.9047,
+                0
+            ],
+            "scale": [
+                10,
+                10,
+                10
+            ],
+            "resource_id": "4c7d4489-2a10-4b12-89a4-65cd99804a5c",
+            "name": "drum3_kene",
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "asset",
+                    "asset": 165188401,
+                    "materialAssets": [
+                        165188405
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.9,
+                    "axis": 1,
+                    "height": 2.4,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        1.2,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity",
+                        "movementBackAndForth_x"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        },
+                        "movementBackAndForth_x": {
+                            "enabled": true,
+                            "attributes": {}
+                        }
+                    }
+                }
+            },
+            "parent": "c7b35a14-f93b-4196-9c29-a4dcac87d9cb"
+        },
+        "2a8b6b79-56c6-48c5-bcc1-818254d0e0d4": {
+            "name": "drum3_kene",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "2a8b6b79-56c6-48c5-bcc1-818254d0e0d4",
+            "parent": "c7b35a14-f93b-4196-9c29-a4dcac87d9cb",
+            "children": [],
+            "position": [
+                -1186.9113082885742,
+                -39.77897620201111,
+                -2129.0722123048045
+            ],
+            "rotation": [
+                0,
+                -32.9047,
+                0
+            ],
+            "scale": [
+                10,
+                10,
+                10
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "asset",
+                    "asset": 165188401,
+                    "materialAssets": [
+                        165188405
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.9,
+                    "axis": 1,
+                    "height": 2.4,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        1.2,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity",
+                        "movementBackAndForth_x"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        },
+                        "movementBackAndForth_x": {
+                            "enabled": true,
+                            "attributes": {}
+                        }
+                    }
+                }
+            }
+        },
+        "cff4b3d5-f35f-461a-9b9a-3da01bdfc21a": {
+            "name": "drum3_kene",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "cff4b3d5-f35f-461a-9b9a-3da01bdfc21a",
+            "parent": "c7b35a14-f93b-4196-9c29-a4dcac87d9cb",
+            "children": [],
+            "position": [
+                -3248.504759275341,
+                -39.77897620201111,
+                231.83731079101562
+            ],
+            "rotation": [
+                0,
+                -32.9047,
+                0
+            ],
+            "scale": [
+                10,
+                10,
+                10
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "asset",
+                    "asset": 165188401,
+                    "materialAssets": [
+                        165188405
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.9,
+                    "axis": 1,
+                    "height": 2.4,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        1.2,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity",
+                        "movementBackAndForth_x"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        },
+                        "movementBackAndForth_x": {
+                            "enabled": true,
+                            "attributes": {}
+                        }
+                    }
+                }
+            }
         },
         "cbfe1b6c-0434-4ce6-83f7-bc1c5bb5aede": {
             "name": "Cube",
@@ -3541,6 +4436,139 @@
                 "ea4be3d3-976c-42a1-a000-a22bbcac4152": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
             }
         },
+        "fc84620b-2e70-44dd-b81f-17c12a3a43db": {
+            "name": "Ball",
+            "tags": [
+                "sphere"
+            ],
+            "enabled": true,
+            "resource_id": "fc84620b-2e70-44dd-b81f-17c12a3a43db",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [],
+            "position": [
+                -53.09655380249024,
+                3.1115565299987793,
+                35.583885215988786
+            ],
+            "rotation": [
+                0,
+                90,
+                0
+            ],
+            "scale": [
+                2,
+                2,
+                2
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "asset": null,
+                    "materialAssets": [
+                        165184686
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 1,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 30,
+                    "linearDamping": 0.1,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "position"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rotation"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.linearVelocity"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.angularVelocity"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "template_id": 165184653,
+            "template_ent_ids": {
+                "fc84620b-2e70-44dd-b81f-17c12a3a43db": "3394bd44-1b97-4696-a132-a73a12c0821e"
+            }
+        },
         "d7011021-ad4d-4abf-b0df-6fe66ebc62f2": {
             "name": "Cube",
             "tags": [],
@@ -3670,6 +4698,464 @@
             "template_id": 165184655,
             "template_ent_ids": {
                 "d7011021-ad4d-4abf-b0df-6fe66ebc62f2": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
+            }
+        },
+        "9d1eb716-82c3-4a57-918a-821dc5ccb43b": {
+            "name": "propeller",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "9d1eb716-82c3-4a57-918a-821dc5ccb43b",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [
+                "b3c10a6e-8348-48d0-89cd-424fe95bea22",
+                "7970c00c-e5ca-4c1a-ae93-29951f2844c9",
+                "0b4b635d-aee2-4373-8945-4a26759678c3"
+            ],
+            "position": [
+                -5.890733718872055,
+                3.1175267696380615,
+                -73.05525429280252
+            ],
+            "rotation": [
+                0,
+                200,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "collision": {
+                    "enabled": false,
+                    "type": "box",
+                    "halfExtents": [
+                        21,
+                        2.5,
+                        0.5
+                    ],
+                    "radius": 2,
+                    "axis": 0,
+                    "height": 42,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        140,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "movementPropeller",
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "movementPropeller": {
+                            "enabled": true,
+                            "attributes": {}
+                        },
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rotation",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "b3c10a6e-8348-48d0-89cd-424fe95bea22": {
+            "name": "moter",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "b3c10a6e-8348-48d0-89cd-424fe95bea22",
+            "parent": "9d1eb716-82c3-4a57-918a-821dc5ccb43b",
+            "children": [],
+            "position": [
+                0.00030517578125710543,
+                0.00024771690368652344,
+                0.00009918212889914457
+            ],
+            "rotation": [
+                -90.00000000000006,
+                49.99999868188684,
+                1.979225825970079e-14
+            ],
+            "scale": [
+                1,
+                2,
+                1
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "asset": null,
+                    "materialAssets": [
+                        165184691
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "rigidbody": {
+                    "enabled": false,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "collision": {
+                    "enabled": false,
+                    "type": "box",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "7970c00c-e5ca-4c1a-ae93-29951f2844c9": {
+            "name": "whiteWing",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "7970c00c-e5ca-4c1a-ae93-29951f2844c9",
+            "parent": "9d1eb716-82c3-4a57-918a-821dc5ccb43b",
+            "children": [],
+            "position": [
+                8.33526188215232,
+                -0.08223512768745422,
+                7.113815196688307
+            ],
+            "rotation": [
+                -89.44,
+                50,
+                0.55
+            ],
+            "scale": [
+                1,
+                20,
+                5
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "asset": null,
+                    "materialAssets": [
+                        null
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.7296,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "propellerWings",
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "propellerWings": {
+                            "enabled": true,
+                            "attributes": {}
+                        },
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rotate",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.linearVelocity",
+                                        "interpolate": false,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.angularVelocity",
+                                        "interpolate": false,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        0.5,
+                        10,
+                        2.5
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 20,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "0b4b635d-aee2-4373-8945-4a26759678c3": {
+            "name": "RedWing",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "0b4b635d-aee2-4373-8945-4a26759678c3",
+            "parent": "9d1eb716-82c3-4a57-918a-821dc5ccb43b",
+            "children": [],
+            "position": [
+                -8.459884643554673,
+                0.0047626495361328125,
+                -7.076389312744148
+            ],
+            "rotation": [
+                -89.99999999612649,
+                49.99999799206128,
+                -0.000001453418718559414
+            ],
+            "scale": [
+                1,
+                20,
+                5
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "asset": null,
+                    "materialAssets": [
+                        165184686
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "propellerWings",
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "propellerWings": {
+                            "enabled": true,
+                            "attributes": {}
+                        },
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rotate",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.linearVelocity",
+                                        "interpolate": false,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.angularVelocity",
+                                        "interpolate": false,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        0.5,
+                        10,
+                        2.5
+                    ],
+                    "radius": 0,
+                    "axis": 1,
+                    "height": 20,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
             }
         },
         "fb1166e0-51ce-4a12-b7f4-edd4d9cda217": {
@@ -4584,98 +6070,6 @@
                 }
             }
         },
-        "60128f81-9225-4b4e-a343-62df14255354": {
-            "name": "Ground",
-            "tags": [
-                "ground"
-            ],
-            "enabled": true,
-            "resource_id": "60128f81-9225-4b4e-a343-62df14255354",
-            "parent": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
-            "children": [],
-            "position": [
-                -26.16474724461984,
-                0,
-                -4.440892098500626e-15
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                25,
-                1,
-                25
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "cylinder",
-                    "asset": null,
-                    "materialAssets": [
-                        165184687
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "cylinder",
-                    "halfExtents": [
-                        12.5,
-                        0.5,
-                        12.5
-                    ],
-                    "radius": 12.5,
-                    "axis": 1,
-                    "height": 1,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "static",
-                    "mass": 1,
-                    "linearDamping": 0,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 1,
-                    "restitution": 0
-                }
-            }
-        },
         "d70765f1-cf8f-47fa-b05d-f812114c5b2e": {
             "name": "Box",
             "tags": [
@@ -4809,20 +6203,199 @@
                 }
             }
         },
-        "ca21a9c9-add5-426a-9bf2-af9cbbead75b": {
+        "5e6abdd6-cd0c-47fb-8d92-8f924f8e5a7b": {
+            "name": "Box",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "5e6abdd6-cd0c-47fb-8d92-8f924f8e5a7b",
+            "parent": "febcae7d-ef4f-46b4-b8b5-9ee02e128ee4",
+            "children": [],
+            "position": [
+                -53.475704193115234,
+                6.7665867465274445,
+                -46.64238357543945
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        165184686
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                }
+            }
+        },
+        "5de5a756-0119-4d4b-959b-3f5f33304737": {
+            "name": "Box",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "5de5a756-0119-4d4b-959b-3f5f33304737",
+            "parent": "febcae7d-ef4f-46b4-b8b5-9ee02e128ee4",
+            "children": [],
+            "position": [
+                -20.407688663315106,
+                2.5,
+                -24.55661964416504
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                30,
+                5,
+                4
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        null
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity",
+                        "rammer"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        },
+                        "rammer": {
+                            "enabled": true,
+                            "attributes": {
+                                "positionXCurve": {
+                                    "keys": [
+                                        0,
+                                        5,
+                                        0.3,
+                                        5,
+                                        0.6976744186046512,
+                                        -4.875,
+                                        1,
+                                        -5
+                                    ],
+                                    "type": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        15,
+                        2.5,
+                        2
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "ce413dc1-0d43-4f71-be44-479a8bc42e01": {
             "name": "PC",
             "tags": [
                 "player"
             ],
             "enabled": true,
-            "resource_id": "ca21a9c9-add5-426a-9bf2-af9cbbead75b",
+            "resource_id": "ce413dc1-0d43-4f71-be44-479a8bc42e01",
             "parent": "febcae7d-ef4f-46b4-b8b5-9ee02e128ee4",
             "children": [
-                "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0"
+                "ad065902-066a-4d49-933f-b1a018338683",
+                "a52285e7-46e9-4e8b-9fbe-5f6cb56f457b"
             ],
             "position": [
-                -26.695833206176758,
-                2.0583696886987646,
+                -27.13710594177246,
+                3.0672718703706128,
                 0
             ],
             "rotation": [
@@ -4942,62 +6515,63 @@
                 }
             },
             "template_ent_ids": {
-                "ca21a9c9-add5-426a-9bf2-af9cbbead75b": "c66a84df-2d99-411e-8bee-bb105ba7277c",
-                "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0": "c60933ed-e6ea-4f83-b08f-172f1d16dde2",
-                "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7": "91dac55c-dae5-48c2-a40e-5bbcaa9030a9",
-                "dc1971c4-821f-4233-a0bf-fdcdef555f88": "95c4b173-1151-4fe5-8681-64cc4287274f",
-                "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54": "6edac0e2-aaea-42f7-8421-76d67e883257",
-                "d2ffd88a-413c-4f65-a483-71fd500e513d": "8f2eb01b-308f-4bf7-a97d-26aa9a6f8d3f",
-                "deab97ab-715b-4ca4-aab2-cfda1ec73971": "6fbc66ca-b467-4faa-a90d-45f86f923047",
-                "408b0840-ded6-4b12-98b7-bd5bff852a04": "aea6e514-1759-4566-9063-3e85c32af6b6",
-                "0c318d64-c76b-43b4-b63a-46628de1c794": "41cc1976-277c-482e-9813-8196d6cee3fa",
-                "7a82aa54-05c2-4dae-b17e-403ea9404606": "1e3260eb-0502-4c59-b219-37e1e34df203",
-                "4064d16c-af08-4ba1-9771-15f149781aff": "5f28b59f-b326-4906-98d8-e93e7c26f14e",
-                "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958": "5057c654-eb0a-4859-9e80-ab55362d6e39",
-                "359f7e61-81d3-40ab-bc2c-70d0b361a64f": "c1bee63e-037b-4c1e-a592-b00de4a03648",
-                "cff401c4-a977-4632-8ade-83348d54abb7": "a4c5f6b2-c97c-4837-b640-030c570aa797",
-                "c617b807-08cb-4ae8-93e3-a713495e46d7": "66f5818b-cd76-46ab-b9ce-5b84011f56d4",
-                "5d45b464-86f2-40f4-97af-970111b033a0": "4d5636c3-db8e-4b0e-b028-e514dfc4b408",
-                "55fd8e3e-8091-4d3e-9963-ad856f7aebe4": "3fcc6913-2b99-4d34-ac7b-3ee45e19633e",
-                "7d9bca84-272d-41e0-b6da-bdd42b4c386a": "2b9bedb9-71da-4f1d-be2e-d8878f566766",
-                "e492ce6e-627a-45e9-b965-d9096a7cc37f": "abe6d268-f2ba-46d9-b9b9-ed9bdde2e092",
-                "98ad4061-05d8-4d6e-9c23-e1f39d87496f": "650d2ef1-abac-4317-9244-831d9da82508",
-                "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2": "85f9c1c2-ec92-40f7-b9a5-63536914d476",
-                "3e1e77dd-b59b-4884-b59b-63b1748e03ca": "1b649c3b-71e4-4e60-ac2a-aa28cd7b5851",
-                "5143015d-9cca-49b6-b332-07e3377e903e": "aa5fcbfb-991f-43fd-b9f6-fe2868e36f2f",
-                "d9fd543e-0edb-4a8b-bb56-cf147af1b96c": "1b9695ba-35ff-4046-b2d3-bce497d89459",
-                "50758164-a98a-4a1d-b1ce-6ccb7012afaa": "1504e93b-8201-4f33-aca1-2d3719902054",
-                "6d152985-4422-4e92-98a8-5fbcd593d6de": "f02fd808-b06e-4356-9ca9-e2cf753b73f8",
-                "d74c31b2-0bee-463e-b187-381d33c7b998": "674be71e-f2e0-4587-80bf-1d62591f640c",
-                "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a": "e087b67d-e06f-4a18-bf14-d59eb7b777d2",
-                "170fdae9-9dbe-4f1c-90ab-a394adcfa458": "0565c2bd-ff02-45d1-9a4c-0f4c64840bb7",
-                "293975b2-b85f-42f1-bb7f-9a384a160963": "f9ba3490-0b81-4003-9771-e67ebccf437b",
-                "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2": "39ddf3b5-e07a-496f-ab0a-08ca23923d14",
-                "5f7c8e55-35c7-4fd9-af87-745b56d8df00": "d18102eb-9f49-48b2-8e76-e84fa4a44df7",
-                "1661e890-947b-44dd-a136-02b63f417cae": "cc844648-4613-4077-90d7-7468438ccb7b",
-                "f278ab8f-c0e4-48f5-ba95-8929c5633865": "a6c7decc-37e2-47c8-a782-1ed0bc917a99",
-                "62c51670-a0bc-4b66-b1a7-0488dcfdc848": "8b1c5332-47d1-4d12-8fda-ae3ca33a0e2e",
-                "98b5de3d-dc19-4d23-8b42-dc2fbd6a7332": "e60c5bbf-7461-4189-91de-9ef0c5d70617",
-                "a6bcea79-2319-4b75-a7e2-5ae409964319": "132ca7e0-97bd-4d40-a003-bb325fccf597",
-                "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9": "ddf41674-9b8e-4f68-9ecc-3245828a53c8",
-                "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796": "2465b0bd-df78-4eaf-a04b-853926646e91",
-                "fd270154-4e21-42ee-928e-a07f84ea99ea": "bd9a15dc-eb40-45f9-8bbd-d8d8260e7824",
-                "ba6a51e3-1458-4073-a194-41f035c5ed81": "579e2930-1155-4435-b7b4-350e222397c1",
-                "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf": "92fbd140-d2e2-4252-8a9c-bbc7ee4a37e3",
-                "87e5c6d6-27a8-4e51-a40a-552f158732cf": "07059195-3e20-4b1d-989c-5e9a2c498f25",
-                "62f141b5-f851-4472-9333-59516fcf4f9e": "71f77751-fb89-44f6-99e4-767cda0b604f",
-                "56945662-b759-4bda-a9de-fdbb7ed055c1": "ffc30749-89b7-40b8-8da9-881b87169f26",
-                "fc45b2bc-f098-47b8-9bc2-257394e42d80": "dce5c332-20f3-4e94-b2ba-800dc2adafa2",
-                "457b44db-b5b2-4b77-96d8-d975c07d5a72": "d468f890-0c70-4359-8fd7-6fca7aa1489b"
+                "ce413dc1-0d43-4f71-be44-479a8bc42e01": "c66a84df-2d99-411e-8bee-bb105ba7277c",
+                "ad065902-066a-4d49-933f-b1a018338683": "c60933ed-e6ea-4f83-b08f-172f1d16dde2",
+                "d439359a-c8fd-460c-b2b9-955f48694542": "91dac55c-dae5-48c2-a40e-5bbcaa9030a9",
+                "e20c247f-0697-41b0-8e24-2369ad88470e": "95c4b173-1151-4fe5-8681-64cc4287274f",
+                "37fd4038-6859-4035-983d-083d19c46cae": "6edac0e2-aaea-42f7-8421-76d67e883257",
+                "45bd46cc-d3e9-4e57-808e-8a2c438b7be2": "8f2eb01b-308f-4bf7-a97d-26aa9a6f8d3f",
+                "28b9ceb8-6c0c-415f-99fd-4edcb1bc173e": "6fbc66ca-b467-4faa-a90d-45f86f923047",
+                "ed687bfb-c827-46f7-80a8-b5f5cb301d38": "aea6e514-1759-4566-9063-3e85c32af6b6",
+                "a6748833-85f5-4732-9d2f-6ac394269745": "41cc1976-277c-482e-9813-8196d6cee3fa",
+                "d496ffe4-7a6d-4192-847a-6bebbc1f3951": "1e3260eb-0502-4c59-b219-37e1e34df203",
+                "f3908160-3ad1-446c-a637-3c6d3c33942f": "5f28b59f-b326-4906-98d8-e93e7c26f14e",
+                "694c9a24-7b8e-4c06-a1c7-eb8f5a36eeec": "5057c654-eb0a-4859-9e80-ab55362d6e39",
+                "a9f72f9a-b834-4bc8-8b62-4afc04c77651": "c1bee63e-037b-4c1e-a592-b00de4a03648",
+                "effcb219-1181-4e16-b615-9cba6ce904e1": "a4c5f6b2-c97c-4837-b640-030c570aa797",
+                "0d1d45e1-419f-4958-9344-76c0d3099c60": "66f5818b-cd76-46ab-b9ce-5b84011f56d4",
+                "b940367c-04a1-488a-a7b8-61ed6c850a64": "4d5636c3-db8e-4b0e-b028-e514dfc4b408",
+                "d8a7a385-618c-4c70-b1e1-c417fb8cafcc": "3fcc6913-2b99-4d34-ac7b-3ee45e19633e",
+                "2c446303-cd5e-4f1e-a34f-a6842621e7ab": "2b9bedb9-71da-4f1d-be2e-d8878f566766",
+                "0a1361b6-856f-482a-8896-50389bb3a10a": "abe6d268-f2ba-46d9-b9b9-ed9bdde2e092",
+                "f7fcdada-fff4-4ae6-bf6e-d69db26d9a90": "650d2ef1-abac-4317-9244-831d9da82508",
+                "8b90d034-7889-46da-8f51-18876b549128": "85f9c1c2-ec92-40f7-b9a5-63536914d476",
+                "45f2e859-7eb9-40f6-852b-3628a9e89a21": "1b649c3b-71e4-4e60-ac2a-aa28cd7b5851",
+                "e4d428d5-68f4-4447-8581-a56e29e96230": "aa5fcbfb-991f-43fd-b9f6-fe2868e36f2f",
+                "61c44735-5f09-4e6d-98e1-5a4d5cb03e9d": "1b9695ba-35ff-4046-b2d3-bce497d89459",
+                "cfd2d0ad-357d-4fb3-aa14-7451f96fead9": "1504e93b-8201-4f33-aca1-2d3719902054",
+                "7a1f577f-0d84-4f48-98b4-b5a91fb07d01": "f02fd808-b06e-4356-9ca9-e2cf753b73f8",
+                "89562a17-478a-44e4-a1dd-98860c4484fe": "674be71e-f2e0-4587-80bf-1d62591f640c",
+                "340b6c3a-5e73-4b3b-9d94-737e5a627e8d": "e087b67d-e06f-4a18-bf14-d59eb7b777d2",
+                "d94d190e-a3ae-4831-9c40-509a4514e012": "0565c2bd-ff02-45d1-9a4c-0f4c64840bb7",
+                "462a38a2-7735-4472-b209-71f17a6c5427": "f9ba3490-0b81-4003-9771-e67ebccf437b",
+                "79b7f60f-234d-4590-84e1-211edae642d8": "39ddf3b5-e07a-496f-ab0a-08ca23923d14",
+                "da7a7001-8c69-434d-944e-db856056dbab": "d18102eb-9f49-48b2-8e76-e84fa4a44df7",
+                "9f0a363d-c1c8-4919-9798-a1c3332e31fa": "cc844648-4613-4077-90d7-7468438ccb7b",
+                "4c7293c9-db5a-4dbe-8a52-defc88de7df0": "a6c7decc-37e2-47c8-a782-1ed0bc917a99",
+                "22ac1325-ee90-44d3-abe2-9fa8cf6fbd0c": "8b1c5332-47d1-4d12-8fda-ae3ca33a0e2e",
+                "6eff7729-0f5e-483f-bf6a-e0840e7602f5": "e60c5bbf-7461-4189-91de-9ef0c5d70617",
+                "e38d4a62-b722-468f-b1ab-b988fad5d079": "132ca7e0-97bd-4d40-a003-bb325fccf597",
+                "aff7a2bc-3477-4db9-8e96-8a7099fa9b57": "ddf41674-9b8e-4f68-9ecc-3245828a53c8",
+                "b94a38ac-398b-4579-a5f8-be1276ae0fee": "2465b0bd-df78-4eaf-a04b-853926646e91",
+                "79b9ace8-c78f-4adb-98a8-f69ce7aa6510": "bd9a15dc-eb40-45f9-8bbd-d8d8260e7824",
+                "0cb40555-7f07-4b9b-9ec5-cce770a8a5f9": "579e2930-1155-4435-b7b4-350e222397c1",
+                "cb558919-c051-45f5-bbed-1e9aefbad684": "92fbd140-d2e2-4252-8a9c-bbc7ee4a37e3",
+                "c6699c8e-fea7-4886-811d-3265236c7e2f": "07059195-3e20-4b1d-989c-5e9a2c498f25",
+                "92793242-25a0-4279-806e-7976e3333067": "71f77751-fb89-44f6-99e4-767cda0b604f",
+                "46ba5e21-138a-408b-9b8c-6a6e41a2aea5": "ffc30749-89b7-40b8-8da9-881b87169f26",
+                "be0f284c-7c41-49a5-bfce-64d32a6e6842": "dce5c332-20f3-4e94-b2ba-800dc2adafa2",
+                "d6c22bc9-d0a4-4675-b81a-2fc18888ac75": "d468f890-0c70-4359-8fd7-6fca7aa1489b",
+                "a52285e7-46e9-4e8b-9fbe-5f6cb56f457b": "cf99e4f2-1fd9-41e7-8f39-337d6e6d464f"
             },
             "template_id": 165184745
         },
-        "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0": {
+        "ad065902-066a-4d49-933f-b1a018338683": {
             "enabled": true,
             "tags": [],
             "children": [
-                "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7",
-                "457b44db-b5b2-4b77-96d8-d975c07d5a72"
+                "d439359a-c8fd-460c-b2b9-955f48694542",
+                "d6c22bc9-d0a4-4675-b81a-2fc18888ac75"
             ],
             "position": [
                 0,
@@ -5014,7 +6588,7 @@
                 0.03,
                 0.03
             ],
-            "resource_id": "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0",
+            "resource_id": "ad065902-066a-4d49-933f-b1a018338683",
             "name": "Playbot",
             "components": {
                 "anim": {
@@ -5039,62 +6613,62 @@
                     "normalizeWeights": false
                 }
             },
-            "parent": "ca21a9c9-add5-426a-9bf2-af9cbbead75b",
+            "parent": "ce413dc1-0d43-4f71-be44-479a8bc42e01",
             "template_ent_ids": {
-                "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0": "ab8b58e2-ae35-48f4-90f5-e31c2002b6a6",
-                "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7": "71496900-882d-452c-814c-485e56ea5272",
-                "dc1971c4-821f-4233-a0bf-fdcdef555f88": "0e6a3823-9e2c-47d3-8639-ba11ec320122",
-                "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54": "f318d65c-31a3-4b7d-824d-30109dd9557d",
-                "d2ffd88a-413c-4f65-a483-71fd500e513d": "1cdf65fa-ae1d-452c-b38a-4ffb07d5fc64",
-                "deab97ab-715b-4ca4-aab2-cfda1ec73971": "aeabaeed-672f-4338-bf4a-d03e052fccb8",
-                "408b0840-ded6-4b12-98b7-bd5bff852a04": "3b6b8389-4514-409c-b886-25e38dedfaed",
-                "0c318d64-c76b-43b4-b63a-46628de1c794": "542005c1-7870-4c26-ad94-09e44b8b491f",
-                "7a82aa54-05c2-4dae-b17e-403ea9404606": "018fc177-ece2-4651-a529-0028b65f8df8",
-                "4064d16c-af08-4ba1-9771-15f149781aff": "19db1197-c91c-4e61-98c4-d4bfaed92516",
-                "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958": "b2c41ca1-3712-4024-9375-6b92014cadd5",
-                "359f7e61-81d3-40ab-bc2c-70d0b361a64f": "ab6a24f5-64d3-4941-a7f5-aa928144eb71",
-                "cff401c4-a977-4632-8ade-83348d54abb7": "856540a9-ed4b-4f6d-bd9d-96244ff3517a",
-                "c617b807-08cb-4ae8-93e3-a713495e46d7": "b39570a1-6b9b-45fc-b051-ae9068fb94fa",
-                "5d45b464-86f2-40f4-97af-970111b033a0": "78df678a-2560-41e1-b53d-bbfb55fdcae2",
-                "55fd8e3e-8091-4d3e-9963-ad856f7aebe4": "276063f2-c8a1-4a6a-9634-2eb49417f7dc",
-                "7d9bca84-272d-41e0-b6da-bdd42b4c386a": "97bb483c-fa37-412b-b164-9d9827b9c293",
-                "e492ce6e-627a-45e9-b965-d9096a7cc37f": "c3dfaa93-c030-4d11-9599-618953c96a43",
-                "98ad4061-05d8-4d6e-9c23-e1f39d87496f": "01abddd9-b8b3-4d9b-96fb-5c65b4efafea",
-                "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2": "2c741c05-c6a7-4956-957e-eec2f0d8253c",
-                "3e1e77dd-b59b-4884-b59b-63b1748e03ca": "fae581b2-5cc4-45c5-b1a1-f384a7b5c877",
-                "5143015d-9cca-49b6-b332-07e3377e903e": "381b5ba4-4aae-47c5-8486-2874b9aa9e88",
-                "d9fd543e-0edb-4a8b-bb56-cf147af1b96c": "b26128bd-48ce-4fca-a3dc-70b25a071f1d",
-                "50758164-a98a-4a1d-b1ce-6ccb7012afaa": "032e4cf2-265a-44ae-96f6-58bf6f80a4a1",
-                "6d152985-4422-4e92-98a8-5fbcd593d6de": "1d9d2616-d54c-400a-85fb-c8eae8a465b4",
-                "d74c31b2-0bee-463e-b187-381d33c7b998": "b7a8e362-ec12-4e89-8425-483a0ee9f123",
-                "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a": "b925a724-ff70-4463-a8a2-041c8fb37b18",
-                "170fdae9-9dbe-4f1c-90ab-a394adcfa458": "c5b95aa6-d9f9-4a55-a2df-14895bdf7cb7",
-                "293975b2-b85f-42f1-bb7f-9a384a160963": "c3a68bd7-9332-42e9-b15e-17875bd9dea3",
-                "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2": "66ba85ec-3e88-47cb-ae7d-621225a3f728",
-                "5f7c8e55-35c7-4fd9-af87-745b56d8df00": "f8e63bd1-dac6-4be8-87b3-f396e0a17a33",
-                "1661e890-947b-44dd-a136-02b63f417cae": "3bd25547-d841-45bf-ab7b-e6e31ea83782",
-                "f278ab8f-c0e4-48f5-ba95-8929c5633865": "57fcfda8-72dc-48cd-ac26-7e73c1f3010f",
-                "62c51670-a0bc-4b66-b1a7-0488dcfdc848": "51e27ce4-973d-4e0e-88bf-78e74d3c64a7",
-                "98b5de3d-dc19-4d23-8b42-dc2fbd6a7332": "983f5049-6bb8-486b-9315-56f83acbf595",
-                "a6bcea79-2319-4b75-a7e2-5ae409964319": "fe8545d6-3664-4cf6-ad59-da5cfb7216a2",
-                "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9": "3e18709c-273d-4eba-83c1-969f900ed2a3",
-                "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796": "283c8c89-a9d8-49c0-b130-4156ab480778",
-                "fd270154-4e21-42ee-928e-a07f84ea99ea": "09312f63-2da1-4a89-8c72-63607100077a",
-                "ba6a51e3-1458-4073-a194-41f035c5ed81": "5b6a71c8-8d3f-4c4a-b2a6-9ee598d6fe21",
-                "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf": "697c4691-4b38-455c-b37a-76a160f05b05",
-                "87e5c6d6-27a8-4e51-a40a-552f158732cf": "62b120d9-37a1-4b8e-a2df-58b10d666ab7",
-                "62f141b5-f851-4472-9333-59516fcf4f9e": "36662a14-f83a-46c6-bd0b-427a7849a948",
-                "56945662-b759-4bda-a9de-fdbb7ed055c1": "3d3daac8-3cb5-4702-8b36-7137c59c0b13",
-                "fc45b2bc-f098-47b8-9bc2-257394e42d80": "5aebcaaa-de2b-4bcf-a61c-b9d903ea3cf7",
-                "457b44db-b5b2-4b77-96d8-d975c07d5a72": "cd7be9d1-61ed-43c0-8dd0-db7e1a201695"
+                "ad065902-066a-4d49-933f-b1a018338683": "ab8b58e2-ae35-48f4-90f5-e31c2002b6a6",
+                "d439359a-c8fd-460c-b2b9-955f48694542": "71496900-882d-452c-814c-485e56ea5272",
+                "e20c247f-0697-41b0-8e24-2369ad88470e": "0e6a3823-9e2c-47d3-8639-ba11ec320122",
+                "37fd4038-6859-4035-983d-083d19c46cae": "f318d65c-31a3-4b7d-824d-30109dd9557d",
+                "45bd46cc-d3e9-4e57-808e-8a2c438b7be2": "1cdf65fa-ae1d-452c-b38a-4ffb07d5fc64",
+                "28b9ceb8-6c0c-415f-99fd-4edcb1bc173e": "aeabaeed-672f-4338-bf4a-d03e052fccb8",
+                "ed687bfb-c827-46f7-80a8-b5f5cb301d38": "3b6b8389-4514-409c-b886-25e38dedfaed",
+                "a6748833-85f5-4732-9d2f-6ac394269745": "542005c1-7870-4c26-ad94-09e44b8b491f",
+                "d496ffe4-7a6d-4192-847a-6bebbc1f3951": "018fc177-ece2-4651-a529-0028b65f8df8",
+                "f3908160-3ad1-446c-a637-3c6d3c33942f": "19db1197-c91c-4e61-98c4-d4bfaed92516",
+                "694c9a24-7b8e-4c06-a1c7-eb8f5a36eeec": "b2c41ca1-3712-4024-9375-6b92014cadd5",
+                "a9f72f9a-b834-4bc8-8b62-4afc04c77651": "ab6a24f5-64d3-4941-a7f5-aa928144eb71",
+                "effcb219-1181-4e16-b615-9cba6ce904e1": "856540a9-ed4b-4f6d-bd9d-96244ff3517a",
+                "0d1d45e1-419f-4958-9344-76c0d3099c60": "b39570a1-6b9b-45fc-b051-ae9068fb94fa",
+                "b940367c-04a1-488a-a7b8-61ed6c850a64": "78df678a-2560-41e1-b53d-bbfb55fdcae2",
+                "d8a7a385-618c-4c70-b1e1-c417fb8cafcc": "276063f2-c8a1-4a6a-9634-2eb49417f7dc",
+                "2c446303-cd5e-4f1e-a34f-a6842621e7ab": "97bb483c-fa37-412b-b164-9d9827b9c293",
+                "0a1361b6-856f-482a-8896-50389bb3a10a": "c3dfaa93-c030-4d11-9599-618953c96a43",
+                "f7fcdada-fff4-4ae6-bf6e-d69db26d9a90": "01abddd9-b8b3-4d9b-96fb-5c65b4efafea",
+                "8b90d034-7889-46da-8f51-18876b549128": "2c741c05-c6a7-4956-957e-eec2f0d8253c",
+                "45f2e859-7eb9-40f6-852b-3628a9e89a21": "fae581b2-5cc4-45c5-b1a1-f384a7b5c877",
+                "e4d428d5-68f4-4447-8581-a56e29e96230": "381b5ba4-4aae-47c5-8486-2874b9aa9e88",
+                "61c44735-5f09-4e6d-98e1-5a4d5cb03e9d": "b26128bd-48ce-4fca-a3dc-70b25a071f1d",
+                "cfd2d0ad-357d-4fb3-aa14-7451f96fead9": "032e4cf2-265a-44ae-96f6-58bf6f80a4a1",
+                "7a1f577f-0d84-4f48-98b4-b5a91fb07d01": "1d9d2616-d54c-400a-85fb-c8eae8a465b4",
+                "89562a17-478a-44e4-a1dd-98860c4484fe": "b7a8e362-ec12-4e89-8425-483a0ee9f123",
+                "340b6c3a-5e73-4b3b-9d94-737e5a627e8d": "b925a724-ff70-4463-a8a2-041c8fb37b18",
+                "d94d190e-a3ae-4831-9c40-509a4514e012": "c5b95aa6-d9f9-4a55-a2df-14895bdf7cb7",
+                "462a38a2-7735-4472-b209-71f17a6c5427": "c3a68bd7-9332-42e9-b15e-17875bd9dea3",
+                "79b7f60f-234d-4590-84e1-211edae642d8": "66ba85ec-3e88-47cb-ae7d-621225a3f728",
+                "da7a7001-8c69-434d-944e-db856056dbab": "f8e63bd1-dac6-4be8-87b3-f396e0a17a33",
+                "9f0a363d-c1c8-4919-9798-a1c3332e31fa": "3bd25547-d841-45bf-ab7b-e6e31ea83782",
+                "4c7293c9-db5a-4dbe-8a52-defc88de7df0": "57fcfda8-72dc-48cd-ac26-7e73c1f3010f",
+                "22ac1325-ee90-44d3-abe2-9fa8cf6fbd0c": "51e27ce4-973d-4e0e-88bf-78e74d3c64a7",
+                "6eff7729-0f5e-483f-bf6a-e0840e7602f5": "983f5049-6bb8-486b-9315-56f83acbf595",
+                "e38d4a62-b722-468f-b1ab-b988fad5d079": "fe8545d6-3664-4cf6-ad59-da5cfb7216a2",
+                "aff7a2bc-3477-4db9-8e96-8a7099fa9b57": "3e18709c-273d-4eba-83c1-969f900ed2a3",
+                "b94a38ac-398b-4579-a5f8-be1276ae0fee": "283c8c89-a9d8-49c0-b130-4156ab480778",
+                "79b9ace8-c78f-4adb-98a8-f69ce7aa6510": "09312f63-2da1-4a89-8c72-63607100077a",
+                "0cb40555-7f07-4b9b-9ec5-cce770a8a5f9": "5b6a71c8-8d3f-4c4a-b2a6-9ee598d6fe21",
+                "cb558919-c051-45f5-bbed-1e9aefbad684": "697c4691-4b38-455c-b37a-76a160f05b05",
+                "c6699c8e-fea7-4886-811d-3265236c7e2f": "62b120d9-37a1-4b8e-a2df-58b10d666ab7",
+                "92793242-25a0-4279-806e-7976e3333067": "36662a14-f83a-46c6-bd0b-427a7849a948",
+                "46ba5e21-138a-408b-9b8c-6a6e41a2aea5": "3d3daac8-3cb5-4702-8b36-7137c59c0b13",
+                "be0f284c-7c41-49a5-bfce-64d32a6e6842": "5aebcaaa-de2b-4bcf-a61c-b9d903ea3cf7",
+                "d6c22bc9-d0a4-4675-b81a-2fc18888ac75": "cd7be9d1-61ed-43c0-8dd0-db7e1a201695"
             },
             "template_id": 165184744
         },
-        "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7": {
+        "d439359a-c8fd-460c-b2b9-955f48694542": {
             "enabled": true,
             "tags": [],
             "children": [
-                "dc1971c4-821f-4233-a0bf-fdcdef555f88"
+                "e20c247f-0697-41b0-8e24-2369ad88470e"
             ],
             "position": [
                 0,
@@ -5111,16 +6685,16 @@
                 1,
                 1
             ],
-            "resource_id": "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7",
+            "resource_id": "d439359a-c8fd-460c-b2b9-955f48694542",
             "name": "PB",
             "components": {},
-            "parent": "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0"
+            "parent": "ad065902-066a-4d49-933f-b1a018338683"
         },
-        "dc1971c4-821f-4233-a0bf-fdcdef555f88": {
+        "e20c247f-0697-41b0-8e24-2369ad88470e": {
             "enabled": true,
             "tags": [],
             "children": [
-                "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54"
+                "37fd4038-6859-4035-983d-083d19c46cae"
             ],
             "position": [
                 0,
@@ -5137,18 +6711,18 @@
                 1,
                 1
             ],
-            "resource_id": "dc1971c4-821f-4233-a0bf-fdcdef555f88",
+            "resource_id": "e20c247f-0697-41b0-8e24-2369ad88470e",
             "name": "PB Pelvis",
             "components": {},
-            "parent": "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7"
+            "parent": "d439359a-c8fd-460c-b2b9-955f48694542"
         },
-        "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54": {
+        "37fd4038-6859-4035-983d-083d19c46cae": {
             "enabled": true,
             "tags": [],
             "children": [
-                "d2ffd88a-413c-4f65-a483-71fd500e513d",
-                "a6bcea79-2319-4b75-a7e2-5ae409964319",
-                "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf"
+                "45bd46cc-d3e9-4e57-808e-8a2c438b7be2",
+                "e38d4a62-b722-468f-b1ab-b988fad5d079",
+                "cb558919-c051-45f5-bbed-1e9aefbad684"
             ],
             "position": [
                 3.02832,
@@ -5165,16 +6739,16 @@
                 1,
                 1
             ],
-            "resource_id": "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54",
+            "resource_id": "37fd4038-6859-4035-983d-083d19c46cae",
             "name": "PB Spine",
             "components": {},
-            "parent": "dc1971c4-821f-4233-a0bf-fdcdef555f88"
+            "parent": "e20c247f-0697-41b0-8e24-2369ad88470e"
         },
-        "d2ffd88a-413c-4f65-a483-71fd500e513d": {
+        "45bd46cc-d3e9-4e57-808e-8a2c438b7be2": {
             "enabled": true,
             "tags": [],
             "children": [
-                "deab97ab-715b-4ca4-aab2-cfda1ec73971"
+                "28b9ceb8-6c0c-415f-99fd-4edcb1bc173e"
             ],
             "position": [
                 7.82527,
@@ -5191,16 +6765,16 @@
                 1,
                 1
             ],
-            "resource_id": "d2ffd88a-413c-4f65-a483-71fd500e513d",
+            "resource_id": "45bd46cc-d3e9-4e57-808e-8a2c438b7be2",
             "name": "PB Spine1",
             "components": {},
-            "parent": "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54"
+            "parent": "37fd4038-6859-4035-983d-083d19c46cae"
         },
-        "deab97ab-715b-4ca4-aab2-cfda1ec73971": {
+        "28b9ceb8-6c0c-415f-99fd-4edcb1bc173e": {
             "enabled": true,
             "tags": [],
             "children": [
-                "408b0840-ded6-4b12-98b7-bd5bff852a04"
+                "ed687bfb-c827-46f7-80a8-b5f5cb301d38"
             ],
             "position": [
                 7.8282,
@@ -5217,18 +6791,18 @@
                 1,
                 1
             ],
-            "resource_id": "deab97ab-715b-4ca4-aab2-cfda1ec73971",
+            "resource_id": "28b9ceb8-6c0c-415f-99fd-4edcb1bc173e",
             "name": "PB Spine2",
             "components": {},
-            "parent": "d2ffd88a-413c-4f65-a483-71fd500e513d"
+            "parent": "45bd46cc-d3e9-4e57-808e-8a2c438b7be2"
         },
-        "408b0840-ded6-4b12-98b7-bd5bff852a04": {
+        "ed687bfb-c827-46f7-80a8-b5f5cb301d38": {
             "enabled": true,
             "tags": [],
             "children": [
-                "0c318d64-c76b-43b4-b63a-46628de1c794",
-                "4064d16c-af08-4ba1-9771-15f149781aff",
-                "d9fd543e-0edb-4a8b-bb56-cf147af1b96c"
+                "a6748833-85f5-4732-9d2f-6ac394269745",
+                "f3908160-3ad1-446c-a637-3c6d3c33942f",
+                "61c44735-5f09-4e6d-98e1-5a4d5cb03e9d"
             ],
             "position": [
                 9.55816,
@@ -5245,16 +6819,16 @@
                 1,
                 1
             ],
-            "resource_id": "408b0840-ded6-4b12-98b7-bd5bff852a04",
+            "resource_id": "ed687bfb-c827-46f7-80a8-b5f5cb301d38",
             "name": "PB Neck",
             "components": {},
-            "parent": "deab97ab-715b-4ca4-aab2-cfda1ec73971"
+            "parent": "28b9ceb8-6c0c-415f-99fd-4edcb1bc173e"
         },
-        "0c318d64-c76b-43b4-b63a-46628de1c794": {
+        "a6748833-85f5-4732-9d2f-6ac394269745": {
             "enabled": true,
             "tags": [],
             "children": [
-                "7a82aa54-05c2-4dae-b17e-403ea9404606"
+                "d496ffe4-7a6d-4192-847a-6bebbc1f3951"
             ],
             "position": [
                 15.5683,
@@ -5271,12 +6845,12 @@
                 1,
                 1
             ],
-            "resource_id": "0c318d64-c76b-43b4-b63a-46628de1c794",
+            "resource_id": "a6748833-85f5-4732-9d2f-6ac394269745",
             "name": "PB Head",
             "components": {},
-            "parent": "408b0840-ded6-4b12-98b7-bd5bff852a04"
+            "parent": "ed687bfb-c827-46f7-80a8-b5f5cb301d38"
         },
-        "7a82aa54-05c2-4dae-b17e-403ea9404606": {
+        "d496ffe4-7a6d-4192-847a-6bebbc1f3951": {
             "enabled": true,
             "tags": [],
             "children": [],
@@ -5295,16 +6869,16 @@
                 1,
                 1
             ],
-            "resource_id": "7a82aa54-05c2-4dae-b17e-403ea9404606",
+            "resource_id": "d496ffe4-7a6d-4192-847a-6bebbc1f3951",
             "name": "PB HeadNub",
             "components": {},
-            "parent": "0c318d64-c76b-43b4-b63a-46628de1c794"
+            "parent": "a6748833-85f5-4732-9d2f-6ac394269745"
         },
-        "4064d16c-af08-4ba1-9771-15f149781aff": {
+        "f3908160-3ad1-446c-a637-3c6d3c33942f": {
             "enabled": true,
             "tags": [],
             "children": [
-                "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958"
+                "694c9a24-7b8e-4c06-a1c7-eb8f5a36eeec"
             ],
             "position": [
                 0.160713,
@@ -5321,16 +6895,16 @@
                 1,
                 1
             ],
-            "resource_id": "4064d16c-af08-4ba1-9771-15f149781aff",
+            "resource_id": "f3908160-3ad1-446c-a637-3c6d3c33942f",
             "name": "PB L Clavicle",
             "components": {},
-            "parent": "408b0840-ded6-4b12-98b7-bd5bff852a04"
+            "parent": "ed687bfb-c827-46f7-80a8-b5f5cb301d38"
         },
-        "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958": {
+        "694c9a24-7b8e-4c06-a1c7-eb8f5a36eeec": {
             "enabled": true,
             "tags": [],
             "children": [
-                "359f7e61-81d3-40ab-bc2c-70d0b361a64f"
+                "a9f72f9a-b834-4bc8-8b62-4afc04c77651"
             ],
             "position": [
                 19.923,
@@ -5347,16 +6921,16 @@
                 1,
                 1
             ],
-            "resource_id": "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958",
+            "resource_id": "694c9a24-7b8e-4c06-a1c7-eb8f5a36eeec",
             "name": "PB L UpperArm",
             "components": {},
-            "parent": "4064d16c-af08-4ba1-9771-15f149781aff"
+            "parent": "f3908160-3ad1-446c-a637-3c6d3c33942f"
         },
-        "359f7e61-81d3-40ab-bc2c-70d0b361a64f": {
+        "a9f72f9a-b834-4bc8-8b62-4afc04c77651": {
             "enabled": true,
             "tags": [],
             "children": [
-                "cff401c4-a977-4632-8ade-83348d54abb7"
+                "effcb219-1181-4e16-b615-9cba6ce904e1"
             ],
             "position": [
                 13.8063,
@@ -5373,18 +6947,18 @@
                 1,
                 1
             ],
-            "resource_id": "359f7e61-81d3-40ab-bc2c-70d0b361a64f",
+            "resource_id": "a9f72f9a-b834-4bc8-8b62-4afc04c77651",
             "name": "PB L Forearm",
             "components": {},
-            "parent": "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958"
+            "parent": "694c9a24-7b8e-4c06-a1c7-eb8f5a36eeec"
         },
-        "cff401c4-a977-4632-8ade-83348d54abb7": {
+        "effcb219-1181-4e16-b615-9cba6ce904e1": {
             "enabled": true,
             "tags": [],
             "children": [
-                "c617b807-08cb-4ae8-93e3-a713495e46d7",
-                "7d9bca84-272d-41e0-b6da-bdd42b4c386a",
-                "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2"
+                "0d1d45e1-419f-4958-9344-76c0d3099c60",
+                "2c446303-cd5e-4f1e-a34f-a6842621e7ab",
+                "8b90d034-7889-46da-8f51-18876b549128"
             ],
             "position": [
                 3.79202,
@@ -5401,16 +6975,16 @@
                 1,
                 1
             ],
-            "resource_id": "cff401c4-a977-4632-8ade-83348d54abb7",
+            "resource_id": "effcb219-1181-4e16-b615-9cba6ce904e1",
             "name": "PB L Hand",
             "components": {},
-            "parent": "359f7e61-81d3-40ab-bc2c-70d0b361a64f"
+            "parent": "a9f72f9a-b834-4bc8-8b62-4afc04c77651"
         },
-        "c617b807-08cb-4ae8-93e3-a713495e46d7": {
+        "0d1d45e1-419f-4958-9344-76c0d3099c60": {
             "enabled": true,
             "tags": [],
             "children": [
-                "5d45b464-86f2-40f4-97af-970111b033a0"
+                "b940367c-04a1-488a-a7b8-61ed6c850a64"
             ],
             "position": [
                 13.057,
@@ -5427,16 +7001,16 @@
                 1,
                 1
             ],
-            "resource_id": "c617b807-08cb-4ae8-93e3-a713495e46d7",
+            "resource_id": "0d1d45e1-419f-4958-9344-76c0d3099c60",
             "name": "PB L Finger0",
             "components": {},
-            "parent": "cff401c4-a977-4632-8ade-83348d54abb7"
+            "parent": "effcb219-1181-4e16-b615-9cba6ce904e1"
         },
-        "5d45b464-86f2-40f4-97af-970111b033a0": {
+        "b940367c-04a1-488a-a7b8-61ed6c850a64": {
             "enabled": true,
             "tags": [],
             "children": [
-                "55fd8e3e-8091-4d3e-9963-ad856f7aebe4"
+                "d8a7a385-618c-4c70-b1e1-c417fb8cafcc"
             ],
             "position": [
                 4.2558,
@@ -5453,12 +7027,12 @@
                 1,
                 1
             ],
-            "resource_id": "5d45b464-86f2-40f4-97af-970111b033a0",
+            "resource_id": "b940367c-04a1-488a-a7b8-61ed6c850a64",
             "name": "PB L Finger01",
             "components": {},
-            "parent": "c617b807-08cb-4ae8-93e3-a713495e46d7"
+            "parent": "0d1d45e1-419f-4958-9344-76c0d3099c60"
         },
-        "55fd8e3e-8091-4d3e-9963-ad856f7aebe4": {
+        "d8a7a385-618c-4c70-b1e1-c417fb8cafcc": {
             "enabled": true,
             "tags": [],
             "children": [],
@@ -5477,16 +7051,16 @@
                 1,
                 1
             ],
-            "resource_id": "55fd8e3e-8091-4d3e-9963-ad856f7aebe4",
+            "resource_id": "d8a7a385-618c-4c70-b1e1-c417fb8cafcc",
             "name": "PB L Finger0Nub",
             "components": {},
-            "parent": "5d45b464-86f2-40f4-97af-970111b033a0"
+            "parent": "b940367c-04a1-488a-a7b8-61ed6c850a64"
         },
-        "7d9bca84-272d-41e0-b6da-bdd42b4c386a": {
+        "2c446303-cd5e-4f1e-a34f-a6842621e7ab": {
             "enabled": true,
             "tags": [],
             "children": [
-                "e492ce6e-627a-45e9-b965-d9096a7cc37f"
+                "0a1361b6-856f-482a-8896-50389bb3a10a"
             ],
             "position": [
                 15.3884,
@@ -5503,16 +7077,16 @@
                 1,
                 1
             ],
-            "resource_id": "7d9bca84-272d-41e0-b6da-bdd42b4c386a",
+            "resource_id": "2c446303-cd5e-4f1e-a34f-a6842621e7ab",
             "name": "PB L Finger1",
             "components": {},
-            "parent": "cff401c4-a977-4632-8ade-83348d54abb7"
+            "parent": "effcb219-1181-4e16-b615-9cba6ce904e1"
         },
-        "e492ce6e-627a-45e9-b965-d9096a7cc37f": {
+        "0a1361b6-856f-482a-8896-50389bb3a10a": {
             "enabled": true,
             "tags": [],
             "children": [
-                "98ad4061-05d8-4d6e-9c23-e1f39d87496f"
+                "f7fcdada-fff4-4ae6-bf6e-d69db26d9a90"
             ],
             "position": [
                 5.0402,
@@ -5529,12 +7103,12 @@
                 1,
                 1
             ],
-            "resource_id": "e492ce6e-627a-45e9-b965-d9096a7cc37f",
+            "resource_id": "0a1361b6-856f-482a-8896-50389bb3a10a",
             "name": "PB L Finger11",
             "components": {},
-            "parent": "7d9bca84-272d-41e0-b6da-bdd42b4c386a"
+            "parent": "2c446303-cd5e-4f1e-a34f-a6842621e7ab"
         },
-        "98ad4061-05d8-4d6e-9c23-e1f39d87496f": {
+        "f7fcdada-fff4-4ae6-bf6e-d69db26d9a90": {
             "enabled": true,
             "tags": [],
             "children": [],
@@ -5553,16 +7127,16 @@
                 1,
                 1
             ],
-            "resource_id": "98ad4061-05d8-4d6e-9c23-e1f39d87496f",
+            "resource_id": "f7fcdada-fff4-4ae6-bf6e-d69db26d9a90",
             "name": "PB L Finger1Nub",
             "components": {},
-            "parent": "e492ce6e-627a-45e9-b965-d9096a7cc37f"
+            "parent": "0a1361b6-856f-482a-8896-50389bb3a10a"
         },
-        "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2": {
+        "8b90d034-7889-46da-8f51-18876b549128": {
             "enabled": true,
             "tags": [],
             "children": [
-                "3e1e77dd-b59b-4884-b59b-63b1748e03ca"
+                "45f2e859-7eb9-40f6-852b-3628a9e89a21"
             ],
             "position": [
                 16.097,
@@ -5579,16 +7153,16 @@
                 1,
                 1
             ],
-            "resource_id": "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2",
+            "resource_id": "8b90d034-7889-46da-8f51-18876b549128",
             "name": "PB L Finger2",
             "components": {},
-            "parent": "cff401c4-a977-4632-8ade-83348d54abb7"
+            "parent": "effcb219-1181-4e16-b615-9cba6ce904e1"
         },
-        "3e1e77dd-b59b-4884-b59b-63b1748e03ca": {
+        "45f2e859-7eb9-40f6-852b-3628a9e89a21": {
             "enabled": true,
             "tags": [],
             "children": [
-                "5143015d-9cca-49b6-b332-07e3377e903e"
+                "e4d428d5-68f4-4447-8581-a56e29e96230"
             ],
             "position": [
                 4.64717,
@@ -5605,12 +7179,12 @@
                 1,
                 1
             ],
-            "resource_id": "3e1e77dd-b59b-4884-b59b-63b1748e03ca",
+            "resource_id": "45f2e859-7eb9-40f6-852b-3628a9e89a21",
             "name": "PB L Finger21",
             "components": {},
-            "parent": "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2"
+            "parent": "8b90d034-7889-46da-8f51-18876b549128"
         },
-        "5143015d-9cca-49b6-b332-07e3377e903e": {
+        "e4d428d5-68f4-4447-8581-a56e29e96230": {
             "enabled": true,
             "tags": [],
             "children": [],
@@ -5629,16 +7203,16 @@
                 1,
                 1
             ],
-            "resource_id": "5143015d-9cca-49b6-b332-07e3377e903e",
+            "resource_id": "e4d428d5-68f4-4447-8581-a56e29e96230",
             "name": "PB L Finger2Nub",
             "components": {},
-            "parent": "3e1e77dd-b59b-4884-b59b-63b1748e03ca"
+            "parent": "45f2e859-7eb9-40f6-852b-3628a9e89a21"
         },
-        "d9fd543e-0edb-4a8b-bb56-cf147af1b96c": {
+        "61c44735-5f09-4e6d-98e1-5a4d5cb03e9d": {
             "enabled": true,
             "tags": [],
             "children": [
-                "50758164-a98a-4a1d-b1ce-6ccb7012afaa"
+                "cfd2d0ad-357d-4fb3-aa14-7451f96fead9"
             ],
             "position": [
                 -0.160706,
@@ -5655,16 +7229,16 @@
                 1,
                 1
             ],
-            "resource_id": "d9fd543e-0edb-4a8b-bb56-cf147af1b96c",
+            "resource_id": "61c44735-5f09-4e6d-98e1-5a4d5cb03e9d",
             "name": "PB R Clavicle",
             "components": {},
-            "parent": "408b0840-ded6-4b12-98b7-bd5bff852a04"
+            "parent": "ed687bfb-c827-46f7-80a8-b5f5cb301d38"
         },
-        "50758164-a98a-4a1d-b1ce-6ccb7012afaa": {
+        "cfd2d0ad-357d-4fb3-aa14-7451f96fead9": {
             "enabled": true,
             "tags": [],
             "children": [
-                "6d152985-4422-4e92-98a8-5fbcd593d6de"
+                "7a1f577f-0d84-4f48-98b4-b5a91fb07d01"
             ],
             "position": [
                 19.923,
@@ -5681,16 +7255,16 @@
                 1,
                 1
             ],
-            "resource_id": "50758164-a98a-4a1d-b1ce-6ccb7012afaa",
+            "resource_id": "cfd2d0ad-357d-4fb3-aa14-7451f96fead9",
             "name": "PB R UpperArm",
             "components": {},
-            "parent": "d9fd543e-0edb-4a8b-bb56-cf147af1b96c"
+            "parent": "61c44735-5f09-4e6d-98e1-5a4d5cb03e9d"
         },
-        "6d152985-4422-4e92-98a8-5fbcd593d6de": {
+        "7a1f577f-0d84-4f48-98b4-b5a91fb07d01": {
             "enabled": true,
             "tags": [],
             "children": [
-                "d74c31b2-0bee-463e-b187-381d33c7b998"
+                "89562a17-478a-44e4-a1dd-98860c4484fe"
             ],
             "position": [
                 13.8063,
@@ -5707,18 +7281,18 @@
                 1,
                 1
             ],
-            "resource_id": "6d152985-4422-4e92-98a8-5fbcd593d6de",
+            "resource_id": "7a1f577f-0d84-4f48-98b4-b5a91fb07d01",
             "name": "PB R Forearm",
             "components": {},
-            "parent": "50758164-a98a-4a1d-b1ce-6ccb7012afaa"
+            "parent": "cfd2d0ad-357d-4fb3-aa14-7451f96fead9"
         },
-        "d74c31b2-0bee-463e-b187-381d33c7b998": {
+        "89562a17-478a-44e4-a1dd-98860c4484fe": {
             "enabled": true,
             "tags": [],
             "children": [
-                "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a",
-                "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2",
-                "f278ab8f-c0e4-48f5-ba95-8929c5633865"
+                "340b6c3a-5e73-4b3b-9d94-737e5a627e8d",
+                "79b7f60f-234d-4590-84e1-211edae642d8",
+                "4c7293c9-db5a-4dbe-8a52-defc88de7df0"
             ],
             "position": [
                 3.79202,
@@ -5735,16 +7309,16 @@
                 1,
                 1
             ],
-            "resource_id": "d74c31b2-0bee-463e-b187-381d33c7b998",
+            "resource_id": "89562a17-478a-44e4-a1dd-98860c4484fe",
             "name": "PB R Hand",
             "components": {},
-            "parent": "6d152985-4422-4e92-98a8-5fbcd593d6de"
+            "parent": "7a1f577f-0d84-4f48-98b4-b5a91fb07d01"
         },
-        "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a": {
+        "340b6c3a-5e73-4b3b-9d94-737e5a627e8d": {
             "enabled": true,
             "tags": [],
             "children": [
-                "170fdae9-9dbe-4f1c-90ab-a394adcfa458"
+                "d94d190e-a3ae-4831-9c40-509a4514e012"
             ],
             "position": [
                 13.057,
@@ -5761,16 +7335,16 @@
                 1,
                 1
             ],
-            "resource_id": "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a",
+            "resource_id": "340b6c3a-5e73-4b3b-9d94-737e5a627e8d",
             "name": "PB R Finger0",
             "components": {},
-            "parent": "d74c31b2-0bee-463e-b187-381d33c7b998"
+            "parent": "89562a17-478a-44e4-a1dd-98860c4484fe"
         },
-        "170fdae9-9dbe-4f1c-90ab-a394adcfa458": {
+        "d94d190e-a3ae-4831-9c40-509a4514e012": {
             "enabled": true,
             "tags": [],
             "children": [
-                "293975b2-b85f-42f1-bb7f-9a384a160963"
+                "462a38a2-7735-4472-b209-71f17a6c5427"
             ],
             "position": [
                 4.2558,
@@ -5787,12 +7361,12 @@
                 1,
                 1
             ],
-            "resource_id": "170fdae9-9dbe-4f1c-90ab-a394adcfa458",
+            "resource_id": "d94d190e-a3ae-4831-9c40-509a4514e012",
             "name": "PB R Finger01",
             "components": {},
-            "parent": "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a"
+            "parent": "340b6c3a-5e73-4b3b-9d94-737e5a627e8d"
         },
-        "293975b2-b85f-42f1-bb7f-9a384a160963": {
+        "462a38a2-7735-4472-b209-71f17a6c5427": {
             "enabled": true,
             "tags": [],
             "children": [],
@@ -5811,16 +7385,16 @@
                 -1,
                 -1
             ],
-            "resource_id": "293975b2-b85f-42f1-bb7f-9a384a160963",
+            "resource_id": "462a38a2-7735-4472-b209-71f17a6c5427",
             "name": "PB R Finger0Nub",
             "components": {},
-            "parent": "170fdae9-9dbe-4f1c-90ab-a394adcfa458"
+            "parent": "d94d190e-a3ae-4831-9c40-509a4514e012"
         },
-        "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2": {
+        "79b7f60f-234d-4590-84e1-211edae642d8": {
             "enabled": true,
             "tags": [],
             "children": [
-                "5f7c8e55-35c7-4fd9-af87-745b56d8df00"
+                "da7a7001-8c69-434d-944e-db856056dbab"
             ],
             "position": [
                 15.3884,
@@ -5837,16 +7411,16 @@
                 1,
                 1
             ],
-            "resource_id": "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2",
+            "resource_id": "79b7f60f-234d-4590-84e1-211edae642d8",
             "name": "PB R Finger1",
             "components": {},
-            "parent": "d74c31b2-0bee-463e-b187-381d33c7b998"
+            "parent": "89562a17-478a-44e4-a1dd-98860c4484fe"
         },
-        "5f7c8e55-35c7-4fd9-af87-745b56d8df00": {
+        "da7a7001-8c69-434d-944e-db856056dbab": {
             "enabled": true,
             "tags": [],
             "children": [
-                "1661e890-947b-44dd-a136-02b63f417cae"
+                "9f0a363d-c1c8-4919-9798-a1c3332e31fa"
             ],
             "position": [
                 5.0402,
@@ -5863,12 +7437,12 @@
                 1,
                 1
             ],
-            "resource_id": "5f7c8e55-35c7-4fd9-af87-745b56d8df00",
+            "resource_id": "da7a7001-8c69-434d-944e-db856056dbab",
             "name": "PB R Finger11",
             "components": {},
-            "parent": "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2"
+            "parent": "79b7f60f-234d-4590-84e1-211edae642d8"
         },
-        "1661e890-947b-44dd-a136-02b63f417cae": {
+        "9f0a363d-c1c8-4919-9798-a1c3332e31fa": {
             "enabled": true,
             "tags": [],
             "children": [],
@@ -5887,16 +7461,16 @@
                 -1,
                 -1
             ],
-            "resource_id": "1661e890-947b-44dd-a136-02b63f417cae",
+            "resource_id": "9f0a363d-c1c8-4919-9798-a1c3332e31fa",
             "name": "PB R Finger1Nub",
             "components": {},
-            "parent": "5f7c8e55-35c7-4fd9-af87-745b56d8df00"
+            "parent": "da7a7001-8c69-434d-944e-db856056dbab"
         },
-        "f278ab8f-c0e4-48f5-ba95-8929c5633865": {
+        "4c7293c9-db5a-4dbe-8a52-defc88de7df0": {
             "enabled": true,
             "tags": [],
             "children": [
-                "62c51670-a0bc-4b66-b1a7-0488dcfdc848"
+                "22ac1325-ee90-44d3-abe2-9fa8cf6fbd0c"
             ],
             "position": [
                 16.097,
@@ -5913,16 +7487,16 @@
                 1,
                 1
             ],
-            "resource_id": "f278ab8f-c0e4-48f5-ba95-8929c5633865",
+            "resource_id": "4c7293c9-db5a-4dbe-8a52-defc88de7df0",
             "name": "PB R Finger2",
             "components": {},
-            "parent": "d74c31b2-0bee-463e-b187-381d33c7b998"
+            "parent": "89562a17-478a-44e4-a1dd-98860c4484fe"
         },
-        "62c51670-a0bc-4b66-b1a7-0488dcfdc848": {
+        "22ac1325-ee90-44d3-abe2-9fa8cf6fbd0c": {
             "enabled": true,
             "tags": [],
             "children": [
-                "98b5de3d-dc19-4d23-8b42-dc2fbd6a7332"
+                "6eff7729-0f5e-483f-bf6a-e0840e7602f5"
             ],
             "position": [
                 4.64717,
@@ -5939,12 +7513,12 @@
                 1,
                 1
             ],
-            "resource_id": "62c51670-a0bc-4b66-b1a7-0488dcfdc848",
+            "resource_id": "22ac1325-ee90-44d3-abe2-9fa8cf6fbd0c",
             "name": "PB R Finger21",
             "components": {},
-            "parent": "f278ab8f-c0e4-48f5-ba95-8929c5633865"
+            "parent": "4c7293c9-db5a-4dbe-8a52-defc88de7df0"
         },
-        "98b5de3d-dc19-4d23-8b42-dc2fbd6a7332": {
+        "6eff7729-0f5e-483f-bf6a-e0840e7602f5": {
             "enabled": true,
             "tags": [],
             "children": [],
@@ -5963,16 +7537,16 @@
                 -1,
                 -1
             ],
-            "resource_id": "98b5de3d-dc19-4d23-8b42-dc2fbd6a7332",
+            "resource_id": "6eff7729-0f5e-483f-bf6a-e0840e7602f5",
             "name": "PB R Finger2Nub",
             "components": {},
-            "parent": "62c51670-a0bc-4b66-b1a7-0488dcfdc848"
+            "parent": "22ac1325-ee90-44d3-abe2-9fa8cf6fbd0c"
         },
-        "a6bcea79-2319-4b75-a7e2-5ae409964319": {
+        "e38d4a62-b722-468f-b1ab-b988fad5d079": {
             "enabled": true,
             "tags": [],
             "children": [
-                "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9"
+                "aff7a2bc-3477-4db9-8e96-8a7099fa9b57"
             ],
             "position": [
                 -2.57542,
@@ -5989,16 +7563,16 @@
                 1,
                 1
             ],
-            "resource_id": "a6bcea79-2319-4b75-a7e2-5ae409964319",
+            "resource_id": "e38d4a62-b722-468f-b1ab-b988fad5d079",
             "name": "PB L Thigh",
             "components": {},
-            "parent": "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54"
+            "parent": "37fd4038-6859-4035-983d-083d19c46cae"
         },
-        "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9": {
+        "aff7a2bc-3477-4db9-8e96-8a7099fa9b57": {
             "enabled": true,
             "tags": [],
             "children": [
-                "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796"
+                "b94a38ac-398b-4579-a5f8-be1276ae0fee"
             ],
             "position": [
                 10.6618,
@@ -6015,16 +7589,16 @@
                 1,
                 1
             ],
-            "resource_id": "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9",
+            "resource_id": "aff7a2bc-3477-4db9-8e96-8a7099fa9b57",
             "name": "PB L Calf",
             "components": {},
-            "parent": "a6bcea79-2319-4b75-a7e2-5ae409964319"
+            "parent": "e38d4a62-b722-468f-b1ab-b988fad5d079"
         },
-        "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796": {
+        "b94a38ac-398b-4579-a5f8-be1276ae0fee": {
             "enabled": true,
             "tags": [],
             "children": [
-                "fd270154-4e21-42ee-928e-a07f84ea99ea"
+                "79b9ace8-c78f-4adb-98a8-f69ce7aa6510"
             ],
             "position": [
                 8.19998,
@@ -6041,16 +7615,16 @@
                 1,
                 1
             ],
-            "resource_id": "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796",
+            "resource_id": "b94a38ac-398b-4579-a5f8-be1276ae0fee",
             "name": "PB L Foot",
             "components": {},
-            "parent": "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9"
+            "parent": "aff7a2bc-3477-4db9-8e96-8a7099fa9b57"
         },
-        "fd270154-4e21-42ee-928e-a07f84ea99ea": {
+        "79b9ace8-c78f-4adb-98a8-f69ce7aa6510": {
             "enabled": true,
             "tags": [],
             "children": [
-                "ba6a51e3-1458-4073-a194-41f035c5ed81"
+                "0cb40555-7f07-4b9b-9ec5-cce770a8a5f9"
             ],
             "position": [
                 3.04093,
@@ -6067,12 +7641,12 @@
                 1,
                 1
             ],
-            "resource_id": "fd270154-4e21-42ee-928e-a07f84ea99ea",
+            "resource_id": "79b9ace8-c78f-4adb-98a8-f69ce7aa6510",
             "name": "PB L Toe0",
             "components": {},
-            "parent": "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796"
+            "parent": "b94a38ac-398b-4579-a5f8-be1276ae0fee"
         },
-        "ba6a51e3-1458-4073-a194-41f035c5ed81": {
+        "0cb40555-7f07-4b9b-9ec5-cce770a8a5f9": {
             "enabled": true,
             "tags": [],
             "children": [],
@@ -6091,16 +7665,16 @@
                 -1,
                 -1
             ],
-            "resource_id": "ba6a51e3-1458-4073-a194-41f035c5ed81",
+            "resource_id": "0cb40555-7f07-4b9b-9ec5-cce770a8a5f9",
             "name": "PB L Toe0Nub",
             "components": {},
-            "parent": "fd270154-4e21-42ee-928e-a07f84ea99ea"
+            "parent": "79b9ace8-c78f-4adb-98a8-f69ce7aa6510"
         },
-        "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf": {
+        "cb558919-c051-45f5-bbed-1e9aefbad684": {
             "enabled": true,
             "tags": [],
             "children": [
-                "87e5c6d6-27a8-4e51-a40a-552f158732cf"
+                "c6699c8e-fea7-4886-811d-3265236c7e2f"
             ],
             "position": [
                 -3.48131,
@@ -6117,16 +7691,16 @@
                 1,
                 1
             ],
-            "resource_id": "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf",
+            "resource_id": "cb558919-c051-45f5-bbed-1e9aefbad684",
             "name": "PB R Thigh",
             "components": {},
-            "parent": "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54"
+            "parent": "37fd4038-6859-4035-983d-083d19c46cae"
         },
-        "87e5c6d6-27a8-4e51-a40a-552f158732cf": {
+        "c6699c8e-fea7-4886-811d-3265236c7e2f": {
             "enabled": true,
             "tags": [],
             "children": [
-                "62f141b5-f851-4472-9333-59516fcf4f9e"
+                "92793242-25a0-4279-806e-7976e3333067"
             ],
             "position": [
                 10.6618,
@@ -6143,16 +7717,16 @@
                 1,
                 1
             ],
-            "resource_id": "87e5c6d6-27a8-4e51-a40a-552f158732cf",
+            "resource_id": "c6699c8e-fea7-4886-811d-3265236c7e2f",
             "name": "PB R Calf",
             "components": {},
-            "parent": "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf"
+            "parent": "cb558919-c051-45f5-bbed-1e9aefbad684"
         },
-        "62f141b5-f851-4472-9333-59516fcf4f9e": {
+        "92793242-25a0-4279-806e-7976e3333067": {
             "enabled": true,
             "tags": [],
             "children": [
-                "56945662-b759-4bda-a9de-fdbb7ed055c1"
+                "46ba5e21-138a-408b-9b8c-6a6e41a2aea5"
             ],
             "position": [
                 8.19998,
@@ -6169,16 +7743,16 @@
                 1,
                 1
             ],
-            "resource_id": "62f141b5-f851-4472-9333-59516fcf4f9e",
+            "resource_id": "92793242-25a0-4279-806e-7976e3333067",
             "name": "PB R Foot",
             "components": {},
-            "parent": "87e5c6d6-27a8-4e51-a40a-552f158732cf"
+            "parent": "c6699c8e-fea7-4886-811d-3265236c7e2f"
         },
-        "56945662-b759-4bda-a9de-fdbb7ed055c1": {
+        "46ba5e21-138a-408b-9b8c-6a6e41a2aea5": {
             "enabled": true,
             "tags": [],
             "children": [
-                "fc45b2bc-f098-47b8-9bc2-257394e42d80"
+                "be0f284c-7c41-49a5-bfce-64d32a6e6842"
             ],
             "position": [
                 3.04094,
@@ -6195,12 +7769,12 @@
                 1,
                 1
             ],
-            "resource_id": "56945662-b759-4bda-a9de-fdbb7ed055c1",
+            "resource_id": "46ba5e21-138a-408b-9b8c-6a6e41a2aea5",
             "name": "PB R Toe0",
             "components": {},
-            "parent": "62f141b5-f851-4472-9333-59516fcf4f9e"
+            "parent": "92793242-25a0-4279-806e-7976e3333067"
         },
-        "fc45b2bc-f098-47b8-9bc2-257394e42d80": {
+        "be0f284c-7c41-49a5-bfce-64d32a6e6842": {
             "enabled": true,
             "tags": [],
             "children": [],
@@ -6219,12 +7793,12 @@
                 1,
                 1
             ],
-            "resource_id": "fc45b2bc-f098-47b8-9bc2-257394e42d80",
+            "resource_id": "be0f284c-7c41-49a5-bfce-64d32a6e6842",
             "name": "PB R Toe0Nub",
             "components": {},
-            "parent": "56945662-b759-4bda-a9de-fdbb7ed055c1"
+            "parent": "46ba5e21-138a-408b-9b8c-6a6e41a2aea5"
         },
-        "457b44db-b5b2-4b77-96d8-d975c07d5a72": {
+        "d6c22bc9-d0a4-4675-b81a-2fc18888ac75": {
             "enabled": true,
             "tags": [],
             "children": [],
@@ -6243,7 +7817,7 @@
                 1,
                 1
             ],
-            "resource_id": "457b44db-b5b2-4b77-96d8-d975c07d5a72",
+            "resource_id": "d6c22bc9-d0a4-4675-b81a-2fc18888ac75",
             "name": "Playbot_R",
             "components": {
                 "render": {
@@ -6269,24 +7843,22 @@
                     "lightMapped": false,
                     "lightMapSizeMultiplier": 1,
                     "isStatic": false,
-                    "rootBone": "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7"
+                    "rootBone": "d439359a-c8fd-460c-b2b9-955f48694542"
                 }
             },
-            "parent": "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0"
+            "parent": "ad065902-066a-4d49-933f-b1a018338683"
         },
-        "eae5821f-1311-4476-b9af-d48262c13430": {
-            "name": "Ground",
-            "tags": [
-                "icy"
-            ],
+        "a52285e7-46e9-4e8b-9fbe-5f6cb56f457b": {
+            "name": "Text",
+            "tags": [],
             "enabled": true,
-            "resource_id": "eae5821f-1311-4476-b9af-d48262c13430",
-            "parent": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
+            "resource_id": "a52285e7-46e9-4e8b-9fbe-5f6cb56f457b",
+            "parent": "ce413dc1-0d43-4f71-be44-479a8bc42e01",
             "children": [],
             "position": [
-                -12.051555633544918,
                 0,
-                -22.18579327046379
+                2,
+                0
             ],
             "rotation": [
                 0,
@@ -6294,81 +7866,110 @@
                 0
             ],
             "scale": [
-                25,
-                1,
-                25
+                0.05,
+                0.05,
+                0.05
             ],
             "components": {
-                "render": {
+                "element": {
                     "enabled": true,
-                    "type": "cylinder",
-                    "asset": null,
-                    "materialAssets": [
-                        null
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "cylinder",
-                    "halfExtents": [
-                        12.5,
+                    "type": "text",
+                    "anchor": [
                         0.5,
-                        12.5
+                        0.5,
+                        0.5,
+                        0.5
                     ],
-                    "radius": 12.5,
-                    "axis": 1,
-                    "height": 1,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "text": "TEST",
+                    "key": null,
+                    "fontAsset": 165184746,
+                    "fontSize": 32,
+                    "minFontSize": 8,
+                    "maxFontSize": 32,
+                    "autoFitWidth": false,
+                    "autoFitHeight": false,
+                    "maxLines": null,
+                    "lineHeight": 32,
+                    "wrapLines": true,
+                    "spacing": 1,
+                    "color": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "opacity": 1,
+                    "textureAsset": null,
+                    "spriteAsset": null,
+                    "spriteFrame": 0,
+                    "pixelsPerUnit": null,
+                    "width": 68.608,
+                    "height": 32,
+                    "margin": [
+                        -34.304,
+                        -14.528,
+                        -34.304,
+                        -18.528
+                    ],
+                    "alignment": [
+                        0.5,
+                        0.5
+                    ],
+                    "outlineColor": [
                         0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "outlineThickness": 0,
+                    "shadowColor": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "shadowOffset": [
                         0,
                         0
                     ],
-                    "angularOffset": [
+                    "rect": [
                         0,
                         0,
-                        0
-                    ]
+                        1,
+                        1
+                    ],
+                    "materialAsset": null,
+                    "autoWidth": true,
+                    "autoHeight": true,
+                    "fitMode": "stretch",
+                    "useInput": false,
+                    "batchGroupId": null,
+                    "mask": false,
+                    "layers": [
+                        4
+                    ],
+                    "enableMarkup": false
                 },
-                "rigidbody": {
+                "script": {
                     "enabled": true,
-                    "type": "static",
-                    "mass": 1,
-                    "linearDamping": 0,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
+                    "order": [
+                        "uiPlayer"
                     ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 1,
-                    "restitution": 0
+                    "scripts": {
+                        "uiPlayer": {
+                            "enabled": true,
+                            "attributes": {}
+                        }
+                    }
                 }
             }
         }
     },
     "created": "2021-10-26T14:13:10.327Z",
     "item_id": "1940848",
-    "checkpoint_id": "a3426060-1eb8-4900-ac45-692c6fefbfed",
-    "branch_id": "921f9c55-4ae1-4b2b-bef4-9abfa7d9d637"
+    "checkpoint_id": "a5a26e63-bb50-465a-a222-254fad46c975",
+    "branch_id": "e4fc622c-7889-498e-bf3e-a69b7a7f2d4e"
 }
