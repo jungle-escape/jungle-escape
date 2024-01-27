@@ -22,7 +22,7 @@ Lobby.prototype.initialize = function () {
     const host = 'localhost';
     const port = params.get('port') || '8080';
 
-    pn.connect(host, port, true, null, () => {
+    pn.connect(host, port, false, null, () => {
         pn.on('join', (room) => {
             this.entity.enabled = false;
 
