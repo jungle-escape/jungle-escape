@@ -22,16 +22,33 @@ Gate.prototype.swap = function (old) {
 };
 
 Gate.prototype.onActivation = function (activated) {
-    this.activations += activated ? 1 : -1;
+    if (activated) {
+        this.activations += 1;
+    } else {
+        this.activations -= 1;
+    }
+    this.activations = pc.math.clamp(this.activations, 0, 2);
 };
 
 Gate.prototype.update = function (dt) {
-    this.time += this.activations > 0 ? dt : -dt;
+    if (this.activations === 2) {
+        // 두 버튼이 모두 활성화되었을 때 게이트 움직임 처리
+        this.time += dt;
+        if (this.time >= 1) {
+            this.isOpened = true;
+        }
+    } else {
+        // 두 버튼 중 하나라도 비활성화되면 게이트 움직임 처리
+        this.time -= dt;
+    }
 
     this.time = pc.math.clamp(this.time, 0, 1);
 
     this.vec3.copy(this.entity.getPosition());
-    this.vec3.y = this.defaultPositionY + this.positionYCurve.value(this.time);
-
+    if (this.isOpened) {
+        this.vec3.y = this.defaultPositionY + this.positionYCurve.value(1);
+    } else {
+        this.vec3.y = this.defaultPositionY + this.positionYCurve.value(this.time);
+    }
     this.entity.rigidbody.teleport(this.vec3);
 };
