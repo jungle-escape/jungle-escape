@@ -158,7 +158,12 @@
                 "f98b0ed0-6355-4a81-98bb-e597d549d6e4",
                 "8b10d931-16bf-46f6-b856-a5943a5eccdc",
                 "fb1166e0-51ce-4a12-b7f4-edd4d9cda217",
-                "7bedb308-0aef-40a0-a884-f78197efcfe8"
+                "7bedb308-0aef-40a0-a884-f78197efcfe8",
+                "fbe7f256-467e-4cd1-9350-bad518fda796",
+                "642a1124-50df-4045-981b-eb16a52fecd5",
+                "2dc6c9d3-d33d-44e6-8680-a7011b1541a3",
+                "d70765f1-cf8f-47fa-b05d-f812114c5b2e",
+                "ca21a9c9-add5-426a-9bf2-af9cbbead75b"
             ]
         },
         "f98b0ed0-6355-4a81-98bb-e597d549d6e4": {
@@ -262,9 +267,44 @@
             ],
             "components": {}
         },
+        "04e39e44-4b3e-4283-9a25-1b624cbb37e9": {
+            "name": "Land",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
+            "parent": "8b10d931-16bf-46f6-b856-a5943a5eccdc",
+            "children": [
+                "1b352218-a91f-42d5-accd-f0b9a507b765",
+                "4279df09-db51-4ff4-aba2-3b6cbf5676bd",
+                "f76cf45c-5378-4c11-ada6-251581df00c2",
+                "24181fcd-ff9e-4a01-808a-bf81f9919013",
+                "3139fe7e-970c-46e3-8cf2-498366f9cacd",
+                "2130b79d-1e51-49e3-a3ca-1ac12d127d06",
+                "60128f81-9225-4b4e-a343-62df14255354",
+                "eae5821f-1311-4476-b9af-d48262c13430"
+            ],
+            "position": [
+                0,
+                0,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {}
+        },
         "1b352218-a91f-42d5-accd-f0b9a507b765": {
             "name": "Ground",
-            "tags": [],
+            "tags": [
+                "ground"
+            ],
             "enabled": true,
             "resource_id": "1b352218-a91f-42d5-accd-f0b9a507b765",
             "parent": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
@@ -1325,6 +1365,189 @@
                 }
             }
         },
+        "f83420a7-0c13-4565-a661-bfb03eddf45f": {
+            "name": "Button",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "f83420a7-0c13-4565-a661-bfb03eddf45f",
+            "parent": "24181fcd-ff9e-4a01-808a-bf81f9919013",
+            "children": [
+                "a376b046-c2c3-40a6-97a3-e5e411c9831d"
+            ],
+            "position": [
+                -3.000000000000001,
+                0.6502124667167664,
+                -2.499999999999999
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                2,
+                0.5,
+                2
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "asset": null,
+                    "materialAssets": [
+                        165184686
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity",
+                        "finishButton"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        },
+                        "finishButton": {
+                            "enabled": true,
+                            "attributes": {
+                                "tags": [
+                                    "player"
+                                ],
+                                "triggerEntity": "a376b046-c2c3-40a6-97a3-e5e411c9831d",
+                                "connectedEntity": "6a6bd803-64da-4b80-9254-77ff7873a07b",
+                                "positionYCurve": {
+                                    "keys": [
+                                        0,
+                                        0,
+                                        1,
+                                        -0.25
+                                    ],
+                                    "type": 4
+                                }
+                            }
+                        }
+                    }
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 1,
+                    "axis": 1,
+                    "height": 0.5,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0
+                }
+            }
+        },
+        "a376b046-c2c3-40a6-97a3-e5e411c9831d": {
+            "name": "Trigger",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "a376b046-c2c3-40a6-97a3-e5e411c9831d",
+            "parent": "f83420a7-0c13-4565-a661-bfb03eddf45f",
+            "children": [],
+            "position": [
+                0,
+                0.65,
+                1.3322676295501878e-15
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 1,
+                    "axis": 1,
+                    "height": 1.2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
         "3139fe7e-970c-46e3-8cf2-498366f9cacd": {
             "name": "Floor",
             "tags": [],
@@ -2004,6 +2227,1451 @@
                 }
             }
         },
+        "2130b79d-1e51-49e3-a3ca-1ac12d127d06": {
+            "name": "Ground",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "2130b79d-1e51-49e3-a3ca-1ac12d127d06",
+            "parent": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
+            "children": [],
+            "position": [
+                -7.105427357601002e-15,
+                0,
+                27.007705688476562
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                25,
+                1,
+                25
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "asset": null,
+                    "materialAssets": [
+                        165184687
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        12.5,
+                        0.5,
+                        12.5
+                    ],
+                    "radius": 12.5,
+                    "axis": 1,
+                    "height": 1,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "static",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0
+                }
+            }
+        },
+        "9f7b268d-e5a2-4183-943d-2eef19dc9d30": {
+            "name": "Object",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "parent": "8b10d931-16bf-46f6-b856-a5943a5eccdc",
+            "children": [
+                "cbfe1b6c-0434-4ce6-83f7-bc1c5bb5aede",
+                "4ed46d20-1198-402e-84fb-0c5a8f55790e",
+                "dc10dbd4-aa82-46e1-888e-cb51057308f3",
+                "30b0a238-4ef7-4c15-9e4d-bd002b288eb4",
+                "d2bd2774-131c-4187-ab8e-c4f3ed38e787",
+                "701ac75f-55b0-4537-a405-cedfcac48981",
+                "93a8f72d-f4d5-4ab7-9655-91b701df48ab",
+                "6b3e79a6-51ba-43c9-a98a-d1d5e639efb1",
+                "ea4be3d3-976c-42a1-a000-a22bbcac4152",
+                "d7011021-ad4d-4abf-b0df-6fe66ebc62f2"
+            ],
+            "position": [
+                0,
+                0,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {}
+        },
+        "cbfe1b6c-0434-4ce6-83f7-bc1c5bb5aede": {
+            "name": "Cube",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "cbfe1b6c-0434-4ce6-83f7-bc1c5bb5aede",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [],
+            "position": [
+                -6.217248937900877e-15,
+                3.2410476207733154,
+                22.609043963512793
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        165184691
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 509,
+                    "linearDamping": 0.1,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rotation",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.linearVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.angularVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "template_ent_ids": {
+                "cbfe1b6c-0434-4ce6-83f7-bc1c5bb5aede": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
+            },
+            "template_id": 165184655
+        },
+        "4ed46d20-1198-402e-84fb-0c5a8f55790e": {
+            "name": "Ball",
+            "tags": [
+                "sphere"
+            ],
+            "enabled": true,
+            "resource_id": "4ed46d20-1198-402e-84fb-0c5a8f55790e",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [],
+            "position": [
+                -6.000000000000002,
+                2.910065372697371,
+                28.79498291015625
+            ],
+            "rotation": [
+                0,
+                90,
+                0
+            ],
+            "scale": [
+                2,
+                2,
+                2
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "asset": null,
+                    "materialAssets": [
+                        165184686
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 1,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 30,
+                    "linearDamping": 0.1,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "position"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rotation"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.linearVelocity"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.angularVelocity"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "template_ent_ids": {
+                "4ed46d20-1198-402e-84fb-0c5a8f55790e": "3394bd44-1b97-4696-a132-a73a12c0821e"
+            },
+            "template_id": 165184653
+        },
+        "dc10dbd4-aa82-46e1-888e-cb51057308f3": {
+            "name": "Ball",
+            "tags": [
+                "sphere"
+            ],
+            "enabled": true,
+            "resource_id": "dc10dbd4-aa82-46e1-888e-cb51057308f3",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [],
+            "position": [
+                2.450643669304114,
+                2.9100654125213623,
+                28.79498291015625
+            ],
+            "rotation": [
+                0,
+                90,
+                0
+            ],
+            "scale": [
+                2,
+                2,
+                2
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "asset": null,
+                    "materialAssets": [
+                        165184686
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 1,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 30,
+                    "linearDamping": 0.1,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "position"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rotation"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.linearVelocity"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.angularVelocity"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "template_id": 165184653,
+            "template_ent_ids": {
+                "dc10dbd4-aa82-46e1-888e-cb51057308f3": "3394bd44-1b97-4696-a132-a73a12c0821e"
+            }
+        },
+        "30b0a238-4ef7-4c15-9e4d-bd002b288eb4": {
+            "name": "Ball",
+            "tags": [
+                "sphere"
+            ],
+            "enabled": true,
+            "resource_id": "30b0a238-4ef7-4c15-9e4d-bd002b288eb4",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [],
+            "position": [
+                6.114803265598162,
+                2.9100654125213623,
+                28.79498291015625
+            ],
+            "rotation": [
+                0,
+                90,
+                0
+            ],
+            "scale": [
+                2,
+                2,
+                2
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "asset": null,
+                    "materialAssets": [
+                        165184686
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 1,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 30,
+                    "linearDamping": 0.1,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "position"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rotation"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.linearVelocity"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.angularVelocity"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "template_id": 165184653,
+            "template_ent_ids": {
+                "30b0a238-4ef7-4c15-9e4d-bd002b288eb4": "3394bd44-1b97-4696-a132-a73a12c0821e"
+            }
+        },
+        "d2bd2774-131c-4187-ab8e-c4f3ed38e787": {
+            "name": "Ball",
+            "tags": [
+                "sphere"
+            ],
+            "enabled": true,
+            "resource_id": "d2bd2774-131c-4187-ab8e-c4f3ed38e787",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [],
+            "position": [
+                0.9861903190612722,
+                2.9100654125213623,
+                26.394614712266176
+            ],
+            "rotation": [
+                0,
+                90,
+                0
+            ],
+            "scale": [
+                2,
+                2,
+                2
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "asset": null,
+                    "materialAssets": [
+                        165184686
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 1,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 30,
+                    "linearDamping": 0.1,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "position"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rotation"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.linearVelocity"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.angularVelocity"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "template_id": 165184653,
+            "template_ent_ids": {
+                "d2bd2774-131c-4187-ab8e-c4f3ed38e787": "3394bd44-1b97-4696-a132-a73a12c0821e"
+            }
+        },
+        "701ac75f-55b0-4537-a405-cedfcac48981": {
+            "name": "Ball",
+            "tags": [
+                "sphere"
+            ],
+            "enabled": true,
+            "resource_id": "701ac75f-55b0-4537-a405-cedfcac48981",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [],
+            "position": [
+                0.04347562789916193,
+                2.9100654125213623,
+                31.707671947448425
+            ],
+            "rotation": [
+                0,
+                90,
+                0
+            ],
+            "scale": [
+                2,
+                2,
+                2
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "asset": null,
+                    "materialAssets": [
+                        165184686
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "sphere",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 1,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 30,
+                    "linearDamping": 0.1,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "position"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rotation"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.linearVelocity"
+                                    },
+                                    {
+                                        "interpolate": true,
+                                        "ignoreForOwner": false,
+                                        "path": "rigidbody.angularVelocity"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "template_id": 165184653,
+            "template_ent_ids": {
+                "701ac75f-55b0-4537-a405-cedfcac48981": "3394bd44-1b97-4696-a132-a73a12c0821e"
+            }
+        },
+        "93a8f72d-f4d5-4ab7-9655-91b701df48ab": {
+            "name": "Cube",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "93a8f72d-f4d5-4ab7-9655-91b701df48ab",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [],
+            "position": [
+                2.889370317526657,
+                3.2410476207733154,
+                22.609043121337894
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        165184691
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 509,
+                    "linearDamping": 0.1,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rotation",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.linearVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.angularVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "template_id": 165184655,
+            "template_ent_ids": {
+                "93a8f72d-f4d5-4ab7-9655-91b701df48ab": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
+            }
+        },
+        "6b3e79a6-51ba-43c9-a98a-d1d5e639efb1": {
+            "name": "Cube",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "6b3e79a6-51ba-43c9-a98a-d1d5e639efb1",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [],
+            "position": [
+                3.8365678787231374,
+                3.2410476207733154,
+                25.518624266067494
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        165184691
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 509,
+                    "linearDamping": 0.1,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rotation",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.linearVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.angularVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "template_id": 165184655,
+            "template_ent_ids": {
+                "6b3e79a6-51ba-43c9-a98a-d1d5e639efb1": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
+            }
+        },
+        "ea4be3d3-976c-42a1-a000-a22bbcac4152": {
+            "name": "Cube",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "ea4be3d3-976c-42a1-a000-a22bbcac4152",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [],
+            "position": [
+                2.076719284057612,
+                3.2410476207733154,
+                20.53701606409276
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        165184691
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 509,
+                    "linearDamping": 0.1,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rotation",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.linearVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.angularVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "template_id": 165184655,
+            "template_ent_ids": {
+                "ea4be3d3-976c-42a1-a000-a22bbcac4152": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
+            }
+        },
+        "d7011021-ad4d-4abf-b0df-6fe66ebc62f2": {
+            "name": "Cube",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "d7011021-ad4d-4abf-b0df-6fe66ebc62f2",
+            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
+            "children": [],
+            "position": [
+                5.3239093833818565,
+                3.2410476207733154,
+                22.609043121337894
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        165184691
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "dynamic",
+                    "mass": 509,
+                    "linearDamping": 0.1,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rotation",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.linearVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.angularVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "template_id": 165184655,
+            "template_ent_ids": {
+                "d7011021-ad4d-4abf-b0df-6fe66ebc62f2": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
+            }
+        },
         "fb1166e0-51ce-4a12-b7f4-edd4d9cda217": {
             "name": "2D Screen",
             "tags": [],
@@ -2557,17 +4225,378 @@
                 }
             }
         },
-        "2130b79d-1e51-49e3-a3ca-1ac12d127d06": {
+        "7bedb308-0aef-40a0-a884-f78197efcfe8": {
+            "name": "Camera",
+            "tags": [
+                "camera"
+            ],
+            "enabled": true,
+            "resource_id": "7bedb308-0aef-40a0-a884-f78197efcfe8",
+            "parent": "febcae7d-ef4f-46b4-b8b5-9ee02e128ee4",
+            "children": [],
+            "position": [
+                -13.529191927169892,
+                21.08087921142578,
+                30.397441864013672
+            ],
+            "rotation": [
+                -45.999996972962435,
+                4.999996549342739,
+                -3.9908798335274775e-16
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "camera": {
+                    "enabled": true,
+                    "clearColorBuffer": true,
+                    "clearColor": [
+                        0.7333333333333333,
+                        0.8901960784313725,
+                        0.8901960784313725,
+                        1
+                    ],
+                    "clearDepthBuffer": true,
+                    "renderSceneDepthMap": false,
+                    "renderSceneColorMap": false,
+                    "projection": 0,
+                    "fov": 80,
+                    "frustumCulling": true,
+                    "orthoHeight": 10,
+                    "nearClip": 0.1,
+                    "farClip": 128,
+                    "priority": 0,
+                    "rect": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "layers": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "camera"
+                    ],
+                    "scripts": {
+                        "camera": {
+                            "enabled": true,
+                            "attributes": {
+                                "ofs": [
+                                    0,
+                                    20,
+                                    30
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "fbe7f256-467e-4cd1-9350-bad518fda796": {
             "name": "Ground",
             "tags": [],
             "enabled": true,
-            "resource_id": "2130b79d-1e51-49e3-a3ca-1ac12d127d06",
+            "resource_id": "fbe7f256-467e-4cd1-9350-bad518fda796",
+            "parent": "febcae7d-ef4f-46b4-b8b5-9ee02e128ee4",
+            "children": [],
+            "position": [
+                -49.91796875,
+                -0.5,
+                -60
+            ],
+            "rotation": [
+                0,
+                -90,
+                0
+            ],
+            "scale": [
+                100,
+                1,
+                25
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        164968609
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        50,
+                        0.5,
+                        12.5
+                    ],
+                    "radius": 12.5,
+                    "axis": 1,
+                    "height": 1,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "static",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0
+                }
+            }
+        },
+        "642a1124-50df-4045-981b-eb16a52fecd5": {
+            "name": "BGM",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "642a1124-50df-4045-981b-eb16a52fecd5",
+            "parent": "febcae7d-ef4f-46b4-b8b5-9ee02e128ee4",
+            "children": [],
+            "position": [
+                0,
+                0,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "sound": {
+                    "enabled": true,
+                    "volume": 1,
+                    "pitch": 1,
+                    "positional": false,
+                    "refDistance": 1,
+                    "maxDistance": 10000,
+                    "rollOffFactor": 1,
+                    "distanceModel": "linear",
+                    "slots": {
+                        "1": {
+                            "name": "BGM",
+                            "loop": true,
+                            "autoPlay": true,
+                            "overlap": false,
+                            "asset": 165188158,
+                            "startTime": 0,
+                            "duration": null,
+                            "volume": 1,
+                            "pitch": 1
+                        }
+                    }
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "soundController"
+                    ],
+                    "scripts": {
+                        "soundController": {
+                            "enabled": true,
+                            "attributes": {}
+                        }
+                    }
+                }
+            }
+        },
+        "2dc6c9d3-d33d-44e6-8680-a7011b1541a3": {
+            "name": "Box",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "2dc6c9d3-d33d-44e6-8680-a7011b1541a3",
+            "parent": "febcae7d-ef4f-46b4-b8b5-9ee02e128ee4",
+            "children": [],
+            "position": [
+                -60,
+                2.5,
+                -46.94544982910156
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                30,
+                5,
+                4
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        null
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity",
+                        "rammer"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
+                        },
+                        "rammer": {
+                            "enabled": true,
+                            "attributes": {
+                                "positionXCurve": {
+                                    "keys": [
+                                        0,
+                                        5,
+                                        0.3,
+                                        5,
+                                        0.6976744186046512,
+                                        -4.875,
+                                        1,
+                                        -5
+                                    ],
+                                    "type": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        15,
+                        2.5,
+                        2
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "60128f81-9225-4b4e-a343-62df14255354": {
+            "name": "Ground",
+            "tags": [
+                "ground"
+            ],
+            "enabled": true,
+            "resource_id": "60128f81-9225-4b4e-a343-62df14255354",
             "parent": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
             "children": [],
             "position": [
-                -7.105427357601002e-15,
+                -26.16474724461984,
                 0,
-                27.007705688476562
+                -4.440892098500626e-15
             ],
             "rotation": [
                 0,
@@ -2647,1483 +4676,19 @@
                 }
             }
         },
-        "4ed46d20-1198-402e-84fb-0c5a8f55790e": {
-            "name": "Ball",
+        "d70765f1-cf8f-47fa-b05d-f812114c5b2e": {
+            "name": "Box",
             "tags": [
-                "sphere"
+                "forcing"
             ],
             "enabled": true,
-            "resource_id": "4ed46d20-1198-402e-84fb-0c5a8f55790e",
-            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
-            "children": [],
-            "position": [
-                -6.000000000000002,
-                2.910065372697371,
-                28.79498291015625
-            ],
-            "rotation": [
-                0,
-                90,
-                0
-            ],
-            "scale": [
-                2,
-                2,
-                2
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "sphere",
-                    "asset": null,
-                    "materialAssets": [
-                        165184686
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "sphere",
-                    "halfExtents": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "radius": 1,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "dynamic",
-                    "mass": 30,
-                    "linearDamping": 0.1,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 1,
-                    "restitution": 0.5
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "networkEntity"
-                    ],
-                    "scripts": {
-                        "networkEntity": {
-                            "enabled": true,
-                            "attributes": {
-                                "id": "",
-                                "owner": "",
-                                "properties": [
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "position"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rotation"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rigidbody.linearVelocity"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rigidbody.angularVelocity"
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "template_ent_ids": {
-                "4ed46d20-1198-402e-84fb-0c5a8f55790e": "3394bd44-1b97-4696-a132-a73a12c0821e"
-            },
-            "template_id": 165184653
-        },
-        "04e39e44-4b3e-4283-9a25-1b624cbb37e9": {
-            "name": "Land",
-            "tags": [],
-            "enabled": true,
-            "resource_id": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
-            "parent": "8b10d931-16bf-46f6-b856-a5943a5eccdc",
-            "children": [
-                "1b352218-a91f-42d5-accd-f0b9a507b765",
-                "4279df09-db51-4ff4-aba2-3b6cbf5676bd",
-                "f76cf45c-5378-4c11-ada6-251581df00c2",
-                "24181fcd-ff9e-4a01-808a-bf81f9919013",
-                "3139fe7e-970c-46e3-8cf2-498366f9cacd",
-                "2130b79d-1e51-49e3-a3ca-1ac12d127d06"
-            ],
-            "position": [
-                0,
-                0,
-                0
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                1,
-                1,
-                1
-            ],
-            "components": {}
-        },
-        "9f7b268d-e5a2-4183-943d-2eef19dc9d30": {
-            "name": "Object",
-            "tags": [],
-            "enabled": true,
-            "resource_id": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
-            "parent": "8b10d931-16bf-46f6-b856-a5943a5eccdc",
-            "children": [
-                "cbfe1b6c-0434-4ce6-83f7-bc1c5bb5aede",
-                "4ed46d20-1198-402e-84fb-0c5a8f55790e",
-                "dc10dbd4-aa82-46e1-888e-cb51057308f3",
-                "30b0a238-4ef7-4c15-9e4d-bd002b288eb4",
-                "d2bd2774-131c-4187-ab8e-c4f3ed38e787",
-                "701ac75f-55b0-4537-a405-cedfcac48981",
-                "93a8f72d-f4d5-4ab7-9655-91b701df48ab",
-                "6b3e79a6-51ba-43c9-a98a-d1d5e639efb1",
-                "ea4be3d3-976c-42a1-a000-a22bbcac4152",
-                "d7011021-ad4d-4abf-b0df-6fe66ebc62f2"
-            ],
-            "position": [
-                0,
-                0,
-                0
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                1,
-                1,
-                1
-            ],
-            "components": {}
-        },
-        "dc10dbd4-aa82-46e1-888e-cb51057308f3": {
-            "name": "Ball",
-            "tags": [
-                "sphere"
-            ],
-            "enabled": true,
-            "resource_id": "dc10dbd4-aa82-46e1-888e-cb51057308f3",
-            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
-            "children": [],
-            "position": [
-                2.450643669304114,
-                2.9100654125213623,
-                28.79498291015625
-            ],
-            "rotation": [
-                0,
-                90,
-                0
-            ],
-            "scale": [
-                2,
-                2,
-                2
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "sphere",
-                    "asset": null,
-                    "materialAssets": [
-                        165184686
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "sphere",
-                    "halfExtents": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "radius": 1,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "dynamic",
-                    "mass": 30,
-                    "linearDamping": 0.1,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 1,
-                    "restitution": 0.5
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "networkEntity"
-                    ],
-                    "scripts": {
-                        "networkEntity": {
-                            "enabled": true,
-                            "attributes": {
-                                "id": "",
-                                "owner": "",
-                                "properties": [
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "position"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rotation"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rigidbody.linearVelocity"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rigidbody.angularVelocity"
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "template_id": 165184653,
-            "template_ent_ids": {
-                "dc10dbd4-aa82-46e1-888e-cb51057308f3": "3394bd44-1b97-4696-a132-a73a12c0821e"
-            }
-        },
-        "30b0a238-4ef7-4c15-9e4d-bd002b288eb4": {
-            "name": "Ball",
-            "tags": [
-                "sphere"
-            ],
-            "enabled": true,
-            "resource_id": "30b0a238-4ef7-4c15-9e4d-bd002b288eb4",
-            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
-            "children": [],
-            "position": [
-                6.114803265598162,
-                2.9100654125213623,
-                28.79498291015625
-            ],
-            "rotation": [
-                0,
-                90,
-                0
-            ],
-            "scale": [
-                2,
-                2,
-                2
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "sphere",
-                    "asset": null,
-                    "materialAssets": [
-                        165184686
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "sphere",
-                    "halfExtents": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "radius": 1,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "dynamic",
-                    "mass": 30,
-                    "linearDamping": 0.1,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 1,
-                    "restitution": 0.5
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "networkEntity"
-                    ],
-                    "scripts": {
-                        "networkEntity": {
-                            "enabled": true,
-                            "attributes": {
-                                "id": "",
-                                "owner": "",
-                                "properties": [
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "position"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rotation"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rigidbody.linearVelocity"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rigidbody.angularVelocity"
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "template_id": 165184653,
-            "template_ent_ids": {
-                "30b0a238-4ef7-4c15-9e4d-bd002b288eb4": "3394bd44-1b97-4696-a132-a73a12c0821e"
-            }
-        },
-        "d2bd2774-131c-4187-ab8e-c4f3ed38e787": {
-            "name": "Ball",
-            "tags": [
-                "sphere"
-            ],
-            "enabled": true,
-            "resource_id": "d2bd2774-131c-4187-ab8e-c4f3ed38e787",
-            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
-            "children": [],
-            "position": [
-                0.9861903190612722,
-                2.9100654125213623,
-                26.394614712266176
-            ],
-            "rotation": [
-                0,
-                90,
-                0
-            ],
-            "scale": [
-                2,
-                2,
-                2
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "sphere",
-                    "asset": null,
-                    "materialAssets": [
-                        165184686
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "sphere",
-                    "halfExtents": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "radius": 1,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "dynamic",
-                    "mass": 30,
-                    "linearDamping": 0.1,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 1,
-                    "restitution": 0.5
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "networkEntity"
-                    ],
-                    "scripts": {
-                        "networkEntity": {
-                            "enabled": true,
-                            "attributes": {
-                                "id": "",
-                                "owner": "",
-                                "properties": [
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "position"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rotation"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rigidbody.linearVelocity"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rigidbody.angularVelocity"
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "template_id": 165184653,
-            "template_ent_ids": {
-                "d2bd2774-131c-4187-ab8e-c4f3ed38e787": "3394bd44-1b97-4696-a132-a73a12c0821e"
-            }
-        },
-        "701ac75f-55b0-4537-a405-cedfcac48981": {
-            "name": "Ball",
-            "tags": [
-                "sphere"
-            ],
-            "enabled": true,
-            "resource_id": "701ac75f-55b0-4537-a405-cedfcac48981",
-            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
-            "children": [],
-            "position": [
-                0.04347562789916193,
-                2.9100654125213623,
-                31.707671947448425
-            ],
-            "rotation": [
-                0,
-                90,
-                0
-            ],
-            "scale": [
-                2,
-                2,
-                2
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "sphere",
-                    "asset": null,
-                    "materialAssets": [
-                        165184686
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "sphere",
-                    "halfExtents": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "radius": 1,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "dynamic",
-                    "mass": 30,
-                    "linearDamping": 0.1,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 1,
-                    "restitution": 0.5
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "networkEntity"
-                    ],
-                    "scripts": {
-                        "networkEntity": {
-                            "enabled": true,
-                            "attributes": {
-                                "id": "",
-                                "owner": "",
-                                "properties": [
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "position"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rotation"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rigidbody.linearVelocity"
-                                    },
-                                    {
-                                        "interpolate": true,
-                                        "ignoreForOwner": false,
-                                        "path": "rigidbody.angularVelocity"
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "template_id": 165184653,
-            "template_ent_ids": {
-                "701ac75f-55b0-4537-a405-cedfcac48981": "3394bd44-1b97-4696-a132-a73a12c0821e"
-            }
-        },
-        "cbfe1b6c-0434-4ce6-83f7-bc1c5bb5aede": {
-            "name": "Cube",
-            "tags": [],
-            "enabled": true,
-            "resource_id": "cbfe1b6c-0434-4ce6-83f7-bc1c5bb5aede",
-            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
-            "children": [],
-            "position": [
-                -6.217248937900877e-15,
-                3.2410476207733154,
-                22.609043963512793
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                1,
-                1,
-                1
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "box",
-                    "asset": null,
-                    "materialAssets": [
-                        165184691
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "box",
-                    "halfExtents": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "radius": 0.5,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "dynamic",
-                    "mass": 509,
-                    "linearDamping": 0.1,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 0.5,
-                    "restitution": 0.5
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "networkEntity"
-                    ],
-                    "scripts": {
-                        "networkEntity": {
-                            "enabled": true,
-                            "attributes": {
-                                "id": "",
-                                "owner": "",
-                                "properties": [
-                                    {
-                                        "path": "position",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rotation",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rigidbody.linearVelocity",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rigidbody.angularVelocity",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "template_ent_ids": {
-                "cbfe1b6c-0434-4ce6-83f7-bc1c5bb5aede": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
-            },
-            "template_id": 165184655
-        },
-        "93a8f72d-f4d5-4ab7-9655-91b701df48ab": {
-            "name": "Cube",
-            "tags": [],
-            "enabled": true,
-            "resource_id": "93a8f72d-f4d5-4ab7-9655-91b701df48ab",
-            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
-            "children": [],
-            "position": [
-                2.889370317526657,
-                3.2410476207733154,
-                22.609043121337894
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                1,
-                1,
-                1
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "box",
-                    "asset": null,
-                    "materialAssets": [
-                        165184691
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "box",
-                    "halfExtents": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "radius": 0.5,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "dynamic",
-                    "mass": 509,
-                    "linearDamping": 0.1,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 0.5,
-                    "restitution": 0.5
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "networkEntity"
-                    ],
-                    "scripts": {
-                        "networkEntity": {
-                            "enabled": true,
-                            "attributes": {
-                                "id": "",
-                                "owner": "",
-                                "properties": [
-                                    {
-                                        "path": "position",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rotation",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rigidbody.linearVelocity",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rigidbody.angularVelocity",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "template_id": 165184655,
-            "template_ent_ids": {
-                "93a8f72d-f4d5-4ab7-9655-91b701df48ab": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
-            }
-        },
-        "6b3e79a6-51ba-43c9-a98a-d1d5e639efb1": {
-            "name": "Cube",
-            "tags": [],
-            "enabled": true,
-            "resource_id": "6b3e79a6-51ba-43c9-a98a-d1d5e639efb1",
-            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
-            "children": [],
-            "position": [
-                3.8365678787231374,
-                3.2410476207733154,
-                25.518624266067494
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                1,
-                1,
-                1
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "box",
-                    "asset": null,
-                    "materialAssets": [
-                        165184691
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "box",
-                    "halfExtents": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "radius": 0.5,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "dynamic",
-                    "mass": 509,
-                    "linearDamping": 0.1,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 0.5,
-                    "restitution": 0.5
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "networkEntity"
-                    ],
-                    "scripts": {
-                        "networkEntity": {
-                            "enabled": true,
-                            "attributes": {
-                                "id": "",
-                                "owner": "",
-                                "properties": [
-                                    {
-                                        "path": "position",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rotation",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rigidbody.linearVelocity",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rigidbody.angularVelocity",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "template_id": 165184655,
-            "template_ent_ids": {
-                "6b3e79a6-51ba-43c9-a98a-d1d5e639efb1": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
-            }
-        },
-        "ea4be3d3-976c-42a1-a000-a22bbcac4152": {
-            "name": "Cube",
-            "tags": [],
-            "enabled": true,
-            "resource_id": "ea4be3d3-976c-42a1-a000-a22bbcac4152",
-            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
-            "children": [],
-            "position": [
-                2.076719284057612,
-                3.2410476207733154,
-                20.53701606409276
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                1,
-                1,
-                1
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "box",
-                    "asset": null,
-                    "materialAssets": [
-                        165184691
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "box",
-                    "halfExtents": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "radius": 0.5,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "dynamic",
-                    "mass": 509,
-                    "linearDamping": 0.1,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 0.5,
-                    "restitution": 0.5
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "networkEntity"
-                    ],
-                    "scripts": {
-                        "networkEntity": {
-                            "enabled": true,
-                            "attributes": {
-                                "id": "",
-                                "owner": "",
-                                "properties": [
-                                    {
-                                        "path": "position",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rotation",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rigidbody.linearVelocity",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rigidbody.angularVelocity",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "template_id": 165184655,
-            "template_ent_ids": {
-                "ea4be3d3-976c-42a1-a000-a22bbcac4152": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
-            }
-        },
-        "d7011021-ad4d-4abf-b0df-6fe66ebc62f2": {
-            "name": "Cube",
-            "tags": [],
-            "enabled": true,
-            "resource_id": "d7011021-ad4d-4abf-b0df-6fe66ebc62f2",
-            "parent": "9f7b268d-e5a2-4183-943d-2eef19dc9d30",
-            "children": [],
-            "position": [
-                5.3239093833818565,
-                3.2410476207733154,
-                22.609043121337894
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                1,
-                1,
-                1
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "box",
-                    "asset": null,
-                    "materialAssets": [
-                        165184691
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "box",
-                    "halfExtents": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "radius": 0.5,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                "rigidbody": {
-                    "enabled": true,
-                    "type": "dynamic",
-                    "mass": 509,
-                    "linearDamping": 0.1,
-                    "angularDamping": 0,
-                    "linearFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "angularFactor": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "friction": 0.5,
-                    "restitution": 0.5
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "networkEntity"
-                    ],
-                    "scripts": {
-                        "networkEntity": {
-                            "enabled": true,
-                            "attributes": {
-                                "id": "",
-                                "owner": "",
-                                "properties": [
-                                    {
-                                        "path": "position",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rotation",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rigidbody.linearVelocity",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    },
-                                    {
-                                        "path": "rigidbody.angularVelocity",
-                                        "interpolate": true,
-                                        "ignoreForOwner": false
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "template_id": 165184655,
-            "template_ent_ids": {
-                "d7011021-ad4d-4abf-b0df-6fe66ebc62f2": "25ba5447-b8d5-41c2-90f1-aa321ea877d8"
-            }
-        },
-        "7bedb308-0aef-40a0-a884-f78197efcfe8": {
-            "name": "Camera",
-            "tags": [
-                "camera"
-            ],
-            "enabled": true,
-            "resource_id": "7bedb308-0aef-40a0-a884-f78197efcfe8",
+            "resource_id": "d70765f1-cf8f-47fa-b05d-f812114c5b2e",
             "parent": "febcae7d-ef4f-46b4-b8b5-9ee02e128ee4",
             "children": [],
             "position": [
-                -13.529191927169892,
-                21.08087921142578,
-                30.397441864013672
-            ],
-            "rotation": [
-                -45.999996972962435,
-                4.999996549342739,
-                -3.9908798335274775e-16
-            ],
-            "scale": [
-                1,
-                1,
-                1
-            ],
-            "components": {
-                "camera": {
-                    "enabled": true,
-                    "clearColorBuffer": true,
-                    "clearColor": [
-                        0.7333333333333333,
-                        0.8901960784313725,
-                        0.8901960784313725,
-                        1
-                    ],
-                    "clearDepthBuffer": true,
-                    "renderSceneDepthMap": false,
-                    "renderSceneColorMap": false,
-                    "projection": 0,
-                    "fov": 80,
-                    "frustumCulling": true,
-                    "orthoHeight": 10,
-                    "nearClip": 0.1,
-                    "farClip": 128,
-                    "priority": 0,
-                    "rect": [
-                        0,
-                        0,
-                        1,
-                        1
-                    ],
-                    "layers": [
-                        0,
-                        1,
-                        2,
-                        3,
-                        4
-                    ]
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "camera"
-                    ],
-                    "scripts": {
-                        "camera": {
-                            "enabled": true,
-                            "attributes": {
-                                "ofs": [
-                                    0,
-                                    20,
-                                    30
-                                ]
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "f83420a7-0c13-4565-a661-bfb03eddf45f": {
-            "name": "Button",
-            "tags": [],
-            "enabled": true,
-            "resource_id": "f83420a7-0c13-4565-a661-bfb03eddf45f",
-            "parent": "24181fcd-ff9e-4a01-808a-bf81f9919013",
-            "children": [
-                "a376b046-c2c3-40a6-97a3-e5e411c9831d"
-            ],
-            "position": [
-                -3.000000000000001,
-                0.6502124667167664,
-                -2.499999999999999
+                -24.28114128112793,
+                2.5,
+                -19.69968800913003
             ],
             "rotation": [
                 0,
@@ -4131,17 +4696,17 @@
                 0
             ],
             "scale": [
-                2,
-                0.5,
-                2
+                30,
+                5,
+                4
             ],
             "components": {
                 "render": {
                     "enabled": true,
-                    "type": "cylinder",
+                    "type": "box",
                     "asset": null,
                     "materialAssets": [
-                        165184686
+                        null
                     ],
                     "layers": [
                         0
@@ -4157,12 +4722,31 @@
                     "lightMapSizeMultiplier": 1,
                     "isStatic": false,
                     "rootBone": null
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "static",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 0.5,
+                    "restitution": 0.5
                 },
                 "script": {
                     "enabled": true,
                     "order": [
                         "networkEntity",
-                        "finishButton"
+                        "rammer"
                     ],
                     "scripts": {
                         "networkEntity": {
@@ -4179,22 +4763,21 @@
                                 ]
                             }
                         },
-                        "finishButton": {
+                        "rammer": {
                             "enabled": true,
                             "attributes": {
-                                "tags": [
-                                    "player"
-                                ],
-                                "triggerEntity": "a376b046-c2c3-40a6-97a3-e5e411c9831d",
-                                "connectedEntity": "6a6bd803-64da-4b80-9254-77ff7873a07b",
-                                "positionYCurve": {
+                                "positionXCurve": {
                                     "keys": [
                                         0,
-                                        0,
+                                        5,
+                                        0.3,
+                                        5,
+                                        0.6976744186046512,
+                                        -4.875,
                                         1,
-                                        -0.25
+                                        -5
                                     ],
-                                    "type": 4
+                                    "type": 1
                                 }
                             }
                         }
@@ -4202,15 +4785,68 @@
                 },
                 "collision": {
                     "enabled": true,
-                    "type": "cylinder",
+                    "type": "box",
+                    "halfExtents": [
+                        15,
+                        2.5,
+                        2
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "ca21a9c9-add5-426a-9bf2-af9cbbead75b": {
+            "name": "PC",
+            "tags": [
+                "player"
+            ],
+            "enabled": true,
+            "resource_id": "ca21a9c9-add5-426a-9bf2-af9cbbead75b",
+            "parent": "febcae7d-ef4f-46b4-b8b5-9ee02e128ee4",
+            "children": [
+                "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0"
+            ],
+            "position": [
+                -26.695833206176758,
+                2.0583696886987646,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "collision": {
+                    "enabled": true,
+                    "type": "capsule",
                     "halfExtents": [
                         0.5,
                         0.5,
                         0.5
                     ],
-                    "radius": 1,
+                    "radius": 0.75,
                     "axis": 1,
-                    "height": 0.5,
+                    "height": 3,
                     "asset": null,
                     "renderAsset": null,
                     "linearOffset": [
@@ -4226,7 +4862,1492 @@
                 },
                 "rigidbody": {
                     "enabled": true,
-                    "type": "kinematic",
+                    "type": "dynamic",
+                    "mass": 110,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "friction": 0,
+                    "restitution": 0.25
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "networkEntity",
+                        "playerController"
+                    ],
+                    "scripts": {
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": true
+                                    },
+                                    {
+                                        "path": "rotation",
+                                        "interpolate": true,
+                                        "ignoreForOwner": true
+                                    },
+                                    {
+                                        "path": "scale",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    },
+                                    {
+                                        "path": "rigidbody.angularVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": true
+                                    },
+                                    {
+                                        "path": "rigidbody.linearVelocity",
+                                        "interpolate": true,
+                                        "ignoreForOwner": true
+                                    },
+                                    {
+                                        "path": "animState",
+                                        "interpolate": false,
+                                        "ignoreForOwner": true
+                                    },
+                                    {
+                                        "path": "modelRotation",
+                                        "interpolate": false,
+                                        "ignoreForOwner": true
+                                    }
+                                ]
+                            }
+                        },
+                        "playerController": {
+                            "enabled": true,
+                            "attributes": {
+                                "speed": 6,
+                                "jumpForce": 500,
+                                "moveForce": 150000
+                            }
+                        }
+                    }
+                }
+            },
+            "template_ent_ids": {
+                "ca21a9c9-add5-426a-9bf2-af9cbbead75b": "c66a84df-2d99-411e-8bee-bb105ba7277c",
+                "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0": "c60933ed-e6ea-4f83-b08f-172f1d16dde2",
+                "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7": "91dac55c-dae5-48c2-a40e-5bbcaa9030a9",
+                "dc1971c4-821f-4233-a0bf-fdcdef555f88": "95c4b173-1151-4fe5-8681-64cc4287274f",
+                "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54": "6edac0e2-aaea-42f7-8421-76d67e883257",
+                "d2ffd88a-413c-4f65-a483-71fd500e513d": "8f2eb01b-308f-4bf7-a97d-26aa9a6f8d3f",
+                "deab97ab-715b-4ca4-aab2-cfda1ec73971": "6fbc66ca-b467-4faa-a90d-45f86f923047",
+                "408b0840-ded6-4b12-98b7-bd5bff852a04": "aea6e514-1759-4566-9063-3e85c32af6b6",
+                "0c318d64-c76b-43b4-b63a-46628de1c794": "41cc1976-277c-482e-9813-8196d6cee3fa",
+                "7a82aa54-05c2-4dae-b17e-403ea9404606": "1e3260eb-0502-4c59-b219-37e1e34df203",
+                "4064d16c-af08-4ba1-9771-15f149781aff": "5f28b59f-b326-4906-98d8-e93e7c26f14e",
+                "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958": "5057c654-eb0a-4859-9e80-ab55362d6e39",
+                "359f7e61-81d3-40ab-bc2c-70d0b361a64f": "c1bee63e-037b-4c1e-a592-b00de4a03648",
+                "cff401c4-a977-4632-8ade-83348d54abb7": "a4c5f6b2-c97c-4837-b640-030c570aa797",
+                "c617b807-08cb-4ae8-93e3-a713495e46d7": "66f5818b-cd76-46ab-b9ce-5b84011f56d4",
+                "5d45b464-86f2-40f4-97af-970111b033a0": "4d5636c3-db8e-4b0e-b028-e514dfc4b408",
+                "55fd8e3e-8091-4d3e-9963-ad856f7aebe4": "3fcc6913-2b99-4d34-ac7b-3ee45e19633e",
+                "7d9bca84-272d-41e0-b6da-bdd42b4c386a": "2b9bedb9-71da-4f1d-be2e-d8878f566766",
+                "e492ce6e-627a-45e9-b965-d9096a7cc37f": "abe6d268-f2ba-46d9-b9b9-ed9bdde2e092",
+                "98ad4061-05d8-4d6e-9c23-e1f39d87496f": "650d2ef1-abac-4317-9244-831d9da82508",
+                "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2": "85f9c1c2-ec92-40f7-b9a5-63536914d476",
+                "3e1e77dd-b59b-4884-b59b-63b1748e03ca": "1b649c3b-71e4-4e60-ac2a-aa28cd7b5851",
+                "5143015d-9cca-49b6-b332-07e3377e903e": "aa5fcbfb-991f-43fd-b9f6-fe2868e36f2f",
+                "d9fd543e-0edb-4a8b-bb56-cf147af1b96c": "1b9695ba-35ff-4046-b2d3-bce497d89459",
+                "50758164-a98a-4a1d-b1ce-6ccb7012afaa": "1504e93b-8201-4f33-aca1-2d3719902054",
+                "6d152985-4422-4e92-98a8-5fbcd593d6de": "f02fd808-b06e-4356-9ca9-e2cf753b73f8",
+                "d74c31b2-0bee-463e-b187-381d33c7b998": "674be71e-f2e0-4587-80bf-1d62591f640c",
+                "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a": "e087b67d-e06f-4a18-bf14-d59eb7b777d2",
+                "170fdae9-9dbe-4f1c-90ab-a394adcfa458": "0565c2bd-ff02-45d1-9a4c-0f4c64840bb7",
+                "293975b2-b85f-42f1-bb7f-9a384a160963": "f9ba3490-0b81-4003-9771-e67ebccf437b",
+                "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2": "39ddf3b5-e07a-496f-ab0a-08ca23923d14",
+                "5f7c8e55-35c7-4fd9-af87-745b56d8df00": "d18102eb-9f49-48b2-8e76-e84fa4a44df7",
+                "1661e890-947b-44dd-a136-02b63f417cae": "cc844648-4613-4077-90d7-7468438ccb7b",
+                "f278ab8f-c0e4-48f5-ba95-8929c5633865": "a6c7decc-37e2-47c8-a782-1ed0bc917a99",
+                "62c51670-a0bc-4b66-b1a7-0488dcfdc848": "8b1c5332-47d1-4d12-8fda-ae3ca33a0e2e",
+                "98b5de3d-dc19-4d23-8b42-dc2fbd6a7332": "e60c5bbf-7461-4189-91de-9ef0c5d70617",
+                "a6bcea79-2319-4b75-a7e2-5ae409964319": "132ca7e0-97bd-4d40-a003-bb325fccf597",
+                "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9": "ddf41674-9b8e-4f68-9ecc-3245828a53c8",
+                "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796": "2465b0bd-df78-4eaf-a04b-853926646e91",
+                "fd270154-4e21-42ee-928e-a07f84ea99ea": "bd9a15dc-eb40-45f9-8bbd-d8d8260e7824",
+                "ba6a51e3-1458-4073-a194-41f035c5ed81": "579e2930-1155-4435-b7b4-350e222397c1",
+                "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf": "92fbd140-d2e2-4252-8a9c-bbc7ee4a37e3",
+                "87e5c6d6-27a8-4e51-a40a-552f158732cf": "07059195-3e20-4b1d-989c-5e9a2c498f25",
+                "62f141b5-f851-4472-9333-59516fcf4f9e": "71f77751-fb89-44f6-99e4-767cda0b604f",
+                "56945662-b759-4bda-a9de-fdbb7ed055c1": "ffc30749-89b7-40b8-8da9-881b87169f26",
+                "fc45b2bc-f098-47b8-9bc2-257394e42d80": "dce5c332-20f3-4e94-b2ba-800dc2adafa2",
+                "457b44db-b5b2-4b77-96d8-d975c07d5a72": "d468f890-0c70-4359-8fd7-6fca7aa1489b"
+            },
+            "template_id": 165184745
+        },
+        "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7",
+                "457b44db-b5b2-4b77-96d8-d975c07d5a72"
+            ],
+            "position": [
+                0,
+                -1.5,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                0.03,
+                0.03,
+                0.03
+            ],
+            "resource_id": "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0",
+            "name": "Playbot",
+            "components": {
+                "anim": {
+                    "stateGraphAsset": 165184654,
+                    "animationAssets": {
+                        "Base:idle": {
+                            "asset": 165184708
+                        },
+                        "Base:run": {
+                            "asset": 165184760
+                        },
+                        "Base:jump": {
+                            "asset": 165184740
+                        }
+                    },
+                    "enabled": true,
+                    "speed": 1,
+                    "activate": true,
+                    "playing": false,
+                    "rootBone": null,
+                    "masks": {},
+                    "normalizeWeights": false
+                }
+            },
+            "parent": "ca21a9c9-add5-426a-9bf2-af9cbbead75b",
+            "template_ent_ids": {
+                "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0": "ab8b58e2-ae35-48f4-90f5-e31c2002b6a6",
+                "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7": "71496900-882d-452c-814c-485e56ea5272",
+                "dc1971c4-821f-4233-a0bf-fdcdef555f88": "0e6a3823-9e2c-47d3-8639-ba11ec320122",
+                "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54": "f318d65c-31a3-4b7d-824d-30109dd9557d",
+                "d2ffd88a-413c-4f65-a483-71fd500e513d": "1cdf65fa-ae1d-452c-b38a-4ffb07d5fc64",
+                "deab97ab-715b-4ca4-aab2-cfda1ec73971": "aeabaeed-672f-4338-bf4a-d03e052fccb8",
+                "408b0840-ded6-4b12-98b7-bd5bff852a04": "3b6b8389-4514-409c-b886-25e38dedfaed",
+                "0c318d64-c76b-43b4-b63a-46628de1c794": "542005c1-7870-4c26-ad94-09e44b8b491f",
+                "7a82aa54-05c2-4dae-b17e-403ea9404606": "018fc177-ece2-4651-a529-0028b65f8df8",
+                "4064d16c-af08-4ba1-9771-15f149781aff": "19db1197-c91c-4e61-98c4-d4bfaed92516",
+                "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958": "b2c41ca1-3712-4024-9375-6b92014cadd5",
+                "359f7e61-81d3-40ab-bc2c-70d0b361a64f": "ab6a24f5-64d3-4941-a7f5-aa928144eb71",
+                "cff401c4-a977-4632-8ade-83348d54abb7": "856540a9-ed4b-4f6d-bd9d-96244ff3517a",
+                "c617b807-08cb-4ae8-93e3-a713495e46d7": "b39570a1-6b9b-45fc-b051-ae9068fb94fa",
+                "5d45b464-86f2-40f4-97af-970111b033a0": "78df678a-2560-41e1-b53d-bbfb55fdcae2",
+                "55fd8e3e-8091-4d3e-9963-ad856f7aebe4": "276063f2-c8a1-4a6a-9634-2eb49417f7dc",
+                "7d9bca84-272d-41e0-b6da-bdd42b4c386a": "97bb483c-fa37-412b-b164-9d9827b9c293",
+                "e492ce6e-627a-45e9-b965-d9096a7cc37f": "c3dfaa93-c030-4d11-9599-618953c96a43",
+                "98ad4061-05d8-4d6e-9c23-e1f39d87496f": "01abddd9-b8b3-4d9b-96fb-5c65b4efafea",
+                "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2": "2c741c05-c6a7-4956-957e-eec2f0d8253c",
+                "3e1e77dd-b59b-4884-b59b-63b1748e03ca": "fae581b2-5cc4-45c5-b1a1-f384a7b5c877",
+                "5143015d-9cca-49b6-b332-07e3377e903e": "381b5ba4-4aae-47c5-8486-2874b9aa9e88",
+                "d9fd543e-0edb-4a8b-bb56-cf147af1b96c": "b26128bd-48ce-4fca-a3dc-70b25a071f1d",
+                "50758164-a98a-4a1d-b1ce-6ccb7012afaa": "032e4cf2-265a-44ae-96f6-58bf6f80a4a1",
+                "6d152985-4422-4e92-98a8-5fbcd593d6de": "1d9d2616-d54c-400a-85fb-c8eae8a465b4",
+                "d74c31b2-0bee-463e-b187-381d33c7b998": "b7a8e362-ec12-4e89-8425-483a0ee9f123",
+                "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a": "b925a724-ff70-4463-a8a2-041c8fb37b18",
+                "170fdae9-9dbe-4f1c-90ab-a394adcfa458": "c5b95aa6-d9f9-4a55-a2df-14895bdf7cb7",
+                "293975b2-b85f-42f1-bb7f-9a384a160963": "c3a68bd7-9332-42e9-b15e-17875bd9dea3",
+                "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2": "66ba85ec-3e88-47cb-ae7d-621225a3f728",
+                "5f7c8e55-35c7-4fd9-af87-745b56d8df00": "f8e63bd1-dac6-4be8-87b3-f396e0a17a33",
+                "1661e890-947b-44dd-a136-02b63f417cae": "3bd25547-d841-45bf-ab7b-e6e31ea83782",
+                "f278ab8f-c0e4-48f5-ba95-8929c5633865": "57fcfda8-72dc-48cd-ac26-7e73c1f3010f",
+                "62c51670-a0bc-4b66-b1a7-0488dcfdc848": "51e27ce4-973d-4e0e-88bf-78e74d3c64a7",
+                "98b5de3d-dc19-4d23-8b42-dc2fbd6a7332": "983f5049-6bb8-486b-9315-56f83acbf595",
+                "a6bcea79-2319-4b75-a7e2-5ae409964319": "fe8545d6-3664-4cf6-ad59-da5cfb7216a2",
+                "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9": "3e18709c-273d-4eba-83c1-969f900ed2a3",
+                "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796": "283c8c89-a9d8-49c0-b130-4156ab480778",
+                "fd270154-4e21-42ee-928e-a07f84ea99ea": "09312f63-2da1-4a89-8c72-63607100077a",
+                "ba6a51e3-1458-4073-a194-41f035c5ed81": "5b6a71c8-8d3f-4c4a-b2a6-9ee598d6fe21",
+                "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf": "697c4691-4b38-455c-b37a-76a160f05b05",
+                "87e5c6d6-27a8-4e51-a40a-552f158732cf": "62b120d9-37a1-4b8e-a2df-58b10d666ab7",
+                "62f141b5-f851-4472-9333-59516fcf4f9e": "36662a14-f83a-46c6-bd0b-427a7849a948",
+                "56945662-b759-4bda-a9de-fdbb7ed055c1": "3d3daac8-3cb5-4702-8b36-7137c59c0b13",
+                "fc45b2bc-f098-47b8-9bc2-257394e42d80": "5aebcaaa-de2b-4bcf-a61c-b9d903ea3cf7",
+                "457b44db-b5b2-4b77-96d8-d975c07d5a72": "cd7be9d1-61ed-43c0-8dd0-db7e1a201695"
+            },
+            "template_id": 165184744
+        },
+        "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "dc1971c4-821f-4233-a0bf-fdcdef555f88"
+            ],
+            "position": [
+                0,
+                25.75,
+                -1.459
+            ],
+            "rotation": [
+                -90,
+                -110.675,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7",
+            "name": "PB",
+            "components": {},
+            "parent": "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0"
+        },
+        "dc1971c4-821f-4233-a0bf-fdcdef555f88": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54"
+            ],
+            "position": [
+                0,
+                0,
+                0
+            ],
+            "rotation": [
+                -89.9989,
+                -85,
+                -0.00099184
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "dc1971c4-821f-4233-a0bf-fdcdef555f88",
+            "name": "PB Pelvis",
+            "components": {},
+            "parent": "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7"
+        },
+        "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "d2ffd88a-413c-4f65-a483-71fd500e513d",
+                "a6bcea79-2319-4b75-a7e2-5ae409964319",
+                "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf"
+            ],
+            "position": [
+                3.02832,
+                -0.270863,
+                0.00194466
+            ],
+            "rotation": [
+                -18.1612,
+                -3.21846,
+                -9.10051
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54",
+            "name": "PB Spine",
+            "components": {},
+            "parent": "dc1971c4-821f-4233-a0bf-fdcdef555f88"
+        },
+        "d2ffd88a-413c-4f65-a483-71fd500e513d": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "deab97ab-715b-4ca4-aab2-cfda1ec73971"
+            ],
+            "position": [
+                7.82527,
+                -0.00612974,
+                -1.19209e-7
+            ],
+            "rotation": [
+                0.000658366,
+                -0.0278937,
+                -10.3717
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "d2ffd88a-413c-4f65-a483-71fd500e513d",
+            "name": "PB Spine1",
+            "components": {},
+            "parent": "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54"
+        },
+        "deab97ab-715b-4ca4-aab2-cfda1ec73971": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "408b0840-ded6-4b12-98b7-bd5bff852a04"
+            ],
+            "position": [
+                7.8282,
+                -0.00738955,
+                -4.76837e-7
+            ],
+            "rotation": [
+                0.00047751,
+                -0.047904,
+                13.7341
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "deab97ab-715b-4ca4-aab2-cfda1ec73971",
+            "name": "PB Spine2",
+            "components": {},
+            "parent": "d2ffd88a-413c-4f65-a483-71fd500e513d"
+        },
+        "408b0840-ded6-4b12-98b7-bd5bff852a04": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "0c318d64-c76b-43b4-b63a-46628de1c794",
+                "4064d16c-af08-4ba1-9771-15f149781aff",
+                "d9fd543e-0edb-4a8b-bb56-cf147af1b96c"
+            ],
+            "position": [
+                9.55816,
+                -0.0109079,
+                0.0000025034
+            ],
+            "rotation": [
+                -0.0161062,
+                -10.0001,
+                29.0013
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "408b0840-ded6-4b12-98b7-bd5bff852a04",
+            "name": "PB Neck",
+            "components": {},
+            "parent": "deab97ab-715b-4ca4-aab2-cfda1ec73971"
+        },
+        "0c318d64-c76b-43b4-b63a-46628de1c794": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "7a82aa54-05c2-4dae-b17e-403ea9404606"
+            ],
+            "position": [
+                15.5683,
+                3.00888,
+                0
+            ],
+            "rotation": [
+                33.789,
+                7.32777,
+                -23.4617
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "0c318d64-c76b-43b4-b63a-46628de1c794",
+            "name": "PB Head",
+            "components": {},
+            "parent": "408b0840-ded6-4b12-98b7-bd5bff852a04"
+        },
+        "7a82aa54-05c2-4dae-b17e-403ea9404606": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                35.2355,
+                -4.76837e-7,
+                -2.38419e-7
+            ],
+            "rotation": [
+                1.33402e-8,
+                -2.66804e-8,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "7a82aa54-05c2-4dae-b17e-403ea9404606",
+            "name": "PB HeadNub",
+            "components": {},
+            "parent": "0c318d64-c76b-43b4-b63a-46628de1c794"
+        },
+        "4064d16c-af08-4ba1-9771-15f149781aff": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958"
+            ],
+            "position": [
+                0.160713,
+                0.0122128,
+                0.911441
+            ],
+            "rotation": [
+                153.789,
+                -79.0077,
+                -2.88161
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "4064d16c-af08-4ba1-9771-15f149781aff",
+            "name": "PB L Clavicle",
+            "components": {},
+            "parent": "408b0840-ded6-4b12-98b7-bd5bff852a04"
+        },
+        "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "359f7e61-81d3-40ab-bc2c-70d0b361a64f"
+            ],
+            "position": [
+                19.923,
+                -2.38419e-7,
+                0
+            ],
+            "rotation": [
+                4.64869,
+                70.7292,
+                6.88216
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958",
+            "name": "PB L UpperArm",
+            "components": {},
+            "parent": "4064d16c-af08-4ba1-9771-15f149781aff"
+        },
+        "359f7e61-81d3-40ab-bc2c-70d0b361a64f": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "cff401c4-a977-4632-8ade-83348d54abb7"
+            ],
+            "position": [
+                13.8063,
+                -2.38419e-7,
+                0
+            ],
+            "rotation": [
+                0.00000128066,
+                0,
+                -19.036
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "359f7e61-81d3-40ab-bc2c-70d0b361a64f",
+            "name": "PB L Forearm",
+            "components": {},
+            "parent": "b3b7fa6e-acb8-4e6b-bc39-7fe50d63a958"
+        },
+        "cff401c4-a977-4632-8ade-83348d54abb7": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "c617b807-08cb-4ae8-93e3-a713495e46d7",
+                "7d9bca84-272d-41e0-b6da-bdd42b4c386a",
+                "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2"
+            ],
+            "position": [
+                3.79202,
+                9.53674e-7,
+                0
+            ],
+            "rotation": [
+                -82.1581,
+                2.27352,
+                -5.61804
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "cff401c4-a977-4632-8ade-83348d54abb7",
+            "name": "PB L Hand",
+            "components": {},
+            "parent": "359f7e61-81d3-40ab-bc2c-70d0b361a64f"
+        },
+        "c617b807-08cb-4ae8-93e3-a713495e46d7": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "5d45b464-86f2-40f4-97af-970111b033a0"
+            ],
+            "position": [
+                13.057,
+                -0.216808,
+                -5.92829
+            ],
+            "rotation": [
+                43.4304,
+                46.1157,
+                13.3111
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "c617b807-08cb-4ae8-93e3-a713495e46d7",
+            "name": "PB L Finger0",
+            "components": {},
+            "parent": "cff401c4-a977-4632-8ade-83348d54abb7"
+        },
+        "5d45b464-86f2-40f4-97af-970111b033a0": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "55fd8e3e-8091-4d3e-9963-ad856f7aebe4"
+            ],
+            "position": [
+                4.2558,
+                0,
+                0.00000190735
+            ],
+            "rotation": [
+                0,
+                0.00000170755,
+                47.5
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "5d45b464-86f2-40f4-97af-970111b033a0",
+            "name": "PB L Finger01",
+            "components": {},
+            "parent": "c617b807-08cb-4ae8-93e3-a713495e46d7"
+        },
+        "55fd8e3e-8091-4d3e-9963-ad856f7aebe4": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                3.64372,
+                0,
+                -9.53674e-7
+            ],
+            "rotation": [
+                0,
+                0.00000341509,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "55fd8e3e-8091-4d3e-9963-ad856f7aebe4",
+            "name": "PB L Finger0Nub",
+            "components": {},
+            "parent": "5d45b464-86f2-40f4-97af-970111b033a0"
+        },
+        "7d9bca84-272d-41e0-b6da-bdd42b4c386a": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "e492ce6e-627a-45e9-b965-d9096a7cc37f"
+            ],
+            "position": [
+                15.3884,
+                -0.000892639,
+                -1.12594
+            ],
+            "rotation": [
+                1.11611,
+                8.17566,
+                8.11536
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "7d9bca84-272d-41e0-b6da-bdd42b4c386a",
+            "name": "PB L Finger1",
+            "components": {},
+            "parent": "cff401c4-a977-4632-8ade-83348d54abb7"
+        },
+        "e492ce6e-627a-45e9-b965-d9096a7cc37f": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "98ad4061-05d8-4d6e-9c23-e1f39d87496f"
+            ],
+            "position": [
+                5.0402,
+                0.0000038147,
+                0.0000038147
+            ],
+            "rotation": [
+                -1.90065,
+                0.433427,
+                19.5475
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "e492ce6e-627a-45e9-b965-d9096a7cc37f",
+            "name": "PB L Finger11",
+            "components": {},
+            "parent": "7d9bca84-272d-41e0-b6da-bdd42b4c386a"
+        },
+        "98ad4061-05d8-4d6e-9c23-e1f39d87496f": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                5.09776,
+                0.00000190735,
+                -9.53674e-7
+            ],
+            "rotation": [
+                -0.00000128066,
+                0.00000170755,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "98ad4061-05d8-4d6e-9c23-e1f39d87496f",
+            "name": "PB L Finger1Nub",
+            "components": {},
+            "parent": "e492ce6e-627a-45e9-b965-d9096a7cc37f"
+        },
+        "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "3e1e77dd-b59b-4884-b59b-63b1748e03ca"
+            ],
+            "position": [
+                16.097,
+                0.00286102,
+                3.59262
+            ],
+            "rotation": [
+                -0.0452415,
+                0.00589616,
+                7.42308
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2",
+            "name": "PB L Finger2",
+            "components": {},
+            "parent": "cff401c4-a977-4632-8ade-83348d54abb7"
+        },
+        "3e1e77dd-b59b-4884-b59b-63b1748e03ca": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "5143015d-9cca-49b6-b332-07e3377e903e"
+            ],
+            "position": [
+                4.64717,
+                0,
+                -4.76837e-7
+            ],
+            "rotation": [
+                -1.68678,
+                0.309541,
+                19.8055
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "3e1e77dd-b59b-4884-b59b-63b1748e03ca",
+            "name": "PB L Finger21",
+            "components": {},
+            "parent": "b1a7a3f6-ccc3-47db-8b1e-fa3a69d83fc2"
+        },
+        "5143015d-9cca-49b6-b332-07e3377e903e": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                4.82355,
+                -0.00000190735,
+                -4.76837e-7
+            ],
+            "rotation": [
+                0.00000341509,
+                0,
+                -8.53774e-7
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "5143015d-9cca-49b6-b332-07e3377e903e",
+            "name": "PB L Finger2Nub",
+            "components": {},
+            "parent": "3e1e77dd-b59b-4884-b59b-63b1748e03ca"
+        },
+        "d9fd543e-0edb-4a8b-bb56-cf147af1b96c": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "50758164-a98a-4a1d-b1ce-6ccb7012afaa"
+            ],
+            "position": [
+                -0.160706,
+                0.0127296,
+                -0.91144
+            ],
+            "rotation": [
+                31.8742,
+                80.4826,
+                -177.127
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "d9fd543e-0edb-4a8b-bb56-cf147af1b96c",
+            "name": "PB R Clavicle",
+            "components": {},
+            "parent": "408b0840-ded6-4b12-98b7-bd5bff852a04"
+        },
+        "50758164-a98a-4a1d-b1ce-6ccb7012afaa": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "6d152985-4422-4e92-98a8-5fbcd593d6de"
+            ],
+            "position": [
+                19.923,
+                0.00000143051,
+                -0.0000038147
+            ],
+            "rotation": [
+                -24.7403,
+                -76.3177,
+                26.2194
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "50758164-a98a-4a1d-b1ce-6ccb7012afaa",
+            "name": "PB R UpperArm",
+            "components": {},
+            "parent": "d9fd543e-0edb-4a8b-bb56-cf147af1b96c"
+        },
+        "6d152985-4422-4e92-98a8-5fbcd593d6de": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "d74c31b2-0bee-463e-b187-381d33c7b998"
+            ],
+            "position": [
+                13.8063,
+                -0.00000190735,
+                0
+            ],
+            "rotation": [
+                8.53774e-7,
+                0.00000597642,
+                -26.0375
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "6d152985-4422-4e92-98a8-5fbcd593d6de",
+            "name": "PB R Forearm",
+            "components": {},
+            "parent": "50758164-a98a-4a1d-b1ce-6ccb7012afaa"
+        },
+        "d74c31b2-0bee-463e-b187-381d33c7b998": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a",
+                "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2",
+                "f278ab8f-c0e4-48f5-ba95-8929c5633865"
+            ],
+            "position": [
+                3.79202,
+                0.00000190735,
+                0
+            ],
+            "rotation": [
+                74.1045,
+                3.12393,
+                4.15544
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "d74c31b2-0bee-463e-b187-381d33c7b998",
+            "name": "PB R Hand",
+            "components": {},
+            "parent": "6d152985-4422-4e92-98a8-5fbcd593d6de"
+        },
+        "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "170fdae9-9dbe-4f1c-90ab-a394adcfa458"
+            ],
+            "position": [
+                13.057,
+                -0.216808,
+                5.92828
+            ],
+            "rotation": [
+                -43.4245,
+                -46.1087,
+                13.3018
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a",
+            "name": "PB R Finger0",
+            "components": {},
+            "parent": "d74c31b2-0bee-463e-b187-381d33c7b998"
+        },
+        "170fdae9-9dbe-4f1c-90ab-a394adcfa458": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "293975b2-b85f-42f1-bb7f-9a384a160963"
+            ],
+            "position": [
+                4.2558,
+                0,
+                9.53674e-7
+            ],
+            "rotation": [
+                0.00000128066,
+                0.00000170755,
+                47
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "170fdae9-9dbe-4f1c-90ab-a394adcfa458",
+            "name": "PB R Finger01",
+            "components": {},
+            "parent": "0e12033a-9a23-4e1a-8577-5ecb2ebcab1a"
+        },
+        "293975b2-b85f-42f1-bb7f-9a384a160963": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                3.64371,
+                0,
+                -9.53674e-7
+            ],
+            "rotation": [
+                -0.00000277476,
+                0.00000170755,
+                180
+            ],
+            "scale": [
+                -1,
+                -1,
+                -1
+            ],
+            "resource_id": "293975b2-b85f-42f1-bb7f-9a384a160963",
+            "name": "PB R Finger0Nub",
+            "components": {},
+            "parent": "170fdae9-9dbe-4f1c-90ab-a394adcfa458"
+        },
+        "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "5f7c8e55-35c7-4fd9-af87-745b56d8df00"
+            ],
+            "position": [
+                15.3884,
+                -0.000900269,
+                1.12594
+            ],
+            "rotation": [
+                -1.11611,
+                -8.17565,
+                8.11536
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2",
+            "name": "PB R Finger1",
+            "components": {},
+            "parent": "d74c31b2-0bee-463e-b187-381d33c7b998"
+        },
+        "5f7c8e55-35c7-4fd9-af87-745b56d8df00": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "1661e890-947b-44dd-a136-02b63f417cae"
+            ],
+            "position": [
+                5.0402,
+                0,
+                -0.0000038147
+            ],
+            "rotation": [
+                0.00777756,
+                0.0118811,
+                17.9924
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "5f7c8e55-35c7-4fd9-af87-745b56d8df00",
+            "name": "PB R Finger11",
+            "components": {},
+            "parent": "ffb86b79-c9ed-48bd-b3e1-6581f2e03ca2"
+        },
+        "1661e890-947b-44dd-a136-02b63f417cae": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                5.09776,
+                -0.0000038147,
+                0.00000143051
+            ],
+            "rotation": [
+                0,
+                0,
+                -180
+            ],
+            "scale": [
+                -1,
+                -1,
+                -1
+            ],
+            "resource_id": "1661e890-947b-44dd-a136-02b63f417cae",
+            "name": "PB R Finger1Nub",
+            "components": {},
+            "parent": "5f7c8e55-35c7-4fd9-af87-745b56d8df00"
+        },
+        "f278ab8f-c0e4-48f5-ba95-8929c5633865": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "62c51670-a0bc-4b66-b1a7-0488dcfdc848"
+            ],
+            "position": [
+                16.097,
+                0.00286102,
+                -3.59261
+            ],
+            "rotation": [
+                0.0452404,
+                -0.00589531,
+                7.42308
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "f278ab8f-c0e4-48f5-ba95-8929c5633865",
+            "name": "PB R Finger2",
+            "components": {},
+            "parent": "d74c31b2-0bee-463e-b187-381d33c7b998"
+        },
+        "62c51670-a0bc-4b66-b1a7-0488dcfdc848": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "98b5de3d-dc19-4d23-8b42-dc2fbd6a7332"
+            ],
+            "position": [
+                4.64717,
+                0,
+                -0.00000190735
+            ],
+            "rotation": [
+                0.0086277,
+                0.0115191,
+                17.9927
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "62c51670-a0bc-4b66-b1a7-0488dcfdc848",
+            "name": "PB R Finger21",
+            "components": {},
+            "parent": "f278ab8f-c0e4-48f5-ba95-8929c5633865"
+        },
+        "98b5de3d-dc19-4d23-8b42-dc2fbd6a7332": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                4.82354,
+                0.0000038147,
+                -4.76837e-7
+            ],
+            "rotation": [
+                1.60083e-7,
+                0,
+                -180
+            ],
+            "scale": [
+                -1,
+                -1,
+                -1
+            ],
+            "resource_id": "98b5de3d-dc19-4d23-8b42-dc2fbd6a7332",
+            "name": "PB R Finger2Nub",
+            "components": {},
+            "parent": "62c51670-a0bc-4b66-b1a7-0488dcfdc848"
+        },
+        "a6bcea79-2319-4b75-a7e2-5ae409964319": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9"
+            ],
+            "position": [
+                -2.57542,
+                -2.76419,
+                7.74794
+            ],
+            "rotation": [
+                153.388,
+                -22.8623,
+                162.929
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "a6bcea79-2319-4b75-a7e2-5ae409964319",
+            "name": "PB L Thigh",
+            "components": {},
+            "parent": "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54"
+        },
+        "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796"
+            ],
+            "position": [
+                10.6618,
+                9.53674e-7,
+                -9.53674e-7
+            ],
+            "rotation": [
+                -0.00000181427,
+                -8.53774e-7,
+                -37.8845
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9",
+            "name": "PB L Calf",
+            "components": {},
+            "parent": "a6bcea79-2319-4b75-a7e2-5ae409964319"
+        },
+        "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "fd270154-4e21-42ee-928e-a07f84ea99ea"
+            ],
+            "position": [
+                8.19998,
+                0,
+                0.00000190735
+            ],
+            "rotation": [
+                -10.6585,
+                -7.4153,
+                8.76059
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796",
+            "name": "PB L Foot",
+            "components": {},
+            "parent": "73d3d9ec-cffd-40e3-aeb9-e910f30fe8c9"
+        },
+        "fd270154-4e21-42ee-928e-a07f84ea99ea": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "ba6a51e3-1458-4073-a194-41f035c5ed81"
+            ],
+            "position": [
+                3.04093,
+                3.91354,
+                9.53674e-7
+            ],
+            "rotation": [
+                0,
+                8.00427e-8,
+                90
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "fd270154-4e21-42ee-928e-a07f84ea99ea",
+            "name": "PB L Toe0",
+            "components": {},
+            "parent": "af6ae8f0-c6d3-4c39-99e2-a84b5b2b7796"
+        },
+        "ba6a51e3-1458-4073-a194-41f035c5ed81": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                0.396643,
+                0,
+                0
+            ],
+            "rotation": [
+                0,
+                -8.00427e-8,
+                -180
+            ],
+            "scale": [
+                -1,
+                -1,
+                -1
+            ],
+            "resource_id": "ba6a51e3-1458-4073-a194-41f035c5ed81",
+            "name": "PB L Toe0Nub",
+            "components": {},
+            "parent": "fd270154-4e21-42ee-928e-a07f84ea99ea"
+        },
+        "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "87e5c6d6-27a8-4e51-a40a-552f158732cf"
+            ],
+            "position": [
+                -3.48131,
+                2.25727,
+                -7.55989
+            ],
+            "rotation": [
+                170.416,
+                6.54762,
+                168.501
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf",
+            "name": "PB R Thigh",
+            "components": {},
+            "parent": "cac04ecc-2d60-48ce-a3e4-3ef7a027cd54"
+        },
+        "87e5c6d6-27a8-4e51-a40a-552f158732cf": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "62f141b5-f851-4472-9333-59516fcf4f9e"
+            ],
+            "position": [
+                10.6618,
+                0,
+                0.00000190735
+            ],
+            "rotation": [
+                -8.53774e-7,
+                -0.00000426887,
+                -43.6565
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "87e5c6d6-27a8-4e51-a40a-552f158732cf",
+            "name": "PB R Calf",
+            "components": {},
+            "parent": "87398b05-7fd4-4e14-a97f-e33e9ad7bcdf"
+        },
+        "62f141b5-f851-4472-9333-59516fcf4f9e": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "56945662-b759-4bda-a9de-fdbb7ed055c1"
+            ],
+            "position": [
+                8.19998,
+                9.53674e-7,
+                -9.53674e-7
+            ],
+            "rotation": [
+                6.83804,
+                9.94169,
+                27.912
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "62f141b5-f851-4472-9333-59516fcf4f9e",
+            "name": "PB R Foot",
+            "components": {},
+            "parent": "87e5c6d6-27a8-4e51-a40a-552f158732cf"
+        },
+        "56945662-b759-4bda-a9de-fdbb7ed055c1": {
+            "enabled": true,
+            "tags": [],
+            "children": [
+                "fc45b2bc-f098-47b8-9bc2-257394e42d80"
+            ],
+            "position": [
+                3.04094,
+                3.91354,
+                -9.53674e-7
+            ],
+            "rotation": [
+                -1.06722e-7,
+                0.00000496089,
+                90
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "56945662-b759-4bda-a9de-fdbb7ed055c1",
+            "name": "PB R Toe0",
+            "components": {},
+            "parent": "62f141b5-f851-4472-9333-59516fcf4f9e"
+        },
+        "fc45b2bc-f098-47b8-9bc2-257394e42d80": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                0.396642,
+                4.76837e-7,
+                0
+            ],
+            "rotation": [
+                -1.06722e-7,
+                0.00000496089,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "fc45b2bc-f098-47b8-9bc2-257394e42d80",
+            "name": "PB R Toe0Nub",
+            "components": {},
+            "parent": "56945662-b759-4bda-a9de-fdbb7ed055c1"
+        },
+        "457b44db-b5b2-4b77-96d8-d975c07d5a72": {
+            "enabled": true,
+            "tags": [],
+            "children": [],
+            "position": [
+                1.203e-7,
+                27.9611,
+                2.18455
+            ],
+            "rotation": [
+                -90,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "resource_id": "457b44db-b5b2-4b77-96d8-d975c07d5a72",
+            "name": "Playbot_R",
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "asset",
+                    "asset": 165184680,
+                    "materialAssets": [
+                        165184677,
+                        165184689,
+                        165184683,
+                        165184682
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": "1b6d700e-e43e-4c25-852c-d19e2d0ee8a7"
+                }
+            },
+            "parent": "8cae5a7d-46bd-4df7-bcfa-d49487c79dd0"
+        },
+        "eae5821f-1311-4476-b9af-d48262c13430": {
+            "name": "Ground",
+            "tags": [
+                "icy"
+            ],
+            "enabled": true,
+            "resource_id": "eae5821f-1311-4476-b9af-d48262c13430",
+            "parent": "04e39e44-4b3e-4283-9a25-1b624cbb37e9",
+            "children": [],
+            "position": [
+                -12.051555633544918,
+                0,
+                -22.18579327046379
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                25,
+                1,
+                25
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "asset": null,
+                    "materialAssets": [
+                        null
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "cylinder",
+                    "halfExtents": [
+                        12.5,
+                        0.5,
+                        12.5
+                    ],
+                    "radius": 12.5,
+                    "axis": 1,
+                    "height": 1,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "static",
                     "mass": 1,
                     "linearDamping": 0,
                     "angularDamping": 0,
@@ -4244,59 +6365,10 @@
                     "restitution": 0
                 }
             }
-        },
-        "a376b046-c2c3-40a6-97a3-e5e411c9831d": {
-            "name": "Trigger",
-            "tags": [],
-            "enabled": true,
-            "resource_id": "a376b046-c2c3-40a6-97a3-e5e411c9831d",
-            "parent": "f83420a7-0c13-4565-a661-bfb03eddf45f",
-            "children": [],
-            "position": [
-                0,
-                0.65,
-                1.3322676295501878e-15
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                1,
-                1,
-                1
-            ],
-            "components": {
-                "collision": {
-                    "enabled": true,
-                    "type": "cylinder",
-                    "halfExtents": [
-                        0.5,
-                        0.5,
-                        0.5
-                    ],
-                    "radius": 1,
-                    "axis": 1,
-                    "height": 1.2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                }
-            }
         }
     },
     "created": "2021-10-26T14:13:10.327Z",
     "item_id": "1940848",
-    "checkpoint_id": "f65f4b63-3c69-46ea-b763-a58d2a9c3848",
-    "branch_id": "0745aaf6-70a7-4b45-af34-6efbe10635df"
+    "checkpoint_id": "a3426060-1eb8-4900-ac45-692c6fefbfed",
+    "branch_id": "921f9c55-4ae1-4b2b-bef4-9abfa7d9d637"
 }
