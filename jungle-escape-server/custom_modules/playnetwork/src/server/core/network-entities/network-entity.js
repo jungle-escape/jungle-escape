@@ -57,10 +57,6 @@ NetworkEntity.prototype.initialize = function() {
     this.cachedState = {};
     this.invalidPaths = new Set();
 
-    // console.log(`NetworkEntity: ${this.entity.name}, id: ${this.id}`);
-    // console.log(`entity.position: ${this.entity.position}`);
-    // console.log(`entity.animState: ${this.entity.animState}`);
-
     // special rules
     this.rules = {
         parent: () => {
@@ -86,10 +82,16 @@ NetworkEntity.prototype.initialize = function() {
             const value = this.entity.getLocalScale();
             return { x: roundTo(value.x), y: roundTo(value.y), z: roundTo(value.z) };
         },
+        // Privately added
         animState: () => {
-            // console.log(`entity: `);
-            // console.dir(this.entity);
-            return this.entity.animState;
+            const value = this.entity.animState;
+            return value;
+        },
+        modelRotation: () => {
+            const value = this.entity.modelRotation;
+            if (value) {
+                return { x: value.x, y: value.y, z: value.z};
+            }
         }
     };
 
@@ -158,9 +160,6 @@ NetworkEntity.prototype.getState = function(force) {
     const state = {};
 
     for (let i = 0; i < this.properties.length; i++) {
-        // if (this.properties[i].path === 'animState' && this.entity.hasOwnProperty('animState')) {
-        //     console.dir(this.entity.animState);
-        // }
         const path = this.properties[i].path;
         const parts = this._makePathParts(path);
         const rule = this.rules[path];

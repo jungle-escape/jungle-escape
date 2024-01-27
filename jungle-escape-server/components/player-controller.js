@@ -1,6 +1,6 @@
 var PlayerController = pc.createScript('playerController');
 
-PlayerController.attributes.add('speed', { type: 'number' });
+PlayerController.attributes.add('speed', { type: 'number', default: 5 });
 PlayerController.attributes.add('jumpForce', { type: 'number', default: 1500 });
 
 PlayerController.prototype.initialize = function () {
@@ -30,11 +30,31 @@ PlayerController.prototype.swap = function (old) {
 };
 
 PlayerController.prototype.setInput = function (sender, data) {
-    if (sender !== this.user) return;
+  if (sender !== this.user) return;
 
-    this.entity.rigidbody.teleport(data.position.x, data.position.y, data.position.z);
-    this.entity.rigidbody.linearVelocity = this.entity.rigidbody.linearVelocity.set(data.linearVelocity.x, data.linearVelocity.y, data.linearVelocity.z);
-    this.entity.rigidbody.angularVelocity = this.entity.rigidbody.angularVelocity.set(data.angularVelocity.x, data.angularVelocity.y, data.angularVelocity.z);
+  this.entity.rigidbody.teleport(
+    data.position.x,
+    data.position.y,
+    data.position.z
+  );
+  this.entity.rigidbody.linearVelocity =
+    this.entity.rigidbody.linearVelocity.set(
+      data.linearVelocity.x,
+      data.linearVelocity.y,
+      data.linearVelocity.z
+    );
+  this.entity.rigidbody.angularVelocity =
+    this.entity.rigidbody.angularVelocity.set(
+      data.angularVelocity.x,
+      data.angularVelocity.y,
+      data.angularVelocity.z
+    );
+
+  // Anim state of entity
+  this.entity.animState = data.animState;
+
+  // Model rotation of entity
+  this.entity.modelRotation = data.modelRotation;
 };
 
 PlayerController.prototype.removeInputHandler = function () {
