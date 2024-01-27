@@ -19,7 +19,6 @@ Lobby.prototype.initialize = function () {
 
     const params = new URLSearchParams(window.location.search);
 
-    // const host = '43.201.73.158';
     const host = 'localhost';
     const port = params.get('port') || '8080';
 
