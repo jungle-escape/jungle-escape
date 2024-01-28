@@ -18,7 +18,7 @@ MovementPropeller.prototype.update = function (dt) {
   this.previousTime = currentTime; // 현재 시간을 이전 시간으로 설정
 
   // 회전 속도 정의
-  var rotationSpeed = 360 / 1000; // 1000ms 동안 360도 회전
+  var rotationSpeed = 360 / 3000; // 1500ms 동안 360도 회전
 
   // 경과 시간을 사용하여 이번 프레임에서 회전할 각도 계산
   var angle = rotationSpeed * deltaTime;
