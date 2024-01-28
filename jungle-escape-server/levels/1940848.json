@@ -5167,7 +5167,8 @@
             "children": [
                 "cfb13da6-9273-4307-9ea6-6671c68ef02f",
                 "fb129d29-7d52-41bb-8777-a97c2afcf547",
-                "552f7d80-851b-48f8-b149-8b4f08d284b9"
+                "552f7d80-851b-48f8-b149-8b4f08d284b9",
+                "2d966a10-2014-47a9-a0e6-8543f5f1aeda"
             ],
             "position": [
                 0,
@@ -7966,10 +7967,129 @@
                     }
                 }
             }
+        },
+        "2d966a10-2014-47a9-a0e6-8543f5f1aeda": {
+            "name": "Log",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "2d966a10-2014-47a9-a0e6-8543f5f1aeda",
+            "parent": "fb1166e0-51ce-4a12-b7f4-edd4d9cda217",
+            "children": [],
+            "position": [
+                0,
+                -305.7301459900377,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "element": {
+                    "enabled": true,
+                    "type": "text",
+                    "anchor": [
+                        0.5,
+                        1,
+                        0.5,
+                        1
+                    ],
+                    "pivot": [
+                        0.5,
+                        1
+                    ],
+                    "text": "GAME OVER",
+                    "key": null,
+                    "fontAsset": 165184746,
+                    "fontSize": 200,
+                    "minFontSize": 8,
+                    "maxFontSize": 32,
+                    "autoFitWidth": false,
+                    "autoFitHeight": false,
+                    "maxLines": null,
+                    "lineHeight": 200,
+                    "wrapLines": true,
+                    "spacing": 1,
+                    "color": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "opacity": 1,
+                    "textureAsset": null,
+                    "spriteAsset": null,
+                    "spriteFrame": 0,
+                    "pixelsPerUnit": null,
+                    "width": 167.168,
+                    "height": 33.056,
+                    "margin": [
+                        -261.2,
+                        -409.03,
+                        -261.2,
+                        305.73
+                    ],
+                    "alignment": [
+                        0.5,
+                        0.5
+                    ],
+                    "outlineColor": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "outlineThickness": 0,
+                    "shadowColor": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "shadowOffset": [
+                        0,
+                        0
+                    ],
+                    "rect": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "materialAsset": null,
+                    "autoWidth": true,
+                    "autoHeight": true,
+                    "fitMode": "stretch",
+                    "useInput": false,
+                    "batchGroupId": null,
+                    "mask": false,
+                    "layers": [
+                        4
+                    ],
+                    "enableMarkup": false
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "endlog"
+                    ],
+                    "scripts": {
+                        "endlog": {
+                            "enabled": true,
+                            "attributes": {}
+                        }
+                    }
+                }
+            }
         }
     },
     "created": "2021-10-26T14:13:10.327Z",
     "item_id": "1940848",
-    "checkpoint_id": "a5a26e63-bb50-465a-a222-254fad46c975",
-    "branch_id": "e4fc622c-7889-498e-bf3e-a69b7a7f2d4e"
+    "checkpoint_id": "7e3f0e13-7ef8-423d-908c-35e805a029c4",
+    "branch_id": "44d0794f-f28f-477c-b42d-c6c1b59c3905"
 }
