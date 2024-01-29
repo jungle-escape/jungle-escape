@@ -1,7 +1,5 @@
 var PlayerController = pc.createScript('playerController');
 
-import pn from '../custom_modules/playnetwork/src/server/index.js';
-
 PlayerController.attributes.add('speed', { type: 'number', default: 5 });
 PlayerController.attributes.add('jumpForce', { type: 'number', default: 1500 });
 
@@ -70,20 +68,4 @@ PlayerController.prototype.update = function () {
     this.entity.rigidbody.teleport(0, 0, 0);
     this.entity.rigidbody.linearVelocity = this.entity.rigidbody.linearVelocity.set(0, 0, 0);
   }
-
-  // var list = [];
-  // var pointA = new pc.Vec3(0, 0, -620);
-  // for (let [id, networkEntity] of pn.networkEntities) {
-  //   var u = networkEntity;
-  //   if (u.user) {
-  //     var pointB = u.rules.position()
-  //     var distance = pointA.distance(pointB);
-  //     let info = [distance, `user ${u.user.id}`];
-  //     list.push(info);
-  //   }
-  // }
-  // list.sort((a, b) => {
-  //   return a[0] - b[0];
-  // });
-  // this.entity.networkEntity.send('rank', list);
 };
