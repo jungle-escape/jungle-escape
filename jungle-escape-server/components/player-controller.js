@@ -1,32 +1,34 @@
 var PlayerController = pc.createScript('playerController');
 
+import pn from '../custom_modules/playnetwork/src/server/index.js';
+
 PlayerController.attributes.add('speed', { type: 'number', default: 5 });
 PlayerController.attributes.add('jumpForce', { type: 'number', default: 1500 });
 
 PlayerController.prototype.initialize = function () {
-    this.user = this.entity.networkEntity.user;
+  this.user = this.entity.networkEntity.user;
 
-    if (!this.user) return;
+  if (!this.user) return;
 
-    this.entity.networkEntity.on('input', this.setInput, this);
-    this.user.once('leave', this.removeInputHandler, this);
-    this.once('destroy', this.removeInputHandler, this);
+  this.entity.networkEntity.on('input', this.setInput, this);
+  this.user.once('leave', this.removeInputHandler, this);
+  this.once('destroy', this.removeInputHandler, this);
 };
 
 PlayerController.prototype.swap = function (old) {
-    this.user = old.user;
+  this.user = old.user;
 
-    if (old.user) {
-        old.user.off('input', old.setInput, old);
-        old.user.off('leave', old.removeInputHandler, old);
-        old.off('destroy', old.removeInputHandler, old);
-    }
+  if (old.user) {
+    old.user.off('input', old.setInput, old);
+    old.user.off('leave', old.removeInputHandler, old);
+    old.off('destroy', old.removeInputHandler, old);
+  }
 
-    if (this.user) {
-        this.user.on('input', this.setInput, this);
-        this.user.once('leave', this.removeInputHandler, this);
-        this.once('destroy', this.removeInputHandler, this);
-    }
+  if (this.user) {
+    this.user.on('input', this.setInput, this);
+    this.user.once('leave', this.removeInputHandler, this);
+    this.once('destroy', this.removeInputHandler, this);
+  }
 };
 
 PlayerController.prototype.setInput = function (sender, data) {
@@ -58,14 +60,30 @@ PlayerController.prototype.setInput = function (sender, data) {
 };
 
 PlayerController.prototype.removeInputHandler = function () {
-    this.user.off('input', this.setInput, this);
+  this.user.off('input', this.setInput, this);
 };
 
 PlayerController.prototype.update = function () {
-    // respawn if fell below the floor
-    if (this.entity.getPosition().y < -4) {
-        this.entity.setPosition(0, 4, 0);
-        this.entity.rigidbody.teleport(0, 0, 0);
-        this.entity.rigidbody.linearVelocity = this.entity.rigidbody.linearVelocity.set(0, 0, 0);
-    }
+  // respawn if fell below the floor
+  if (this.entity.getPosition().y < -4) {
+    this.entity.setPosition(0, 4, 0);
+    this.entity.rigidbody.teleport(0, 0, 0);
+    this.entity.rigidbody.linearVelocity = this.entity.rigidbody.linearVelocity.set(0, 0, 0);
+  }
+
+  // var list = [];
+  // var pointA = new pc.Vec3(0, 0, -620);
+  // for (let [id, networkEntity] of pn.networkEntities) {
+  //   var u = networkEntity;
+  //   if (u.user) {
+  //     var pointB = u.rules.position()
+  //     var distance = pointA.distance(pointB);
+  //     let info = [distance, `user ${u.user.id}`];
+  //     list.push(info);
+  //   }
+  // }
+  // list.sort((a, b) => {
+  //   return a[0] - b[0];
+  // });
+  // this.entity.networkEntity.send('rank', list);
 };

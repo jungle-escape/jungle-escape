@@ -445,6 +445,7 @@ class PlayNetwork extends pc.EventHandler {
     }
 
     this.send('_room:leave', null, err => {
+      console.log('pn2');
       if (callback) callback(err || null);
     });
   }

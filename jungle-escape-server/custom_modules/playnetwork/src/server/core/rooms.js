@@ -45,6 +45,7 @@ class Rooms extends pc.EventHandler {
 
         pn.on('_room:leave', async (sender, _, callback) => {
             // eslint-disable-next-line n/no-callback-literal
+            console.log('rooms');
             callback(await sender.leave());
         });
     }

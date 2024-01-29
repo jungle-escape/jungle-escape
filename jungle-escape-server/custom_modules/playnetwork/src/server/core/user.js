@@ -123,7 +123,6 @@ export default class User extends pc.EventHandler {
             });
             return null;
         }
-
         this.send('_room:leave');
         this.room.users.delete(this.id);
         this.room.send('_user:leave', this.id);
