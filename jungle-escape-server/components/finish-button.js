@@ -14,6 +14,7 @@ FinishButton.prototype.initialize = function () {
     this.activations = 0;
 
     this.triggerEntity.collision.on('triggerenter', this.onTriggerEnter, this);
+    this.isFinished = false;
 };
 
 FinishButton.prototype.swap = function (old) {
@@ -43,10 +44,13 @@ function delay(time) {
 }
 
 FinishButton.prototype.onTriggerEnter = async function (entity) {
-    if (!entity || !this.hasTag(entity.tags)) {
+    if (!entity || !this.hasTag(entity.tags) || this.isFinished) {
         return;
     }
 
+    this.isFinished = true;
+
+    this.entity.networkEntity.send('winner', entity.networkEntity.user.id);
     this.entity.networkEntity.send('countdown', '3');
     await delay(1000); // 1초 딜레이
     this.entity.networkEntity.send('countdown', '2');
@@ -61,7 +65,6 @@ FinishButton.prototype.onTriggerEnter = async function (entity) {
             u.leave();
         }
     }
-
 };
 
 

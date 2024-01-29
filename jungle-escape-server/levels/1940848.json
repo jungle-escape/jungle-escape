@@ -309,7 +309,7 @@
             "position": [
                 0,
                 -0.5,
-                -1.7763568394002505e-15
+                -2.0000000000000018
             ],
             "rotation": [
                 0,
@@ -399,7 +399,7 @@
             "position": [
                 -3.552713678800501e-15,
                 2,
-                -10.000000000000002
+                -11.999999999999998
             ],
             "rotation": [
                 0,
@@ -524,8 +524,7 @@
             "parent": "568ba9d5-f18d-4e9e-9dd2-fc1c3cbf0e1e",
             "children": [
                 "e7857d4e-bf70-4c7c-91cc-106ab45661ac",
-                "c043def6-b9e5-4700-9c9f-b5497da0b699",
-                "f83420a7-0c13-4565-a661-bfb03eddf45f"
+                "c043def6-b9e5-4700-9c9f-b5497da0b699"
             ],
             "position": [
                 -7.830709934234619,
@@ -915,14 +914,14 @@
             "tags": [],
             "enabled": true,
             "resource_id": "f83420a7-0c13-4565-a661-bfb03eddf45f",
-            "parent": "24181fcd-ff9e-4a01-808a-bf81f9919013",
+            "parent": "3737dfe0-f2ac-40bd-bfd0-3b4e39a34e49",
             "children": [
                 "a376b046-c2c3-40a6-97a3-e5e411c9831d"
             ],
             "position": [
-                15.948386125441901,
-                0.6502124667167664,
-                -603.6928672790527
+                8.117675781250002,
+                -0.14978760480880737,
+                -610
             ],
             "rotation": [
                 0,
@@ -1068,7 +1067,7 @@
             "position": [
                 0,
                 -0.5,
-                -620
+                -440
             ],
             "rotation": [
                 0,
@@ -1188,55 +1187,6 @@
                 }
             }
         },
-        "963d6dd3-deca-4b8d-9ed4-5853bdae6acf": {
-            "name": "Trigger",
-            "tags": [],
-            "enabled": true,
-            "resource_id": "963d6dd3-deca-4b8d-9ed4-5853bdae6acf",
-            "parent": "81307bf0-a5fc-46b6-8cf1-61bde4d90604",
-            "children": [],
-            "position": [
-                -0.00003097951457675663,
-                0.09230290010002751,
-                1.3322624696638163e-15
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                1,
-                1,
-                1
-            ],
-            "components": {
-                "collision": {
-                    "enabled": true,
-                    "type": "box",
-                    "halfExtents": [
-                        10,
-                        0.5,
-                        13
-                    ],
-                    "radius": 10,
-                    "axis": 1,
-                    "height": 1.2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                }
-            }
-        },
         "3737dfe0-f2ac-40bd-bfd0-3b4e39a34e49": {
             "name": "fake finish button",
             "tags": [],
@@ -1273,12 +1223,13 @@
                 "3ba8b9c3-538c-4e88-ae44-1a4b95117a24",
                 "9d44776b-27ce-41ba-bae9-ef105cb367d8",
                 "d98b046f-643b-4285-9982-214820b14ee5",
-                "c3f18d73-d4e6-4782-84c0-f901ae5e7b13"
+                "c3f18d73-d4e6-4782-84c0-f901ae5e7b13",
+                "f83420a7-0c13-4565-a661-bfb03eddf45f"
             ],
             "position": [
                 0,
                 0,
-                0
+                190
             ],
             "rotation": [
                 0,
@@ -2915,7 +2866,7 @@
             "parent": "165f5d90-528c-4c6f-9ce5-4fbd56bce3cb"
         },
         "8f37aba6-f7ab-4dda-b91f-3e031a614559": {
-            "enabled": true,
+            "enabled": false,
             "tags": [],
             "children": [],
             "position": [
@@ -3189,9 +3140,9 @@
             "tags": [],
             "children": [],
             "position": [
-                1824.3307250377857,
+                1394.5961234063138,
                 -39.77897620201111,
-                -487.67181396484375
+                -487.67183685302734
             ],
             "rotation": [
                 0,
@@ -3309,9 +3260,9 @@
             "parent": "c7b35a14-f93b-4196-9c29-a4dcac87d9cb",
             "children": [],
             "position": [
-                -1186.9113082885742,
-                -39.77897620201111,
-                -2129.0722123048045
+                1327.0369838523986,
+                0.000001430511474609375,
+                -5523.716339111328
             ],
             "rotation": [
                 0,
@@ -3426,9 +3377,9 @@
             "parent": "c7b35a14-f93b-4196-9c29-a4dcac87d9cb",
             "children": [],
             "position": [
-                2101.8873030046016,
+                1794.7298278808594,
                 -39.77897620201111,
-                231.83731079101562
+                339.9084891021366
             ],
             "rotation": [
                 0,
@@ -4552,7 +4503,7 @@
             ],
             "rotation": [
                 0,
-                0,
+                180,
                 0
             ],
             "scale": [
@@ -4617,7 +4568,7 @@
                                 "properties": [
                                     {
                                         "path": "position",
-                                        "interpolate": false,
+                                        "interpolate": true,
                                         "ignoreForOwner": false
                                     }
                                 ]
@@ -5349,10 +5300,6 @@
             "resource_id": "07d7c770-b242-46b3-992b-629119057afc",
             "parent": "a729f399-70fb-46c8-bcd0-b1ad13dc76f1",
             "children": [
-                "ae2d8281-a3aa-49e7-9443-39f26023cfb6",
-                "4f9fd24e-c12e-4d9b-b0b7-9f95c5e13c38",
-                "72d9cb14-1488-4255-8482-fb080a2916c4",
-                "50f40298-0d3a-4cbd-8d4a-ece0e66508c1",
                 "2028ebf9-8cb5-42aa-bf7d-0dfda6be9d33",
                 "b4659c65-21e3-402a-996d-193275737106"
             ],
@@ -5373,354 +5320,6 @@
             ],
             "components": {}
         },
-        "ae2d8281-a3aa-49e7-9443-39f26023cfb6": {
-            "name": "StartingPointTo3P",
-            "tags": [
-                "teleport"
-            ],
-            "enabled": true,
-            "resource_id": "ae2d8281-a3aa-49e7-9443-39f26023cfb6",
-            "parent": "07d7c770-b242-46b3-992b-629119057afc",
-            "children": [],
-            "position": [
-                31.91089630126953,
-                0.4428147375589049,
-                20.496293327097938
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                2,
-                0.05,
-                3
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "box",
-                    "asset": null,
-                    "materialAssets": [
-                        165201805
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "teleportPair"
-                    ],
-                    "scripts": {
-                        "teleportPair": {
-                            "enabled": true,
-                            "attributes": {
-                                "target": "4f9fd24e-c12e-4d9b-b0b7-9f95c5e13c38"
-                            }
-                        }
-                    }
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "box",
-                    "halfExtents": [
-                        1,
-                        0.05,
-                        1.5
-                    ],
-                    "radius": 0.5,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                }
-            }
-        },
-        "4f9fd24e-c12e-4d9b-b0b7-9f95c5e13c38": {
-            "name": "DestinationPointFrom0P",
-            "tags": [
-                "teleport"
-            ],
-            "enabled": true,
-            "resource_id": "4f9fd24e-c12e-4d9b-b0b7-9f95c5e13c38",
-            "parent": "07d7c770-b242-46b3-992b-629119057afc",
-            "children": [],
-            "position": [
-                30.625324249267578,
-                0.07125942409092545,
-                -390.28995032821865
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                2,
-                0.05,
-                3
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "box",
-                    "asset": null,
-                    "materialAssets": [
-                        165201808
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "teleportPair"
-                    ],
-                    "scripts": {
-                        "teleportPair": {
-                            "enabled": true,
-                            "attributes": {
-                                "target": "ae2d8281-a3aa-49e7-9443-39f26023cfb6"
-                            }
-                        }
-                    }
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "box",
-                    "halfExtents": [
-                        1,
-                        0.05,
-                        1.5
-                    ],
-                    "radius": 0.5,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                }
-            }
-        },
-        "72d9cb14-1488-4255-8482-fb080a2916c4": {
-            "name": "StartingPointFrom3P0",
-            "tags": [
-                "teleport"
-            ],
-            "enabled": true,
-            "resource_id": "72d9cb14-1488-4255-8482-fb080a2916c4",
-            "parent": "07d7c770-b242-46b3-992b-629119057afc",
-            "children": [],
-            "position": [
-                37.73759460449219,
-                0.2491603937932183,
-                -500.0450162887573
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                2,
-                0.05,
-                3
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "box",
-                    "asset": null,
-                    "materialAssets": [
-                        165201805
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "teleportPair"
-                    ],
-                    "scripts": {
-                        "teleportPair": {
-                            "enabled": true,
-                            "attributes": {
-                                "target": "50f40298-0d3a-4cbd-8d4a-ece0e66508c1"
-                            }
-                        }
-                    }
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "box",
-                    "halfExtents": [
-                        1,
-                        0.05,
-                        1.5
-                    ],
-                    "radius": 0.5,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                }
-            }
-        },
-        "50f40298-0d3a-4cbd-8d4a-ece0e66508c1": {
-            "name": "DestinationPointFrom3Pto3Pend",
-            "tags": [
-                "teleport"
-            ],
-            "enabled": true,
-            "resource_id": "50f40298-0d3a-4cbd-8d4a-ece0e66508c1",
-            "parent": "07d7c770-b242-46b3-992b-629119057afc",
-            "children": [],
-            "position": [
-                25.646394729614258,
-                0.7127345692350957,
-                -588.4152555465698
-            ],
-            "rotation": [
-                0,
-                0,
-                0
-            ],
-            "scale": [
-                2,
-                0.05,
-                3
-            ],
-            "components": {
-                "render": {
-                    "enabled": true,
-                    "type": "box",
-                    "asset": null,
-                    "materialAssets": [
-                        165201808
-                    ],
-                    "layers": [
-                        0
-                    ],
-                    "batchGroupId": null,
-                    "castShadows": true,
-                    "castShadowsLightmap": true,
-                    "receiveShadows": true,
-                    "lightmapped": false,
-                    "lightmapSizeMultiplier": 1,
-                    "castShadowsLightMap": true,
-                    "lightMapped": false,
-                    "lightMapSizeMultiplier": 1,
-                    "isStatic": false,
-                    "rootBone": null
-                },
-                "script": {
-                    "enabled": true,
-                    "order": [
-                        "teleportPair"
-                    ],
-                    "scripts": {
-                        "teleportPair": {
-                            "enabled": true,
-                            "attributes": {
-                                "target": "72d9cb14-1488-4255-8482-fb080a2916c4"
-                            }
-                        }
-                    }
-                },
-                "collision": {
-                    "enabled": true,
-                    "type": "box",
-                    "halfExtents": [
-                        1,
-                        0.05,
-                        1.5
-                    ],
-                    "radius": 0.5,
-                    "axis": 1,
-                    "height": 2,
-                    "asset": null,
-                    "renderAsset": null,
-                    "linearOffset": [
-                        0,
-                        0,
-                        0
-                    ],
-                    "angularOffset": [
-                        0,
-                        0,
-                        0
-                    ]
-                }
-            }
-        },
         "2028ebf9-8cb5-42aa-bf7d-0dfda6be9d33": {
             "name": "StartingPoint1",
             "tags": [
@@ -5731,9 +5330,9 @@
             "parent": "07d7c770-b242-46b3-992b-629119057afc",
             "children": [],
             "position": [
-                37.73759460449219,
+                27.5,
                 0.24916039407307267,
-                -388.6395610555408
+                -375.6395568847656
             ],
             "rotation": [
                 0,
@@ -5818,7 +5417,7 @@
             "parent": "07d7c770-b242-46b3-992b-629119057afc",
             "children": [],
             "position": [
-                25.646394729614258,
+                27.5,
                 0.712734580040518,
                 -503.1772352898656
             ],
@@ -6358,7 +5957,11 @@
                 "cfb13da6-9273-4307-9ea6-6671c68ef02f",
                 "fb129d29-7d52-41bb-8777-a97c2afcf547",
                 "552f7d80-851b-48f8-b149-8b4f08d284b9",
-                "2d966a10-2014-47a9-a0e6-8543f5f1aeda"
+                "2d966a10-2014-47a9-a0e6-8543f5f1aeda",
+                "37e857a6-ebe2-4918-a95c-7899ca735565",
+                "4e696f07-e6c4-4649-a68a-f7e06eedcd9b",
+                "6783c073-960b-4656-af83-4b6e5988f127",
+                "f05a29c9-0895-411d-91fd-c9fd135c69dd"
             ],
             "position": [
                 0,
@@ -6911,7 +6514,7 @@
             "children": [],
             "position": [
                 0,
-                -305.7301459900377,
+                -378.52799985564343,
                 0
             ],
             "rotation": [
@@ -6963,10 +6566,10 @@
                     "width": 167.168,
                     "height": 33.056,
                     "margin": [
-                        -261.2,
-                        -409.03,
-                        -261.2,
-                        305.73
+                        -522.4,
+                        -585.128,
+                        -522.4,
+                        378.528
                     ],
                     "alignment": [
                         0.5,
@@ -8883,10 +8486,535 @@
                     }
                 }
             }
+        },
+        "963d6dd3-deca-4b8d-9ed4-5853bdae6acf": {
+            "name": "Trigger",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "963d6dd3-deca-4b8d-9ed4-5853bdae6acf",
+            "parent": "81307bf0-a5fc-46b6-8cf1-61bde4d90604",
+            "children": [],
+            "position": [
+                -0.00003097951457675663,
+                0.09230290010002751,
+                1.3322624696638163e-15
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        10,
+                        0.5,
+                        13
+                    ],
+                    "radius": 10,
+                    "axis": 1,
+                    "height": 1.2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "f05a29c9-0895-411d-91fd-c9fd135c69dd": {
+            "name": "Rank",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "f05a29c9-0895-411d-91fd-c9fd135c69dd",
+            "parent": "fb1166e0-51ce-4a12-b7f4-edd4d9cda217",
+            "children": [],
+            "position": [
+                -348.5769987106323,
+                -60.88933467857669,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "element": {
+                    "enabled": true,
+                    "type": "text",
+                    "anchor": [
+                        0.5,
+                        1,
+                        0.5,
+                        1
+                    ],
+                    "pivot": [
+                        0.5,
+                        1
+                    ],
+                    "text": "GAME OVER",
+                    "key": null,
+                    "fontAsset": 165184746,
+                    "fontSize": 64,
+                    "minFontSize": 8,
+                    "maxFontSize": 32,
+                    "autoFitWidth": false,
+                    "autoFitHeight": false,
+                    "maxLines": null,
+                    "lineHeight": 64,
+                    "wrapLines": true,
+                    "spacing": 1,
+                    "color": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "opacity": 1,
+                    "textureAsset": null,
+                    "spriteAsset": null,
+                    "spriteFrame": 0,
+                    "pixelsPerUnit": null,
+                    "width": 1044.8,
+                    "height": 206.60000000000002,
+                    "margin": [
+                        -515.745,
+                        -127.001,
+                        181.409,
+                        60.889
+                    ],
+                    "alignment": [
+                        0.5,
+                        0.5
+                    ],
+                    "outlineColor": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "outlineThickness": 0,
+                    "shadowColor": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "shadowOffset": [
+                        0,
+                        0
+                    ],
+                    "rect": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "materialAsset": null,
+                    "autoWidth": true,
+                    "autoHeight": true,
+                    "fitMode": "stretch",
+                    "useInput": false,
+                    "batchGroupId": null,
+                    "mask": false,
+                    "layers": [
+                        4
+                    ],
+                    "enableMarkup": false
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "rank"
+                    ],
+                    "scripts": {
+                        "rank": {
+                            "enabled": true,
+                            "attributes": {}
+                        }
+                    }
+                }
+            }
+        },
+        "4e696f07-e6c4-4649-a68a-f7e06eedcd9b": {
+            "name": "Log",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "4e696f07-e6c4-4649-a68a-f7e06eedcd9b",
+            "parent": "fb1166e0-51ce-4a12-b7f4-edd4d9cda217",
+            "children": [],
+            "position": [
+                0,
+                -173.73324839745646,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "element": {
+                    "enabled": true,
+                    "type": "text",
+                    "anchor": [
+                        0.5,
+                        1,
+                        0.5,
+                        1
+                    ],
+                    "pivot": [
+                        0.5,
+                        1
+                    ],
+                    "text": "GAME OVER",
+                    "key": null,
+                    "fontAsset": 165184746,
+                    "fontSize": 100,
+                    "minFontSize": 8,
+                    "maxFontSize": 32,
+                    "autoFitWidth": false,
+                    "autoFitHeight": false,
+                    "maxLines": null,
+                    "lineHeight": 100,
+                    "wrapLines": true,
+                    "spacing": 1,
+                    "color": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "opacity": 1,
+                    "textureAsset": null,
+                    "spriteAsset": null,
+                    "spriteFrame": 0,
+                    "pixelsPerUnit": null,
+                    "width": 1044.8,
+                    "height": 206.60000000000002,
+                    "margin": [
+                        -522.4,
+                        -380.333,
+                        -522.4,
+                        173.733
+                    ],
+                    "alignment": [
+                        0.5,
+                        0.5
+                    ],
+                    "outlineColor": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "outlineThickness": 0,
+                    "shadowColor": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "shadowOffset": [
+                        0,
+                        0
+                    ],
+                    "rect": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "materialAsset": null,
+                    "autoWidth": true,
+                    "autoHeight": true,
+                    "fitMode": "stretch",
+                    "useInput": false,
+                    "batchGroupId": null,
+                    "mask": false,
+                    "layers": [
+                        4
+                    ],
+                    "enableMarkup": false
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "winner"
+                    ],
+                    "scripts": {
+                        "winner": {
+                            "enabled": true,
+                            "attributes": {}
+                        }
+                    }
+                }
+            }
+        },
+        "37e857a6-ebe2-4918-a95c-7899ca735565": {
+            "name": "Startlog",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "37e857a6-ebe2-4918-a95c-7899ca735565",
+            "parent": "fb1166e0-51ce-4a12-b7f4-edd4d9cda217",
+            "children": [],
+            "position": [
+                0,
+                -378.52799985564343,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "element": {
+                    "enabled": true,
+                    "type": "text",
+                    "anchor": [
+                        0.5,
+                        1,
+                        0.5,
+                        1
+                    ],
+                    "pivot": [
+                        0.5,
+                        1
+                    ],
+                    "text": "GAME OVER",
+                    "key": null,
+                    "fontAsset": 165184746,
+                    "fontSize": 100,
+                    "minFontSize": 8,
+                    "maxFontSize": 32,
+                    "autoFitWidth": false,
+                    "autoFitHeight": false,
+                    "maxLines": null,
+                    "lineHeight": 100,
+                    "wrapLines": true,
+                    "spacing": 1,
+                    "color": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "opacity": 1,
+                    "textureAsset": null,
+                    "spriteAsset": null,
+                    "spriteFrame": 0,
+                    "pixelsPerUnit": null,
+                    "width": 1044.8,
+                    "height": 206.60000000000002,
+                    "margin": [
+                        -522.4,
+                        -585.1279998556435,
+                        -522.4,
+                        378.52799985564343
+                    ],
+                    "alignment": [
+                        0.5,
+                        0.5
+                    ],
+                    "outlineColor": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "outlineThickness": 0,
+                    "shadowColor": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "shadowOffset": [
+                        0,
+                        0
+                    ],
+                    "rect": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "materialAsset": null,
+                    "autoWidth": true,
+                    "autoHeight": true,
+                    "fitMode": "stretch",
+                    "useInput": false,
+                    "batchGroupId": null,
+                    "mask": false,
+                    "layers": [
+                        4
+                    ],
+                    "enableMarkup": false
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "startlog"
+                    ],
+                    "scripts": {
+                        "startlog": {
+                            "enabled": true,
+                            "attributes": {}
+                        }
+                    }
+                }
+            }
+        },
+        "6783c073-960b-4656-af83-4b6e5988f127": {
+            "name": "Timer",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "6783c073-960b-4656-af83-4b6e5988f127",
+            "parent": "fb1166e0-51ce-4a12-b7f4-edd4d9cda217",
+            "children": [],
+            "position": [
+                301.41398906707764,
+                -731.1909975425392,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
+                "element": {
+                    "enabled": true,
+                    "type": "text",
+                    "anchor": [
+                        0.5,
+                        1,
+                        0.5,
+                        1
+                    ],
+                    "pivot": [
+                        0.5,
+                        1
+                    ],
+                    "text": "TIMER",
+                    "key": null,
+                    "fontAsset": 165184746,
+                    "fontSize": 64,
+                    "minFontSize": 8,
+                    "maxFontSize": 32,
+                    "autoFitWidth": false,
+                    "autoFitHeight": false,
+                    "maxLines": null,
+                    "lineHeight": 64,
+                    "wrapLines": true,
+                    "spacing": 1,
+                    "color": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "opacity": 1,
+                    "textureAsset": null,
+                    "spriteAsset": null,
+                    "spriteFrame": 0,
+                    "pixelsPerUnit": null,
+                    "width": 177.984,
+                    "height": 103.30000000000001,
+                    "margin": [
+                        212.422,
+                        -797.303,
+                        -390.406,
+                        731.191
+                    ],
+                    "alignment": [
+                        0.5,
+                        0.5
+                    ],
+                    "outlineColor": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "outlineThickness": 0,
+                    "shadowColor": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "shadowOffset": [
+                        0,
+                        0
+                    ],
+                    "rect": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "materialAsset": null,
+                    "autoWidth": true,
+                    "autoHeight": true,
+                    "fitMode": "stretch",
+                    "useInput": false,
+                    "batchGroupId": null,
+                    "mask": false,
+                    "layers": [
+                        4
+                    ],
+                    "enableMarkup": false
+                },
+                "script": {
+                    "enabled": true,
+                    "order": [
+                        "elapsedtime"
+                    ],
+                    "scripts": {
+                        "elapsedtime": {
+                            "enabled": true,
+                            "attributes": {}
+                        }
+                    }
+                }
+            }
         }
     },
     "created": "2021-10-26T14:13:10.327Z",
     "item_id": "1940848",
-    "checkpoint_id": "e90fee27-5dc9-452d-9a4b-fc826c1599b4",
-    "branch_id": "b488cc37-d0a8-494f-9d76-9c24ab1f617c"
+    "checkpoint_id": "a375116d-9612-44b7-9088-ad5139445b1c",
+    "branch_id": "96de9bc3-ce65-4c92-806c-24ae405c0dd9"
 }
