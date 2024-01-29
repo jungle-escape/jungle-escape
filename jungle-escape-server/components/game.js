@@ -1,5 +1,7 @@
 var Game = pc.createScript('game');
 
+import pn from '../custom_modules/playnetwork/src/server/index.js';
+
 Game.attributes.add('userTemplate', { type: 'asset', assetType: 'template' });
 
 Game.prototype.initialize = function () {
@@ -53,4 +55,22 @@ Game.prototype.toData = function () {
     return {
         users: this.users,
     };
+};
+
+Game.prototype.update = function () {
+    var list = [];
+    var pointA = new pc.Vec3(0, 0, -620);
+    for (let [id, networkEntity] of pn.networkEntities) {
+        var u = networkEntity;
+        if (u.user) {
+            var pointB = u.rules.position()
+            var distance = pointA.distance(pointB);
+            let info = [distance, `user ${u.user.id}`];
+            list.push(info);
+        }
+    }
+    list.sort((a, b) => {
+        return a[0] - b[0];
+    });
+    this.app.room.send('rank', list);
 };
