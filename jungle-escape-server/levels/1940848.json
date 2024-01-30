@@ -6988,7 +6988,7 @@
                 0.05
             ],
             "components": {
-                "element": {
+                "render": {
                     "enabled": true,
                     "type": "text",
                     "anchor": [
@@ -7039,34 +7039,116 @@
                         0,
                         0,
                         0,
-                        1
-                    ],
-                    "outlineThickness": 0,
-                    "shadowColor": [
-                        0,
-                        0,
-                        0,
-                        1
-                    ],
-                    "shadowOffset": [
-                        0,
                         0
-                    ],
-                    "rect": [
-                        0,
-                        0,
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
                         1,
                         1
                     ],
-                    "materialAsset": null,
-                    "autoWidth": true,
-                    "autoHeight": true,
-                    "fitMode": "stretch",
-                    "useInput": false,
-                    "batchGroupId": null,
-                    "mask": false,
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0
+                }
+            }
+        },
+        "759b8497-b518-4b68-b2d6-e1cfd06983ec": {
+            "name": "Box",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "759b8497-b518-4b68-b2d6-e1cfd06983ec",
+            "parent": "ab463b6e-1b63-4b8b-a505-25235ac1bbcb",
+            "children": [
+                "1d688405-3ca6-4d61-926e-69fe6b6b3cbe"
+            ],
+            "position": [
+                0,
+                2,
+                7.5
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                2,
+                4,
+                5
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        165188409
+                    ],
                     "layers": [
-                        4
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        1,
+                        2,
+                        2.5
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
                     ],
                     "enableMarkup": false
                 }
@@ -7355,9 +7437,99 @@
                 0
             ],
             "scale": [
-                1,
-                1,
-                1
+                2,
+                4,
+                5
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        165188409
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        1,
+                        2,
+                        2.5
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0
+                }
+            }
+        },
+        "0231e4ca-1668-43e7-a304-f2fc16a13823": {
+            "name": "Text",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "0231e4ca-1668-43e7-a304-f2fc16a13823",
+            "parent": "4c0a9730-1c28-4a3b-bba9-085807d1b272",
+            "children": [],
+            "position": [
+                0.7120000000000001,
+                0.04650000000000021,
+                -1.1796119636642288e-15
+            ],
+            "rotation": [
+                0,
+                90,
+                0
+            ],
+            "scale": [
+                0.3,
+                0.3,
+                0.05
             ],
             "components": {
                 "button": {
@@ -7481,7 +7653,39 @@
                         4
                     ],
                     "enableMarkup": false
-                },
+                }
+            }
+        },
+        "543fa82b-1edd-4903-a357-fe8441331429": {
+            "name": "question4",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "543fa82b-1edd-4903-a357-fe8441331429",
+            "parent": "621dc332-d0e7-4516-9187-847b2eaf5608",
+            "children": [
+                "714e700d-495d-4aed-a8b8-e88d3e731f44",
+                "b484bc99-1c03-4ba6-8c8a-aa3c7355614a",
+                "7ab17826-07fb-46c1-b619-58ce3f3c899a",
+                "2ef225e9-6dc7-4ff3-9da1-a61d581fba61",
+                "5be34955-2f43-4190-bf73-25794becb866",
+                "f160df26-2555-4469-9609-cedc4aad6148"
+            ],
+            "position": [
+                150,
+                1,
+                -1.1013412404281553e-13
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "components": {
                 "script": {
                     "enabled": true,
                     "order": [
@@ -7491,6 +7695,20 @@
                         "leaveButton": {
                             "enabled": true,
                             "attributes": {}
+                        },
+                        "networkEntity": {
+                            "enabled": true,
+                            "attributes": {
+                                "id": "",
+                                "owner": "",
+                                "properties": [
+                                    {
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }
+                                ]
+                            }
                         }
                     }
                 }
@@ -7514,9 +7732,99 @@
                 0
             ],
             "scale": [
-                1,
-                1,
-                1
+                2,
+                4,
+                50
+            ],
+            "components": {
+                "render": {
+                    "enabled": true,
+                    "type": "box",
+                    "asset": null,
+                    "materialAssets": [
+                        165188408
+                    ],
+                    "layers": [
+                        0
+                    ],
+                    "batchGroupId": null,
+                    "castShadows": true,
+                    "castShadowsLightmap": true,
+                    "receiveShadows": true,
+                    "lightmapped": false,
+                    "lightmapSizeMultiplier": 1,
+                    "castShadowsLightMap": true,
+                    "lightMapped": false,
+                    "lightMapSizeMultiplier": 1,
+                    "isStatic": false,
+                    "rootBone": null
+                },
+                "collision": {
+                    "enabled": true,
+                    "type": "box",
+                    "halfExtents": [
+                        1,
+                        2,
+                        25
+                    ],
+                    "radius": 0.5,
+                    "axis": 1,
+                    "height": 2,
+                    "asset": null,
+                    "renderAsset": null,
+                    "linearOffset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "angularOffset": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "rigidbody": {
+                    "enabled": true,
+                    "type": "kinematic",
+                    "mass": 1,
+                    "linearDamping": 0,
+                    "angularDamping": 0,
+                    "linearFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "angularFactor": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "friction": 1,
+                    "restitution": 0
+                }
+            }
+        },
+        "07768127-996b-4fcb-b368-23389a3eab4b": {
+            "name": "Text",
+            "tags": [],
+            "enabled": true,
+            "resource_id": "07768127-996b-4fcb-b368-23389a3eab4b",
+            "parent": "714e700d-495d-4aed-a8b8-e88d3e731f44",
+            "children": [],
+            "position": [
+                0.7115020751953125,
+                0.04645997554394743,
+                -1.1796119636642288e-15
+            ],
+            "rotation": [
+                0,
+                90,
+                0
+            ],
+            "scale": [
+                0.05,
+                0.3,
+                0.05
             ],
             "components": {
                 "element": {
@@ -7545,9 +7853,9 @@
                     "wrapLines": true,
                     "spacing": 1,
                     "color": [
-                        0,
-                        0,
-                        0
+                        1,
+                        1,
+                        1
                     ],
                     "opacity": 1,
                     "textureAsset": null,
@@ -7621,9 +7929,9 @@
                 0
             ],
             "scale": [
-                1,
-                1,
-                1
+                2,
+                4,
+                15
             ],
             "components": {
                 "element": {
@@ -7740,9 +8048,9 @@
                 0
             ],
             "scale": [
-                1,
-                1,
-                1
+                2,
+                4,
+                15
             ],
             "components": {
                 "element": {
@@ -7827,7 +8135,7 @@
                     ],
                     "enableMarkup": false
                 },
-                "script": {
+                "collision": {
                     "enabled": true,
                     "order": [
                         "log"
