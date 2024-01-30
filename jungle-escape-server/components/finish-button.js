@@ -14,6 +14,7 @@ FinishButton.prototype.initialize = function () {
     this.activations = 0;
 
     this.triggerEntity.collision.on('triggerenter', this.onTriggerEnter, this);
+    this.isFinished = false;
 };
 
 FinishButton.prototype.swap = function (old) {
@@ -37,23 +38,33 @@ FinishButton.prototype.update = function (dt) {
     this.entity.rigidbody.teleport(this.vec3);
 };
 
-FinishButton.prototype.onTriggerEnter = function (entity) {
-    if (!entity || !this.hasTag(entity.tags)) {
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+}
+
+FinishButton.prototype.onTriggerEnter = async function (entity) {
+    if (!entity || !this.hasTag(entity.tags) || this.isFinished) {
         return;
     }
 
-    for (let [number, networkEntity] of pn.networkEntities) {
+    this.isFinished = true;
+
+    this.entity.networkEntity.send('winner', entity.networkEntity.user.id);
+    this.entity.networkEntity.send('countdown', '3');
+    await delay(1000); // 1초 딜레이
+    this.entity.networkEntity.send('countdown', '2');
+    await delay(1000); // 1초 딜레이
+    this.entity.networkEntity.send('countdown', '1');
+    await delay(1000); // 1초 딜레이
+
+
+    for (let [id, networkEntity] of pn.networkEntities) {
         var u = networkEntity.user;
-        if (u) {
+        if (u && u.leave instanceof Function) {
             u.leave();
         }
     }
-    // console.log(this.room);
-    // const room = this.room;
-    // this.room = null;
-    // room.destroy();
-
-    // this.app.destroy();
 };
 
 
