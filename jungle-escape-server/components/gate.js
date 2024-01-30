@@ -28,6 +28,13 @@ Gate.prototype.swap = function (old) {
 
     old.entity.off('activation', old.onActivation, old);
     this.entity.on('activation', this.onActivation, this);
+
+    this.countdown = old.countdown;
+    this.countdownTimer = old.countdownTimer;
+    this.isCountingDown = old.isCountingDown;
+    this.elapsedTime = old.elapsedTime;
+    this.isOpened = old.isOpened;
+    this.isStarted = old.isStarted;
 };
 
 Gate.prototype.onActivation = function (activated) {
