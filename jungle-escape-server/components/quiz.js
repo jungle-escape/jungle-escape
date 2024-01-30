@@ -23,8 +23,7 @@ Quiz.prototype.update = function (dt) {
             break;
     }
 
-    // var currentPosition = this.entity.getPosition();
-    var currentPosition = new Vec3(1, 1, 1);
+    var currentPosition = this.entity.getPosition();
     // 지정된 거리만큼 이동했는지 확인
     if (this.currentDirection === 0 && currentPosition.z >= -490) {
         // 다음 방향으로 전환

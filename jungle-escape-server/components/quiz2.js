@@ -1,18 +1,18 @@
-var Quiz = pc.createScript('quiz');
+var Quiz2 = pc.createScript('quiz2');
 
 // Quiz 객체가 생성될 때 실행되는 함수
-Quiz.prototype.initialize = function () {
+Quiz2.prototype.initialize = function () {
     this.currentDirection = 1;
     this.moveAmount = 30; // 각 방향으로 이동할 거리
 };
 
-Quiz.prototype.swap = function (old) {
+Quiz2.prototype.swap = function (old) {
     this.currentDirection = old.currentDirection;
     this.moveAmount = old.moveAmount;
 }
 
 // 매 프레임마다 실행되는 업데이트 함수
-Quiz.prototype.update = function (dt) {
+Quiz2.prototype.update = function (dt) {
     // 현재 방향에 따라 이동
     switch (this.currentDirection) {
         case 0: // 앞으로 이동
@@ -23,9 +23,7 @@ Quiz.prototype.update = function (dt) {
             break;
     }
 
-    // var currentPosition = this.entity.getPosition();
-    var currentPosition = new Vec3(1, 1, 1);
-
+    var currentPosition = this.entity.getPosition();
     // 지정된 거리만큼 이동했는지 확인
     if (this.currentDirection === 0 && currentPosition.z >= -490) {
         // 다음 방향으로 전환
