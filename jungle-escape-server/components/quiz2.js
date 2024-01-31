@@ -25,11 +25,11 @@ Quiz2.prototype.update = function (dt) {
 
     var currentPosition = this.entity.getPosition();
     // 지정된 거리만큼 이동했는지 확인
-    if (this.currentDirection === 0 && currentPosition.z >= -520) {
+    if (this.currentDirection === 0 && currentPosition.z >= -80) {
         // 다음 방향으로 전환
         this.entity.setLocalPosition(120, -100, 0);
         this.currentDirection = 1;
-    } else if (this.currentDirection === 1 && currentPosition.z <= -760) {
+    } else if (this.currentDirection === 1 && currentPosition.z <= -320) {
         // 다음 방향으로 전환
         this.entity.setLocalPosition(-120, 0, 0);
         this.currentDirection = 0;
