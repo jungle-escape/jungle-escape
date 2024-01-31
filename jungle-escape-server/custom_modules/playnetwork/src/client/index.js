@@ -280,7 +280,7 @@ class PlayNetwork extends pc.EventHandler {
 window.pn = new PlayNetwork();
 window.pn.initialize();
 
-pc.ScriptComponent.prototype._scriptMethod = function(script, method, arg) {
+pc.ScriptComponent.prototype._scriptMethod = function (script, method, arg) {
     try {
         script[method](arg);
     } catch (ex) {
