@@ -94,10 +94,9 @@
                 "attributes": {
                   "speed": 12,
                   "jumpForce": 1500,
-                  "moveForce": 150000,
+                  "moveForce": 300000,
                   "maxSpeed": 50,
-                  "linearDamping": [0.99, 0, 0.99],
-                  "runningParticle": null
+                  "linearDamping": [0.99, 0, 0.99]
                 }
               }
             }
@@ -116,10 +115,21 @@
                 "name": "reaction",
                 "loop": false,
                 "autoPlay": false,
-                "overlap": false,
+                "overlap": true,
                 "asset": 165449056,
                 "startTime": 0,
                 "duration": 1,
+                "volume": 1,
+                "pitch": 1
+              },
+              "2": {
+                "name": "wrong",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": true,
+                "asset": 165605799,
+                "startTime": 0,
+                "duration": 3,
                 "volume": 1,
                 "pitch": 1
               }
@@ -861,7 +871,7 @@
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 165359837,
+  "uniqueId": 165184745,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -878,5 +888,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "9e8dfac4-ff56-4334-8229-84ad06c1d8d2"
+  "checkpoint_id": "fe4aad8c-f2ed-46d1-9841-63bfe15dda5b"
 }
