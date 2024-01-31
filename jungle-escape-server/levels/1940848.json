@@ -402,7 +402,7 @@
         "4a7ae288-0e17-474e-a8d4-ea7f929979b7": {
             "name": "Gate",
             "tags": [],
-            "enabled": true,
+            "enabled": false,
             "resource_id": "4a7ae288-0e17-474e-a8d4-ea7f929979b7",
             "parent": "85badb66-20a6-4dfb-84c3-bc6c44f657a0",
             "children": [],
@@ -47086,8 +47086,13 @@
             "name": "Box",
             "tags": [
                 "pc_reaction",
+<<<<<<< HEAD
+                "push_back",
+                "take_control"
+=======
                 "take_control",
                 "push_opposite"
+>>>>>>> main
             ],
             "enabled": true,
             "resource_id": "f160df26-2555-4469-9609-cedc4aad6148",
@@ -47997,8 +48002,12 @@
             "name": "Box",
             "tags": [
                 "take_control",
+<<<<<<< HEAD
+                "pc_reaction"
+=======
                 "pc_reaction",
                 "push_opposite"
+>>>>>>> main
             ],
             "enabled": true,
             "resource_id": "3b110ea7-12bd-4ff7-b014-09e2985b2635",
@@ -48908,8 +48917,12 @@
             "name": "Box",
             "tags": [
                 "take_control",
+<<<<<<< HEAD
+                "pc_reaction"
+=======
                 "pc_reaction",
                 "push_opposite"
+>>>>>>> main
             ],
             "enabled": true,
             "resource_id": "077c1c6d-25d2-4048-9a47-36aaf6878f8f",
@@ -49819,8 +49832,12 @@
             "name": "Box",
             "tags": [
                 "take_control",
+<<<<<<< HEAD
+                "pc_reaction"
+=======
                 "pc_reaction",
                 "push_opposite"
+>>>>>>> main
             ],
             "enabled": true,
             "resource_id": "7bbd22e3-bf26-430a-9fac-fd50e1f5ab4e",
@@ -50730,8 +50747,12 @@
             "name": "Box",
             "tags": [
                 "take_control",
+<<<<<<< HEAD
+                "pc_reaction"
+=======
                 "pc_reaction",
                 "push_opposite"
+>>>>>>> main
             ],
             "enabled": true,
             "resource_id": "0ac7c0a7-c595-44d7-abf9-ef3c3481f71e",
@@ -51641,8 +51662,12 @@
             "name": "Box",
             "tags": [
                 "take_control",
+<<<<<<< HEAD
+                "pc_reaction"
+=======
                 "pc_reaction",
                 "push_opposite"
+>>>>>>> main
             ],
             "enabled": true,
             "resource_id": "39762cb1-faac-4382-8799-69b83d18b034",
@@ -52473,6 +52498,8 @@
                 "5dbfda9d-e047-4281-8d7f-ef4404ab1b46": "ae45ea52-eea1-4bff-826a-207585c71917"
             }
         },
+<<<<<<< HEAD
+=======
         "dd1cd373-c88d-4a88-86b4-bd3ef4d3151f": {
             "enabled": true,
             "tags": [],
@@ -52881,6 +52908,7 @@
             },
             "parent": "319217a0-fbf6-48f4-9b7b-e373ae054a88"
         },
+>>>>>>> main
         "4cf205b2-8356-4176-b318-dfd27c757643": {
             "name": "DestinationPoint",
             "tags": [
