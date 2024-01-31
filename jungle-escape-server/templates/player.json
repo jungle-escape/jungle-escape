@@ -35,9 +35,9 @@
             "type": "dynamic",
             "mass": 110,
             "linearDamping": 0,
-            "angularDamping": 0,
+            "angularDamping": 0.5,
             "linearFactor": [1, 1, 1],
-            "angularFactor": [0, 0, 0],
+            "angularFactor": [0, 0.5, 0],
             "friction": 0,
             "restitution": 0.25
           },
@@ -93,11 +93,35 @@
                 "enabled": true,
                 "attributes": {
                   "speed": 12,
-                  "jumpForce": 500,
+                  "jumpForce": 1500,
                   "moveForce": 150000,
-                  "maxSpeed": 18,
-                  "linearDamping": [0.99, 0, 0.99]
+                  "maxSpeed": 50,
+                  "linearDamping": [0.99, 0, 0.99],
+                  "runningParticle": null
                 }
+              }
+            }
+          },
+          "sound": {
+            "enabled": true,
+            "volume": 1,
+            "pitch": 1,
+            "positional": false,
+            "refDistance": 1,
+            "maxDistance": 10000,
+            "rollOffFactor": 1,
+            "distanceModel": "linear",
+            "slots": {
+              "1": {
+                "name": "reaction",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": false,
+                "asset": 165449056,
+                "startTime": 0,
+                "duration": 1,
+                "volume": 1,
+                "pitch": 1
               }
             }
           }
@@ -126,6 +150,9 @@
                 "asset": 165184760
               },
               "Base:jump": {
+                "asset": 165184740
+              },
+              "Base:spin": {
                 "asset": 165184740
               }
             },
@@ -834,7 +861,7 @@
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 165233523,
+  "uniqueId": 165359837,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -851,5 +878,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "a4923963-6695-4c16-91a2-0f661c53da5b"
+  "checkpoint_id": "9e8dfac4-ff56-4334-8229-84ad06c1d8d2"
 }
