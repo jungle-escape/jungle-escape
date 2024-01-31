@@ -31,5 +31,7 @@ PendulumTrap.prototype.update = function (dt) {
     // Narrowing down the range from -60 to 60
     const rz = (this.time * 360 + 180) / 4;
 
+    // console.debug(`x: ${x}, y: ${y}, z: ${z}, rx: ${rx}, ry: ${ry}, rz: ${rz}`);
+
     this.entity.rigidbody.teleport(x, y, z, rx, ry, rz);
 };
