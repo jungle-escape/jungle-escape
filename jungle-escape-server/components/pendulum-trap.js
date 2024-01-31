@@ -15,12 +15,12 @@ PendulumTrap.prototype.swap = function (old) {
 
 PendulumTrap.prototype.update = function (dt) {
     this.time += this.direction * dt * this.speed;
-    
+
     if (this.time > 1 || this.time < 0) {
         this.direction *= -1;
         this.time = pc.math.clamp(this.time, 0, 1);
     }
-    
+
     const position = this.entity.getPosition();
     const x = position.x;
     const y = position.y;
