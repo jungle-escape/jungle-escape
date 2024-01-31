@@ -103,6 +103,12 @@ NetworkEntity.prototype.initialize = function () {
         return { x: value.x, y: value.y, z: value.z };
       }
     },
+    bodyType: () => {
+      const value = this.entity.bodyType;
+      if (value) {
+        return value;
+      }
+    },
   };
 
   this.once("destroy", this.onDestroy, this);

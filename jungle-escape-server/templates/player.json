@@ -94,7 +94,7 @@
                 "attributes": {
                   "speed": 12,
                   "jumpForce": 1500,
-                  "moveForce": 300000,
+                  "moveForce": 150000,
                   "maxSpeed": 50,
                   "linearDamping": [0.99, 0, 0.99],
                   "runningParticle": null
