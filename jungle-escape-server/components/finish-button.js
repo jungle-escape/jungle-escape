@@ -58,7 +58,6 @@ FinishButton.prototype.onTriggerEnter = async function (entity) {
     this.entity.networkEntity.send('countdown', '1');
     await delay(1000); // 1초 딜레이
 
-
     for (let [id, networkEntity] of pn.networkEntities) {
         var u = networkEntity.user;
         if (u && u.leave instanceof Function) {
