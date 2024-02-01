@@ -132,6 +132,28 @@
                 "duration": 3,
                 "volume": 1,
                 "pitch": 1
+              },
+              "3": {
+                "name": "jump",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": false,
+                "asset": 165795369,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
+              },
+              "4": {
+                "name": "fall",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": false,
+                "asset": 165795525,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
               }
             }
           }
@@ -871,7 +893,7 @@
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 165743890,
+  "uniqueId": 165184745,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -888,5 +910,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "4dd903c7-2ebe-4db5-9346-9269125e56e4"
+  "checkpoint_id": "8a41a566-28af-48df-844b-4b7146905a48"
 }
