@@ -16,15 +16,15 @@
         ],
         "position": [0, 0, 0],
         "rotation": [0, 0, 0],
-        "scale": [1.5, 1.5, 1.5],
+        "scale": [2, 2, 2],
         "components": {
           "collision": {
             "enabled": true,
             "type": "capsule",
             "halfExtents": [0.5, 0.5, 0.5],
-            "radius": 0.9,
+            "radius": 1,
             "axis": 1,
-            "height": 4.5,
+            "height": 6,
             "asset": null,
             "renderAsset": null,
             "linearOffset": [0, 0, 0],
@@ -94,7 +94,7 @@
                 "attributes": {
                   "speed": 12,
                   "jumpForce": 1500,
-                  "moveForce": 300000,
+                  "moveForce": 500000,
                   "maxSpeed": 50,
                   "linearDamping": [0.99, 0, 0.99]
                 }
@@ -796,7 +796,9 @@
         "enabled": true,
         "tags": [],
         "children": [],
-        "position": [1.203e-7, 27.9611, 2.18455],
+        "position": [
+          -3.4234938084409805e-7, 29.427065039751056, 2.1845423695922364
+        ],
         "rotation": [-90, 0, 0],
         "scale": [1, 1, 1],
         "resource_id": "d468f890-0c70-4359-8fd7-6fca7aa1489b",
@@ -893,7 +895,7 @@
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 165184745,
+  "uniqueId": 166025017,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -910,5 +912,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "8a41a566-28af-48df-844b-4b7146905a48"
+  "checkpoint_id": "8b84b953-7ab7-4a73-85fe-5fad714e77e0"
 }
