@@ -16,15 +16,15 @@
         ],
         "position": [0, 0, 0],
         "rotation": [0, 0, 0],
-        "scale": [1, 1, 1],
+        "scale": [2, 2, 2],
         "components": {
           "collision": {
             "enabled": true,
             "type": "capsule",
             "halfExtents": [0.5, 0.5, 0.5],
-            "radius": 0.75,
+            "radius": 1,
             "axis": 1,
-            "height": 3,
+            "height": 6,
             "asset": null,
             "renderAsset": null,
             "linearOffset": [0, 0, 0],
@@ -54,12 +54,12 @@
                     {
                       "path": "position",
                       "interpolate": true,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     },
                     {
                       "path": "rotation",
                       "interpolate": true,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     },
                     {
                       "path": "scale",
@@ -69,22 +69,22 @@
                     {
                       "path": "rigidbody.angularVelocity",
                       "interpolate": true,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     },
                     {
                       "path": "rigidbody.linearVelocity",
                       "interpolate": true,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     },
                     {
                       "path": "animState",
                       "interpolate": false,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     },
                     {
                       "path": "modelRotation",
                       "interpolate": false,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     }
                   ]
                 }
@@ -94,10 +94,9 @@
                 "attributes": {
                   "speed": 12,
                   "jumpForce": 1500,
-                  "moveForce": 150000,
+                  "moveForce": 200000,
                   "maxSpeed": 50,
-                  "linearDamping": [0.99, 0, 0.99],
-                  "runningParticle": null
+                  "linearDamping": [0.99, 0, 0.99]
                 }
               }
             }
@@ -116,10 +115,43 @@
                 "name": "reaction",
                 "loop": false,
                 "autoPlay": false,
-                "overlap": false,
+                "overlap": true,
                 "asset": 165449056,
                 "startTime": 0,
                 "duration": 1,
+                "volume": 1,
+                "pitch": 1
+              },
+              "2": {
+                "name": "wrong",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": true,
+                "asset": 165605799,
+                "startTime": 0,
+                "duration": 3,
+                "volume": 1,
+                "pitch": 1
+              },
+              "3": {
+                "name": "jump",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": false,
+                "asset": 165795369,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
+              },
+              "4": {
+                "name": "fall",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": false,
+                "asset": 165795525,
+                "startTime": 0,
+                "duration": null,
                 "volume": 1,
                 "pitch": 1
               }
@@ -764,7 +796,9 @@
         "enabled": true,
         "tags": [],
         "children": [],
-        "position": [1.203e-7, 27.9611, 2.18455],
+        "position": [
+          -3.4234938084409805e-7, 29.427065039751056, 2.1845423695922364
+        ],
         "rotation": [-90, 0, 0],
         "scale": [1, 1, 1],
         "resource_id": "d468f890-0c70-4359-8fd7-6fca7aa1489b",
@@ -861,7 +895,7 @@
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 165359837,
+  "uniqueId": 166036556,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -878,5 +912,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "9e8dfac4-ff56-4334-8229-84ad06c1d8d2"
+  "checkpoint_id": "200d8c74-bcbe-4ab9-a3c0-e5e83f3c4d50"
 }
