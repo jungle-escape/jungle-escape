@@ -2,38 +2,24 @@ var FloorAttack = pc.createScript("floorAttack");
 /** server script for attack  */
 FloorAttack.attributes.add("speed", { type: "number" });
 FloorAttack.attributes.add("isTriggered", { type: "boolean", default: false });
+FloorAttack.attributes.add("targetCell", {
+  type: "entity",
+  title: "target Entity",
+  description: "The attacker block will be attack here",
+});
 
 FloorAttack.prototype.initialize = function () {
   // keep original position for returning
   this.originPos = this.entity.getPosition().clone();
-  this.originLocalPos = this.entity.getLocalPosition().clone();
 
-  // if not, entity's rotation is polluted.
-  this.entity.setLocalRotation({
-    x: 0,
-    y: 0,
-    z: 0,
-    w: 1,
-  });
+  this.blockPos = this.targetCell.getPosition().clone();
 
-  // parent-block's localPosition
-  this.blockPos = new pc.Vec3(0, 0, 0);
-
-  // start position
-  this.startLocalPos = new pc.Vec3(
-    this.blockPos.x,
-    this.blockPos.y,
-    this.blockPos.z
-  );
-  this.startLocalPos.z += 10;
+  this.attackStartPos = this.blockPos.clone();
+  this.attackStartPos.x -= 50;
 
   // Set target point Position
-  this.targetPos = new pc.Vec3(
-    this.blockPos.x,
-    this.blockPos.y,
-    this.blockPos.z
-  );
-  this.targetPos.z = -80;
+  this.targetPos = this.blockPos.clone();
+  this.targetPos.x += 120;
 
   // setting for controller
   this.isMovedToStartPos = false;
@@ -45,12 +31,14 @@ FloorAttack.prototype.initialize = function () {
 
 FloorAttack.prototype.swap = function (old) {
   this.speed = old.speed;
+  this.isTriggered = old.isTriggered;
+  this.targetCell = old.targetCell;
 
   this.originPos = old.originPos;
-  this.originLocalPos = old.originLocalPos;
 
   this.blockPos = old.blockPos;
-  this.startLocalPos = old.startLocalPos;
+
+  this.attackStartPos = old.attackStartPos;
   this.targetPos = old.targetPos;
 
   this.isMovedToStartPos = old.isMovedToStartPos;
@@ -75,7 +63,7 @@ FloorAttack.prototype.update = function (dt) {
   if (this.isMoveEnd) {
     //If attacking movement is finished, reset it's position
     this.entity.rigidbody.teleport(this.originPos);
-    this.entity.setLocalPosition(this.originLocalPos);
+    //  this.entity.setPosition(this.originLocalPos);
     this.isReturn = true; //check it is returned.
 
     return;
@@ -85,42 +73,55 @@ FloorAttack.prototype.update = function (dt) {
     // move block to right position for acttack.
     // lock the state as 'running' prevent other trigger from other user.
     this.isRunning = true;
-    this.entity.setLocalPosition(this.startLocalPos);
+    this.entity.setPosition(this.attackStartPos);
     this.isMovedToStartPos = true;
 
     return;
   }
+
   if (this.isTriggered && this.isMovedToStartPos && this.isRunning) {
-    //If it is triggered, setted for attack, and in running state...
-    var currentPosition = this.entity.getLocalPosition();
+    // If it is triggered, set for attack, and in running state...
+    var currentPosition = this.entity.getPosition();
     var targetPosition = this.targetPos;
 
-    var distance = targetPosition.sub(currentPosition);
+    // Calculate the distance only in the x-axis
+    var distanceX = targetPosition.x - currentPosition.x;
 
-    if (distance.length() > 2) {
-      var speedMultiplier = 2;
-      var direction = distance.normalize();
+    if (Math.abs(distanceX) > 2) {
+      // Use Math.abs for absolute value
+      var speedMultiplier = 10;
 
-      var moveDistance = direction.scale(this.speed * dt * speedMultiplier);
+      // Calculate direction only for the x-axis
+      var directionX = distanceX > 0 ? 1 : -1; // Determine the direction on the x-axis
 
-      var newPosition = currentPosition.add(moveDistance);
-      this.entity.setLocalPosition(newPosition);
+      // Scale movement by speed, dt, and direction on the x-axis
+      var moveDistanceX = directionX * this.speed * dt * speedMultiplier;
+
+      // Create a new position vector with the updated x value
+      // Keep y and z positions the same as the current position
+      var newPosition = new pc.Vec3(
+        currentPosition.x + moveDistanceX,
+        currentPosition.y,
+        currentPosition.z
+      );
+      this.entity.setPosition(newPosition);
     } else {
-      //if the distance is short enough, finishe the movement.
+      // If the distance is short enough, finish the movement.
       this.isMoveEnd = true;
     }
   }
 };
 
-FloorAttack.prototype.onCollisionStart = function (hit) {
-  if (hit.other.tags.has("player")) {
-    var otherEntity = hit.other;
-    var forceDirection = new pc.Vec3(10, 10, 10);
-    forceDirection.normalize();
-    var forceMagnitude = 10000000;
-    var force = forceDirection.scale(forceMagnitude);
-    if (otherEntity.rigidbody) {
-      otherEntity.rigidbody.applyForce(force.x, force.y, force.z);
-    }
-  }
-};
+// FloorAttack.prototype.onCollisionStart = function (hit) {
+//   if (hit.other.tags.has("player")) {
+//     console.log("hit!");
+//     var otherEntity = hit.other;
+//     var forceDirection = new pc.Vec3(10, 10, 10);
+//     forceDirection.normalize();
+//     var forceMagnitude = 10000000;
+//     var force = forceDirection.scale(forceMagnitude);
+//     if (otherEntity.rigidbody) {
+//       otherEntity.rigidbody.applyForce(force.x, force.y, force.z);
+//     }
+//   }
+// };

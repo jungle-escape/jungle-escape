@@ -278,6 +278,16 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
   if (hit.other.tags.has("phase4")) {
     this.canJump = true;
   }
+
+  // Push player back in the direction opposite to 'other'.
+  if (hit.other.tags.has("push_error")) {
+    var otherPos = hit.other.getPosition();
+    var playerPos = this.entity.getPosition();
+    var pushDirection = playerPos.clone().sub(otherPos).normalize();
+    pushDirection.y = 0;
+    var movement = pushDirection.scale(150000);
+    this.entity.rigidbody.applyImpulse(movement);
+  }
 };
 
 // Event listener on collision contact
