@@ -117,7 +117,7 @@ FloorAttack.prototype.onCollisionStart = function (hit) {
     var otherEntity = hit.other;
     var forceDirection = new pc.Vec3(10, 10, 10);
     forceDirection.normalize();
-    var forceMagnitude = 600000;
+    var forceMagnitude = 10000000;
     var force = forceDirection.scale(forceMagnitude);
     if (otherEntity.rigidbody) {
       otherEntity.rigidbody.applyForce(force.x, force.y, force.z);
