@@ -67,6 +67,9 @@ PlayerController.prototype.setupVariables = function () {
   // For moving panels
   this.isOnPanel = false;
   this.panelEntity = null;
+
+  // For handling collisions, will be sent to clinet
+  this.entity.collisionTags = [];
 };
 
 PlayerController.prototype.setupEventListeners = function () {
@@ -95,11 +98,13 @@ PlayerController.prototype.setInput = function (sender, data) {
   if (sender !== this.user) return;
   this.clientInput = data.clientInput;
   data.animState.canJump = this.canJump;
+  data.animState.pcReactOn = this.pcReactOn;
+  data.animState.collisionTags = this.entity.collisionTags;
   this.entity.animState = data.animState;
   this.entity.modelRotation = data.modelRotation;
 
   // Check push
-  this.checkPush();
+  this.doPush();
 };
 
 PlayerController.prototype.removeInputHandler = function () {
@@ -107,6 +112,9 @@ PlayerController.prototype.removeInputHandler = function () {
 };
 
 PlayerController.prototype.update = function (dt) {
+  // Reset collision tags
+  this.entity.collisionTags = [];
+
   this.checkCustomTimer(dt);
 
   // Handle user falling
@@ -122,10 +130,6 @@ PlayerController.prototype.update = function (dt) {
 
   // Apply velocity cap(=maxSpeed) to player
   this.clampPlayerVelocity();
-
-  // console.log("this entity : ", this.entity.name);
-  // console.log("move force : ", this.moveForce);
-  // console.log("lv : ", this.entity.rigidbody.linearVelocity);
 };
 
 // Given input from client, move player character in server world
@@ -190,7 +194,7 @@ PlayerController.prototype.handleUserFalling = function () {
       this.entity.rigidbody.teleport(savePoint);
     } else {
       this.entity.setPosition(0, 4, 0);
-      this.entity.rigidbody.teleport(0, 0, 0);
+      this.entity.rigidbody.teleport(0, 4, 0);
     }
     this.entity.rigidbody.linearVelocity =
       this.entity.rigidbody.linearVelocity.set(0, 0, 0);
@@ -238,16 +242,16 @@ PlayerController.prototype.onCollisionStart = function (hit) {
 PlayerController.prototype.checkCollisionStartRules = function (hit) {
   // PC common reaction, play sound and rotate model entity for 1 sec
   if (hit.other.tags.has("pc_reaction")) {
-    this.entity.sound.play("reaction");
     this.entity.rigidbody.applyTorqueImpulse(0, 10000, 0);
     this.pcReactTimer = 0;
     this.pcReactDuration = 1;
     this.pcReactOn = true;
+    this.entity.collisionTags.push("pc_reaction");
   }
 
   // Wrong answer sound
   if (hit.other.tags.has("wrong")) {
-    this.entity.sound.play("wrong");
+    this.entity.collisionTags.push("wrong");
   }
 
   // Make player out of control for 1 sec
@@ -256,6 +260,7 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
     this.pcReactTimer = 0;
     this.pcReactDuration = 1;
     this.pcReactOn = true;
+    this.entity.collisionTags.push("take_control");
   }
 
   // Push player back in the direction opposite to 'other'.
@@ -266,17 +271,24 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
     pushDirection.y = 0;
     var movement = pushDirection.scale(50000);
     this.entity.rigidbody.applyImpulse(movement);
+    this.entity.collisionTags.push("push_opposite");
   }
 
   //
   if (hit.other.tags.has("movingPanel")) {
     this.isOnPanel = true;
     this.panelEntity = hit.other;
+    this.entity.collisionTags.push("movingPanel");
   }
 
-  // Phase 4 temp jump fix
-  if (hit.other.tags.has("phase4")) {
-    this.canJump = true;
+  // Push player back in the direction opposite to 'other'.
+  if (hit.other.tags.has("push_error")) {
+    var otherPos = hit.other.getPosition();
+    var playerPos = this.entity.getPosition();
+    var pushDirection = playerPos.clone().sub(otherPos).normalize();
+    pushDirection.y = 0;
+    var movement = pushDirection.scale(150000);
+    this.entity.rigidbody.applyImpulse(movement);
   }
 };
 
@@ -297,14 +309,6 @@ PlayerController.prototype.onContact = function (hit) {
 };
 
 PlayerController.prototype.checkContactRules = function (hit) {
-  // Example2
-  if (hit.other.tags.has("icy")) {
-    // Set custom damping rules and duration
-    this.dampChanged = true;
-    this.linearDamping = new pc.Vec3(0.9, 0, 0.9);
-    this.dampDuration = 1;
-    this.dampTimer = 0;
-  }
   // x 발판 뒤로튕기기
   if (hit.other.tags.has("x")) {
     this.entity.rigidbody.linearVelocity =
@@ -321,8 +325,8 @@ PlayerController.prototype.onCollisionEnd = function (hit) {
   }
 };
 
-// Event listner on mouse click
-PlayerController.prototype.checkPush = function () {
+// Do push, invoked by client mouse left-click
+PlayerController.prototype.doPush = function () {
   if (this.clientInput.mouse_LEFT) {
     // Cast from player
     var castStart = this.entity.getPosition();
