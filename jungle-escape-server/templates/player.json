@@ -54,12 +54,12 @@
                     {
                       "path": "position",
                       "interpolate": true,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     },
                     {
                       "path": "rotation",
                       "interpolate": true,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     },
                     {
                       "path": "scale",
@@ -69,22 +69,22 @@
                     {
                       "path": "rigidbody.angularVelocity",
                       "interpolate": true,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     },
                     {
                       "path": "rigidbody.linearVelocity",
                       "interpolate": true,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     },
                     {
                       "path": "animState",
                       "interpolate": false,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     },
                     {
                       "path": "modelRotation",
                       "interpolate": false,
-                      "ignoreForOwner": true
+                      "ignoreForOwner": false
                     }
                   ]
                 }
@@ -94,7 +94,7 @@
                 "attributes": {
                   "speed": 12,
                   "jumpForce": 1500,
-                  "moveForce": 500000,
+                  "moveForce": 200000,
                   "maxSpeed": 50,
                   "linearDamping": [0.99, 0, 0.99]
                 }
@@ -895,7 +895,7 @@
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 166025017,
+  "uniqueId": 166036556,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -912,5 +912,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "8b84b953-7ab7-4a73-85fe-5fad714e77e0"
+  "checkpoint_id": "200d8c74-bcbe-4ab9-a3c0-e5e83f3c4d50"
 }
