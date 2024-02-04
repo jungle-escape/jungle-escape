@@ -158,6 +158,9 @@ export default class Room extends pc.EventHandler {
         app.onLibrariesLoaded();
         // update script registry to a global one
         app.scripts = scripts.registry;
+        // Tween.js loader
+        // Refer to: https://github.com/playcanvas/playcanvas-tween
+        app.addTweenManager();
 
         return app;
     }
