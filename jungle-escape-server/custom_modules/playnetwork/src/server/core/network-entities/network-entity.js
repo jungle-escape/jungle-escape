@@ -95,7 +95,9 @@ NetworkEntity.prototype.initialize = function () {
     // Privately added
     animState: () => {
       const value = this.entity.animState;
-      return value;
+      if (value) {
+        return value;
+      }
     },
     modelRotation: () => {
       const value = this.entity.modelRotation;
@@ -105,6 +107,12 @@ NetworkEntity.prototype.initialize = function () {
     },
     bodyType: () => {
       const value = this.entity.bodyType;
+      if (value) {
+        return value;
+      }
+    },
+    collisionTags: () => {
+      const value = this.entity.collisionTags;
       if (value) {
         return value;
       }
