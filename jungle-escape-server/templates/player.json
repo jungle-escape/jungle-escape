@@ -94,7 +94,7 @@
                 "attributes": {
                   "speed": 12,
                   "jumpForce": 1500,
-                  "moveForce": 200000,
+                  "moveForce": 180000,
                   "maxSpeed": 50,
                   "linearDamping": [0.99, 0, 0.99]
                 }
@@ -150,6 +150,17 @@
                 "autoPlay": false,
                 "overlap": false,
                 "asset": 165795525,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
+              },
+              "5": {
+                "name": "cheer",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": false,
+                "asset": 166208945,
                 "startTime": 0,
                 "duration": null,
                 "volume": 1,
@@ -895,7 +906,7 @@
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 166036556,
+  "uniqueId": 166208131,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -912,5 +923,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "200d8c74-bcbe-4ab9-a3c0-e5e83f3c4d50"
+  "checkpoint_id": "20af6fb3-48db-4131-ba7a-93b34cb5d9dd"
 }
