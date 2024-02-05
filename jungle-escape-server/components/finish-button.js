@@ -48,8 +48,6 @@ FinishButton.prototype.onTriggerEnter = async function (entity) {
         return;
     }
 
-    console.log(entity.rigidbody.getPosition());
-
     this.isFinished = true;
 
     this.entity.networkEntity.send('winner', entity.networkEntity.user.id);
