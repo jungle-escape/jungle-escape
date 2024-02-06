@@ -12,6 +12,7 @@ HelloWorld.prototype.initialize = function () {
     this.countdown = 4;
     this.isStarted = false;
     this.elapsedTime = 0;
+    this.isDestroyed = false;
 
     this.entity.on('activation', this.onActivation, this);
 };
@@ -24,6 +25,7 @@ HelloWorld.prototype.swap = function (old) {
     this.countdown = old.countdown;
     this.isStarted = old.isStarted;
     this.elapsedTime = old.elapsedTime;
+    this.isDestroyed = old.isDestroyed;
 
     old.entity.off('activation', old.onActivation, old);
     this.entity.on('activation', this.onActivation, this);
@@ -88,7 +90,7 @@ HelloWorld.prototype.update = function (dt) {
         this.entity.networkEntity.send('time', this.elapsedTime);
 
         var list = [];
-        var pointA = new pc.Vec3(0, 0, -620);
+        var pointA = new pc.Vec3(0, 0, -530);
         for (let [id, networkEntity] of pn.networkEntities) {
             var u = networkEntity;
             if (u.user) {
