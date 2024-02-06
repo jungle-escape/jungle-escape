@@ -102,6 +102,7 @@ PlayerController.prototype.setInput = function (sender, data) {
   data.animState.collisionTags = this.entity.collisionTags;
   this.entity.animState = data.animState;
   this.entity.modelRotation = data.modelRotation;
+  this.view = data.view;
 
   // Check push
   this.doPush();
@@ -135,8 +136,13 @@ PlayerController.prototype.update = function (dt) {
 // Given input from client, move player character in server world
 PlayerController.prototype.handleUserInputMovement = function (dt) {
   // Set player direction with user keyboard input
-  this.direction.x = this.clientInput.key_D - this.clientInput.key_A;
-  this.direction.z = this.clientInput.key_S - this.clientInput.key_W;
+  if (!this.view) {
+    this.direction.x = (this.clientInput.key_D + this.clientInput.key_S) - (this.clientInput.key_W + this.clientInput.key_A);
+    this.direction.z = (this.clientInput.key_A + this.clientInput.key_S) - (this.clientInput.key_W + this.clientInput.key_D);
+  } else {
+    this.direction.x = this.clientInput.key_D - this.clientInput.key_A;
+    this.direction.z = this.clientInput.key_S - this.clientInput.key_W;
+  }
   var moveDirection = new pc.Vec3(this.direction.x, 0, this.direction.z);
   if (moveDirection.lengthSq() > 0) {
     moveDirection.normalize();
@@ -149,6 +155,8 @@ PlayerController.prototype.handleUserInputMovement = function (dt) {
 
   // Apply force for X, Z movement
   var movement = moveDirection.scale(dt * this.moveForce);
+  // var radian = 45 * Math.PI / 180;
+  // 쿼터뷰시 너무 빠르다면 movementForce / radian 해주세요
   this.entity.rigidbody.applyForce(movement);
 
   // Jump
