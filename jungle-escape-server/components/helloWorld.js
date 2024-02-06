@@ -1,8 +1,8 @@
-var HelloWorld = pc.createScript('helloWorld');
+var HelloWorld = pc.createScript("helloWorld");
 
-import pn from '../custom_modules/playnetwork/src/server/index.js';
+import pn from "../custom_modules/playnetwork/src/server/index.js";
 
-HelloWorld.attributes.add('positionYCurve', { type: 'curve' });
+HelloWorld.attributes.add("positionYCurve", { type: "curve" });
 
 HelloWorld.prototype.initialize = function () {
     this.time = 0;
@@ -14,7 +14,7 @@ HelloWorld.prototype.initialize = function () {
     this.elapsedTime = 0;
     this.isDestroyed = false;
 
-    this.entity.on('activation', this.onActivation, this);
+    this.entity.on("activation", this.onActivation, this);
 };
 
 HelloWorld.prototype.swap = function (old) {
@@ -27,29 +27,23 @@ HelloWorld.prototype.swap = function (old) {
     this.elapsedTime = old.elapsedTime;
     this.isDestroyed = old.isDestroyed;
 
-    old.entity.off('activation', old.onActivation, old);
-    this.entity.on('activation', this.onActivation, this);
+    old.entity.off("activation", old.onActivation, old);
+    this.entity.on("activation", this.onActivation, this);
 };
 
 HelloWorld.prototype.onActivation = function (activated) {
     if (activated) {
         this.activations += 1;
-    } else {
-        this.activations -= 1;
     }
     this.activations = pc.math.clamp(this.activations, 0, 2);
 };
 
 HelloWorld.prototype.update = function (dt) {
-    if (this.activations === 1) {
+    if (this.activations === 2) {
         // 두 버튼이 모두 활성화되었을 때 게이트 움직임 처리
-        this.time += dt;
-        if (this.time >= 1 && !this.isCountingDown) {
+        if (!this.isCountingDown) {
             this.isCountingDown = true;
         }
-    } else {
-        // 두 버튼 중 하나라도 비활성화되면 게이트 움직임 처리
-        this.time -= dt;
     }
 
     this.time = pc.math.clamp(this.time, 0, 1);
@@ -58,16 +52,19 @@ HelloWorld.prototype.update = function (dt) {
         if (this.countdownTimer >= 1 && this.countdown > 0) {
             this.countdownTimer = 0;
             this.countdown -= 1;
-            this.entity.networkEntity.send('start', `${this.countdown.toString()}...`);
+            this.entity.networkEntity.send(
+                "start",
+                `${this.countdown.toString()}...`
+            );
 
             if (this.countdown === 0) {
                 this.isCountingDown = false;
-                this.entity.networkEntity.send('start', 'START!!');
-                this.entity.networkEntity.send('falling');
-                this.entity.children.forEach(child1 => {
-                    child1.children.forEach(child2 => {
-                        child2.children.forEach(child3 => {
-                            if (child3.tags.has('falling_platform')) {
+                this.entity.networkEntity.send("start", "START!!");
+                this.entity.networkEntity.send("falling");
+                this.entity.children.forEach((child1) => {
+                    child1.children.forEach((child2) => {
+                        child2.children.forEach((child3) => {
+                            if (child3.tags.has("falling_platform")) {
                                 child3.rigidbody.type = pc.BODYTYPE_DYNAMIC;
 
                                 var force = new pc.Vec3(-50, 0, -25); // Y축 방향으로 10의 힘
@@ -87,23 +84,37 @@ HelloWorld.prototype.update = function (dt) {
 
     if (this.isStarted) {
         this.elapsedTime += dt;
-        this.entity.networkEntity.send('time', this.elapsedTime);
+        this.entity.networkEntity.send("time", this.elapsedTime);
 
         var list = [];
-        var pointA = new pc.Vec3(0, 0, -530);
+        var pointA = new pc.Vec3(0, 0, 0);
         for (let [id, networkEntity] of pn.networkEntities) {
             var u = networkEntity;
             if (u.user) {
-                var pointB = u.rules.position()
+                var pointB = u.rules.position();
                 var distance = pointA.distance(pointB);
                 let info = [distance, `user ${u.user.id}`];
                 list.push(info);
+                u.user.send('pgbar', distance);
             }
         }
         list.sort((a, b) => {
-            return a[0] - b[0];
+            return b[0] - a[0];
         });
-        this.entity.networkEntity.send('rank', list)
+        this.entity.networkEntity.send("rank", list);
         // this.app.room.send('rank', list);
-    };
+
+        // this.app.room.send('rank', list);
+
+        // let userIds = Array.from(pn.users._index.values()).map(user => user.id);
+        //     for (let id of userIds) {
+        //         let userPromise = pn.users.get(id);
+        //         userPromise.then(user => {
+        //             // console.log(user.networkEntity);
+        //             user.send('winner', user.id);
+        //         }).catch(error => {
+        //             console.error("Promise가 거부됐습니다:", error);
+        //         });
+        //     };
+    }
 };
