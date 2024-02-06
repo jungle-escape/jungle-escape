@@ -27,7 +27,7 @@ HelloWorld.prototype.swap = function (old) {
     this.elapsedTime = old.elapsedTime;
     this.isDestroyed = old.isDestroyed;
 
-    this.entity.off('activation', old.onActivation, old);
+    old.entity.off('activation', old.onActivation, old);
     this.entity.on('activation', this.onActivation, this);
 };
 
