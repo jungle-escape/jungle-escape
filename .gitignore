@@ -2,3 +2,6 @@
 node_modules/
 1940848.json
 ssl/
+*.crt
+*.pem
+*.key
