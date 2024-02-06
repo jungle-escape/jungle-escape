@@ -90,7 +90,7 @@ HelloWorld.prototype.update = function (dt) {
         this.entity.networkEntity.send('time', this.elapsedTime);
 
         var list = [];
-        var pointA = new pc.Vec3(0, 0, -530);
+        var pointA = new pc.Vec3(0, 0, 0);
         for (let [id, networkEntity] of pn.networkEntities) {
             var u = networkEntity;
             if (u.user) {
@@ -98,12 +98,25 @@ HelloWorld.prototype.update = function (dt) {
                 var distance = pointA.distance(pointB);
                 let info = [distance, `user ${u.user.id}`];
                 list.push(info);
+                u.user.send('pgbar', distance);
+                // distance = 0 < d < 1100 정도
             }
         }
         list.sort((a, b) => {
-            return a[0] - b[0];
+            return b[0] - a[0];
         });
         this.entity.networkEntity.send('rank', list)
         // this.app.room.send('rank', list);
+
+        // let userIds = Array.from(pn.users._index.values()).map(user => user.id);
+        //     for (let id of userIds) {
+        //         let userPromise = pn.users.get(id);
+        //         userPromise.then(user => {
+        //             // console.log(user.networkEntity);
+        //             user.send('winner', user.id);
+        //         }).catch(error => {
+        //             console.error("Promise가 거부됐습니다:", error);
+        //         });
+        //     };
     };
 };
