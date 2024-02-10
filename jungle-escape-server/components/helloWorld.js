@@ -102,19 +102,17 @@ HelloWorld.prototype.update = function (dt) {
             return b[0] - a[0];
         });
         this.entity.networkEntity.send("rank", list);
-        // this.app.room.send('rank', list);
-
-        // this.app.room.send('rank', list);
-
-        // let userIds = Array.from(pn.users._index.values()).map(user => user.id);
-        //     for (let id of userIds) {
-        //         let userPromise = pn.users.get(id);
-        //         userPromise.then(user => {
-        //             // console.log(user.networkEntity);
-        //             user.send('winner', user.id);
-        //         }).catch(error => {
-        //             console.error("Promise가 거부됐습니다:", error);
-        //         });
-        //     };
     }
+    // this.app.room.send('rank', list);
+
+    // let userIds = Array.from(pn.users._index.values()).map(user => user.id);
+    //     for (let id of userIds) {
+    //         let userPromise = pn.users.get(id);
+    //         userPromise.then(user => {
+    //             // console.log(user.networkEntity);
+    //             user.send('winner', user.id);
+    //         }).catch(error => {
+    //             console.error("Promise가 거부됐습니다:", error);
+    //         });
+    //     };
 };
