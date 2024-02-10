@@ -137,8 +137,14 @@ PlayerController.prototype.update = function (dt) {
 PlayerController.prototype.handleUserInputMovement = function (dt) {
   // Set player direction with user keyboard input
   if (!this.view) {
-    this.direction.x = (this.clientInput.key_D + this.clientInput.key_S) - (this.clientInput.key_W + this.clientInput.key_A);
-    this.direction.z = (this.clientInput.key_A + this.clientInput.key_S) - (this.clientInput.key_W + this.clientInput.key_D);
+    this.direction.x =
+      this.clientInput.key_D +
+      this.clientInput.key_S -
+      (this.clientInput.key_W + this.clientInput.key_A);
+    this.direction.z =
+      this.clientInput.key_A +
+      this.clientInput.key_S -
+      (this.clientInput.key_W + this.clientInput.key_D);
   } else {
     this.direction.x = this.clientInput.key_D - this.clientInput.key_A;
     this.direction.z = this.clientInput.key_S - this.clientInput.key_W;
@@ -206,6 +212,7 @@ PlayerController.prototype.handleUserFalling = function () {
     }
     this.entity.rigidbody.linearVelocity =
       this.entity.rigidbody.linearVelocity.set(0, 0, 0);
+    this.entity.collisionTags.push("fall");
   }
 };
 
@@ -324,14 +331,7 @@ PlayerController.prototype.onContact = function (hit) {
   }
 };
 
-PlayerController.prototype.checkContactRules = function (hit) {
-  // x 발판 뒤로튕기기
-  if (hit.other.tags.has("x")) {
-    this.entity.rigidbody.linearVelocity =
-      this.entity.rigidbody.linearVelocity.set(0, 10, 50);
-    this.canJump = false;
-  }
-};
+PlayerController.prototype.checkContactRules = function (hit) {};
 
 // Event listner on collision end
 PlayerController.prototype.onCollisionEnd = function (hit) {
