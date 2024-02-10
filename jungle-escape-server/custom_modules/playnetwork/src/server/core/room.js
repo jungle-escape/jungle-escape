@@ -194,10 +194,6 @@ export default class Room extends pc.EventHandler {
         try {
             this.app.update(this.dt);
             const state = this.networkEntities.getState();
-            // console.log(`Room ${this.id} entity ${this.networkEntities} state ${state.length}`);
-            // console.log(`entities map: ${this.networkEntities.index}`);
-            // console.dir(state);
-            // console.dir(this.networkEntities.index);
 
             if (state.length) {
                 this.send('_state:update', state);
