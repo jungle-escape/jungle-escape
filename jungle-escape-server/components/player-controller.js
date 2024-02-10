@@ -305,6 +305,14 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
     var movement = pushDirection.scale(150000);
     this.entity.rigidbody.applyImpulse(movement);
   }
+
+  if (hit.other.tags.has("segfault")) {
+    this.entity.collisionTags.push("segfault");
+  }
+
+  if (hit.other.tags.has("rightanswer")) {
+    this.entity.collisionTags.push("rightanswer");
+  }
 };
 
 // Event listener on collision contact

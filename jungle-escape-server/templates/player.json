@@ -6,7 +6,9 @@
     "entities": {
       "c66a84df-2d99-411e-8bee-bb105ba7277c": {
         "name": "New Entity",
-        "tags": ["player"],
+        "tags": [
+          "player"
+        ],
         "enabled": true,
         "resource_id": "c66a84df-2d99-411e-8bee-bb105ba7277c",
         "parent": null,
@@ -14,21 +16,45 @@
           "c60933ed-e6ea-4f83-b08f-172f1d16dde2",
           "cf99e4f2-1fd9-41e7-8f39-337d6e6d464f"
         ],
-        "position": [0, 0, 0],
-        "rotation": [0, 0, 0],
-        "scale": [2, 2, 2],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          2,
+          2,
+          2
+        ],
         "components": {
           "collision": {
             "enabled": true,
             "type": "capsule",
-            "halfExtents": [0.5, 0.5, 0.5],
+            "halfExtents": [
+              0.5,
+              0.5,
+              0.5
+            ],
             "radius": 1,
             "axis": 1,
             "height": 6,
             "asset": null,
             "renderAsset": null,
-            "linearOffset": [0, 0, 0],
-            "angularOffset": [0, 0, 0]
+            "linearOffset": [
+              0,
+              0,
+              0
+            ],
+            "angularOffset": [
+              0,
+              0,
+              0
+            ]
           },
           "rigidbody": {
             "enabled": true,
@@ -36,14 +62,25 @@
             "mass": 110,
             "linearDamping": 0,
             "angularDamping": 0.5,
-            "linearFactor": [1, 1, 1],
-            "angularFactor": [0, 0.5, 0],
+            "linearFactor": [
+              1,
+              1,
+              1
+            ],
+            "angularFactor": [
+              0,
+              0.5,
+              0
+            ],
             "friction": 0,
             "restitution": 0.25
           },
           "script": {
             "enabled": true,
-            "order": ["networkEntity", "playerController"],
+            "order": [
+              "networkEntity",
+              "playerController"
+            ],
             "scripts": {
               "networkEntity": {
                 "enabled": true,
@@ -96,7 +133,11 @@
                   "jumpForce": 1500,
                   "moveForce": 180000,
                   "maxSpeed": 50,
-                  "linearDamping": [0.99, 0, 0.99]
+                  "linearDamping": [
+                    0.99,
+                    0,
+                    0.99
+                  ]
                 }
               }
             }
@@ -165,6 +206,28 @@
                 "duration": null,
                 "volume": 1,
                 "pitch": 1
+              },
+              "6": {
+                "name": "segfault",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": true,
+                "asset": 166544585,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
+              },
+              "7": {
+                "name": "rightanswer",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": true,
+                "asset": 167065737,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
               }
             }
           }
@@ -177,9 +240,21 @@
           "91dac55c-dae5-48c2-a40e-5bbcaa9030a9",
           "d468f890-0c70-4359-8fd7-6fca7aa1489b"
         ],
-        "position": [0, -1.5, 0],
-        "rotation": [0, 0, 0],
-        "scale": [0.03, 0.03, 0.03],
+        "position": [
+          0,
+          -1.5,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.03,
+          0.03,
+          0.03
+        ],
         "resource_id": "c60933ed-e6ea-4f83-b08f-172f1d16dde2",
         "name": "Playbot",
         "components": {
@@ -262,10 +337,24 @@
       "91dac55c-dae5-48c2-a40e-5bbcaa9030a9": {
         "enabled": true,
         "tags": [],
-        "children": ["95c4b173-1151-4fe5-8681-64cc4287274f"],
-        "position": [0, 25.75, -1.459],
-        "rotation": [-90, -110.675, 0],
-        "scale": [1, 1, 1],
+        "children": [
+          "95c4b173-1151-4fe5-8681-64cc4287274f"
+        ],
+        "position": [
+          0,
+          25.75,
+          -1.459
+        ],
+        "rotation": [
+          -90,
+          -110.675,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "91dac55c-dae5-48c2-a40e-5bbcaa9030a9",
         "name": "PB",
         "components": {},
@@ -274,10 +363,24 @@
       "95c4b173-1151-4fe5-8681-64cc4287274f": {
         "enabled": true,
         "tags": [],
-        "children": ["6edac0e2-aaea-42f7-8421-76d67e883257"],
-        "position": [0, 0, 0],
-        "rotation": [-89.9989, -85, -0.00099184],
-        "scale": [1, 1, 1],
+        "children": [
+          "6edac0e2-aaea-42f7-8421-76d67e883257"
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          -89.9989,
+          -85,
+          -0.00099184
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "95c4b173-1151-4fe5-8681-64cc4287274f",
         "name": "PB Pelvis",
         "components": {},
@@ -291,9 +394,21 @@
           "132ca7e0-97bd-4d40-a003-bb325fccf597",
           "92fbd140-d2e2-4252-8a9c-bbc7ee4a37e3"
         ],
-        "position": [3.02832, -0.270863, 0.00194466],
-        "rotation": [-18.1612, -3.21846, -9.10051],
-        "scale": [1, 1, 1],
+        "position": [
+          3.02832,
+          -0.270863,
+          0.00194466
+        ],
+        "rotation": [
+          -18.1612,
+          -3.21846,
+          -9.10051
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "6edac0e2-aaea-42f7-8421-76d67e883257",
         "name": "PB Spine",
         "components": {},
@@ -302,10 +417,24 @@
       "8f2eb01b-308f-4bf7-a97d-26aa9a6f8d3f": {
         "enabled": true,
         "tags": [],
-        "children": ["6fbc66ca-b467-4faa-a90d-45f86f923047"],
-        "position": [7.82527, -0.00612974, -1.19209e-7],
-        "rotation": [0.000658366, -0.0278937, -10.3717],
-        "scale": [1, 1, 1],
+        "children": [
+          "6fbc66ca-b467-4faa-a90d-45f86f923047"
+        ],
+        "position": [
+          7.82527,
+          -0.00612974,
+          -1.19209e-7
+        ],
+        "rotation": [
+          0.000658366,
+          -0.0278937,
+          -10.3717
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "8f2eb01b-308f-4bf7-a97d-26aa9a6f8d3f",
         "name": "PB Spine1",
         "components": {},
@@ -314,10 +443,24 @@
       "6fbc66ca-b467-4faa-a90d-45f86f923047": {
         "enabled": true,
         "tags": [],
-        "children": ["aea6e514-1759-4566-9063-3e85c32af6b6"],
-        "position": [7.8282, -0.00738955, -4.76837e-7],
-        "rotation": [0.00047751, -0.047904, 13.7341],
-        "scale": [1, 1, 1],
+        "children": [
+          "aea6e514-1759-4566-9063-3e85c32af6b6"
+        ],
+        "position": [
+          7.8282,
+          -0.00738955,
+          -4.76837e-7
+        ],
+        "rotation": [
+          0.00047751,
+          -0.047904,
+          13.7341
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "6fbc66ca-b467-4faa-a90d-45f86f923047",
         "name": "PB Spine2",
         "components": {},
@@ -331,9 +474,21 @@
           "5f28b59f-b326-4906-98d8-e93e7c26f14e",
           "1b9695ba-35ff-4046-b2d3-bce497d89459"
         ],
-        "position": [9.55816, -0.0109079, 0.0000025034],
-        "rotation": [-0.0161062, -10.0001, 29.0013],
-        "scale": [1, 1, 1],
+        "position": [
+          9.55816,
+          -0.0109079,
+          0.0000025034
+        ],
+        "rotation": [
+          -0.0161062,
+          -10.0001,
+          29.0013
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "aea6e514-1759-4566-9063-3e85c32af6b6",
         "name": "PB Neck",
         "components": {},
@@ -342,10 +497,24 @@
       "41cc1976-277c-482e-9813-8196d6cee3fa": {
         "enabled": true,
         "tags": [],
-        "children": ["1e3260eb-0502-4c59-b219-37e1e34df203"],
-        "position": [15.5683, 3.00888, 0],
-        "rotation": [33.789, 7.32777, -23.4617],
-        "scale": [1, 1, 1],
+        "children": [
+          "1e3260eb-0502-4c59-b219-37e1e34df203"
+        ],
+        "position": [
+          15.5683,
+          3.00888,
+          0
+        ],
+        "rotation": [
+          33.789,
+          7.32777,
+          -23.4617
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "41cc1976-277c-482e-9813-8196d6cee3fa",
         "name": "PB Head",
         "components": {},
@@ -355,9 +524,21 @@
         "enabled": true,
         "tags": [],
         "children": [],
-        "position": [35.2355, -4.76837e-7, -2.38419e-7],
-        "rotation": [1.33402e-8, -2.66804e-8, 0],
-        "scale": [1, 1, 1],
+        "position": [
+          35.2355,
+          -4.76837e-7,
+          -2.38419e-7
+        ],
+        "rotation": [
+          1.33402e-8,
+          -2.66804e-8,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "1e3260eb-0502-4c59-b219-37e1e34df203",
         "name": "PB HeadNub",
         "components": {},
@@ -366,10 +547,24 @@
       "5f28b59f-b326-4906-98d8-e93e7c26f14e": {
         "enabled": true,
         "tags": [],
-        "children": ["5057c654-eb0a-4859-9e80-ab55362d6e39"],
-        "position": [0.160713, 0.0122128, 0.911441],
-        "rotation": [153.789, -79.0077, -2.88161],
-        "scale": [1, 1, 1],
+        "children": [
+          "5057c654-eb0a-4859-9e80-ab55362d6e39"
+        ],
+        "position": [
+          0.160713,
+          0.0122128,
+          0.911441
+        ],
+        "rotation": [
+          153.789,
+          -79.0077,
+          -2.88161
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "5f28b59f-b326-4906-98d8-e93e7c26f14e",
         "name": "PB L Clavicle",
         "components": {},
@@ -378,10 +573,24 @@
       "5057c654-eb0a-4859-9e80-ab55362d6e39": {
         "enabled": true,
         "tags": [],
-        "children": ["c1bee63e-037b-4c1e-a592-b00de4a03648"],
-        "position": [19.923, -2.38419e-7, 0],
-        "rotation": [4.64869, 70.7292, 6.88216],
-        "scale": [1, 1, 1],
+        "children": [
+          "c1bee63e-037b-4c1e-a592-b00de4a03648"
+        ],
+        "position": [
+          19.923,
+          -2.38419e-7,
+          0
+        ],
+        "rotation": [
+          4.64869,
+          70.7292,
+          6.88216
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "5057c654-eb0a-4859-9e80-ab55362d6e39",
         "name": "PB L UpperArm",
         "components": {},
@@ -390,10 +599,24 @@
       "c1bee63e-037b-4c1e-a592-b00de4a03648": {
         "enabled": true,
         "tags": [],
-        "children": ["a4c5f6b2-c97c-4837-b640-030c570aa797"],
-        "position": [13.8063, -2.38419e-7, 0],
-        "rotation": [0.00000128066, 0, -19.036],
-        "scale": [1, 1, 1],
+        "children": [
+          "a4c5f6b2-c97c-4837-b640-030c570aa797"
+        ],
+        "position": [
+          13.8063,
+          -2.38419e-7,
+          0
+        ],
+        "rotation": [
+          0.00000128066,
+          0,
+          -19.036
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "c1bee63e-037b-4c1e-a592-b00de4a03648",
         "name": "PB L Forearm",
         "components": {},
@@ -407,9 +630,21 @@
           "2b9bedb9-71da-4f1d-be2e-d8878f566766",
           "85f9c1c2-ec92-40f7-b9a5-63536914d476"
         ],
-        "position": [3.79202, 9.53674e-7, 0],
-        "rotation": [-82.1581, 2.27352, -5.61804],
-        "scale": [1, 1, 1],
+        "position": [
+          3.79202,
+          9.53674e-7,
+          0
+        ],
+        "rotation": [
+          -82.1581,
+          2.27352,
+          -5.61804
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "a4c5f6b2-c97c-4837-b640-030c570aa797",
         "name": "PB L Hand",
         "components": {},
@@ -418,10 +653,24 @@
       "66f5818b-cd76-46ab-b9ce-5b84011f56d4": {
         "enabled": true,
         "tags": [],
-        "children": ["4d5636c3-db8e-4b0e-b028-e514dfc4b408"],
-        "position": [13.057, -0.216808, -5.92829],
-        "rotation": [43.4304, 46.1157, 13.3111],
-        "scale": [1, 1, 1],
+        "children": [
+          "4d5636c3-db8e-4b0e-b028-e514dfc4b408"
+        ],
+        "position": [
+          13.057,
+          -0.216808,
+          -5.92829
+        ],
+        "rotation": [
+          43.4304,
+          46.1157,
+          13.3111
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "66f5818b-cd76-46ab-b9ce-5b84011f56d4",
         "name": "PB L Finger0",
         "components": {},
@@ -430,10 +679,24 @@
       "4d5636c3-db8e-4b0e-b028-e514dfc4b408": {
         "enabled": true,
         "tags": [],
-        "children": ["3fcc6913-2b99-4d34-ac7b-3ee45e19633e"],
-        "position": [4.2558, 0, 0.00000190735],
-        "rotation": [0, 0.00000170755, 47.5],
-        "scale": [1, 1, 1],
+        "children": [
+          "3fcc6913-2b99-4d34-ac7b-3ee45e19633e"
+        ],
+        "position": [
+          4.2558,
+          0,
+          0.00000190735
+        ],
+        "rotation": [
+          0,
+          0.00000170755,
+          47.5
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "4d5636c3-db8e-4b0e-b028-e514dfc4b408",
         "name": "PB L Finger01",
         "components": {},
@@ -443,9 +706,21 @@
         "enabled": true,
         "tags": [],
         "children": [],
-        "position": [3.64372, 0, -9.53674e-7],
-        "rotation": [0, 0.00000341509, 0],
-        "scale": [1, 1, 1],
+        "position": [
+          3.64372,
+          0,
+          -9.53674e-7
+        ],
+        "rotation": [
+          0,
+          0.00000341509,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "3fcc6913-2b99-4d34-ac7b-3ee45e19633e",
         "name": "PB L Finger0Nub",
         "components": {},
@@ -454,10 +729,24 @@
       "2b9bedb9-71da-4f1d-be2e-d8878f566766": {
         "enabled": true,
         "tags": [],
-        "children": ["abe6d268-f2ba-46d9-b9b9-ed9bdde2e092"],
-        "position": [15.3884, -0.000892639, -1.12594],
-        "rotation": [1.11611, 8.17566, 8.11536],
-        "scale": [1, 1, 1],
+        "children": [
+          "abe6d268-f2ba-46d9-b9b9-ed9bdde2e092"
+        ],
+        "position": [
+          15.3884,
+          -0.000892639,
+          -1.12594
+        ],
+        "rotation": [
+          1.11611,
+          8.17566,
+          8.11536
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "2b9bedb9-71da-4f1d-be2e-d8878f566766",
         "name": "PB L Finger1",
         "components": {},
@@ -466,10 +755,24 @@
       "abe6d268-f2ba-46d9-b9b9-ed9bdde2e092": {
         "enabled": true,
         "tags": [],
-        "children": ["650d2ef1-abac-4317-9244-831d9da82508"],
-        "position": [5.0402, 0.0000038147, 0.0000038147],
-        "rotation": [-1.90065, 0.433427, 19.5475],
-        "scale": [1, 1, 1],
+        "children": [
+          "650d2ef1-abac-4317-9244-831d9da82508"
+        ],
+        "position": [
+          5.0402,
+          0.0000038147,
+          0.0000038147
+        ],
+        "rotation": [
+          -1.90065,
+          0.433427,
+          19.5475
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "abe6d268-f2ba-46d9-b9b9-ed9bdde2e092",
         "name": "PB L Finger11",
         "components": {},
@@ -479,9 +782,21 @@
         "enabled": true,
         "tags": [],
         "children": [],
-        "position": [5.09776, 0.00000190735, -9.53674e-7],
-        "rotation": [-0.00000128066, 0.00000170755, 0],
-        "scale": [1, 1, 1],
+        "position": [
+          5.09776,
+          0.00000190735,
+          -9.53674e-7
+        ],
+        "rotation": [
+          -0.00000128066,
+          0.00000170755,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "650d2ef1-abac-4317-9244-831d9da82508",
         "name": "PB L Finger1Nub",
         "components": {},
@@ -490,10 +805,24 @@
       "85f9c1c2-ec92-40f7-b9a5-63536914d476": {
         "enabled": true,
         "tags": [],
-        "children": ["1b649c3b-71e4-4e60-ac2a-aa28cd7b5851"],
-        "position": [16.097, 0.00286102, 3.59262],
-        "rotation": [-0.0452415, 0.00589616, 7.42308],
-        "scale": [1, 1, 1],
+        "children": [
+          "1b649c3b-71e4-4e60-ac2a-aa28cd7b5851"
+        ],
+        "position": [
+          16.097,
+          0.00286102,
+          3.59262
+        ],
+        "rotation": [
+          -0.0452415,
+          0.00589616,
+          7.42308
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "85f9c1c2-ec92-40f7-b9a5-63536914d476",
         "name": "PB L Finger2",
         "components": {},
@@ -502,10 +831,24 @@
       "1b649c3b-71e4-4e60-ac2a-aa28cd7b5851": {
         "enabled": true,
         "tags": [],
-        "children": ["aa5fcbfb-991f-43fd-b9f6-fe2868e36f2f"],
-        "position": [4.64717, 0, -4.76837e-7],
-        "rotation": [-1.68678, 0.309541, 19.8055],
-        "scale": [1, 1, 1],
+        "children": [
+          "aa5fcbfb-991f-43fd-b9f6-fe2868e36f2f"
+        ],
+        "position": [
+          4.64717,
+          0,
+          -4.76837e-7
+        ],
+        "rotation": [
+          -1.68678,
+          0.309541,
+          19.8055
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "1b649c3b-71e4-4e60-ac2a-aa28cd7b5851",
         "name": "PB L Finger21",
         "components": {},
@@ -515,9 +858,21 @@
         "enabled": true,
         "tags": [],
         "children": [],
-        "position": [4.82355, -0.00000190735, -4.76837e-7],
-        "rotation": [0.00000341509, 0, -8.53774e-7],
-        "scale": [1, 1, 1],
+        "position": [
+          4.82355,
+          -0.00000190735,
+          -4.76837e-7
+        ],
+        "rotation": [
+          0.00000341509,
+          0,
+          -8.53774e-7
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "aa5fcbfb-991f-43fd-b9f6-fe2868e36f2f",
         "name": "PB L Finger2Nub",
         "components": {},
@@ -526,10 +881,24 @@
       "1b9695ba-35ff-4046-b2d3-bce497d89459": {
         "enabled": true,
         "tags": [],
-        "children": ["1504e93b-8201-4f33-aca1-2d3719902054"],
-        "position": [-0.160706, 0.0127296, -0.91144],
-        "rotation": [31.8742, 80.4826, -177.127],
-        "scale": [1, 1, 1],
+        "children": [
+          "1504e93b-8201-4f33-aca1-2d3719902054"
+        ],
+        "position": [
+          -0.160706,
+          0.0127296,
+          -0.91144
+        ],
+        "rotation": [
+          31.8742,
+          80.4826,
+          -177.127
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "1b9695ba-35ff-4046-b2d3-bce497d89459",
         "name": "PB R Clavicle",
         "components": {},
@@ -538,10 +907,24 @@
       "1504e93b-8201-4f33-aca1-2d3719902054": {
         "enabled": true,
         "tags": [],
-        "children": ["f02fd808-b06e-4356-9ca9-e2cf753b73f8"],
-        "position": [19.923, 0.00000143051, -0.0000038147],
-        "rotation": [-24.7403, -76.3177, 26.2194],
-        "scale": [1, 1, 1],
+        "children": [
+          "f02fd808-b06e-4356-9ca9-e2cf753b73f8"
+        ],
+        "position": [
+          19.923,
+          0.00000143051,
+          -0.0000038147
+        ],
+        "rotation": [
+          -24.7403,
+          -76.3177,
+          26.2194
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "1504e93b-8201-4f33-aca1-2d3719902054",
         "name": "PB R UpperArm",
         "components": {},
@@ -550,10 +933,24 @@
       "f02fd808-b06e-4356-9ca9-e2cf753b73f8": {
         "enabled": true,
         "tags": [],
-        "children": ["674be71e-f2e0-4587-80bf-1d62591f640c"],
-        "position": [13.8063, -0.00000190735, 0],
-        "rotation": [8.53774e-7, 0.00000597642, -26.0375],
-        "scale": [1, 1, 1],
+        "children": [
+          "674be71e-f2e0-4587-80bf-1d62591f640c"
+        ],
+        "position": [
+          13.8063,
+          -0.00000190735,
+          0
+        ],
+        "rotation": [
+          8.53774e-7,
+          0.00000597642,
+          -26.0375
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "f02fd808-b06e-4356-9ca9-e2cf753b73f8",
         "name": "PB R Forearm",
         "components": {},
@@ -567,9 +964,21 @@
           "39ddf3b5-e07a-496f-ab0a-08ca23923d14",
           "a6c7decc-37e2-47c8-a782-1ed0bc917a99"
         ],
-        "position": [3.79202, 0.00000190735, 0],
-        "rotation": [74.1045, 3.12393, 4.15544],
-        "scale": [1, 1, 1],
+        "position": [
+          3.79202,
+          0.00000190735,
+          0
+        ],
+        "rotation": [
+          74.1045,
+          3.12393,
+          4.15544
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "674be71e-f2e0-4587-80bf-1d62591f640c",
         "name": "PB R Hand",
         "components": {},
@@ -578,10 +987,24 @@
       "e087b67d-e06f-4a18-bf14-d59eb7b777d2": {
         "enabled": true,
         "tags": [],
-        "children": ["0565c2bd-ff02-45d1-9a4c-0f4c64840bb7"],
-        "position": [13.057, -0.216808, 5.92828],
-        "rotation": [-43.4245, -46.1087, 13.3018],
-        "scale": [1, 1, 1],
+        "children": [
+          "0565c2bd-ff02-45d1-9a4c-0f4c64840bb7"
+        ],
+        "position": [
+          13.057,
+          -0.216808,
+          5.92828
+        ],
+        "rotation": [
+          -43.4245,
+          -46.1087,
+          13.3018
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "e087b67d-e06f-4a18-bf14-d59eb7b777d2",
         "name": "PB R Finger0",
         "components": {},
@@ -590,10 +1013,24 @@
       "0565c2bd-ff02-45d1-9a4c-0f4c64840bb7": {
         "enabled": true,
         "tags": [],
-        "children": ["f9ba3490-0b81-4003-9771-e67ebccf437b"],
-        "position": [4.2558, 0, 9.53674e-7],
-        "rotation": [0.00000128066, 0.00000170755, 47],
-        "scale": [1, 1, 1],
+        "children": [
+          "f9ba3490-0b81-4003-9771-e67ebccf437b"
+        ],
+        "position": [
+          4.2558,
+          0,
+          9.53674e-7
+        ],
+        "rotation": [
+          0.00000128066,
+          0.00000170755,
+          47
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "0565c2bd-ff02-45d1-9a4c-0f4c64840bb7",
         "name": "PB R Finger01",
         "components": {},
@@ -603,9 +1040,21 @@
         "enabled": true,
         "tags": [],
         "children": [],
-        "position": [3.64371, 0, -9.53674e-7],
-        "rotation": [-0.00000277476, 0.00000170755, 180],
-        "scale": [-1, -1, -1],
+        "position": [
+          3.64371,
+          0,
+          -9.53674e-7
+        ],
+        "rotation": [
+          -0.00000277476,
+          0.00000170755,
+          180
+        ],
+        "scale": [
+          -1,
+          -1,
+          -1
+        ],
         "resource_id": "f9ba3490-0b81-4003-9771-e67ebccf437b",
         "name": "PB R Finger0Nub",
         "components": {},
@@ -614,10 +1063,24 @@
       "39ddf3b5-e07a-496f-ab0a-08ca23923d14": {
         "enabled": true,
         "tags": [],
-        "children": ["d18102eb-9f49-48b2-8e76-e84fa4a44df7"],
-        "position": [15.3884, -0.000900269, 1.12594],
-        "rotation": [-1.11611, -8.17565, 8.11536],
-        "scale": [1, 1, 1],
+        "children": [
+          "d18102eb-9f49-48b2-8e76-e84fa4a44df7"
+        ],
+        "position": [
+          15.3884,
+          -0.000900269,
+          1.12594
+        ],
+        "rotation": [
+          -1.11611,
+          -8.17565,
+          8.11536
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "39ddf3b5-e07a-496f-ab0a-08ca23923d14",
         "name": "PB R Finger1",
         "components": {},
@@ -626,10 +1089,24 @@
       "d18102eb-9f49-48b2-8e76-e84fa4a44df7": {
         "enabled": true,
         "tags": [],
-        "children": ["cc844648-4613-4077-90d7-7468438ccb7b"],
-        "position": [5.0402, 0, -0.0000038147],
-        "rotation": [0.00777756, 0.0118811, 17.9924],
-        "scale": [1, 1, 1],
+        "children": [
+          "cc844648-4613-4077-90d7-7468438ccb7b"
+        ],
+        "position": [
+          5.0402,
+          0,
+          -0.0000038147
+        ],
+        "rotation": [
+          0.00777756,
+          0.0118811,
+          17.9924
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "d18102eb-9f49-48b2-8e76-e84fa4a44df7",
         "name": "PB R Finger11",
         "components": {},
@@ -639,9 +1116,21 @@
         "enabled": true,
         "tags": [],
         "children": [],
-        "position": [5.09776, -0.0000038147, 0.00000143051],
-        "rotation": [0, 0, -180],
-        "scale": [-1, -1, -1],
+        "position": [
+          5.09776,
+          -0.0000038147,
+          0.00000143051
+        ],
+        "rotation": [
+          0,
+          0,
+          -180
+        ],
+        "scale": [
+          -1,
+          -1,
+          -1
+        ],
         "resource_id": "cc844648-4613-4077-90d7-7468438ccb7b",
         "name": "PB R Finger1Nub",
         "components": {},
@@ -650,10 +1139,24 @@
       "a6c7decc-37e2-47c8-a782-1ed0bc917a99": {
         "enabled": true,
         "tags": [],
-        "children": ["8b1c5332-47d1-4d12-8fda-ae3ca33a0e2e"],
-        "position": [16.097, 0.00286102, -3.59261],
-        "rotation": [0.0452404, -0.00589531, 7.42308],
-        "scale": [1, 1, 1],
+        "children": [
+          "8b1c5332-47d1-4d12-8fda-ae3ca33a0e2e"
+        ],
+        "position": [
+          16.097,
+          0.00286102,
+          -3.59261
+        ],
+        "rotation": [
+          0.0452404,
+          -0.00589531,
+          7.42308
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "a6c7decc-37e2-47c8-a782-1ed0bc917a99",
         "name": "PB R Finger2",
         "components": {},
@@ -662,10 +1165,24 @@
       "8b1c5332-47d1-4d12-8fda-ae3ca33a0e2e": {
         "enabled": true,
         "tags": [],
-        "children": ["e60c5bbf-7461-4189-91de-9ef0c5d70617"],
-        "position": [4.64717, 0, -0.00000190735],
-        "rotation": [0.0086277, 0.0115191, 17.9927],
-        "scale": [1, 1, 1],
+        "children": [
+          "e60c5bbf-7461-4189-91de-9ef0c5d70617"
+        ],
+        "position": [
+          4.64717,
+          0,
+          -0.00000190735
+        ],
+        "rotation": [
+          0.0086277,
+          0.0115191,
+          17.9927
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "8b1c5332-47d1-4d12-8fda-ae3ca33a0e2e",
         "name": "PB R Finger21",
         "components": {},
@@ -675,9 +1192,21 @@
         "enabled": true,
         "tags": [],
         "children": [],
-        "position": [4.82354, 0.0000038147, -4.76837e-7],
-        "rotation": [1.60083e-7, 0, -180],
-        "scale": [-1, -1, -1],
+        "position": [
+          4.82354,
+          0.0000038147,
+          -4.76837e-7
+        ],
+        "rotation": [
+          1.60083e-7,
+          0,
+          -180
+        ],
+        "scale": [
+          -1,
+          -1,
+          -1
+        ],
         "resource_id": "e60c5bbf-7461-4189-91de-9ef0c5d70617",
         "name": "PB R Finger2Nub",
         "components": {},
@@ -686,10 +1215,24 @@
       "132ca7e0-97bd-4d40-a003-bb325fccf597": {
         "enabled": true,
         "tags": [],
-        "children": ["ddf41674-9b8e-4f68-9ecc-3245828a53c8"],
-        "position": [-2.57542, -2.76419, 7.74794],
-        "rotation": [153.388, -22.8623, 162.929],
-        "scale": [1, 1, 1],
+        "children": [
+          "ddf41674-9b8e-4f68-9ecc-3245828a53c8"
+        ],
+        "position": [
+          -2.57542,
+          -2.76419,
+          7.74794
+        ],
+        "rotation": [
+          153.388,
+          -22.8623,
+          162.929
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "132ca7e0-97bd-4d40-a003-bb325fccf597",
         "name": "PB L Thigh",
         "components": {},
@@ -698,10 +1241,24 @@
       "ddf41674-9b8e-4f68-9ecc-3245828a53c8": {
         "enabled": true,
         "tags": [],
-        "children": ["2465b0bd-df78-4eaf-a04b-853926646e91"],
-        "position": [10.6618, 9.53674e-7, -9.53674e-7],
-        "rotation": [-0.00000181427, -8.53774e-7, -37.8845],
-        "scale": [1, 1, 1],
+        "children": [
+          "2465b0bd-df78-4eaf-a04b-853926646e91"
+        ],
+        "position": [
+          10.6618,
+          9.53674e-7,
+          -9.53674e-7
+        ],
+        "rotation": [
+          -0.00000181427,
+          -8.53774e-7,
+          -37.8845
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "ddf41674-9b8e-4f68-9ecc-3245828a53c8",
         "name": "PB L Calf",
         "components": {},
@@ -710,10 +1267,24 @@
       "2465b0bd-df78-4eaf-a04b-853926646e91": {
         "enabled": true,
         "tags": [],
-        "children": ["bd9a15dc-eb40-45f9-8bbd-d8d8260e7824"],
-        "position": [8.19998, 0, 0.00000190735],
-        "rotation": [-10.6585, -7.4153, 8.76059],
-        "scale": [1, 1, 1],
+        "children": [
+          "bd9a15dc-eb40-45f9-8bbd-d8d8260e7824"
+        ],
+        "position": [
+          8.19998,
+          0,
+          0.00000190735
+        ],
+        "rotation": [
+          -10.6585,
+          -7.4153,
+          8.76059
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "2465b0bd-df78-4eaf-a04b-853926646e91",
         "name": "PB L Foot",
         "components": {},
@@ -722,10 +1293,24 @@
       "bd9a15dc-eb40-45f9-8bbd-d8d8260e7824": {
         "enabled": true,
         "tags": [],
-        "children": ["579e2930-1155-4435-b7b4-350e222397c1"],
-        "position": [3.04093, 3.91354, 9.53674e-7],
-        "rotation": [0, 8.00427e-8, 90],
-        "scale": [1, 1, 1],
+        "children": [
+          "579e2930-1155-4435-b7b4-350e222397c1"
+        ],
+        "position": [
+          3.04093,
+          3.91354,
+          9.53674e-7
+        ],
+        "rotation": [
+          0,
+          8.00427e-8,
+          90
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "bd9a15dc-eb40-45f9-8bbd-d8d8260e7824",
         "name": "PB L Toe0",
         "components": {},
@@ -735,9 +1320,21 @@
         "enabled": true,
         "tags": [],
         "children": [],
-        "position": [0.396643, 0, 0],
-        "rotation": [0, -8.00427e-8, -180],
-        "scale": [-1, -1, -1],
+        "position": [
+          0.396643,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          -8.00427e-8,
+          -180
+        ],
+        "scale": [
+          -1,
+          -1,
+          -1
+        ],
         "resource_id": "579e2930-1155-4435-b7b4-350e222397c1",
         "name": "PB L Toe0Nub",
         "components": {},
@@ -746,10 +1343,24 @@
       "92fbd140-d2e2-4252-8a9c-bbc7ee4a37e3": {
         "enabled": true,
         "tags": [],
-        "children": ["07059195-3e20-4b1d-989c-5e9a2c498f25"],
-        "position": [-3.48131, 2.25727, -7.55989],
-        "rotation": [170.416, 6.54762, 168.501],
-        "scale": [1, 1, 1],
+        "children": [
+          "07059195-3e20-4b1d-989c-5e9a2c498f25"
+        ],
+        "position": [
+          -3.48131,
+          2.25727,
+          -7.55989
+        ],
+        "rotation": [
+          170.416,
+          6.54762,
+          168.501
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "92fbd140-d2e2-4252-8a9c-bbc7ee4a37e3",
         "name": "PB R Thigh",
         "components": {},
@@ -758,10 +1369,24 @@
       "07059195-3e20-4b1d-989c-5e9a2c498f25": {
         "enabled": true,
         "tags": [],
-        "children": ["71f77751-fb89-44f6-99e4-767cda0b604f"],
-        "position": [10.6618, 0, 0.00000190735],
-        "rotation": [-8.53774e-7, -0.00000426887, -43.6565],
-        "scale": [1, 1, 1],
+        "children": [
+          "71f77751-fb89-44f6-99e4-767cda0b604f"
+        ],
+        "position": [
+          10.6618,
+          0,
+          0.00000190735
+        ],
+        "rotation": [
+          -8.53774e-7,
+          -0.00000426887,
+          -43.6565
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "07059195-3e20-4b1d-989c-5e9a2c498f25",
         "name": "PB R Calf",
         "components": {},
@@ -770,10 +1395,24 @@
       "71f77751-fb89-44f6-99e4-767cda0b604f": {
         "enabled": true,
         "tags": [],
-        "children": ["ffc30749-89b7-40b8-8da9-881b87169f26"],
-        "position": [8.19998, 9.53674e-7, -9.53674e-7],
-        "rotation": [6.83804, 9.94169, 27.912],
-        "scale": [1, 1, 1],
+        "children": [
+          "ffc30749-89b7-40b8-8da9-881b87169f26"
+        ],
+        "position": [
+          8.19998,
+          9.53674e-7,
+          -9.53674e-7
+        ],
+        "rotation": [
+          6.83804,
+          9.94169,
+          27.912
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "71f77751-fb89-44f6-99e4-767cda0b604f",
         "name": "PB R Foot",
         "components": {},
@@ -782,10 +1421,24 @@
       "ffc30749-89b7-40b8-8da9-881b87169f26": {
         "enabled": true,
         "tags": [],
-        "children": ["dce5c332-20f3-4e94-b2ba-800dc2adafa2"],
-        "position": [3.04094, 3.91354, -9.53674e-7],
-        "rotation": [-1.06722e-7, 0.00000496089, 90],
-        "scale": [1, 1, 1],
+        "children": [
+          "dce5c332-20f3-4e94-b2ba-800dc2adafa2"
+        ],
+        "position": [
+          3.04094,
+          3.91354,
+          -9.53674e-7
+        ],
+        "rotation": [
+          -1.06722e-7,
+          0.00000496089,
+          90
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "ffc30749-89b7-40b8-8da9-881b87169f26",
         "name": "PB R Toe0",
         "components": {},
@@ -795,9 +1448,21 @@
         "enabled": true,
         "tags": [],
         "children": [],
-        "position": [0.396642, 4.76837e-7, 0],
-        "rotation": [-1.06722e-7, 0.00000496089, 0],
-        "scale": [1, 1, 1],
+        "position": [
+          0.396642,
+          4.76837e-7,
+          0
+        ],
+        "rotation": [
+          -1.06722e-7,
+          0.00000496089,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "dce5c332-20f3-4e94-b2ba-800dc2adafa2",
         "name": "PB R Toe0Nub",
         "components": {},
@@ -808,10 +1473,20 @@
         "tags": [],
         "children": [],
         "position": [
-          -3.4234938084409805e-7, 29.427065039751056, 2.1845423695922364
+          -3.4234938084409805e-7,
+          29.427065039751056,
+          2.1845423695922364
         ],
-        "rotation": [-90, 0, 0],
-        "scale": [1, 1, 1],
+        "rotation": [
+          -90,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
         "resource_id": "d468f890-0c70-4359-8fd7-6fca7aa1489b",
         "name": "Playbot_R",
         "components": {
@@ -819,8 +1494,15 @@
             "enabled": true,
             "type": "asset",
             "asset": 165184680,
-            "materialAssets": [165184677, 165184689, 165184683, 165184682],
-            "layers": [0],
+            "materialAssets": [
+              165184677,
+              165184689,
+              165184683,
+              165184682
+            ],
+            "layers": [
+              0
+            ],
             "batchGroupId": null,
             "castShadows": true,
             "castShadowsLightmap": true,
@@ -843,15 +1525,35 @@
         "resource_id": "cf99e4f2-1fd9-41e7-8f39-337d6e6d464f",
         "parent": "c66a84df-2d99-411e-8bee-bb105ba7277c",
         "children": [],
-        "position": [0, 2, 0],
-        "rotation": [0, 0, 0],
-        "scale": [0.05, 0.05, 0.05],
+        "position": [
+          0,
+          2,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          0.05,
+          0.05,
+          0.05
+        ],
         "components": {
           "element": {
             "enabled": true,
             "type": "text",
-            "anchor": [0.5, 0.5, 0.5, 0.5],
-            "pivot": [0.5, 0.5],
+            "anchor": [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "pivot": [
+              0.5,
+              0.5
+            ],
             "text": "TEST",
             "key": null,
             "fontAsset": 166192742,
@@ -864,7 +1566,11 @@
             "lineHeight": 32,
             "wrapLines": true,
             "spacing": 1,
-            "color": [1, 1, 1],
+            "color": [
+              1,
+              1,
+              1
+            ],
             "opacity": 1,
             "textureAsset": null,
             "spriteAsset": null,
@@ -872,13 +1578,39 @@
             "pixelsPerUnit": null,
             "width": 68.608,
             "height": 32,
-            "margin": [-34.304, -14.528, -34.304, -18.528],
-            "alignment": [0.5, 0.5],
-            "outlineColor": [0, 0, 0, 1],
+            "margin": [
+              -34.304,
+              -14.528,
+              -34.304,
+              -18.528
+            ],
+            "alignment": [
+              0.5,
+              0.5
+            ],
+            "outlineColor": [
+              0,
+              0,
+              0,
+              1
+            ],
             "outlineThickness": 0,
-            "shadowColor": [0, 0, 0, 1],
-            "shadowOffset": [0, 0],
-            "rect": [0, 0, 1, 1],
+            "shadowColor": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "shadowOffset": [
+              0,
+              0
+            ],
+            "rect": [
+              0,
+              0,
+              1,
+              1
+            ],
             "materialAsset": null,
             "autoWidth": true,
             "autoHeight": true,
@@ -886,12 +1618,16 @@
             "useInput": false,
             "batchGroupId": null,
             "mask": false,
-            "layers": [4],
+            "layers": [
+              4
+            ],
             "enableMarkup": false
           },
           "script": {
             "enabled": true,
-            "order": ["uiPlayer"],
+            "order": [
+              "uiPlayer"
+            ],
             "scripts": {
               "uiPlayer": {
                 "enabled": true,
@@ -904,7 +1640,9 @@
     }
   },
   "file": null,
-  "path": [165184693],
+  "path": [
+    165184693
+  ],
   "id": 165184745,
   "uniqueId": 166208131,
   "createdAt": "2024-01-27T01:23:51.794Z",
