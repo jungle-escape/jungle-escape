@@ -2,11 +2,11 @@ name: put jungle-escape-server
 
 on:
   workflow_dispatch:
-  push:
-    branches: 
-      - main
-    paths:
-      - 'jungle-escape-server/**'
+  # push:
+  #   branches: 
+  #     - main
+  #   paths:
+  #     - 'jungle-escape-server/**'
 
 env:
   AWS_REGION: ap-northeast-2
