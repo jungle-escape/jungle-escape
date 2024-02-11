@@ -313,6 +313,10 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
   if (hit.other.tags.has("rightanswer")) {
     this.entity.collisionTags.push("rightanswer");
   }
+
+  if (hit.other.tags.has("hammer")) {
+    this.entity.collisionTags.push("hammer");
+  }
 };
 
 // Event listener on collision contact
@@ -331,7 +335,7 @@ PlayerController.prototype.onContact = function (hit) {
   }
 };
 
-PlayerController.prototype.checkContactRules = function (hit) {};
+PlayerController.prototype.checkContactRules = function (hit) { };
 
 // Event listner on collision end
 PlayerController.prototype.onCollisionEnd = function (hit) {

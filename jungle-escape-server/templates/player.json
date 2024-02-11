@@ -228,6 +228,17 @@
                 "duration": null,
                 "volume": 1,
                 "pitch": 1
+              },
+              "8": {
+                "name": "hammer",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": true,
+                "asset": 167088915,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
               }
             }
           }
