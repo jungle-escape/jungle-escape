@@ -155,6 +155,7 @@ NetworkEntity.prototype.initialize = function () {
         this.entity.setLocalScale(data.x, data.y, data.z);
       }
     },
+    // Privately added
     'animState': {
       get: state => {
         return state.animState;
@@ -164,6 +165,9 @@ NetworkEntity.prototype.initialize = function () {
         if (this.entity.tags.has('player')) {
           this.entity.children[0].anim.setBoolean('isRunning', data.isRunning);
           this.entity.children[0].anim.setBoolean('isJumping', data.isJumping);
+          this.entity.canJump = data.canJump;
+          this.entity.pcReactOn = data.pcReactOn;
+          this.entity.collisionTags = data.collisionTags;
         }
       }
     },
@@ -175,6 +179,17 @@ NetworkEntity.prototype.initialize = function () {
         const data = state.modelRotation;
         if (this.entity.tags.has('player')) {
           this.entity.children[0].setEulerAngles(data.x, data.y, data.z);
+        }
+      }
+    },
+    'bodyType': {
+      get: state => {
+        return state.bodyType;
+      },
+      set: state => {
+        const data = state.bodyType;
+        if (this.entity.tags.has('falling_platform')) {
+          this.entity.rigidbody.bodyType = data;
         }
       }
     }

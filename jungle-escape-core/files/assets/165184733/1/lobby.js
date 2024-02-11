@@ -19,7 +19,7 @@ Lobby.prototype.initialize = function () {
 
     const params = new URLSearchParams(window.location.search);
 
-    const host = 'localhost';
+    const host = window._endpoint;
     const port = params.get('port') || '8080';
 
     pn.connect(host, port, false, null, () => {
@@ -33,6 +33,40 @@ Lobby.prototype.initialize = function () {
             room.on('leave', (user) => {
                 LOG.addText(`User ${user.id} left`);
             });
+        });
+
+        // 이벤트 리스너 추가
+        pn.on('countdown', (num) => {
+            ENDLOG.addText(num);
+            // pn.off('rank');
+            // pn.off('time');
+        });
+
+        pn.on('start', (num) => {
+            STARTLOG.addText(num);
+        });
+
+        pn.on('time', (time) => {
+            // ELAPSEDTIME.addText(time.toFixed(1));
+            ELAPSEDTIME.addText(this.convertTime(time.toFixed(1)));
+        });
+
+        pn.on('winner', (winner) => {
+            WINNER.addText(`User ${winner} win!\n\nGAME OVER`);
+        });
+
+        pn.on('pgbar', (dis) => {
+            var runner = PROGRESSBAR.entity.findByName(`runner1`);
+            runner.setLocalPosition(-175 + (dis * (4 / 11)), -5, 0);
+            BAR.setProgress(dis / 1100);
+        });
+
+        pn.on('rank', (list) => {
+            var text = '';
+            list.forEach((item, index) => {
+                text += "[ " + (index + 1) + " ] " + item[1] + '\n';
+            });
+            RANK.addText(text);
         });
 
         pn.on('leave', () => {
@@ -62,3 +96,23 @@ Lobby.prototype.onSaveClick = function () {
         }
     });
 };
+
+
+Lobby.prototype.convertTime = function (timeString) {
+    // timeString은 time.toFixed(1)의 결과인 문자열
+    var time = parseFloat(timeString); // 문자열을 실수로 변환
+    var minutes = Math.floor(time / 60);
+    var seconds = Math.floor(time % 60);
+    var milliseconds = Math.round((time % 1) * 10);
+
+    // 초가 10보다 작을 경우 앞에 '0'을 추가
+    var formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
+    // 밀리초가 10보다 작을 경우 뒤에 '0'을 추가하여 항상 두 자리를 유지하도록 함 
+    var formattedMilliseconds = milliseconds < 10 ? milliseconds + "0" : milliseconds.toString();
+
+    // 변환된 시간을 문자열로 결합
+    var formattedTime = minutes + ":" + formattedSeconds + ":" + formattedMilliseconds;
+
+    return formattedTime;
+
+}
