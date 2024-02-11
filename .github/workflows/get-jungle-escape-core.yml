@@ -1,4 +1,4 @@
-name: Push Playcanvas Project to jungle-escape-core
+name: get jungle-escape-core
 
 on:
   workflow_dispatch:
