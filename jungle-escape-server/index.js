@@ -3,9 +3,8 @@ import "dotenv/config";
 import cors from "cors";
 import path from "path";
 import express from "express";
-// import * as https from 'https';
-
 import * as http from "http";
+// import * as https from 'https';
 // import fs from 'fs';
 import pn from "./custom_modules/playnetwork/src/server/index.js";
 
@@ -21,13 +20,12 @@ app.get("/pn.js", (_, res) => {
 // const cert = fs.readFileSync('./ssl/localhost.crt', 'utf8');
 // const credentials = { key, cert };
 
-// const server = https.createServer(credentials, app);
 const server = http.createServer(app);
 // const server = https.createServer(credentials, app);
 server.listen(8080, "0.0.0.0");
 
 await pn.start({
-  redisUrl: process.env.REDIS_URL,
+  redisUrl: 'redis://localhost:6379',
   scriptsPath: "components",
   templatesPath: "templates",
   server: server,
