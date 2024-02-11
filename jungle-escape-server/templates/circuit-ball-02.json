@@ -1,0 +1,104 @@
+{
+    "name": "circuit-ball-02",
+    "tags": [],
+    "meta": null,
+    "data": {
+        "entities": {
+            "ddea7000-382d-4012-aa6f-f7eccb98fc34": {
+                "name": "circuit-ball-02",
+                "tags": ["circuit-ball"],
+                "enabled": true,
+                "resource_id": "ddea7000-382d-4012-aa6f-f7eccb98fc34",
+                "parent": null,
+                "children": [],
+                "position": [20, 150, -1000],
+                "rotation": [0, -1.27222187272657e-14, 0],
+                "scale": [1, 1, 1],
+                "components": {
+                    "render": {
+                        "enabled": true,
+                        "type": "asset",
+                        "asset": 167001800,
+                        "materialAssets": [167001778],
+                        "layers": [0],
+                        "batchGroupId": null,
+                        "castShadows": true,
+                        "castShadowsLightmap": true,
+                        "receiveShadows": true,
+                        "lightmapped": false,
+                        "lightmapSizeMultiplier": 1,
+                        "castShadowsLightMap": true,
+                        "lightMapped": false,
+                        "lightMapSizeMultiplier": 1,
+                        "isStatic": false,
+                        "rootBone": null
+                    },
+                    "collision": {
+                        "enabled": true,
+                        "type": "sphere",
+                        "halfExtents": [0.5, 0.5, 0.5],
+                        "radius": 8,
+                        "axis": 1,
+                        "height": 2,
+                        "asset": null,
+                        "renderAsset": null,
+                        "linearOffset": [0, 0, 0],
+                        "angularOffset": [0, 0, 0]
+                    },
+                    "rigidbody": {
+                        "enabled": true,
+                        "type": "dynamic",
+                        "mass": 1000,
+                        "linearDamping": 0,
+                        "angularDamping": 0,
+                        "linearFactor": [1, 1, 1],
+                        "angularFactor": [1, 1, 1],
+                        "friction": 0.5,
+                        "restitution": 0.5
+                    },
+                    "script": {
+                        "enabled": true,
+                        "order": ["networkEntity"],
+                        "scripts": {
+                            "networkEntity": {
+                                "enabled": true,
+                                "attributes": {
+                                    "id": "",
+                                    "owner": "",
+                                    "properties": [{
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }, {
+                                        "path": "rotation",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "file": null,
+    "path": [165184693],
+    "id": 167081217,
+    "uniqueId": 167081217,
+    "type": "template",
+    "source": false,
+    "source_asset_id": null,
+    "createdAt": "2024-02-10T17:47:31.931Z",
+    "scope": {
+        "type": "project",
+        "id": 1185257
+    },
+    "user_id": 502250,
+    "revision": 1,
+    "preload": true,
+    "exclude": false,
+    "region": "eu-west-1",
+    "task": null,
+    "i18n": {}
+}
