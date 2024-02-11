@@ -6,8 +6,6 @@ on:
       - main
     paths:
       - 'jungle-escape-server/**'
-    paths-ignore:
-      - '**.md'
 
 env:
   AWS_REGION: ap-northeast-2
