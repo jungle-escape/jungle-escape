@@ -47,7 +47,7 @@ jobs:
         curl -L "${DOWNLOAD_URL}" -o project.zip
         unzip -o project.zip -d temp-project
         rm -rf jungle-escape-core
-        mv temp-project/jungle-escape-core jungle-escape-core
+        mv temp-project jungle-escape-core
         rm -rf temp-project project.zip
 
     - name: Commit and Push Changes
