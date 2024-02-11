@@ -1,4 +1,4 @@
-name: Deploy to Amazon ECS
+name: Deploy jungle-escape-server image to Amazon ECS
 
 on:
   workflow_dispatch:
