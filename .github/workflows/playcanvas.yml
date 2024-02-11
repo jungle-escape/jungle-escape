@@ -1,4 +1,4 @@
-name: Update Project
+name: Push Playcanvas Project to jungle-escape-core
 
 on:
   workflow_dispatch:
@@ -55,8 +55,8 @@ jobs:
 
     - name: Commit and Push Changes
       run: |
-        git config --global user.name 'electronyoon'
-        git config --global user.email 'electronyoon@gmail.com'
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
         git add jungle-escape-core
-        git commit -am "Update jungle-escape-core content via Github Actions"
+        git commit -am "Playcanvas project updated via Github Actions"
         git push
