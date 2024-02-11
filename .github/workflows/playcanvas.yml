@@ -54,5 +54,6 @@ jobs:
       run: |
         git config --global user.name 'electronyoon'
         git config --global user.email 'electronyoon@gmail.com'
-        git commit -m "Update jungle-escape-core content via Github Actions"
+        git add jungle-escape-core
+        git commit -am "Update jungle-escape-core content via Github Actions"
         git push
