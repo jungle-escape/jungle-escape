@@ -48,12 +48,11 @@ jobs:
         unzip -o project.zip -d temp-project
         rm -rf jungle-escape-core
         mv temp-project jungle-escape-core
-        rm -rf temp-project project.zip
+        rm -rf project.zip
 
     - name: Commit and Push Changes
       run: |
         git config --global user.name 'electronyoon'
         git config --global user.email 'electronyoon@gmail.com'
-        git add jungle-escape-core
         git commit -m "Update jungle-escape-core content via Github Actions"
         git push
