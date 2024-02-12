@@ -1,4 +1,4 @@
-name: server to S3
+name: core to S3
 
 on:
   workflow_dispatch:
@@ -67,6 +67,7 @@ jobs:
 
   deploy:
     name: Deploy to S3
+    needs: push
     runs-on: ubuntu-latest
     environment: production
 
