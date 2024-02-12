@@ -41,7 +41,8 @@ jobs:
             
             # Remove old Docker images of the application, keeping only the latest
             docker images electronyoon/jungle-escape -q | grep -v $(docker images electronyoon/jungle-escape:latest -q) | xargs -r docker rmi -f
-            
+            docker images electronyoon/jungle-escape -q | grep -v $(docker images --format "{{.ID}}" electronyoon/jungle-escape:latest) | xargs -r docker rmi -f
+
             # Pull the latest image
             docker pull electronyoon/jungle-escape:latest
             
