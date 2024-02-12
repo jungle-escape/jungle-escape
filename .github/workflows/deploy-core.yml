@@ -87,3 +87,6 @@ jobs:
 
     - name: Sync files to Amazon S3
       run: aws s3 sync ./jungle-escape-core s3://${{ env.S3_BUCKET }}
+
+    - name: Invalidate CloudFront Cache
+      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
