@@ -24,7 +24,7 @@ Lobby.prototype.initialize = function () {
     const port = placeholder === 'DEV'? '8080': null;
     const isSecure = placeholder === 'DEV'? false: true;
 
-    console.info(`Connecting [[[ ${placeholder} ]]] environment...`)
+    console.info(`Connecting to [[[ ${placeholder} ]]] server...`)
     pn.connect(host, port, isSecure, null, () => {
         pn.on('join', (room) => {
             this.entity.enabled = false;
