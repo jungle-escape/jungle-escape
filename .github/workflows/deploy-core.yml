@@ -82,5 +82,8 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
+    - name: Empty S3 Bucket
+      run: aws s3 rm s3://${{ env.S3_BUCKET }} --recursive
+
     - name: Sync files to Amazon S3
-      run: aws s3 sync ./jungle-escape-core s3://${{ env.S3_BUCKET }} --delete
+      run: aws s3 sync ./jungle-escape-core s3://${{ env.S3_BUCKET }}
