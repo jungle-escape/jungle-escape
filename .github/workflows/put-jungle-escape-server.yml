@@ -14,7 +14,7 @@ env:
   ECS_SERVICE: JungleEscapeAlbServerService
   ECS_CLUSTER: JungleEscapeCluster
   ECS_TASK_DEFINITION: task-definition.json
-  CONTAINER_NAME: JungleEscapeAblServerContainer
+  CONTAINER_NAME: JungleEscapeAlbServerContainer
   TASK_DEFINITION_NAME: JungleEscapeAlbServerTask
 
 permissions:
@@ -59,7 +59,7 @@ jobs:
 
     - name: Download task definition
       run: |
-        aws ecs describe-task-definition --task-definition JungleEscapeAlbServerTask --query taskDefinition > task-definition.json
+        aws ecs describe-task-definition --task-definition $TASK_DEFINITION_NAME --query taskDefinition > task-definition.json
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
