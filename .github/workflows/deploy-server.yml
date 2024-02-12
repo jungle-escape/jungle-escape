@@ -1,4 +1,4 @@
-name: build and deploy jungle-escape-server
+name: build and deploy to EC2
 
 on:
   workflow_dispatch:
