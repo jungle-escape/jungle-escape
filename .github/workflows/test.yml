@@ -19,7 +19,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./jungle-escape-server
           push: true
           tags: electronyoon/jungle-escape:latest
 
@@ -36,8 +36,8 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
             # Stop and remove the existing container (if it exists)
-            docker stop my-container || true
-            docker rm my-container || true
+            docker stop jungle-escape-server || true
+            docker rm jungle-escape-server || true
             
             # Remove old Docker images of the application, keeping only the latest
             docker images electronyoon/jungle-escape -q | grep -v $(docker images electronyoon/jungle-escape:latest -q) | xargs -r docker rmi -f
@@ -46,5 +46,5 @@ jobs:
             docker pull electronyoon/jungle-escape:latest
             
             # Run the new container
-            docker run -d --name my-container electronyoon/jungle-escape:latest
+            docker run -d --name jungle-escape-server electronyoon/jungle-escape:latest
           EOF
