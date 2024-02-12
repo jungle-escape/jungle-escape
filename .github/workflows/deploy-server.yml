@@ -1,4 +1,4 @@
-name: build and deploy to EC2
+name: server to EC2
 
 on:
   workflow_dispatch:
