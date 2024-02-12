@@ -17,12 +17,15 @@ Lobby.prototype.initialize = function () {
     this.saveButton.button.on('click', this.onSaveClick, this);
     this.roomIdInputEntity.on('input:confirm', this.join, this);
 
-    const params = new URLSearchParams(window.location.search);
-
+    // const params = new URLSearchParams(window.location.search);
+    
     const host = window._endpoint;
-    const port = params.get('port') || '8080';
+    const placeholder = host === 'localhost'? 'DEV': 'PROD';
+    const port = placeholder === 'DEV'? '8080': null;
+    const isSecure = placeholder === 'DEV'? false: true;
 
-    pn.connect(host, port, false, null, () => {
+    console.info(`Connecting [[[ ${placeholder} ]]] environment...`)
+    pn.connect(host, port, isSecure, null, () => {
         pn.on('join', (room) => {
             this.entity.enabled = false;
 

@@ -18,6 +18,6 @@ window.INPUT_SETTINGS = {
 };
 pc.script.legacy = false;
 window.PRELOAD_MODULES = [
-    {'moduleName' : 'Ammo', 'glueUrl' : 'files/assets/165184728/1/ammo.wasm.js', 'wasmUrl' : 'files/assets/165184725/1/ammo.wasm.wasm', 'fallbackUrl' : 'files/assets/165184662/1/ammo.js', 'preload' : true},
     {'moduleName' : 'effekseer_native', 'glueUrl' : 'files/assets/165953735/1/effekseer.js', 'wasmUrl' : 'files/assets/165953737/1/effekseer_native.wasm', 'fallbackUrl' : '', 'preload' : true},
+    {'moduleName' : 'Ammo', 'glueUrl' : 'files/assets/165184728/1/ammo.wasm.js', 'wasmUrl' : 'files/assets/165184725/1/ammo.wasm.wasm', 'fallbackUrl' : 'files/assets/165184662/1/ammo.js', 'preload' : true},
 ];
