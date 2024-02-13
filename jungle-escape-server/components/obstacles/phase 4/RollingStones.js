@@ -30,5 +30,6 @@ RollingStones.prototype.update = function (dt) {
 RollingStones.prototype.onDynamic = function () {
     const stone = this._stones[Math.floor(Math.random() * this._stones.length)];
     const entity = stone.instantiate(this.app);
+    entity.enabled = true;
     this.entity.addChild(entity);
 }

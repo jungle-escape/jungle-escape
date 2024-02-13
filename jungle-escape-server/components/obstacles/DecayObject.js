@@ -33,7 +33,7 @@ DecayObject.prototype.onCollisionStart = function () {
     this.tween = this.entity.tween(this.fromDiffuse)
         .to(this.toDiffuse, 7, pc.ExponentialOut)
         .onUpdate(() => {
-            this.entity.render.material.diffuse = this.fromDiffuse;
+            this.entity.materialDiffuse = this.entity.render.material.diffuse = this.fromDiffuse;
             this.entity.render.material.update();
         })
         .onComplete(() => {

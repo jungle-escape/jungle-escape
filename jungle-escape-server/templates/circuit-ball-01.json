@@ -7,7 +7,7 @@
             "e49a9e5e-cb70-422e-935e-9d31170ad301": {
                 "name": "circuit-ball-01",
                 "tags": ["pc_reaction", "push_opposite", "take_control"],
-                "enabled": true,
+                "enabled": false,
                 "resource_id": "e49a9e5e-cb70-422e-935e-9d31170ad301",
                 "parent": null,
                 "children": [],
@@ -75,7 +75,7 @@
                                         "ignoreForOwner": false
                                     }, {
                                         "path": "materialDiffuse",
-                                        "interpolate": true,
+                                        "interpolate": false,
                                         "ignoreForOwner": false
                                     }, {
                                         "path": "rigidbodyGroup",

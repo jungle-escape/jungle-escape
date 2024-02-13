@@ -118,11 +118,7 @@ NetworkEntity.prototype.initialize = function () {
       }
     },
     materialDiffuse: () => {
-      const value = this.entity.render?.material?.diffuse;
-      // if (this.entity.name.includes("ball")) {
-      //   console.debug("_diffuse", this.entity.render.material.diffuse);
-      //   console.debug("_diffuseTint", this.entity.render.material.diffuseTint);
-      // }
+      const value = this.entity.materialDiffuse;
       if (value) {
         return value;
       }
@@ -197,11 +193,16 @@ NetworkEntity.prototype.propertyRemove = function (path) {
 
 NetworkEntity.prototype.getState = function (force) {
   const state = {};
+  let flag = false;
+  
 
   for (let i = 0; i < this.properties.length; i++) {
     const path = this.properties[i].path;
     const parts = this._makePathParts(path);
     const rule = this.rules[path];
+    if (path === 'materialDiffuse') flag = true;
+    console.log(flag);
+    // if (flag) console.log(JSON.stringify(parts));
 
     let node = this.entity;
     let cachedStateNode = this.cachedState;

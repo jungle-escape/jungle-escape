@@ -7,7 +7,7 @@
             "ddea7000-382d-4012-aa6f-f7eccb98fc34": {
                 "name": "circuit-ball-02",
                 "tags": ["pc_reaction", "push_opposite", "take_control"],
-                "enabled": true,
+                "enabled": false,
                 "resource_id": "ddea7000-382d-4012-aa6f-f7eccb98fc34",
                 "parent": null,
                 "children": [],
@@ -75,7 +75,7 @@
                                         "ignoreForOwner": false
                                     }, {
                                         "path": "materialDiffuse",
-                                        "interpolate": true,
+                                        "interpolate": false,
                                         "ignoreForOwner": false
                                     }, {
                                         "path": "rigidbodyGroup",
