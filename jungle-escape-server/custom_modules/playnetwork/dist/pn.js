@@ -141,10 +141,7 @@ class Room extends pc.EventHandler {
   destroy() {
     this.networkEntities = null;
     this.users = null;
-    console.info('destroying root');
-    console.debug(this.root);
     this.root.destroy();
-    console.info('destroying root done');
     pn.fire('leave', this);
     this.fire('destroy');
     this.off();
