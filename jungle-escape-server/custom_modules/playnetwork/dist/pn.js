@@ -141,7 +141,10 @@ class Room extends pc.EventHandler {
   destroy() {
     this.networkEntities = null;
     this.users = null;
+    console.info('destroying root');
+    console.debug(this.root);
     this.root.destroy();
+    console.info('destroying root done');
     pn.fire('leave', this);
     this.fire('destroy');
     this.off();
@@ -356,6 +359,8 @@ class PlayNetwork extends pc.EventHandler {
     super();
     this._lastId = 1;
     this._callbacks = new Map();
+    this.isSocketOpened = null;
+    this.isSocketClosedLogged = false;
   }
 
   initialize() {
@@ -389,6 +394,8 @@ class PlayNetwork extends pc.EventHandler {
     this.socket.onmessage = e => this._onMessage(e.data);
 
     this.socket.onopen = () => {
+      this.isSocketOpened = true;
+      this.isSocketClosedLogged = false;
       this._send('_authenticate', payload, null, null, (err, data) => {
         if (err) {
           if (callback) callback(err, null);
@@ -404,6 +411,11 @@ class PlayNetwork extends pc.EventHandler {
     };
 
     this.socket.onclose = () => {
+      this.isSocketOpened = false;
+      if (!this.isSocketClosedLogged) {
+        console.error('WebSocket is closed. Please check your connection and try again.');
+        this.isSocketClosedLogged = true;
+      }
       this.latency = 0;
       this.bandwidthIn = 0;
       this.bandwidthOut = 0;
@@ -454,6 +466,10 @@ class PlayNetwork extends pc.EventHandler {
   }
 
   _send(name, data, scope, id, callback) {
+    if (!this.isSocketOpened) {
+      return;
+    }
+
     const msg = {
       name,
       scope: {
