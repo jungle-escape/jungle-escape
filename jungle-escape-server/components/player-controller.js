@@ -6,7 +6,7 @@ PlayerController.attributes.add("moveForce", {
   type: "number",
   default: 5000,
 });
-PlayerController.attributes.add("jumpForce", { type: "number", default: 1500 });
+PlayerController.attributes.add("jumpForce", { type: "number", default: 2000 });
 PlayerController.attributes.add("linearDamping", {
   type: "vec3",
   default: [0.99, 0, 0.99],
@@ -238,9 +238,19 @@ PlayerController.prototype.applyLinearDamping = function (dt) {
 
   // Apply linear damping
   var lv = this.entity.rigidbody.linearVelocity;
-  lv.x *= Math.pow(1 - this.linearDamping.x, dt);
-  lv.y *= Math.pow(1 - this.linearDamping.y, dt);
-  lv.z *= Math.pow(1 - this.linearDamping.z, dt);
+  if (this.canJump) {
+    lv.x *= Math.pow(1 - this.linearDamping.x, dt);
+    lv.y *= Math.pow(1 - this.linearDamping.y, dt);
+    lv.z *= Math.pow(1 - this.linearDamping.z, dt);
+  } else if (!this.canJump) {
+    // Damping applied when player is jumping
+    lv.x *= Math.pow(1 - 0.999, dt);
+    if (lv.y <= 0) {
+      var extraGravity = -15;
+      lv.y += extraGravity * dt;
+    }
+    lv.z *= Math.pow(1 - 0.999, dt);
+  }
 
   this.entity.rigidbody.linearVelocity = new pc.Vec3(lv.x, lv.y, lv.z);
 };
