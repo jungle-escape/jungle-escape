@@ -117,6 +117,22 @@ NetworkEntity.prototype.initialize = function () {
         return value;
       }
     },
+    materialDiffuse: () => {
+      const value = this.entity.render?.material?.diffuse;
+      // if (this.entity.name.includes("ball")) {
+      //   console.debug("_diffuse", this.entity.render.material.diffuse);
+      //   console.debug("_diffuseTint", this.entity.render.material.diffuseTint);
+      // }
+      if (value) {
+        return value;
+      }
+    },
+    rigidbodyGroup: () => {
+      const value = this.entity.rigidbody?.group;
+      if (value) {
+        return value;
+      }
+    }
   };
 
   this.once("destroy", this.onDestroy, this);

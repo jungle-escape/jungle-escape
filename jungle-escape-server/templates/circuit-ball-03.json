@@ -6,7 +6,7 @@
         "entities": {
             "d82d121f-bc36-452d-adea-f8ac943e34a1": {
                 "name": "circuit-ball-03",
-                "tags": ["circuit-ball"],
+                "tags": ["pc_reaction", "push_opposite", "take_control"],
                 "enabled": true,
                 "resource_id": "d82d121f-bc36-452d-adea-f8ac943e34a1",
                 "parent": null,
@@ -58,7 +58,7 @@
                     },
                     "script": {
                         "enabled": true,
-                        "order": ["networkEntity"],
+                        "order": ["networkEntity", "decayObject"],
                         "scripts": {
                             "networkEntity": {
                                 "enabled": true,
@@ -73,7 +73,22 @@
                                         "path": "rotation",
                                         "interpolate": true,
                                         "ignoreForOwner": false
+                                    }, {
+                                        "path": "materialDiffuse",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }, {
+                                        "path": "rigidbodyGroup",
+                                        "interpolate": false,
+                                        "ignoreForOwner": false
                                     }]
+                                }
+                            },
+                            "decayObject": {
+                                "enabled": true,
+                                "attributes": {
+                                    "decayTime": 5,
+                                    "onCollision": true
                                 }
                             }
                         }
@@ -85,20 +100,22 @@
     "file": null,
     "path": [165184693],
     "id": 167081281,
-    "uniqueId": 167081281,
-    "type": "template",
-    "source": false,
-    "source_asset_id": null,
+    "uniqueId": 167183177,
     "createdAt": "2024-02-10T17:47:34.929Z",
+    "modifiedAt": null,
     "scope": {
         "type": "project",
         "id": 1185257
     },
     "user_id": 502250,
+    "source_asset_id": null,
+    "source": false,
     "revision": 1,
     "preload": true,
     "exclude": false,
+    "type": "template",
     "region": "eu-west-1",
     "task": null,
-    "i18n": {}
+    "i18n": {},
+    "checkpoint_id": "44f313fb-fa1e-4033-9fe0-1f5c6875c49a"
 }
