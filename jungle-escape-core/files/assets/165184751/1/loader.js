@@ -14,7 +14,7 @@ const fetchEndpoint = async (url) => {
 const _devPn = fetchEndpoint(`http://${_devUri}:8080/pn.js`);
 const _prodPn = fetchEndpoint(`https://${_prodUri}/pn.js`);
 
-(async () => {
+const pn_loader = async () => {
   const devData = await _devPn;
   const prodData = await _prodPn;
 
@@ -28,4 +28,8 @@ const _prodPn = fetchEndpoint(`https://${_prodUri}/pn.js`);
   }
   document.head.appendChild(script);
 
+};
+
+(async () => {
+  await pn_loader();
 })();
