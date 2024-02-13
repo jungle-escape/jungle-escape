@@ -27,6 +27,21 @@ PlayerController.prototype.initialize = function () {
 
   // Setup all event listener
   this.setupEventListeners();
+
+  // Test code
+  const level = this.app.root.findByName("Level");
+
+  const p2 = level.findByName("P2. Algorithm");
+  if (p2) p2.enabled = true;
+
+  const p3 = level.findByName("P3. Rbtree");
+  if (p3) p3.enabled = true;
+
+  const p3_2 = level.findByName("P3-2. Malloc-lab");
+  if (p3_2) p3_2.enabled = true;
+
+  const p4 = level.findByName("circuit board");
+  if (p4) p4.enabled = true;
 };
 
 PlayerController.prototype.setupVariables = function () {
@@ -255,6 +270,11 @@ PlayerController.prototype.onCollisionStart = function (hit) {
 };
 
 PlayerController.prototype.checkCollisionStartRules = function (hit) {
+  // Can jump initialize
+  if (hit.other.tags.has("ground")) {
+    this.canJump = true;
+  }
+
   // PC common reaction, play sound and rotate model entity for 1 sec
   if (hit.other.tags.has("pc_reaction")) {
     this.entity.rigidbody.applyTorqueImpulse(0, 10000, 0);
@@ -335,7 +355,7 @@ PlayerController.prototype.onContact = function (hit) {
   }
 };
 
-PlayerController.prototype.checkContactRules = function (hit) { };
+PlayerController.prototype.checkContactRules = function (hit) {};
 
 // Event listner on collision end
 PlayerController.prototype.onCollisionEnd = function (hit) {
