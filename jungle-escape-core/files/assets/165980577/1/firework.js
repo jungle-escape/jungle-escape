@@ -7,7 +7,7 @@ Firework.prototype.initialize = function() {
 
 // update code called every frame
 Firework.prototype.update = function(dt) {
-    if (this.app.keyboard.wasPressed(pc.KEY_2)) {
+    if (this.app.keyboard.wasPressed(pc.KEY_0)) {
         this.entity.script.effekseerEmitter.play();
     }
 };
