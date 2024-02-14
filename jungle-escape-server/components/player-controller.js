@@ -45,6 +45,8 @@ PlayerController.prototype.initialize = function () {
 };
 
 PlayerController.prototype.setupVariables = function () {
+  global.ME = this.entity;
+
   this.clientInput = {
     key_W: false,
     key_A: false,
@@ -387,11 +389,12 @@ PlayerController.prototype.doPush = function () {
     var result = this.app.systems.rigidbody.raycastFirst(castStart, castEnd);
 
     // Apply force, opposite to given normal vector
-    if (result) {
+    if (result && result.entity !== ME) {
       if (result.entity.rigidbody) {
         var pushForce = 10000;
         var pushVec = result.normal.scale(-1 * pushForce);
         result.entity.rigidbody.applyImpulse(pushVec);
+        this.entity.collisionTags.push("hit_success");
       }
     }
   }
