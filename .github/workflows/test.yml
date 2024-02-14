@@ -1,4 +1,4 @@
-name: core to S3
+name: test
 
 on:
   workflow_dispatch:
