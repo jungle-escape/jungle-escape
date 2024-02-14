@@ -1,0 +1,40 @@
+var Pushtrigger = pc.createScript("pushtrigger");
+
+// initialize code called once per entity
+Pushtrigger.prototype.initialize = function () {
+  this.entity.collision.on("triggerenter", this.onTriggerEnter, this);
+  this.enableTimer = 0;
+};
+
+Pushtrigger.prototype.swap = function (old) {
+  this.entity.collision.off("triggerenter", old.onTriggerEnter, old);
+  this.entity.collision.on("triggerenter", this.onTriggerEnter, this);
+};
+
+Pushtrigger.prototype.onTriggerEnter = function (target) {
+  if (target.rigidbody) {
+    if (ME && target === ME) {
+      console.log("hi it's me!");
+      return;
+    }
+    console.log(target.name, "has rigidbody~!");
+  }
+};
+
+// update code called every frame
+Pushtrigger.prototype.update = function (dt) {
+  if (this.entity.enabled) {
+    this.enableTimer += dt;
+    if (this.enableTimer >= 0.1) {
+      this.enableTimer = 0;
+      this.entity.enabled = false;
+    }
+  }
+};
+
+// swap method called for script hot-reloading
+// inherit your script state here
+// Pushtrigger.prototype.swap = function(old) { };
+
+// to learn more about script anatomy, please read:
+// https://developer.playcanvas.com/en/user-manual/scripting/

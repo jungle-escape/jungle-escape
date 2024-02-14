@@ -45,6 +45,8 @@ PlayerController.prototype.initialize = function () {
 };
 
 PlayerController.prototype.setupVariables = function () {
+  global.ME = this.entity;
+
   this.clientInput = {
     key_W: false,
     key_A: false,
@@ -378,21 +380,40 @@ PlayerController.prototype.onCollisionEnd = function (hit) {
 // Do push, invoked by client mouse left-click
 PlayerController.prototype.doPush = function () {
   if (this.clientInput.mouse_LEFT) {
-    // Cast from player
-    var castStart = this.entity.getPosition();
+    // Cast from player, adjust for Z axis using this.lookAt
+    // var castStart = this.entity.getPosition();
+    var castStart = this.entity
+      .getPosition()
+      .clone()
+      .add(this.lookAt.clone().scale(0.5));
     var distance = 5;
     var castEnd = castStart.clone().add(this.lookAt.scale(distance));
 
     // Cast from player
-    var result = this.app.systems.rigidbody.raycastFirst(castStart, castEnd);
+    // var result = this.app.systems.rigidbody.raycastFirst(castStart, castEnd);
+    var result = this.app.systems.rigidbody.boxCast(
+      new pc.Vec3(2, 0.5, 0.5),
+      castStart,
+      castEnd
+    );
 
-    // Apply force, opposite to given normal vector
+    // Apply force to where PC is looking at
     if (result) {
       if (result.entity.rigidbody) {
-        var pushForce = 10000;
-        var pushVec = result.normal.scale(-1 * pushForce);
+        var pushForce = 5000;
+        // var pushVec = result.normal.scale(-1 * pushForce);
+        var pushVec = this.lookAt.scale(pushForce);
         result.entity.rigidbody.applyImpulse(pushVec);
       }
+      // If pushed entity is player, set its anim state to 'hit'
+      if (result.entity.tags.has("player")) {
+        result.entity.collisionTags.push("hit");
+      }
+    }
+    // Test for push trigger
+    const pushTrigger = this.modelEntity.findByName("pushTrigger");
+    if (pushTrigger) {
+      pushTrigger.enabled = true;
     }
   }
 };

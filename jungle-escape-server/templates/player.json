@@ -492,7 +492,8 @@
         "tags": [],
         "children": [
           "82baef90-af5c-4962-89b9-3114b5c7fee3",
-          "77ce0ddb-a938-4d46-82f0-bddd8c192633"
+          "77ce0ddb-a938-4d46-82f0-bddd8c192633",
+          "8c179ff5-f4b4-4c12-a0fc-1cfdd3d9cfcf"
         ],
         "position": [0, -1.5, 0],
         "rotation": [0, 0, 0],
@@ -514,6 +515,9 @@
               },
               "Base:attack": {
                 "asset": 167287125
+              },
+              "Base:hit": {
+                "asset": 167287116
               }
             },
             "enabled": true,
@@ -1007,13 +1011,68 @@
           }
         },
         "parent": "f61d3a33-e77b-4620-864f-7c9bd17397c7"
+      },
+      "8c179ff5-f4b4-4c12-a0fc-1cfdd3d9cfcf": {
+        "name": "pushTrigger",
+        "tags": [],
+        "enabled": false,
+        "resource_id": "8c179ff5-f4b4-4c12-a0fc-1cfdd3d9cfcf",
+        "parent": "f61d3a33-e77b-4620-864f-7c9bd17397c7",
+        "children": [],
+        "position": [
+          0.00002288818359375, 143.29223442077637, 107.26669065628062
+        ],
+        "rotation": [0, 0, 0],
+        "scale": [100, 100, 100],
+        "components": {
+          "render": {
+            "enabled": true,
+            "type": "box",
+            "asset": null,
+            "materialAssets": [null],
+            "layers": [0],
+            "batchGroupId": null,
+            "castShadows": true,
+            "castShadowsLightmap": true,
+            "receiveShadows": true,
+            "lightmapped": false,
+            "lightmapSizeMultiplier": 1,
+            "castShadowsLightMap": true,
+            "lightMapped": false,
+            "lightMapSizeMultiplier": 1,
+            "isStatic": false,
+            "rootBone": null
+          },
+          "script": {
+            "enabled": true,
+            "order": ["pushtrigger"],
+            "scripts": {
+              "pushtrigger": {
+                "enabled": true,
+                "attributes": {}
+              }
+            }
+          },
+          "collision": {
+            "enabled": true,
+            "type": "box",
+            "halfExtents": [1, 1, 1],
+            "radius": 0.5,
+            "axis": 1,
+            "height": 2,
+            "asset": null,
+            "renderAsset": null,
+            "linearOffset": [0, 0, 0],
+            "angularOffset": [0, 0, 0]
+          }
+        }
       }
     }
   },
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 167235758,
+  "uniqueId": 167299958,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -1030,5 +1089,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "e8c5952a-c629-4207-9d6a-98513b17a7e3"
+  "checkpoint_id": "b0c59952-5533-4043-8e4a-61f65b8c745f"
 }
