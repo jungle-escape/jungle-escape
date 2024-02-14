@@ -389,7 +389,7 @@ PlayerController.prototype.doPush = function () {
     var result = this.app.systems.rigidbody.raycastFirst(castStart, castEnd);
 
     // Apply force, opposite to given normal vector
-    if (result && result.entity !== ME) {
+    if (result) {
       if (result.entity.rigidbody) {
         var pushForce = 10000;
         var pushVec = result.normal.scale(-1 * pushForce);
