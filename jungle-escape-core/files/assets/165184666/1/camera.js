@@ -11,6 +11,11 @@ Camera.prototype.initialize = function () {
     this.originalRotation = null; // 카메라의 원래 회전을 저장할 변수
     this.app.keyboard.on(pc.EVENT_KEYDOWN, this.onKeyDown, this);
     CAMERA = this;
+
+    // 현재 관전 중인 플레이어의 인덱스
+    this.currentPlayerIndex = 0;
+    // 모든 플레이어를 저장할 배열
+    this.players = [];
 };
 
 Camera.prototype.update = function (dt) {
@@ -45,6 +50,11 @@ Camera.prototype.onKeyDown = function (event) {
     if (event.key === pc.KEY_L) {
         this.switchView(this);
     }
+
+    // N 키가 눌렸을 때 다음 플레이어로 전환
+    if (event.key === pc.KEY_N) {
+        this.switchPlayer();
+    }
 };
 
 Camera.prototype.switchView = function (sth) {
@@ -57,12 +67,23 @@ Camera.prototype.switchView = function (sth) {
 };
 
 Camera.prototype.findMyPlayer = function () {
-    var players = this.app.root.findByTag('player');
-    for (var i = 0; i < players.length; i++) {
-        var player = players[i];
+    this.players = this.app.root.findByTag('player');
+    for (var i = 0; i < this.players.length; i++) {
+        var player = this.players[i];
         if (player.networkEntity && player.networkEntity.mine) {
             this.myPlayer = player;
             break;
         }
     }
 }
+
+Camera.prototype.switchPlayer = function () {
+    this.findMyPlayer();
+    if (this.players.length > 1) {
+        // 현재 플레이어 인덱스를 업데이트
+        this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+        
+        // 새로운 관전 대상을 myPlayer로 설정
+        this.myPlayer = this.players[this.currentPlayerIndex];
+    }
+};

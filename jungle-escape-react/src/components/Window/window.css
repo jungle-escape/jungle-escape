@@ -1,0 +1,72 @@
+.window {
+  width: 100%;
+  height: 100%;
+
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 5px solid var(--color_DarkerGreen);
+  box-shadow: 15px 15px 0 var(--color_DarkerGreen);
+  background-color: var(--color_BgWhite);
+
+  border-radius: 3px;
+
+  &:focus-within {
+    filter: saturate(1);
+  }
+}
+
+.window-title-bar {
+  background-color: var(--color_LightGreen);
+  color: white;
+  padding: 10px 0 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+  user-select: none;
+
+  box-shadow: 0px 5px 6px -2px #bb99ff5e;
+
+  width: 100%;
+}
+
+.window-body {
+  flex-grow: 1;
+  background-color: white;
+  /* padding: var(--default-padding); */
+  overflow-y: auto;
+  scrollbar-color: var(--color_DarkerGreen) var(--color_LightGreen);
+  scrollbar-width: thin;
+
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: var(--color_DarkerGreen);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color_LightGreen);
+  }
+}
+
+.window-title {
+  line-height: 1;
+
+  font-family: "DungGeunMo";
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0 0 0 10px;
+
+  color: black;
+}
+
+.window-btn + .window-btn {
+  margin-left: 6px;
+}
