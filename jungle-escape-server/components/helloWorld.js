@@ -71,6 +71,10 @@ HelloWorld.prototype.update = function (dt) {
                                 var position = child3.getPosition(); // 힘을 적용할 위치
 
                                 child3.rigidbody.applyForce(force, position);
+                                setTimeout(() => {
+                                    // 화살표 함수를 사용하여 this의 컨텍스트를 유지합니다.
+                                    child3.destroy();
+                                }, 10000); // 10초 후에 실행
                             }
                         });
                     });
