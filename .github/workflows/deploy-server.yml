@@ -1,0 +1,51 @@
+name: server to EC2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./jungle-escape-server
+          push: true
+          tags: electronyoon/jungle-escape:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Installing SSH key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+            # Stop and remove the existing container (if it exists)
+            docker stop jungle-escape-server || true
+            docker rm jungle-escape-server || true
+            
+            # Remove old Docker images of the application, keeping only the latest
+            docker images electronyoon/jungle-escape -q | grep -v $(docker images electronyoon/jungle-escape:latest -q) | xargs -r docker rmi -f
+            docker images electronyoon/jungle-escape -q | grep -v $(docker images --format "{{.ID}}" electronyoon/jungle-escape:latest) | xargs -r docker rmi -f
+
+            # Pull the latest image
+            docker pull electronyoon/jungle-escape:latest
+            
+            # Run the new container with port 8080 exposed
+            docker run -d --name jungle-escape-server -p 8080:8080 electronyoon/jungle-escape:latest
+          EOF

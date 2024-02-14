@@ -1,0 +1,1 @@
+var HelloWorld = pc.createScript('helloWorld');

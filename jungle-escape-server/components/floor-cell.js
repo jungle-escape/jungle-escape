@@ -1,5 +1,6 @@
 var FloorCell = pc.createScript("floorCell");
 
+FloorCell.attributes.add('triggerEntity', { type: 'entity' });
 FloorCell.attributes.add("tags", { type: "string", array: true });
 FloorCell.attributes.add("color", { type: "rgb" });
 FloorCell.attributes.add("isTextShow", { type: "boolean", default: false });
@@ -14,8 +15,8 @@ FloorCell.attributes.add("attacker", {
 FloorCell.prototype.initialize = function () {
   this.activations = 0;
 
-  this.entity.collision.on("triggerenter", this.onTriggerEnter, this);
-  this.entity.collision.on("triggerleave", this.onTriggerLeave, this);
+  this.triggerEntity.collision.on("triggerenter", this.onTriggerEnter, this);
+  this.triggerEntity.collision.on("triggerleave", this.onTriggerLeave, this);
 
   //   if (this.attacker) {
   //     console.log(
@@ -28,8 +29,10 @@ FloorCell.prototype.initialize = function () {
 
 FloorCell.prototype.swap = function (old) {
   this.activations = old.activations;
-  this.entity.collision.off("triggerenter", old.onTriggerEnter, old);
-  this.entity.collision.off("triggerleave", old.onTriggerLeave, old);
+  this.triggerEntity.collision.off("triggerenter", old.onTriggerEnter, old);
+  this.triggerEntity.collision.off("triggerleave", old.onTriggerLeave, old);
+  this.triggerEntity.collision.on("triggerenter", this.onTriggerEnter, this);
+  this.triggerEntity.collision.on("triggerleave", this.onTriggerLeave, this);
 };
 
 FloorCell.prototype.onTriggerEnter = function (entity) {
@@ -37,8 +40,8 @@ FloorCell.prototype.onTriggerEnter = function (entity) {
 
   this.activations++;
   this.onActivationsChanged();
-  this.activations++;
-  this.onActivationsChanged();
+  // this.activations++;
+  // this.onActivationsChanged();
 };
 
 FloorCell.prototype.onTriggerLeave = function (entity) {

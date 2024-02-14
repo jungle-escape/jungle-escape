@@ -3,34 +3,37 @@ import "dotenv/config";
 import cors from "cors";
 import path from "path";
 import express from "express";
-// import * as https from 'https';
-
 import * as http from "http";
-// import fs from 'fs';
 import pn from "./custom_modules/playnetwork/src/server/index.js";
-
 import FileLevelProvider from "./file-level-provider.js";
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
+
 
 const app = express();
 app.use(cors());
+
+const pnPath = path.resolve(__dirname, "./custom_modules/playnetwork/dist/pn.js");
+const decodedPnPath = decodeURIComponent(pnPath);
 app.get("/pn.js", (_, res) => {
-  res.sendFile(path.resolve("./custom_modules/playnetwork/dist/pn.js"));
+  res.sendFile(decodedPnPath);
 });
 
-// const key = fs.readFileSync('./ssl/localhost.key', 'utf8');
-// const cert = fs.readFileSync('./ssl/localhost.crt', 'utf8');
-// const credentials = { key, cert };
-
-// const server = https.createServer(credentials, app);
 const server = http.createServer(app);
-// const server = https.createServer(credentials, app);
 server.listen(8080, "0.0.0.0");
 
+const componentsPath = path.resolve(__dirname, "components");
+const decodedComponentsPath = decodeURIComponent(componentsPath);
+const templatesPath = path.resolve(__dirname, "templates");
+const decodedTemplatesPath = decodeURIComponent(templatesPath);
+const levelsPath = path.resolve(__dirname, "levels");
+const decodedLevelsPath = decodeURIComponent(levelsPath);
+
 await pn.start({
-  redisUrl: process.env.REDIS_URL,
-  scriptsPath: "components",
-  templatesPath: "templates",
+  redisUrl: 'redis://localhost:6379',
+  scriptsPath: decodedComponentsPath,
+  templatesPath: decodedTemplatesPath,
   server: server,
   useAmmo: true,
-  levelProvider: new FileLevelProvider("levels"),
+  levelProvider: new FileLevelProvider(decodedLevelsPath),
 });

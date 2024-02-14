@@ -45,6 +45,6 @@ RbnodeConnector.prototype.columnTween = function (entity, height) {
     if (!entity) return;
 
     this.tween = entity.tween(entity.getLocalPosition())
-        .to(new pc.Vec3(entity.originalPosition.x, height, entity.originalPosition.z), this.speed, pc.BackInOut)
+        .to(new pc.Vec3(entity.originalPosition.x, height, entity.originalPosition.z), this.speed, pc.Linear)
         .start();
 }

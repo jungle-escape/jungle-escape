@@ -242,9 +242,7 @@ class Scripts {
                     const data = await fs.readFile(filePath);
                     this.sources.set(filePath, data.toString());
 
-                    filePath = path.relative(path.dirname(__filename), `${path.resolve()}\\${filePath}`);
-
-                    await import('./' + filePath.replace(/\\/g, '/'));
+                    await import(filePath);
                 } else if (stats.isDirectory()) {
                     await this.loadDirectory(filePath);
                 }

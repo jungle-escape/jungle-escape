@@ -6,7 +6,7 @@ PlayerController.attributes.add("moveForce", {
   type: "number",
   default: 5000,
 });
-PlayerController.attributes.add("jumpForce", { type: "number", default: 1500 });
+PlayerController.attributes.add("jumpForce", { type: "number", default: 2000 });
 PlayerController.attributes.add("linearDamping", {
   type: "vec3",
   default: [0.99, 0, 0.99],
@@ -27,6 +27,21 @@ PlayerController.prototype.initialize = function () {
 
   // Setup all event listener
   this.setupEventListeners();
+
+  // Test code
+  const level = this.app.root.findByName("Level");
+
+  const p2 = level.findByName("P2. Algorithm");
+  if (p2) p2.enabled = true;
+
+  const p3 = level.findByName("P3. Rbtree");
+  if (p3) p3.enabled = true;
+
+  const p3_2 = level.findByName("P3-2. Malloc-lab");
+  if (p3_2) p3_2.enabled = true;
+
+  const p4 = level.findByName("circuit board");
+  if (p4) p4.enabled = true;
 };
 
 PlayerController.prototype.setupVariables = function () {
@@ -137,8 +152,14 @@ PlayerController.prototype.update = function (dt) {
 PlayerController.prototype.handleUserInputMovement = function (dt) {
   // Set player direction with user keyboard input
   if (!this.view) {
-    this.direction.x = (this.clientInput.key_D + this.clientInput.key_S) - (this.clientInput.key_W + this.clientInput.key_A);
-    this.direction.z = (this.clientInput.key_A + this.clientInput.key_S) - (this.clientInput.key_W + this.clientInput.key_D);
+    this.direction.x =
+      this.clientInput.key_D +
+      this.clientInput.key_S -
+      (this.clientInput.key_W + this.clientInput.key_A);
+    this.direction.z =
+      this.clientInput.key_A +
+      this.clientInput.key_S -
+      (this.clientInput.key_W + this.clientInput.key_D);
   } else {
     this.direction.x = this.clientInput.key_D - this.clientInput.key_A;
     this.direction.z = this.clientInput.key_S - this.clientInput.key_W;
@@ -206,6 +227,7 @@ PlayerController.prototype.handleUserFalling = function () {
     }
     this.entity.rigidbody.linearVelocity =
       this.entity.rigidbody.linearVelocity.set(0, 0, 0);
+    this.entity.collisionTags.push("fall");
   }
 };
 
@@ -216,9 +238,19 @@ PlayerController.prototype.applyLinearDamping = function (dt) {
 
   // Apply linear damping
   var lv = this.entity.rigidbody.linearVelocity;
-  lv.x *= Math.pow(1 - this.linearDamping.x, dt);
-  lv.y *= Math.pow(1 - this.linearDamping.y, dt);
-  lv.z *= Math.pow(1 - this.linearDamping.z, dt);
+  if (this.canJump) {
+    lv.x *= Math.pow(1 - this.linearDamping.x, dt);
+    lv.y *= Math.pow(1 - this.linearDamping.y, dt);
+    lv.z *= Math.pow(1 - this.linearDamping.z, dt);
+  } else if (!this.canJump) {
+    // Damping applied when player is jumping
+    lv.x *= Math.pow(1 - 0.999, dt);
+    if (lv.y <= 0) {
+      var extraGravity = -15;
+      lv.y += extraGravity * dt;
+    }
+    lv.z *= Math.pow(1 - 0.999, dt);
+  }
 
   this.entity.rigidbody.linearVelocity = new pc.Vec3(lv.x, lv.y, lv.z);
 };
@@ -248,6 +280,11 @@ PlayerController.prototype.onCollisionStart = function (hit) {
 };
 
 PlayerController.prototype.checkCollisionStartRules = function (hit) {
+  // Can jump initialize
+  if (hit.other.tags.has("ground")) {
+    this.canJump = true;
+  }
+
   // PC common reaction, play sound and rotate model entity for 1 sec
   if (hit.other.tags.has("pc_reaction")) {
     this.entity.rigidbody.applyTorqueImpulse(0, 10000, 0);
@@ -298,6 +335,18 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
     var movement = pushDirection.scale(150000);
     this.entity.rigidbody.applyImpulse(movement);
   }
+
+  if (hit.other.tags.has("segfault")) {
+    this.entity.collisionTags.push("segfault");
+  }
+
+  if (hit.other.tags.has("rightanswer")) {
+    this.entity.collisionTags.push("rightanswer");
+  }
+
+  if (hit.other.tags.has("hammer")) {
+    this.entity.collisionTags.push("hammer");
+  }
 };
 
 // Event listener on collision contact
@@ -316,14 +365,7 @@ PlayerController.prototype.onContact = function (hit) {
   }
 };
 
-PlayerController.prototype.checkContactRules = function (hit) {
-  // x 발판 뒤로튕기기
-  if (hit.other.tags.has("x")) {
-    this.entity.rigidbody.linearVelocity =
-      this.entity.rigidbody.linearVelocity.set(0, 10, 50);
-    this.canJump = false;
-  }
-};
+PlayerController.prototype.checkContactRules = function (hit) {};
 
 // Event listner on collision end
 PlayerController.prototype.onCollisionEnd = function (hit) {
