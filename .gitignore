@@ -4,3 +4,4 @@ ssl/
 *.crt
 *.pem
 *.key
+.env
