@@ -3,6 +3,7 @@ import { useBlocker } from "react-router-dom";
 import ReactDOM from "react-dom";
 
 import "./gameLobby.css";
+import "./input.css";
 import BasicBtn from "@/components/Button/BasicButton";
 
 const GameLobby = () => {
@@ -251,7 +252,6 @@ const GameLobby = () => {
     <>
       {isSessionStart ? null : (
         <div className="box">
-          <h1>Game Lobby</h1>
           <ul>
             <li>
               <BasicBtn
@@ -261,8 +261,9 @@ const GameLobby = () => {
             </li>
             <li>
               <input
+                className="roomInputBox"
                 type="text"
-                placeholder="방 이름을 입력하세요"
+                placeholder="방 번호를 입력하세요"
                 value={roomName}
                 onChange={handleInputChange}
               />

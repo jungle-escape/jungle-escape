@@ -102,6 +102,9 @@ PlayerController.prototype.mouseDown = function (e) {
 
         // Set anim state to attacking
         this.entity.isAttacking = true;
+
+        // Play swing sound
+        this.entity.sound?.play("swing");
     }
 }
 
@@ -287,9 +290,13 @@ PlayerController.prototype.handleCollisionTags = function () {
         if (tags?.includes('savepoint')) {
             if (!this.entity.sound.slot('cheer').isPlaying) {
                 this.entity.sound.play("cheer");
+
+            // Play vfx
+            const firework = this.vfx.findByName('firework');
+            firework.script.effekseerEmitter.play();
             }
         }   
-        // tag : savepoint
+        // tag : fall
         if (tags?.includes('fall')) {
             if (!this.entity.sound.slot('fall').isPlaying) {
                 this.entity.sound.play("fall");
@@ -319,14 +326,18 @@ PlayerController.prototype.handleCollisionTags = function () {
             if (!this.entity.sound.slot('rightanswer2').isPlaying) {
                 this.entity.sound.play("rightanswer2");
             }
-            // // Play vfx
-            // const firework = this.vfx.findByName('firework');
-            // firework.script.effekseerEmitter.play();
 
             // Enable UI
             const ui_o = this.entity.findByName('O');
             if (!ui_o?.enabled) {
                 ui_o.enabled = true;
+            }
+        }  
+
+        // tag : p1_right
+        if (tags?.includes('hit_success')) {
+            if (!this.entity.sound.slot('hit').isPlaying) {
+                this.entity.sound.play("hit");
             }
         }  
     }

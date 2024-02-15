@@ -16,7 +16,7 @@
   border-radius: 3px;
 
   &:focus-within {
-    filter: saturate(1);
+    /* filter: saturate(1); */
   }
 }
 
