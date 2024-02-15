@@ -18,12 +18,12 @@
 //     this.roomIdInputEntity.on('input:confirm', this.join, this);
 
 //     // const params = new URLSearchParams(window.location.search);
-    
+
 //     const host = window._endpoint;
 //     // const host = 'localhost';
-//     const placeholder = host === 'localhost'? 'DEV': 'PROD';
-//     const port = placeholder === 'DEV'? '8080': null;
-//     const isSecure = placeholder === 'DEV'? false: true;
+//     const placeholder = host === 'localhost' ? 'DEV' : 'PROD';
+//     const port = placeholder === 'DEV' ? '8080' : null;
+//     const isSecure = placeholder === 'DEV' ? false : true;
 
 //     console.info(`Connecting to [[[ ${placeholder} ]]] server...`)
 //     pn.connect(host, port, isSecure, null, () => {
