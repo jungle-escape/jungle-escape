@@ -65,6 +65,9 @@ jobs:
         git diff --staged --quiet || git commit -am "Playcanvas project updated via Github Actions"
         git push || echo "No changes to commit"
 
+    - name: build
+      run: (cd jungle-escape-react && npm run build)
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -76,7 +79,7 @@ jobs:
       run: aws s3 rm s3://${{ env.S3_BUCKET }} --recursive
 
     - name: Sync files to Amazon S3
-      run: aws s3 sync ./jungle-escape-core s3://${{ env.S3_BUCKET }}
+      run: aws s3 sync ./jungle-escape-react/dist s3://${{ env.S3_BUCKET }}
 
     - name: Invalidate CloudFront Cache
       run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
