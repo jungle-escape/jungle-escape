@@ -30,32 +30,32 @@ Savepoint.prototype.onTriggerEnter = function (target) {
         stageLight.enabled = true;
     }
 
-    // Turn on proper BGM with savepoint name
-    const bgm = this.app.root.findByName('BGM');
-    const pointName = this.entity.name;
-    var bgmName = '';
-    if (pointName === 'savepoint1') {
-        bgmName = 'BGM1';
-    } else if (pointName === 'savepoint2') {
-        bgmName = 'BGM2';
-    } else {
-        bgmName = 'BGM2';
-    }
+    // // Turn on proper BGM with savepoint name
+    // const bgm = this.app.root.findByName('BGM');
+    // const pointName = this.entity.name;
+    // var bgmName = '';
+    // if (pointName === 'savepoint1') {
+    //     bgmName = 'BGM1';
+    // } else if (pointName === 'savepoint2') {
+    //     bgmName = 'BGM2';
+    // } else {
+    //     bgmName = 'BGM2';
+    // }
 
-    // Stop all sound slot, except 'bgmName'
-    var slots = bgm.sound.slots;
-    if (slots) {
-        for (var slotName in slots) {
-            var slot = slots[slotName];
-            if (slotName === bgmName) {
-                if (!slot.isPlaying) {
-                    bgm.sound.play(bgmName);
-                }
-                continue;
-            }
-            slot.stop();
-        }
-    }
+    // // Stop all sound slot, except 'bgmName'
+    // var slots = bgm.sound.slots;
+    // if (slots) {
+    //     for (var slotName in slots) {
+    //         var slot = slots[slotName];
+    //         if (slotName === bgmName) {
+    //             if (!slot.isPlaying) {
+    //                 bgm.sound.play(bgmName);
+    //             }
+    //             continue;
+    //         }
+    //         slot.stop();
+    //     }
+    // }
 }
 
 Savepoint.prototype.faded = function (phase, progressbar, num) {
@@ -67,7 +67,6 @@ Savepoint.prototype.faded = function (phase, progressbar, num) {
     var opacity = 1;
     // 3초 동안 감소할 투명도 값
     var decrement = 5 / 20 / 3; // 가정: 60fps, 3초 동안
-
 
     // var balloon = phase.entity.findByName('Balloon');
     var text = phase.entity.findByName('Text');
