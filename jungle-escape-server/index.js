@@ -6,14 +6,22 @@ import express from "express";
 import * as http from "http";
 import pn from "./custom_modules/playnetwork/src/server/index.js";
 import FileLevelProvider from "./file-level-provider.js";
-const __filename = new URL(import.meta.url).pathname;
+import { fileURLToPath } from "url";
+import os from "os";
+//for window
+const __filename =
+  os.platform() === "win32"
+    ? fileURLToPath(import.meta.url)
+    : new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
-
 
 const app = express();
 app.use(cors());
 
-const pnPath = path.resolve(__dirname, "./custom_modules/playnetwork/dist/pn.js");
+const pnPath = path.resolve(
+  __dirname,
+  "./custom_modules/playnetwork/dist/pn.js"
+);
 const decodedPnPath = decodeURIComponent(pnPath);
 app.get("/pn.js", (_, res) => {
   res.sendFile(decodedPnPath);
@@ -30,7 +38,7 @@ const levelsPath = path.resolve(__dirname, "levels");
 const decodedLevelsPath = decodeURIComponent(levelsPath);
 
 await pn.start({
-  redisUrl: 'redis://localhost:6379',
+  redisUrl: "redis://localhost:6379",
   scriptsPath: decodedComponentsPath,
   templatesPath: decodedTemplatesPath,
   server: server,
