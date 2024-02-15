@@ -536,6 +536,9 @@
               },
               "Base:attack": {
                 "asset": 167287125
+              },
+              "Base:hit": {
+                "asset": 167287116
               }
             },
             "enabled": true,
