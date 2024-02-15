@@ -87,6 +87,12 @@ PlayerController.prototype.setupVariables = function () {
 
   // For handling collisions, will be sent to clinet
   this.entity.collisionTags = [];
+
+  // Savepoint temp fix
+  this.entity.savepoint1 = false;
+  this.entity.savepoint2 = false;
+  this.entity.savepoint3 = false;
+  this.entity.savepoint4 = false;
 };
 
 PlayerController.prototype.setupEventListeners = function () {
@@ -392,7 +398,8 @@ PlayerController.prototype.doPush = function () {
     if (result) {
       if (result.entity.rigidbody) {
         var pushForce = 10000;
-        var pushVec = result.normal.scale(-1 * pushForce);
+        // var pushVec = result.normal.scale(-1 * pushForce);
+        var pushVec = this.lookAt.scale(pushForce);
         result.entity.rigidbody.applyImpulse(pushVec);
         this.entity.collisionTags.push("hit_success");
       }
