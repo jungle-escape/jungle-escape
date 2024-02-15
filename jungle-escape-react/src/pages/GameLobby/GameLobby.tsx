@@ -22,7 +22,7 @@ const GameLobby = () => {
 
   /** 이 컴포넌트가 mount되었을 때 pn.connection 을 시작. 게임 접속은 아니다. */
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    // const params = new URLSearchParams(window.location.search);
     let host: string;
     if (hasEndpoint(window)) {
       host = window._endpoint;
@@ -30,10 +30,14 @@ const GameLobby = () => {
       // window._endpoint가 존재하지 않을 때, .env에 세팅해둔 endpoint를 가져온다.
       host = import.meta.env.VITE_ENDPOINT;
     }
-    const port = params.get("port") || "8080";
+    const placeholder = host === 'localhost' ? 'DEV' : 'PROD';
+    const port = placeholder === 'DEV' ? '8080' : '';
+    const isSecure = placeholder === 'DEV' ? false : true;
 
     /** [Connection] : connect via pn */
-    pn.connect(host, port, false, null, () => {
+    console.info(`Connecting to [[[ ${placeholder} ]]] server...`);
+    // pn.connect(host, port, false, null, () => {
+    pn.connect(host, port, isSecure, null, () => {
       pn.on("join", (room) => {
         room.on("join", (user: any) => {
           LOG.addText(`User ${user.id} joined`);
