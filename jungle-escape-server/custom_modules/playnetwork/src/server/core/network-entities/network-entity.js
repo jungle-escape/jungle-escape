@@ -118,7 +118,7 @@ NetworkEntity.prototype.initialize = function () {
       }
     },
     materialDiffuse: () => {
-      const value = this.entity.materialDiffuse;
+      const value = this.entity.render?.material?.diffuse;
       if (value) {
         return value;
       }
@@ -193,16 +193,13 @@ NetworkEntity.prototype.propertyRemove = function (path) {
 
 NetworkEntity.prototype.getState = function (force) {
   const state = {};
-  let flag = false;
   
 
   for (let i = 0; i < this.properties.length; i++) {
     const path = this.properties[i].path;
     const parts = this._makePathParts(path);
     const rule = this.rules[path];
-    if (path === 'materialDiffuse') flag = true;
-    console.log(flag);
-    // if (flag) console.log(JSON.stringify(parts));
+    if (path === 'materialDiffuse') console.log();
 
     let node = this.entity;
     let cachedStateNode = this.cachedState;
@@ -241,6 +238,16 @@ NetworkEntity.prototype.getState = function (force) {
           value = node[part];
         }
 
+        // if (this.entity.name.includes('circuit-ball')) {
+        //   if (path === 'position') {
+        //     console.log('----------------------------------------------------------------------------------------');
+        //   }
+        //   if (equal(value, cachedStateNode[part])) {
+        //     console.log(`❌ [${path}(${this.entity.name})] discarding. old: ${JSON.stringify(cachedStateNode[part])}, new: ${JSON.stringify(value)}`)
+        //   } else {
+        //     console.log(`✅ [${path}(${this.entity.name})] sending. old: ${JSON.stringify(cachedStateNode[part])}, new: ${JSON.stringify(value)}`)
+        //   }
+        // }
         if (force || !equal(value, cachedStateNode[part])) {
           cachedStateNode[part] = value;
 

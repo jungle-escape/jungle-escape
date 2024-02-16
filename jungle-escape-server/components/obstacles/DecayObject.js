@@ -1,4 +1,4 @@
-// var DecayObject = pc.createScript('decayObject');
+var DecayObject = pc.createScript('decayObject');
 
 // DecayObject.attributes.add('decayTime', {
 //     type: 'number',
@@ -14,7 +14,8 @@
 // });
 
 // DecayObject.prototype.initialize = function () {
-//     this.initialMaterial = this.entity.render.material.clone();
+//     this.entity.render.material = this.entity.render.material.clone();
+//     this.entity.render.material.update();
 //     this.entity.rigidbody.on('collisionstart', this.onCollisionStart, this);
 //     this.app.on('_rollingStones:postDestroy', this.postDestroy, this);
 // }
@@ -44,8 +45,9 @@
 // DecayObject.prototype.postDestroy = function () {
 //     const entity = this.entity;
 //     if (!entity || !entity.rigidbody) return;
-//     entity.rigidbody.group = 2;
-//     setTimeout((entity) => {
-//         entity?.destroy();
-//     }, 2000);
+//     // entity.rigidbody.group = 2;
+//     // entity.destroy();
+//     // setTimeout((entity) => {
+//     //     entity?.destroy();
+//     // }, 2000);
 // }

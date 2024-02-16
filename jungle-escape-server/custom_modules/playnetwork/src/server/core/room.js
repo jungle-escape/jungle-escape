@@ -196,9 +196,9 @@ export default class Room extends pc.EventHandler {
             const state = this.networkEntities.getState();
 
             if (state.length) {
-                state.forEach((s) => {
-                    if (!s.hasOwnProperty('materialDiffuse')) return;
-                    console.log(`entity: ${JSON.stringify(this.NetworkEntities)}, stateWithDiffuse: ${JSON.stringify(s)}`);
+                state.forEach(s => {
+                    const keys = Object.keys(s);
+                    // console.debug('state: ', s, 'keys: ', keys);
                 });
                 this.send('_state:update', state);
             }
