@@ -9,6 +9,15 @@ LeaveButton.prototype.initialize = function () {
             bgm.sound.stop();
         }
 
-        pn.leaveRoom();
+        //pn.leaveRoom();
+        pn.leaveRoom()
+            .then(() => {
+                // 방을 성공적으로 떠난 후의 처리
+                console.log("Room left successfully");
+            })
+            .catch((error) => {
+                // 오류 처리
+                console.error("Failed to leave room:", error);
+            });
     });
 };

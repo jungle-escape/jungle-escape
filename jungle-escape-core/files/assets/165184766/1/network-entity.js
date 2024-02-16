@@ -165,6 +165,7 @@ NetworkEntity.prototype.initialize = function () {
         if (this.entity.tags.has('player')) {
           this.entity.children[0].anim.setBoolean('isRunning', data.isRunning);
           this.entity.children[0].anim.setBoolean('isJumping', data.isJumping);
+          this.entity.children[0].anim.setBoolean('isAttacking', data.isAttacking);
           this.entity.canJump = data.canJump;
           this.entity.pcReactOn = data.pcReactOn;
           this.entity.collisionTags = data.collisionTags;
