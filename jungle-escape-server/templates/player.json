@@ -13,6 +13,9 @@
         "children": [
           "f61d3a33-e77b-4620-864f-7c9bd17397c7",
           "cf99e4f2-1fd9-41e7-8f39-337d6e6d464f",
+          "4a29fd3e-4a4d-42cb-8e82-393d471f6b1c",
+          "5047c2f4-5a9e-4c83-b90d-6c80511dbdbd",
+          "f5c45130-a85c-4c08-b697-af6686990866",
           "e81ec6e6-276d-45bc-90e5-92dc8152406f",
           "a647d260-2190-45bc-8438-3dc267b7b2a3",
           "9681d615-c89d-4c83-93f1-c61a8baae2e9"
@@ -25,9 +28,9 @@
             "enabled": true,
             "type": "capsule",
             "halfExtents": [0.5, 0.5, 0.5],
-            "radius": 1,
+            "radius": 1.2,
             "axis": 1,
-            "height": 6,
+            "height": 9,
             "asset": null,
             "renderAsset": null,
             "linearOffset": [0, 0, 0],
@@ -46,7 +49,7 @@
           },
           "script": {
             "enabled": true,
-            "order": ["networkEntity", "playerController"],
+            "order": ["networkEntity", "playerController", "uiRank"],
             "scripts": {
               "networkEntity": {
                 "enabled": true,
@@ -101,6 +104,10 @@
                   "maxSpeed": 50,
                   "linearDamping": [0.99, 0, 0.99]
                 }
+              },
+              "uiRank": {
+                "enabled": true,
+                "attributes": {}
               }
             }
           },
@@ -246,7 +253,7 @@
         "resource_id": "cf99e4f2-1fd9-41e7-8f39-337d6e6d464f",
         "parent": "c66a84df-2d99-411e-8bee-bb105ba7277c",
         "children": [],
-        "position": [0, 2, 0],
+        "position": [0, 3.0580082171891085, 0],
         "rotation": [0, 0, 0],
         "scale": [0.03, 0.03, 0.05],
         "components": {
@@ -275,7 +282,7 @@
             "pixelsPerUnit": null,
             "width": 58.944,
             "height": 28.256,
-            "margin": [-29.472, -12.128, -29.472, -16.128],
+            "margin": [-29.472, -11.07, -29.472, -17.186],
             "alignment": [0.5, 0.5],
             "outlineColor": [0, 0, 0, 1],
             "outlineThickness": 0,
@@ -386,9 +393,9 @@
         "resource_id": "a647d260-2190-45bc-8438-3dc267b7b2a3",
         "parent": "c66a84df-2d99-411e-8bee-bb105ba7277c",
         "children": [],
-        "position": [0, 4.036464866693933, 0],
+        "position": [0, 5.757390067807609, 0],
         "rotation": [0, 0, 0],
-        "scale": [0.1, 0.1, 0.1],
+        "scale": [0.15, 0.1, 0.1],
         "components": {
           "element": {
             "enabled": true,
@@ -415,7 +422,7 @@
             "pixelsPerUnit": null,
             "width": 17.312,
             "height": 28.256,
-            "margin": [-8.656, -10.092, -8.656, -18.164],
+            "margin": [-8.656, -8.371, -8.656, -19.885],
             "alignment": [0.5, 0.5],
             "outlineColor": [0, 0, 0, 1],
             "outlineThickness": 0.5,
@@ -451,9 +458,9 @@
         "resource_id": "9681d615-c89d-4c83-93f1-c61a8baae2e9",
         "parent": "c66a84df-2d99-411e-8bee-bb105ba7277c",
         "children": [],
-        "position": [0, 4.036464866693933, 0],
+        "position": [0, 5.757390067807609, 0],
         "rotation": [0, 0, 0],
-        "scale": [0.1, 0.1, 0.1],
+        "scale": [0.15, 0.1, 0.1],
         "components": {
           "element": {
             "enabled": true,
@@ -480,7 +487,7 @@
             "pixelsPerUnit": null,
             "width": 18.784,
             "height": 28.256,
-            "margin": [-9.392, -10.092, -9.392, -18.164],
+            "margin": [-9.392, -8.371, -9.392, -19.885],
             "alignment": [0.5, 0.5],
             "outlineColor": [0, 0, 0, 1],
             "outlineThickness": 0.5,
@@ -516,9 +523,9 @@
           "82baef90-af5c-4962-89b9-3114b5c7fee3",
           "77ce0ddb-a938-4d46-82f0-bddd8c192633"
         ],
-        "position": [0, -1.5, 0],
+        "position": [0, -2.0692959659059103, 0],
         "rotation": [0, 0, 0],
-        "scale": [0.01, 0.01, 0.01],
+        "scale": [0.015, 0.015, 0.015],
         "resource_id": "f61d3a33-e77b-4620-864f-7c9bd17397c7",
         "name": "Casual3_Male",
         "components": {
@@ -538,7 +545,7 @@
                 "asset": 167287125
               },
               "Base:hit": {
-                "asset": 167287116
+                "asset": null
               }
             },
             "enabled": true,
@@ -1032,13 +1039,178 @@
           }
         },
         "parent": "f61d3a33-e77b-4620-864f-7c9bd17397c7"
+      },
+      "4a29fd3e-4a4d-42cb-8e82-393d471f6b1c": {
+        "name": "gold",
+        "tags": [],
+        "enabled": false,
+        "resource_id": "4a29fd3e-4a4d-42cb-8e82-393d471f6b1c",
+        "parent": "c66a84df-2d99-411e-8bee-bb105ba7277c",
+        "children": [],
+        "position": [0.012, 4.082, 0],
+        "rotation": [0, 0, 0],
+        "scale": [0.03, 0.03, 1],
+        "components": {
+          "element": {
+            "enabled": true,
+            "type": "image",
+            "anchor": [0.5, 0.5, 0.5, 0.5],
+            "pivot": [0.5, 0.5],
+            "text": "",
+            "key": null,
+            "fontAsset": 166192742,
+            "fontSize": 32,
+            "minFontSize": 8,
+            "maxFontSize": 32,
+            "autoFitWidth": false,
+            "autoFitHeight": false,
+            "maxLines": null,
+            "lineHeight": 32,
+            "wrapLines": true,
+            "spacing": 1,
+            "color": [1, 1, 1],
+            "opacity": 1,
+            "textureAsset": 167720047,
+            "spriteAsset": null,
+            "spriteFrame": 0,
+            "pixelsPerUnit": null,
+            "width": 50,
+            "height": 40,
+            "margin": [-24.988, -15.918, -25.012, -24.082],
+            "alignment": [0.5, 0.5],
+            "outlineColor": [0, 0, 0, 1],
+            "outlineThickness": 0,
+            "shadowColor": [0, 0, 0, 1],
+            "shadowOffset": [0, 0],
+            "rect": [0, 0, 1, 1],
+            "materialAsset": null,
+            "autoWidth": false,
+            "autoHeight": false,
+            "fitMode": "stretch",
+            "useInput": false,
+            "batchGroupId": null,
+            "mask": false,
+            "layers": [4],
+            "enableMarkup": false
+          }
+        }
+      },
+      "5047c2f4-5a9e-4c83-b90d-6c80511dbdbd": {
+        "name": "silver",
+        "tags": [],
+        "enabled": false,
+        "resource_id": "5047c2f4-5a9e-4c83-b90d-6c80511dbdbd",
+        "parent": "c66a84df-2d99-411e-8bee-bb105ba7277c",
+        "children": [],
+        "position": [0.012, 4.082, 0],
+        "rotation": [0, 0, 0],
+        "scale": [0.03, 0.03, 1],
+        "components": {
+          "element": {
+            "enabled": true,
+            "type": "image",
+            "anchor": [0.5, 0.5, 0.5, 0.5],
+            "pivot": [0.5, 0.5],
+            "text": "",
+            "key": null,
+            "fontAsset": 166192742,
+            "fontSize": 32,
+            "minFontSize": 8,
+            "maxFontSize": 32,
+            "autoFitWidth": false,
+            "autoFitHeight": false,
+            "maxLines": null,
+            "lineHeight": 32,
+            "wrapLines": true,
+            "spacing": 1,
+            "color": [1, 1, 1],
+            "opacity": 1,
+            "textureAsset": 167720067,
+            "spriteAsset": null,
+            "spriteFrame": 0,
+            "pixelsPerUnit": null,
+            "width": 50,
+            "height": 40,
+            "margin": [-24.988, -15.918, -25.012, -24.082],
+            "alignment": [0.5, 0.5],
+            "outlineColor": [0, 0, 0, 1],
+            "outlineThickness": 0,
+            "shadowColor": [0, 0, 0, 1],
+            "shadowOffset": [0, 0],
+            "rect": [0, 0, 1, 1],
+            "materialAsset": null,
+            "autoWidth": false,
+            "autoHeight": false,
+            "fitMode": "stretch",
+            "useInput": false,
+            "batchGroupId": null,
+            "mask": false,
+            "layers": [4],
+            "enableMarkup": false
+          }
+        }
+      },
+      "f5c45130-a85c-4c08-b697-af6686990866": {
+        "name": "bronze",
+        "tags": [],
+        "enabled": false,
+        "resource_id": "f5c45130-a85c-4c08-b697-af6686990866",
+        "parent": "c66a84df-2d99-411e-8bee-bb105ba7277c",
+        "children": [],
+        "position": [0.012, 4.082, 0],
+        "rotation": [0, 0, 0],
+        "scale": [0.03, 0.03, 1],
+        "components": {
+          "element": {
+            "enabled": true,
+            "type": "image",
+            "anchor": [0.5, 0.5, 0.5, 0.5],
+            "pivot": [0.5, 0.5],
+            "text": "",
+            "key": null,
+            "fontAsset": 166192742,
+            "fontSize": 32,
+            "minFontSize": 8,
+            "maxFontSize": 32,
+            "autoFitWidth": false,
+            "autoFitHeight": false,
+            "maxLines": null,
+            "lineHeight": 32,
+            "wrapLines": true,
+            "spacing": 1,
+            "color": [1, 1, 1],
+            "opacity": 1,
+            "textureAsset": 167720068,
+            "spriteAsset": null,
+            "spriteFrame": 0,
+            "pixelsPerUnit": null,
+            "width": 50,
+            "height": 40,
+            "margin": [-24.988, -15.918, -25.012, -24.082],
+            "alignment": [0.5, 0.5],
+            "outlineColor": [0, 0, 0, 1],
+            "outlineThickness": 0,
+            "shadowColor": [0, 0, 0, 1],
+            "shadowOffset": [0, 0],
+            "rect": [0, 0, 1, 1],
+            "materialAsset": null,
+            "autoWidth": false,
+            "autoHeight": false,
+            "fitMode": "stretch",
+            "useInput": false,
+            "batchGroupId": null,
+            "mask": false,
+            "layers": [4],
+            "enableMarkup": false
+          }
+        }
       }
     }
   },
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 167437959,
+  "uniqueId": 167705810,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -1055,5 +1227,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "57f2aab5-b453-4997-a207-3663a10ba5db"
+  "checkpoint_id": "e9c21411-be38-483e-94d8-16abcddc5d6b"
 }
