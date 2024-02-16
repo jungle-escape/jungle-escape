@@ -212,6 +212,28 @@
                 "duration": null,
                 "volume": 1,
                 "pitch": 1
+              },
+              "10": {
+                "name": "swing",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": false,
+                "asset": 167439229,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
+              },
+              "11": {
+                "name": "hit",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": false,
+                "asset": 167440154,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
               }
             }
           }
@@ -339,7 +361,7 @@
         "children": [],
         "position": [0, 0, 0],
         "rotation": [0, 0, 0],
-        "scale": [1, 1, 1],
+        "scale": [0.5, 0.5, 0.5],
         "components": {
           "script": {
             "enabled": true,
@@ -1016,7 +1038,7 @@
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 167235758,
+  "uniqueId": 167437959,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -1033,5 +1055,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "e8c5952a-c629-4207-9d6a-98513b17a7e3"
+  "checkpoint_id": "57f2aab5-b453-4997-a207-3663a10ba5db"
 }
