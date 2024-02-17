@@ -6,13 +6,13 @@
         "entities": {
             "e49a9e5e-cb70-422e-935e-9d31170ad301": {
                 "name": "circuit-ball-01",
-                "tags": ["circuit-ball", "pc_reaction", "push_opposite", "take_control"],
+                "tags": ["circuit-ball", "pc_reaction", "push_opposite", "take_control", "hit"],
                 "enabled": true,
                 "resource_id": "e49a9e5e-cb70-422e-935e-9d31170ad301",
                 "parent": null,
                 "children": [],
-                "position": [0, 150, -1050],
-                "rotation": [0, -1.27222187272657e-14, 0],
+                "position": [0, 160, -1050],
+                "rotation": [0, 0, 0],
                 "scale": [1, 1, 1],
                 "components": {
                     "render": {
@@ -100,7 +100,7 @@
     "file": null,
     "path": [165184693],
     "id": 167081216,
-    "uniqueId": 167082361,
+    "uniqueId": 167797755,
     "createdAt": "2024-02-10T17:47:29.822Z",
     "modifiedAt": null,
     "scope": {
@@ -117,5 +117,5 @@
     "region": "eu-west-1",
     "task": null,
     "i18n": {},
-    "checkpoint_id": "b944ca11-3b46-4467-95ec-940e476bfa3a"
+    "checkpoint_id": "1aa191cd-f78a-40cf-87d4-bd0a29b12c84"
 }
