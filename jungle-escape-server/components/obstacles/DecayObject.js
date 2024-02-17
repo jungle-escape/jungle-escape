@@ -17,7 +17,6 @@ DecayObject.prototype.initialize = function () {
     this.entity.render.material = this.entity.render.material.clone();
     this.entity.render.material.update();
     this.entity.rigidbody.on('collisionstart', this.onCollisionStart, this);
-    this.app.on('_rollingStones:postDestroy', this.postDestroy, this);
 }
 
 DecayObject.prototype.onCollisionStart = function () {
