@@ -196,10 +196,6 @@ export default class Room extends pc.EventHandler {
             const state = this.networkEntities.getState();
 
             if (state.length) {
-                state.forEach(s => {
-                    const keys = Object.keys(s);
-                    // console.debug('state: ', s, 'keys: ', keys);
-                });
                 this.send('_state:update', state);
             }
 

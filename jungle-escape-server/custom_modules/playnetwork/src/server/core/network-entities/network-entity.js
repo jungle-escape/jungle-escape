@@ -118,7 +118,7 @@ NetworkEntity.prototype.initialize = function () {
       }
     },
     materialDiffuse: () => {
-      const value = this.entity.render?.material?.diffuse;
+      const value = this.entity.render?.material?.clone().diffuse;
       if (value) {
         return value;
       }
@@ -199,7 +199,6 @@ NetworkEntity.prototype.getState = function (force) {
     const path = this.properties[i].path;
     const parts = this._makePathParts(path);
     const rule = this.rules[path];
-    if (path === 'materialDiffuse') console.log();
 
     let node = this.entity;
     let cachedStateNode = this.cachedState;
@@ -237,17 +236,7 @@ NetworkEntity.prototype.getState = function (force) {
         } else {
           value = node[part];
         }
-
-        // if (this.entity.name.includes('circuit-ball')) {
-        //   if (path === 'position') {
-        //     console.log('----------------------------------------------------------------------------------------');
-        //   }
-        //   if (equal(value, cachedStateNode[part])) {
-        //     console.log(`❌ [${path}(${this.entity.name})] discarding. old: ${JSON.stringify(cachedStateNode[part])}, new: ${JSON.stringify(value)}`)
-        //   } else {
-        //     console.log(`✅ [${path}(${this.entity.name})] sending. old: ${JSON.stringify(cachedStateNode[part])}, new: ${JSON.stringify(value)}`)
-        //   }
-        // }
+        
         if (force || !equal(value, cachedStateNode[part])) {
           cachedStateNode[part] = value;
 
@@ -261,16 +250,15 @@ NetworkEntity.prototype.getState = function (force) {
         }
       } else {
         if (!cachedStateNode[part]) cachedStateNode[part] = {};
-
         if (typeof node[part] === "function") {
           node = node[part]();
         } else {
           node = node[part];
         }
-
         cachedStateNode = cachedStateNode[part];
       }
     }
+    this.flag = false;
   }
 
   if (Object.keys(state).length === 0) return null;
