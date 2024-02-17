@@ -128,7 +128,7 @@ NetworkEntity.prototype.initialize = function () {
       if (value) {
         return value;
       }
-    }
+    },
   };
 
   this.once("destroy", this.onDestroy, this);
@@ -193,7 +193,6 @@ NetworkEntity.prototype.propertyRemove = function (path) {
 
 NetworkEntity.prototype.getState = function (force) {
   const state = {};
-  
 
   for (let i = 0; i < this.properties.length; i++) {
     const path = this.properties[i].path;
@@ -236,7 +235,7 @@ NetworkEntity.prototype.getState = function (force) {
         } else {
           value = node[part];
         }
-        
+
         if (force || !equal(value, cachedStateNode[part])) {
           cachedStateNode[part] = value;
 
