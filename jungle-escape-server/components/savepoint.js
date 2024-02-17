@@ -33,6 +33,7 @@ Savepoint.prototype.onTriggerEnter = function (target) {
         return;
       }
       target.savepoint4 = true;
+      this.app.fire("_player:arrived");
     }
 
     var pos = this.entity.getPosition();
