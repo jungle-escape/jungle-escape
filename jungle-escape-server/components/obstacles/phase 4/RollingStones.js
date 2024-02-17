@@ -15,19 +15,20 @@ RollingStones.attributes.add('stones', {
 RollingStones.prototype.initialize = function () {
     this.time = 0;
     this._stones = this.stones.map(t => t.template.resource);
-    this.app.on('_networkEntities:dynamicCreate', this.onDynamic, this);
 }
 
 RollingStones.prototype.update = function (dt) {
     this.time += dt;
     if (this.time > 5) {
         this.time = 0;
-        this.app.fire('_networkEntities:dynamicCreate');
+        this.onDynamic();
     }
 }
 
 RollingStones.prototype.onDynamic = function () {
     const stone = this._stones[Math.floor(Math.random() * this._stones.length)];
+    // const stone = this._stones[2];
     const entity = stone.instantiate(this.app);
+    entity.enabled = true;
     this.entity.addChild(entity);
 }

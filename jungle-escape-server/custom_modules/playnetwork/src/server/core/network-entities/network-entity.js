@@ -117,6 +117,18 @@ NetworkEntity.prototype.initialize = function () {
         return value;
       }
     },
+    materialDiffuse: () => {
+      const value = this.entity.render?.material?.clone().diffuse;
+      if (value) {
+        return value;
+      }
+    },
+    rigidbodyGroup: () => {
+      const value = this.entity.rigidbody?.group;
+      if (value) {
+        return value;
+      }
+    }
   };
 
   this.once("destroy", this.onDestroy, this);
@@ -181,6 +193,7 @@ NetworkEntity.prototype.propertyRemove = function (path) {
 
 NetworkEntity.prototype.getState = function (force) {
   const state = {};
+  
 
   for (let i = 0; i < this.properties.length; i++) {
     const path = this.properties[i].path;
@@ -223,7 +236,7 @@ NetworkEntity.prototype.getState = function (force) {
         } else {
           value = node[part];
         }
-
+        
         if (force || !equal(value, cachedStateNode[part])) {
           cachedStateNode[part] = value;
 
@@ -237,16 +250,15 @@ NetworkEntity.prototype.getState = function (force) {
         }
       } else {
         if (!cachedStateNode[part]) cachedStateNode[part] = {};
-
         if (typeof node[part] === "function") {
           node = node[part]();
         } else {
           node = node[part];
         }
-
         cachedStateNode = cachedStateNode[part];
       }
     }
+    this.flag = false;
   }
 
   if (Object.keys(state).length === 0) return null;
