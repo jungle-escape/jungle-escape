@@ -18,3 +18,14 @@ export interface ComponentProps {
 export interface BtnTextProps {
   btnContent: string;
 }
+
+export interface ModalProp {
+  modalContent: string;
+  onClickHandler: () => void;
+}
+
+export interface GameCloseModalProp {
+  modalContent: string;
+  handleBlockerProceed: () => void;
+  handleBlockerReset: () => void;
+}

@@ -53,6 +53,7 @@ PlayerController.prototype.setupVariables = function () {
     this.entity.isRunning = false;   
     this.entity.isJumping = false;  
     this.entity.isAttacking = false;
+    this.entity.isHit = false;
 
     // For custom PC reaction
     this.entity.pcReactOn = false;
@@ -259,6 +260,7 @@ PlayerController.prototype.setModelEntityState = function () {
     this.modelEntity.anim.setBoolean("isRunning", this.entity.isRunning);
     this.modelEntity.anim.setBoolean("isJumping", this.entity.isJumping);
     this.modelEntity.anim.setBoolean("isAttacking", this.entity.isAttacking);
+    this.modelEntity.anim.setBoolean("isHit", this.entity.isHit);
 }
 
 // 
@@ -318,6 +320,12 @@ PlayerController.prototype.handleCollisionTags = function () {
         if (tags?.includes('hammer')) {
             if (!this.entity.sound.slot('hammer').isPlaying) {
                 this.entity.sound.play("hammer");
+                this.entity.isHit = true;
+
+                // 1초 후에 isHit를 false로 설정
+                setTimeout(() => {
+                    this.entity.isHit = false;
+                }, 1000); // 1000 밀리초 후 실행
             }
         }     
 
@@ -359,7 +367,7 @@ PlayerController.prototype.sendInputToServer = function () {
 
     this.networkEntity.send('input', {
         clientInput : this.clientInput,
-        animState : {isRunning : this.entity.isRunning, isJumping : this.entity.isJumping, isAttacking : this.entity.isAttacking},
+        animState : {isRunning : this.entity.isRunning, isJumping : this.entity.isJumping, isAttacking : this.entity.isAttacking, isHit : this.entity.isHit},
         modelRotation : {x : modelRotation.x, y : modelRotation.y, z : modelRotation.z},
         view : CAMERA.isBackView
     })

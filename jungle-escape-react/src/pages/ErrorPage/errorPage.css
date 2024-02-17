@@ -1,0 +1,92 @@
+/** css for window error **/
+
+.window-error {
+  width: 100%;
+  height: 100%;
+
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  //border: 5px solid var(--color_DarkerGreen);
+  //box-shadow: 15px 15px 0 var(--color_DarkerGreen);
+  background-color: var(--color_BgWhite);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60%;
+  width: 60%;
+
+  //border-radius: 3px;
+}
+
+.window-error::before,
+.window-error::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background: linear-gradient(45deg, red, black, red);
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: animate 25s linear infinite;
+}
+
+.window-error::after {
+  filter: blur(25px);
+}
+
+.window-error-box {
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--color_SlientBlack);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+
+  min-width: 80%;
+
+  overflow-y: auto;
+  scrollbar-color: var(--color_DeepDarkerGreen) var(--color_LightGreen);
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: var(--color_DarkerGreen);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color_LightGreen);
+  }
+}
+.error-box {
+  background-color: black;
+}
+
+.error-cli {
+  padding: 10px;
+  font-family: "DungGeunMo";
+
+  font-size: 1.2rem;
+  font-family: "Courier Prime", monospace;
+  color: white;
+
+  width: 90%;
+}
+
+.error-cli p {
+  line-height: 1.2;
+}
+
+.error-date {
+  color: var(--color_LightGreen);
+}

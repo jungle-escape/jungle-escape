@@ -7,10 +7,18 @@ const LandingPage = () => {
     <>
       <div className="box">
         <div className="center-div">
-          <JungleLogo width={"70%"} height={"70%"} viewBox={"0 0 250 250"} />
+          <JungleLogo
+            width={"60%"}
+            height={"90%"}
+            viewBox={"50 50 150 150"}
+            style={{
+              borderRadius: "20px",
+              boxShadow: "10px 10px 5px rgb(0, 0, 0, 0.2)",
+            }}
+          />
         </div>
         <div className="btn-box">
-          <RoundingButton btnContent={"게임하기"} />
+          <RoundingButton btnContent={"로그인"} />
         </div>
       </div>
     </>

@@ -12,13 +12,13 @@ Savepoint.prototype.onTriggerEnter = function (target) {
     if (target.name === ME.name) {
 
         if (PHASE1.arrived === false) {
-            this.faded(PHASE1, PROGRESSBAR, 1);
+            this.faded(PHASE1);
             // CAMERA.switchView(CAMERA);
         } else if (PHASE2.arrived === false && pos.z <= -300) {
-            this.faded(PHASE2, PROGRESSBAR, 2);
+            this.faded(PHASE2);
             // CAMERA.switchView(CAMERA);
-        } else if (PHASE3.arrived === false && pos.z <= -700) {
-            this.faded(PHASE3, PROGRESSBAR, 3);
+        } else if (PHASE3.arrived === false && pos.z <= -900) {
+            this.faded(PHASE3);
             // CAMERA.switchView(CAMERA);
         }
     };
@@ -58,7 +58,7 @@ Savepoint.prototype.onTriggerEnter = function (target) {
     // }
 }
 
-Savepoint.prototype.faded = function (phase, progressbar, num) {
+Savepoint.prototype.faded = function (phase) {
 
     phase.arrived = true;
     phase.enable();
@@ -66,7 +66,7 @@ Savepoint.prototype.faded = function (phase, progressbar, num) {
     // 시작 투명도
     var opacity = 1;
     // 3초 동안 감소할 투명도 값
-    var decrement = 5 / 20 / 3; // 가정: 60fps, 3초 동안
+    var decrement = 1 / (60 * 3); // 가정: 60fps, 3초 동안
 
     // var balloon = phase.entity.findByName('Balloon');
     var text = phase.entity.findByName('Text');
@@ -91,7 +91,7 @@ Savepoint.prototype.faded = function (phase, progressbar, num) {
             phase.disable();
             // phaseimg.disable();
         }
-    }, 1000 / 20); // 60fps로 갱신
+    }, 1000 / 60); // 60fps로 갱신
 };
 
 // setTimeout(() => {

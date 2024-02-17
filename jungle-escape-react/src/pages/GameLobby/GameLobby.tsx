@@ -3,22 +3,29 @@ import { useBlocker } from "react-router-dom";
 import ReactDOM from "react-dom";
 
 import "./gameLobby.css";
-import "./input.css";
+import "@/components/CustomAlert/modal.css";
 import BasicBtn from "@/components/Button/BasicButton";
+import GameCloseModal from "@/components/CustomAlert/GameCloseModal";
+import CustomAlert from "@/components/CustomAlert/CustomAlertModal";
+import Loader3d from "@/components/Loading/Loading3d";
 
 const GameLobby = () => {
   const _levelId = 1940848;
+
   const [roomName, setRoomName] = useState("");
   const [isSessionStart, setIsSessionStart] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showLoader, setShowLoader] = useState(false);
 
   console.log("==========[Game Lobby] session : ", isSessionStart);
 
   /** 뒤로가기 관련 logic  */
   // session이 시작했을 때만 blocking
-  const blocker = useBlocker(
-    ({ currentLocation, nextLocation }) =>
-      isSessionStart && currentLocation.pathname !== nextLocation.pathname
-  );
+  const blocker = useBlocker(({ currentLocation, nextLocation }) => {
+    console.log("currentLocation, nextLocation", currentLocation, nextLocation);
+    return isSessionStart && currentLocation.pathname !== nextLocation.pathname;
+  });
 
   /** 이 컴포넌트가 mount되었을 때 pn.connection 을 시작. 게임 접속은 아니다. */
   useEffect(() => {
@@ -30,9 +37,9 @@ const GameLobby = () => {
       // window._endpoint가 존재하지 않을 때, .env에 세팅해둔 endpoint를 가져온다.
       host = import.meta.env.VITE_ENDPOINT;
     }
-    const placeholder = host === 'localhost' ? 'DEV' : 'PROD';
-    const port = placeholder === 'DEV' ? '8080' : '';
-    const isSecure = placeholder === 'DEV' ? false : true;
+    const placeholder = host === "localhost" ? "DEV" : "PROD";
+    const port = placeholder === "DEV" ? "8080" : "";
+    const isSecure = placeholder === "DEV" ? false : true;
 
     /** [Connection] : connect via pn */
     console.info(`Connecting to [[[ ${placeholder} ]]] server...`);
@@ -104,12 +111,24 @@ const GameLobby = () => {
     setRoomName(event.target.value);
   };
 
+  const handleCloseModals = () => {
+    setShowAlert(false);
+    setShowLoader(false);
+  };
+
   ///////////////////////
   //// [ JOIN ROOM ] ////
   ///////////////////////
 
   const handleJoinRoom = () => {
+    if (roomName === "") {
+      setAlertMessage("방 번호가 입력되지 않았습니다!");
+      setShowAlert(true);
+      return;
+    }
     console.log(`[Game Lobby/handleJoinRoom] Joining room: ${roomName}`);
+
+    setShowLoader(true);
 
     const roomId = parseInt(roomName, 10);
     pn.joinRoom(roomId)
@@ -117,11 +136,22 @@ const GameLobby = () => {
         console.log(
           `[Game Lobby/handleJoinRoom] Successfully joined room ${roomId}`
         );
+
         hideRootElement();
         setIsSessionStart(true);
+
+        setShowLoader(false);
       })
       .catch((error: Error) => {
-        console.error(`Failed to join room ${roomId}:`, error);
+        if (error.message === "full") {
+          setShowLoader(false);
+          setAlertMessage("방이 가득 찼습니다. 다른 방으로 참가해주세요.");
+          setShowAlert(true);
+        } else {
+          console.error(`Failed to join room ${roomId}:`, error);
+          setAlertMessage(`입장에 실패하였습니다. \n:${error}`);
+          setShowAlert(true);
+        }
       });
   };
 
@@ -130,17 +160,24 @@ const GameLobby = () => {
   /////////////////////////
 
   const handleCreateRoom = () => {
+    setShowLoader(true);
+
     pn.createRoom({ levelId: _levelId, tickrate: 20 }, (_, id) => {
       pn.joinRoom(id)
         .then(() => {
           console.log(
             `[Game Lobby/handleCreateRoom] Successfully joined room ${id}`
           );
+
           hideRootElement();
           setIsSessionStart(true);
+
+          setShowLoader(false);
         })
         .catch((error: Error) => {
           console.error(`Failed to join room ${id}:`, error);
+          setAlertMessage(`방 생성에 실패하였습니다. \n:${error}`);
+          setShowAlert(true);
         });
     });
 
@@ -152,21 +189,23 @@ const GameLobby = () => {
   //////////////////////
 
   const handleBlockerProceed = () => {
-    console.log("pn leavroom 시작합니다.");
-    // pn.leaveRoom();
+    /** game 방 떠나기 */
     pn.leaveRoom()
       .then(() => {
         console.log("Room left successfully");
-        console.log("pn leavroom 끝납니다.");
         if (blocker.proceed) {
-          blocker.proceed();
+          setShowLoader(true);
+          //blocker.proceed(); //go out lobby page, bad for ux
+          blocker.reset();
+          showRootElement();
         } else {
           console.error("blocker.proceed() error!");
         }
+
         setIsSessionStart(false);
+        setShowLoader(false);
       })
       .catch((error: Error) => {
-        // 오류 처리
         console.error("Failed to leave room:", error);
       });
   };
@@ -182,8 +221,6 @@ const GameLobby = () => {
   ////////////// support functions /////////////////
 
   // type guard funcs
-  //   const hasEndpoint = (obj: any): obj is Window & { _endpoint: string } =>
-  //     "_endpoint" in obj;
   const hasEndpoint = (obj: unknown): obj is Window & { _endpoint: string } =>
     typeof obj === "object" && obj !== null && "_endpoint" in obj;
 
@@ -196,7 +233,7 @@ const GameLobby = () => {
       console.error("Element with id 'root' not found.");
     }
   };
-
+  // handling the root div func
   const showRootElement = () => {
     const rootElement = document.getElementById("root");
     if (rootElement) {
@@ -223,34 +260,47 @@ const GameLobby = () => {
     return formattedTime;
   };
 
-  ////////////// blcok modal /////////////
+  //////////////////////////
+  ///// Modal & Loader /////
+  //////////////////////////
 
-  const modal = (
-    <div className="modal-back-container">
-      <div className="modal-backdrop">
-        <div className="modal-back">
-          <p>정말로 게임을 종료하고 나가시겠습니까?</p>
-          <div className="two-btn-container">
-            <BasicBtn
-              onClickHandler={handleBlockerProceed}
-              btnContent={"나가기"}
-            />
-            <BasicBtn
-              onClickHandler={handleBlockerReset}
-              btnContent={"돌아가기"}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  /** Components which are attached to outside div, not id = 'root',
+   * for covering entire screen. */
 
-  ///// block modal /////
-
+  // GET outside div //
   const modalRoot = document.getElementById("modal-root");
+
+  // for Going Back
   const portalContent = modalRoot
-    ? ReactDOM.createPortal(modal, modalRoot)
+    ? ReactDOM.createPortal(
+        <GameCloseModal
+          modalContent="정말로 게임을 종료하고 나가시겠습니까?"
+          handleBlockerProceed={handleBlockerProceed}
+          handleBlockerReset={handleBlockerReset}
+        />,
+        modalRoot
+      )
     : null;
+
+  // for custumized alert modal
+  const customAlertModal =
+    showAlert && modalRoot
+      ? ReactDOM.createPortal(
+          <CustomAlert
+            modalContent={alertMessage}
+            onClickHandler={handleCloseModals}
+          />,
+          modalRoot
+        )
+      : null;
+
+  // for 3d modal
+  const loader3d =
+    showLoader && modalRoot
+      ? ReactDOM.createPortal(<Loader3d />, modalRoot)
+      : null;
+
+  ////// Rendering //////
 
   return (
     <>
@@ -282,6 +332,8 @@ const GameLobby = () => {
         </div>
       )}
       {blocker.state === "blocked" ? portalContent : null}
+      {customAlertModal}
+      {loader3d}
     </>
   );
 };

@@ -1,0 +1,95 @@
+.background-slider {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  filter: blur(3.5px);
+
+  background-color: black;
+
+  z-index: 2;
+}
+
+.light-effect {
+  content: "";
+  position: absolute;
+
+  animation: shine 10s infinite linear;
+  z-index: 3;
+
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+
+  background: radial-gradient(
+    circle,
+    rgba(200, 255, 250, 0.3) 30%,
+    transparent 90%
+  );
+  /* animation: shine 8s infinite linear; */
+
+  opacity: 0.5;
+}
+.overlay-slider {
+  width: 100%;
+  height: 100vh;
+
+  background: linear-gradient(
+    109.6deg,
+    rgb(36, 45, 57) 11.2%,
+    rgb(16, 37, 60) 51.2%,
+    rgb(0, 0, 0) 98.6%
+  );
+
+  z-index: 3;
+
+  box-shadow: 0 0 0 100px #000 inset;
+}
+
+.background-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.background-slider img.active {
+  opacity: 0.5;
+  transition: opacity 1s ease-in-out;
+
+  background: radial-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 0.5) 25%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  z-index: 2;
+}
+
+@keyframes shine {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(45deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, 50%) rotate(90deg);
+    opacity: 0;
+  }
+  75% {
+    transform: translate(50%, 50%) rotate(135deg);
+    opacity: 0.5;
+  }
+}

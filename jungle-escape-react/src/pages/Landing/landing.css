@@ -1,9 +1,9 @@
 .center-div {
   display: flex;
-  justify-content: center; /* 가로 중앙 정렬 */
-  align-items: center; /* 세로 중앙 정렬 */
-  width: 45%; /* 부모 컨테이너의 전체 너비 */
-  margin: 20px 0; /* 상하 여백 추가 */
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  margin: 20px 0;
 }
 
 .btn-box {

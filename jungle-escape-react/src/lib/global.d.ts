@@ -1,5 +1,10 @@
 /// <reference types="playcanvas" />
 
+interface JoinRoomResponse {
+  status: "success" | "full";
+  message?: string;
+}
+
 declare class NetworkEntities {
   private _index: Map<any, any>;
   constructor();
@@ -85,7 +90,10 @@ declare class PlayNetwork extends pc.EventHandler {
     callback?: (err?: Error, data?: any) => void
   ): void;
   createRoom(data: any, callback?: (err?: Error, roomId?: any) => void): void;
-  joinRoom(id: any, callback?: (err?: Error) => void): Promise<void>;
+  joinRoom(
+    id: any,
+    callback?: (err?: Error) => void
+  ): Promise<JoinRoomResponse | null>;
   leaveRoom(): Promise<void>;
   send(
     name: string,
