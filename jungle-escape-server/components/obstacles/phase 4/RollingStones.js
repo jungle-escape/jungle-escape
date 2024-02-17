@@ -14,20 +14,19 @@ RollingStones.attributes.add('stones', {
 
 RollingStones.prototype.initialize = function () {
     this.time = 0;
+    this.app.on('_player:arrived', () => {
+        this.interval = setInterval(() => {
+            this.onDynamic();
+        }, 5000);
+    }, this);
+    this.once('destroy', () => {
+        clearInterval(this.interval);
+    });
     this._stones = this.stones.map(t => t.template.resource);
-}
-
-RollingStones.prototype.update = function (dt) {
-    this.time += dt;
-    if (this.time > 5) {
-        this.time = 0;
-        this.onDynamic();
-    }
 }
 
 RollingStones.prototype.onDynamic = function () {
     const stone = this._stones[Math.floor(Math.random() * this._stones.length)];
-    // const stone = this._stones[2];
     const entity = stone.instantiate(this.app);
     entity.enabled = true;
     this.entity.addChild(entity);
