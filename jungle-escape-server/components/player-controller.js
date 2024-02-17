@@ -42,6 +42,9 @@ PlayerController.prototype.initialize = function () {
 
   const p4 = level.findByName("circuit board");
   if (p4) p4.enabled = true;
+
+  const p5 = level.findByName("P5. End");
+  if (p5) p5.enabled = true;
 };
 
 PlayerController.prototype.setupVariables = function () {
