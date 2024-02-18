@@ -241,6 +241,17 @@
                 "duration": null,
                 "volume": 1,
                 "pitch": 1
+              },
+              "12": {
+                "name": "warp",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": false,
+                "asset": 167841385,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
               }
             }
           }
@@ -1324,7 +1335,7 @@
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 167785817,
+  "uniqueId": 165184745,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -1341,5 +1352,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "201e1873-57ae-4089-adcb-7e231165ddfa"
+  "checkpoint_id": "d964aad6-cb8f-43a1-9c88-89d7202faeba"
 }
