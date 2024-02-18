@@ -252,6 +252,17 @@
                 "duration": null,
                 "volume": 1,
                 "pitch": 1
+              },
+              "13": {
+                "name": "ggang",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": true,
+                "asset": 167843370,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
               }
             }
           }
