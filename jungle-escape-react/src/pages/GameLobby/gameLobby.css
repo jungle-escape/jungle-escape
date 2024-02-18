@@ -1,6 +1,6 @@
 /** lobby **/
 .roomInputBox {
-  background-color: red;
+  /* background-color: red; */
   //width: 200px;
   /* height: 40px;
   font-size: 2.1rem;
@@ -12,7 +12,7 @@
   border-color: green;
 } */
 
-input.roomInputBox {
+/* input.roomInputBox {
   height: 1.1rem;
   padding: 5px 10px;
   font-size: 0.9rem;
@@ -23,4 +23,4 @@ input.roomInputBox {
 
 input.roomInputBox:focus {
   outline: none;
-}
+} */

@@ -9,9 +9,13 @@ import os from "os";
 import { fileURLToPath } from "url";
 import pn from "./custom_modules/playnetwork/src/server/index.js";
 import FileLevelProvider from "./file-level-provider.js";
-//for window
+/* mongoDB */
+import mongoose from "mongoose";
+import { userAuthRouter } from "./db/routes/UserRoutes.js";
+import errorHandler from "./db/middlewares/errorMiddleware.js";
+
 const __filename =
-  os.platform() === "win32"
+  os.platform() === "win32" //for window
     ? fileURLToPath(import.meta.url)
     : new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
@@ -46,3 +50,25 @@ await pn.start({
   useAmmo: true,
   levelProvider: new FileLevelProvider(decodedLevelsPath),
 });
+
+/** DB connection */
+const db_port = process.env.DB_PORT;
+const db_url = process.env.MONGODB_URL;
+
+if (db_port && db_url) {
+  mongoose
+    .connect(db_url)
+    .then(() => {
+      console.info("[INFO] Mongoose is connected: ");
+      app.listen(db_port, () => {
+        console.info("[INFO] Server is running on port: " + db_port);
+      });
+    })
+    .catch(console.error);
+}
+
+/** express's basic middlewares  */
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(userAuthRouter);
+app.use(errorHandler);

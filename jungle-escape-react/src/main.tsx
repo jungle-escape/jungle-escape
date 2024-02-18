@@ -1,14 +1,14 @@
 import { Suspense } from "react";
 import ReactDOM from "react-dom/client";
+import { RecoilRoot } from "recoil";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
-import "./index.css";
-
 import ROUTES from "@/routes/Routes.tsx";
 
 import App from "@/App";
 import TypoLoader from "@/components/Loading/TypoLoader";
 import ErrorPage from "@/pages/ErrorPage/ErrorPage";
+
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +26,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
-    <Suspense fallback={<TypoLoader />}>
+    {/* <Suspense fallback={<TypoLoader />}> */}
+    <RecoilRoot>
       <RouterProvider router={router} />
-    </Suspense>
+    </RecoilRoot>
+    {/* </Suspense> */}
   </>
 );

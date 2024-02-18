@@ -1,48 +1,26 @@
 import { useEffect, useState } from "react";
 import "./bgImgContainer.css";
-/** customized hook */
-const useLoadImagePaths = () => {
-  const [imageNames, setImagePaths] = useState<string[]>([]);
-
-  useEffect(() => {
-    const loadImages = async () => {
-      const imageModules = import.meta.glob("../../assets/bgImgs/*.webp", {
-        eager: false, //not import as module
-      });
-
-      const imports = Object.values(imageModules).map((importFn) => importFn());
-      const modules = await Promise.all(imports);
-
-      const paths = modules.map((mod: any) => mod.default);
-      setImagePaths(paths);
-    };
-
-    loadImages();
-  }, []);
-
-  return imageNames;
-};
 
 /** Container for background-slider */
-const BgImgContainer = () => {
+const BgImgContainer = ({ prop }) => {
+  const imageNames = prop;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const imagePaths = useLoadImagePaths();
-
-  console.log("이미지 슬라이더: ", imagePaths);
 
   useEffect(() => {
+    if (imageNames.length === 0) return; // 이미지가 없는 경우는 interval 설정을 스킵
+
     const intervalId = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageNames.length);
     }, 5000);
 
     return () => clearInterval(intervalId);
-  }, [imagePaths.length]);
+  }, [imageNames.length]);
 
   return (
     <div className="background-slider">
       <div className="light-effect"></div>
       <div className="overlay-slider">
-        {imagePaths.map((path, index) => (
+        {imageNames.map((path, index) => (
           <img
             key={index}
             src={path}

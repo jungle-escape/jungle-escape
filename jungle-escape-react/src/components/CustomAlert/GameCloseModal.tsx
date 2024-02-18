@@ -6,6 +6,8 @@ const GameCloseModal = ({
   modalContent,
   handleBlockerProceed,
   handleBlockerReset,
+  processMsg,
+  resetMsg,
 }: GameCloseModalProp) => {
   return (
     <div className="modal-back-container">
@@ -15,11 +17,11 @@ const GameCloseModal = ({
           <div className="two-btn-container">
             <BasicBtn
               onClickHandler={handleBlockerProceed}
-              btnContent={"게임 종료하기"}
+              btnContent={processMsg}
             />
             <BasicBtn
               onClickHandler={handleBlockerReset}
-              btnContent={"게임 돌아가기"}
+              btnContent={resetMsg}
             />
           </div>
         </div>

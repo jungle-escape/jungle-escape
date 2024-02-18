@@ -27,7 +27,7 @@
   height: 70%;
   width: 70%; */
 
-  background-color: white;
+  background-color: black;
   z-index: 3;
 }
 
@@ -35,13 +35,16 @@
   width: 100%;
   height: 100%;
 
-  background-color: var(--color_SlientBlack);
   background-color: var(--color_DeepBlack);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  overflow-y: auto;
+  scrollbar-color: var(--color_DarkerGreen) var(--color_LightGreen);
+  scrollbar-width: thin;
 }
 
 .box h1 {
@@ -66,4 +69,25 @@
 
 .box p {
   font-family: "SLEIGothicTTF";
+  font-size: 1.5rem;
+}
+
+.box h2 {
+  font-family: "SLEIGothicTTF";
+  color: white;
+}
+
+.oldfont-white {
+  font-family: "DungGeunMo";
+  color: white;
+}
+
+.oldfont-lightgreen {
+  font-family: "DungGeunMo";
+  color: var(--color_LightGreen);
+}
+
+.newfont-white {
+  font-family: "Pretendard-Regular";
+  color: var(--color_BgWhite);
 }

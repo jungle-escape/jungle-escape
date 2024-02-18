@@ -46,7 +46,7 @@
   width: 100%;
   height: 100%;
 
-  background-color: var(--color_SlientBlack);
+  background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,10 +70,16 @@
 }
 .error-box {
   background-color: black;
+
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .error-cli {
-  padding: 10px;
+  padding: 20px;
   font-family: "DungGeunMo";
 
   font-size: 1.2rem;
@@ -81,6 +87,16 @@
   color: white;
 
   width: 90%;
+  align-items: left;
+
+  border-top-color: var(--color_SlientBlack);
+  border-style: solid;
+  border-bottom-color: var(--color_SlientBlack);
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+
+  margin-bottom: 20px;
 }
 
 .error-cli p {

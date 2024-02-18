@@ -1,26 +1,46 @@
 import JungleLogo from "@/assets/jungle-logo.svg?react";
 import "./landing.css";
-import RoundingButton from "@/components/Button/RoundingButton";
+import LoginForm from "@/components/Login/LoginForm";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { loginState } from "@/recoil/loginState";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
+  const loginData = useRecoilValue(loginState);
+
+  console.log(loginData);
+
   return (
     <>
-      <div className="box">
-        <div className="center-div">
-          <JungleLogo
-            width={"60%"}
-            height={"90%"}
-            viewBox={"50 50 150 150"}
-            style={{
-              borderRadius: "20px",
-              boxShadow: "10px 10px 5px rgb(0, 0, 0, 0.2)",
-            }}
-          />
-        </div>
-        <div className="btn-box">
-          <RoundingButton btnContent={"로그인"} />
-        </div>
-      </div>
+      <main className="box">
+        <section className="center-div">
+          <div className="center-div center-div-animation">
+            <JungleLogo
+              width={"60%"}
+              height={"90%"}
+              viewBox={"50 50 150 150"}
+              style={{
+                borderRadius: "20px",
+                boxShadow: "10px 10px 5px rgb(0, 0, 0, 0.2)",
+              }}
+            />
+          </div>
+        </section>
+        <section className="login-form-animation">
+          {loginData.isLoggedIn ? (
+            <>
+              <Link to={`game`} className="button-type-3">
+                {" "}
+                게임하러 가기
+              </Link>
+            </>
+          ) : (
+            <>
+              <LoginForm />
+            </>
+          )}
+        </section>
+      </main>
     </>
   );
 };

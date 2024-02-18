@@ -1,11 +1,55 @@
+/** Image and Login Form */
 .center-div {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 45%;
-  margin: 20px 0;
+
+  padding: 0;
+}
+
+.center-div img {
+  filter: blur(0);
+  transform: scale(1) translateY(300%); /* 크기 확대 및 아래로 이동 */
+  opacity: 0; /* fade-in 효과를 위해 초기 투명도 설정 */
+  transition: filter 5s ease-out, transform 5s ease-out;
 }
 
 .btn-box {
   padding-bottom: 10%;
+}
+
+@keyframes fadeInAndMoveUp {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); /* 초기 위치에서 시작 */
+  }
+  50% {
+    opacity: 1; /* 중간 지점에서 완전히 불투명해짐 */
+
+    transform: scale(0.8) translateY(3rem); /* 위치 유지 */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0.5) translateY(-50%); /* 최종 위치로 이동 */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.center-div-animation {
+  animation: fadeInAndMoveUp 2.5s ease-out forwards;
+  margin-top: 3rem;
+}
+
+.login-form-animation {
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 2.5s; /* fade-in 시작 전 딜레이 */
+  opacity: 0; /* 애니메이션 시작 전에 LoginForm 숨김 */
 }

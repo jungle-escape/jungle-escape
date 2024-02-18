@@ -35,9 +35,7 @@ const ErrorPage = () => {
           <div className="error-box ">
             <div className="error-cli">
               <p>
-                <span className="error-date">
-                  ubuntu@ip-20-24-02-24 :{currentLoc.pathname}
-                </span>
+                <span className="error-date">ubuntu@ip-20-24-02-24 :</span>
                 <span> pintos -- run jungle-escape</span>
                 <br />
                 Boot Complete
@@ -52,13 +50,12 @@ const ErrorPage = () => {
             </div>
           </div>
           <div className="two-btn-container">
-            <Link className="button-type-1" to={`/`}>
+            <Link className="button-type-3" to={`/`}>
               메인으로
             </Link>
-            <BasicBtn
-              onClickHandler={() => history(-1)}
-              btnContent="뒤로가기"
-            />
+            <button onClick={() => history(-1)} className="button-type-3">
+              뒤로가기
+            </button>
           </div>
         </div>
       </main>

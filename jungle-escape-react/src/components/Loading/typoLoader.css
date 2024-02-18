@@ -18,6 +18,8 @@
   min-width: 450px;
 
   background-color: var(--color_DeepBlack);
+
+  animation: fadeOut 1s forwards; /* 애니메이션 지속 시간과 방향 설정 */
 }
 
 .waviy {
@@ -52,5 +54,14 @@
   }
   20% {
     transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

@@ -1,0 +1,147 @@
+/** login form css */
+.login-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100%;
+
+  font-family: "SLEIGothicTTF";
+  font-size: 2rem;
+
+  gap: 2rem;
+}
+
+.login-form-container p {
+  width: 100%;
+
+  color: var(--color_VeryLightGreen);
+  font-size: 0.9rem;
+}
+
+.login-form-container label {
+  color: white;
+  padding: 0.5rem;
+
+  font-size: 1.2rem;
+}
+
+.login-form {
+  gap: 1.5rem;
+}
+
+.title-input-box {
+  margin: 10% 0 10% 0;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+
+.login-form {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pwd-title-box {
+  display: flex;
+
+  align-items: center;
+  flex-direction: row;
+
+  gap: 20%;
+}
+
+.two-btn-container-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 100%;
+}
+
+.go-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* find password modal css */
+.find-pwd-modal {
+  background-color: var(--color_SlientBlack);
+
+  border-style: solid;
+  border-color: var(--color_DarkerGreen);
+
+  padding: 0.3rem;
+  display: grid;
+  grid-template-row: 1fr 5fr;
+}
+
+.modal-box {
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  flex-direction: column;
+  padding: 3rem;
+  gap: 20px;
+}
+
+.find-pwd-modal h3 {
+  color: var(--color_LightGreen);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.find-pwd-modal p {
+  color: var(--color_BgWhite);
+  font-family: "Pretendard-Regular";
+}
+
+.find-password-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dialog-close {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 2px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* 색상 변화 애니메이션 */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.dialog-close: hover {
+  background-color: red;
+  color: white;
+  border: 2px solid red;
+
+  box-shadow: 0 0 40px 40px $red inset;
+}
+
+.dialog-close-box {
+  top: 0%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
