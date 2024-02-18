@@ -42,6 +42,9 @@ PlayerController.prototype.initialize = function () {
 
   const p4 = level.findByName("circuit board");
   if (p4) p4.enabled = true;
+
+  const p5 = level.findByName("P5. End");
+  if (p5) p5.enabled = true;
 };
 
 PlayerController.prototype.setupVariables = function () {
@@ -351,11 +354,15 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
   if (hit.other.tags.has("rightanswer")) {
     this.entity.collisionTags.push("rightanswer");
   }
-
+  
   if (hit.other.tags.has("hammer")) {
     this.entity.collisionTags.push("hammer");
-    var movement = new pc.Vec3(1, 0, 0).scale(300000);
+    var movement = new pc.Vec3(1, 0, 0).scale(450000);
     this.entity.rigidbody.applyImpulse(movement);
+  }
+
+  if (hit.other.tags.has("hit")) {
+    this.entity.collisionTags.push("hit");
   }
 };
 

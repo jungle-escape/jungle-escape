@@ -37,6 +37,7 @@ Game.prototype.onJoin = function (user) {
   const entity = this.tplUser.instantiate(this.app);
   // entity.name = "User " + user.id;
   entity.name = user.nickname;
+
   entity.script.networkEntity.owner = user.id;
   this.entity.addChild(entity);
   this.users.set(user.id, entity);

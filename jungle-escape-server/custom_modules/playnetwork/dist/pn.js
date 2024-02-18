@@ -109,7 +109,14 @@ class Room extends pc.EventHandler {
 
     for (const [parentId, id] of parentIndex) {
       const parent = pc.app.root.findByGuid(parentId);
-      const child = entity.getGuid() === id ? entity : entity.findByGuid(id);
+      const child = entity.getGuid() === id ? entity : entity.findByGuid(id).clone();
+      const originalRender = entity.findByGuid(id)?.render;
+      if (originalRender) {
+        const oldMshinstcs = originalRender.material.meshInstances;
+        const clonedMaterial = originalRender.material.clone();
+        if (oldMshinstcs.length) oldMshinstcs.pop().material = clonedMaterial;
+        child.render.material = clonedMaterial;
+      }
 
       if (!parent) {
         console.log(`entity ${child.name} unknown parent ${parentId}`);
@@ -134,6 +141,7 @@ class Room extends pc.EventHandler {
   }
 
   _onUpdate(data) {
+    // console.debug('setting data: ', data);
     for (let i = 0; i < data.length; i++) {
       const id = data[i].id;
       const networkEntity = this.networkEntities.get(id);
@@ -150,7 +158,7 @@ class Room extends pc.EventHandler {
     this.fire("destroy");
     this.off();
   }
-}
+} 
 
 class Levels {
   constructor() {
@@ -456,8 +464,6 @@ class PlayNetwork extends pc.EventHandler {
         return;
       }
 
-      console.log("[joinRoom]this?", this);
-      //if (callback) callback(err || null);
       this.send("_room:join", id, (err) => {
         if (err) {
           reject(err);

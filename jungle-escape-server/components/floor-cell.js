@@ -16,7 +16,7 @@ FloorCell.prototype.initialize = function () {
   this.activations = 0;
 
   this.triggerEntity.collision.on("triggerenter", this.onTriggerEnter, this);
-  this.triggerEntity.collision.on("triggerleave", this.onTriggerLeave, this);
+  // this.triggerEntity.collision.on("triggerleave", this.onTriggerLeave, this);
 
   //   if (this.attacker) {
   //     console.log(
@@ -30,9 +30,9 @@ FloorCell.prototype.initialize = function () {
 FloorCell.prototype.swap = function (old) {
   this.activations = old.activations;
   this.triggerEntity.collision.off("triggerenter", old.onTriggerEnter, old);
-  this.triggerEntity.collision.off("triggerleave", old.onTriggerLeave, old);
+  // this.triggerEntity.collision.off("triggerleave", old.onTriggerLeave, old);
   this.triggerEntity.collision.on("triggerenter", this.onTriggerEnter, this);
-  this.triggerEntity.collision.on("triggerleave", this.onTriggerLeave, this);
+  // this.triggerEntity.collision.on("triggerleave", this.onTriggerLeave, this);
 };
 
 FloorCell.prototype.onTriggerEnter = function (entity) {
@@ -44,14 +44,14 @@ FloorCell.prototype.onTriggerEnter = function (entity) {
   // this.onActivationsChanged();
 };
 
-FloorCell.prototype.onTriggerLeave = function (entity) {
-  if (!entity || !this.hasTag(entity.tags)) return;
+// FloorCell.prototype.onTriggerLeave = function (entity) {
+//   if (!entity || !this.hasTag(entity.tags)) return;
 
-  if (!this.isRightBox) {
-    this.activations--;
-    this.onActivationsChanged();
-  }
-};
+//   if (!this.isRightBox) {
+//     this.activations--;
+//     this.onActivationsChanged();
+//   }
+// };
 
 FloorCell.prototype.onActivationsChanged = function () {
   if (this.activations > 0) {
