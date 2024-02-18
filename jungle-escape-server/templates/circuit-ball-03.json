@@ -11,7 +11,7 @@
                 "resource_id": "d82d121f-bc36-452d-adea-f8ac943e34a1",
                 "parent": null,
                 "children": [],
-                "position": [-40, 100, -1040],
+                "position": [-40, 150, -1040],
                 "rotation": [0, 0, 0],
                 "scale": [1, 1, 1],
                 "components": {
@@ -53,8 +53,8 @@
                         "angularDamping": 0,
                         "linearFactor": [1, 1, 1],
                         "angularFactor": [1, 1, 1],
-                        "friction": 0.5,
-                        "restitution": 0.5
+                        "friction": 1,
+                        "restitution": 0.1
                     },
                     "script": {
                         "enabled": true,
@@ -100,7 +100,7 @@
     "file": null,
     "path": [165184693],
     "id": 167081281,
-    "uniqueId": 167797757,
+    "uniqueId": 167082363,
     "createdAt": "2024-02-10T17:47:34.929Z",
     "modifiedAt": null,
     "scope": {
@@ -117,5 +117,5 @@
     "region": "eu-west-1",
     "task": null,
     "i18n": {},
-    "checkpoint_id": "1aa191cd-f78a-40cf-87d4-bd0a29b12c84"
+    "checkpoint_id": "d964aad6-cb8f-43a1-9c88-89d7202faeba"
 }
