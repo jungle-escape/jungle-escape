@@ -18,7 +18,8 @@
           "f5c45130-a85c-4c08-b697-af6686990866",
           "e81ec6e6-276d-45bc-90e5-92dc8152406f",
           "a647d260-2190-45bc-8438-3dc267b7b2a3",
-          "9681d615-c89d-4c83-93f1-c61a8baae2e9"
+          "9681d615-c89d-4c83-93f1-c61a8baae2e9",
+          "9493d8f1-b9de-4353-8a18-88481c71c1d7"
         ],
         "position": [0, 0, 0],
         "rotation": [0, 0, 0],
@@ -286,7 +287,7 @@
             "pivot": [0.5, 0.5],
             "text": "TEST",
             "key": null,
-            "fontAsset": 166192742,
+            "fontAsset": 166412191,
             "fontSize": 32,
             "minFontSize": 8,
             "maxFontSize": 32,
@@ -302,9 +303,9 @@
             "spriteAsset": null,
             "spriteFrame": 0,
             "pixelsPerUnit": null,
-            "width": 58.944,
-            "height": 28.256,
-            "margin": [-29.472, -11.2, -29.472, -17.056],
+            "width": 64,
+            "height": 28,
+            "margin": [-32, -11.072, -32, -16.928],
             "alignment": [0.5, 0.5],
             "outlineColor": [0, 0, 0, 1],
             "outlineThickness": 0,
@@ -1340,6 +1341,61 @@
             "rootBone": "7a3bb5f0-c16a-4b10-a930-17b47ffaede8"
           }
         }
+      },
+      "9493d8f1-b9de-4353-8a18-88481c71c1d7": {
+        "name": "SpotLightPC",
+        "tags": [],
+        "enabled": false,
+        "resource_id": "9493d8f1-b9de-4353-8a18-88481c71c1d7",
+        "parent": "c66a84df-2d99-411e-8bee-bb105ba7277c",
+        "children": [],
+        "position": [0, 9.135724540108114, 0],
+        "rotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "components": {
+          "light": {
+            "enabled": true,
+            "type": "spot",
+            "bake": false,
+            "bakeArea": 0,
+            "bakeNumSamples": 1,
+            "bakeDir": true,
+            "affectDynamic": true,
+            "affectLightmapped": false,
+            "affectSpecularity": true,
+            "color": [
+              0.9019607843137255, 0.9254901960784314, 0.6588235294117647
+            ],
+            "intensity": 30,
+            "castShadows": true,
+            "shadowUpdateMode": 2,
+            "shadowType": 0,
+            "vsmBlurMode": 1,
+            "vsmBlurSize": 11,
+            "vsmBias": 0.01,
+            "shadowDistance": 16,
+            "shadowIntensity": 1,
+            "shadowResolution": 1024,
+            "numCascades": 1,
+            "cascadeDistribution": 0.5,
+            "shadowBias": 0.2,
+            "normalOffsetBias": 0.05,
+            "range": 100,
+            "falloffMode": 0,
+            "innerConeAngle": 10,
+            "outerConeAngle": 15,
+            "shape": 0,
+            "cookieAsset": null,
+            "cookieIntensity": 1,
+            "cookieFalloff": true,
+            "cookieChannel": "rgb",
+            "cookieAngle": 0,
+            "cookieScale": [1, 1],
+            "cookieOffset": [0, 0],
+            "isStatic": false,
+            "layers": [0]
+          }
+        }
       }
     }
   },
@@ -1363,5 +1419,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "d964aad6-cb8f-43a1-9c88-89d7202faeba"
+  "checkpoint_id": "15c7e17e-5575-4a18-9230-eabf78cc24e7"
 }
