@@ -73,15 +73,12 @@ userAuthRouter.get(
   "/user/current",
   login_required,
   async function (req, res, next) {
-    console.log("/user/current 들어왔어요");
     try {
       const user_id = req.currentUserId;
       if (user_id == undefined) {
         throw new Error("request header doesn't have currentUserId");
       }
       const currentUserInfo = await userAuthService.getUserInfo(user_id);
-
-      console.log("currentUserInfo", currentUserInfo);
 
       if (typeof currentUserInfo == "string") {
         throw new Error(currentUserInfo);

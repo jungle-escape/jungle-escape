@@ -127,9 +127,9 @@ EffekseerSystem.prototype.initialize = function() {
     var layer = new pc.Layer({
         name : "effekseerlayer",
             onPostRenderTransparent : function (camerapass) {
-                if(window.playCanvasEffekseerSystem.context.loaded)
+                if(window.playCanvasEffekseerSystem?.context.loaded)
                 {
-                    window.playCanvasEffekseerSystem.context.context.draw();                        
+                    window.playCanvasEffekseerSystem?.context.context.draw();                        
                 }
             }
         });

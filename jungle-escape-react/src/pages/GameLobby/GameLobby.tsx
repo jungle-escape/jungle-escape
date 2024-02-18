@@ -57,7 +57,6 @@ const GameLobby = () => {
 
   /** 이 컴포넌트가 mount되었을 때 pn.connection 을 시작. 게임 접속은 아니다. */
   useEffect(() => {
-    console.log("loginData.isLoggedIn", loginData.isLoggedIn);
     if (loginData.isLoggedIn) {
       //로그인 상태일 때에만 pn.connection 시작
 
@@ -72,20 +71,17 @@ const GameLobby = () => {
       const port = placeholder === "DEV" ? "8080" : "";
       const isSecure = placeholder === "DEV" ? false : true;
 
-      console.log("pn시리즈에 대해 알아보자 ====");
-      console.log("커넥트 전 pn", pn);
-
       /** [Connection] : connect via pn */
       console.info(`Connecting to [[[ ${placeholder} ]]] server...`);
       // pn.connect(host, port, false, null, () => {
-      pn.connect(host, port, isSecure, null, () => {
+      pn.connect(host, port, isSecure, userInfo, () => {
         pn.on("join", (room) => {
           room.on("join", (user: any) => {
-            LOG.addText(`User ${user.id} joined`);
+            LOG.addText(`User ${user.id} / ${user.id} joined`);
           });
 
           room.on("leave", (user: any) => {
-            LOG.addText(`User ${user.id} left`);
+            LOG.addText(`User ${user.id}  / ${user.id}left`);
           });
         });
 
@@ -141,7 +137,7 @@ const GameLobby = () => {
       console.log("[Game Lobby] 첫 번째 작업 클린업");
       console.log("[Game Lobby] 컴포넌트가 언마운트됐습니다.");
     };
-  }, []);
+  }, [userInfo]);
 
   ///////////// handler functions /////////////////
 
@@ -157,7 +153,6 @@ const GameLobby = () => {
         console.log("데이터가 존재하지 않습니다.");
         return;
       }
-      console.log("res 어떻게 생겼니?", res);
       const { id, nickname, participatedRooms } = res.data as UserData;
       setUserInfo({ id, nickname, participatedRooms });
     } catch (err) {

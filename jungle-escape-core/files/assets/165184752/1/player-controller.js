@@ -3,6 +3,13 @@ var PlayerController = pc.createScript('playerController');
 
 PlayerController.prototype.initialize = function () {
     this.networkEntity = this.entity.script.networkEntity;
+    // Set up model
+    if (this.networkEntity.user) {
+        const charNum = this.networkEntity.user.id % 4;
+        this.modelEntity = this.entity.children[0];
+        const body = this.modelEntity.children[0];
+        body.children[charNum].enabled = true;
+    }
 
     if (!this.networkEntity.mine) return;
 
@@ -26,6 +33,12 @@ PlayerController.prototype.initialize = function () {
 
     const p4 = level.findByName("circuit board");
     if (p4) p4.enabled = false;
+
+    const p5 = level.findByName("P5. End");
+    if (p5) p5.enabled = false;
+
+    const worldLight = this.app.root.findByName("WorldLight");
+    if (worldLight) worldLight.light.intensity = 0.1;
 };
 
 PlayerController.prototype.setupVariables = function () {
@@ -47,7 +60,7 @@ PlayerController.prototype.setupVariables = function () {
 
     // Get component of template 'PC'
     this.modelEntity = this.entity.children[0];     // NOTE : Model must be FIRST children of entity
-    this.nameTag = this.entity.children[1];
+    this.nameTag = this.entity.findByName('Nametag');
 
     // Anim state
     this.entity.isRunning = false;   
@@ -64,6 +77,12 @@ PlayerController.prototype.setupVariables = function () {
 
     // Custom timer
     this.animTimerAttack = 0;
+
+    // End trigger
+    this.endPoint = false;
+
+    // Rank
+    this.entity.rank = 0;
 }
 
 PlayerController.prototype.setupEventListeners = function () {
@@ -72,18 +91,45 @@ PlayerController.prototype.setupEventListeners = function () {
     this.entity.collision.on("collisionstart", this.onCollisionStart, this);
 }
 
+PlayerController.prototype.onTriggerEnter = function (target) {
+
+}
+
 PlayerController.prototype.onCollisionStart = function (hit) {
-    if (hit.other.tags.has('phase2')) {
-        const level = this.app.root.findByName('Level');
-        const p2 = level.findByName('P2. Algorithm');
-        if (p2) {
-            if (p2.enabled) {
-                p2.enabled = false;
-            } else {
-                p2.enabled = true;
-            }
+    if (hit.other.tags.has('endpoint')) {
+        this.endPoint = true;
+    }
+
+    if (hit.other.tags.has('redcarpet')) {
+        if (!this.entity.sound.slot('cheer').isPlaying) {
+            this.entity.sound.play("cheer");
+
+            // Play vfx
+            const firework = this.vfx.findByName('firework');
+            firework.script.effekseerEmitter.play();
         }
     }
+
+    const level = this.app.root.findByName('Level');
+    const points = [
+        'P0. Start_Bedroom',
+        'P1. Hello World',
+        'P2. Algorithm',
+        'P3. Rbtree',
+        'P3-2. Malloc-lab',
+        'circuit board',
+        'P5. End'
+    ];
+
+    points.forEach((pointName, index) => {
+        const point = level.findByName(pointName);
+        
+        if (hit.other.tags.has(`p${index}_on`)) {
+            point.enabled = true;
+        } else if (hit.other.tags.has(`p${index}_off`)) {
+            point.enabled = false;
+        }
+    });
 }
 
 
@@ -93,13 +139,13 @@ PlayerController.prototype.mouseDown = function (e) {
         // Set mouse input
         this.clientInput.mouse_LEFT = true;
 
-        // Visualize raycast
-        var castStart = this.entity.getPosition();
-        var distance = 5;
-        var forward = this.modelEntity.forward.scale(-1);
-        var castEnd = castStart.clone().add(forward.clone().scale(distance));
+        // // Visualize raycast
+        // var castStart = this.entity.getPosition();
+        // var distance = 5;
+        // var forward = this.modelEntity.forward.scale(-1);
+        // var castEnd = castStart.clone().add(forward.clone().scale(distance));
 
-        this.app.drawLine(castStart, castEnd, new pc.Color(1, 0, 0));
+        // this.app.drawLine(castStart, castEnd, new pc.Color(1, 0, 0));
 
         // Set anim state to attacking
         this.entity.isAttacking = true;
@@ -111,6 +157,7 @@ PlayerController.prototype.mouseDown = function (e) {
 
 PlayerController.prototype.update = function (dt) {
     if (!this.networkEntity.mine) return;
+
     // Check custom timer
     this.checkCustomTimer(dt);
 
@@ -206,6 +253,18 @@ PlayerController.prototype.togglePhase = function () {
             }
         }    
     }
+
+    if (this.app.keyboard.wasPressed(pc.KEY_6)) {
+        const level = this.app.root.findByName('Level');
+        const p6 = level.findByName('P5. End');
+        if (p6) {
+            if (p6.enabled) {
+                p6.enabled = false;
+            } else {
+                p6.enabled = true;
+            }
+        }    
+    }
 }
 
 // Set anim state and rotation of model entity
@@ -221,6 +280,14 @@ PlayerController.prototype.setModelEntityState = function () {
     var isSPressed = this.app.keyboard.isPressed(pc.KEY_S);
     var isDPressed = this.app.keyboard.isPressed(pc.KEY_D);
     var isSpacePressed = this.app.keyboard.isPressed(pc.KEY_SPACE);
+
+    if (this.endPoint) {
+        var isWPressed = true;
+        var isAPressed = false;
+        var isSPressed = false;
+        var isDPressed = true;
+        var isSpacePressed = false;
+    }
 
     if (CAMERA.isBackView) {
         var dirZ = isSPressed - isWPressed;
@@ -269,6 +336,7 @@ PlayerController.prototype.handleCollisionTags = function () {
     if (tags?.length !== 0) {
         // tag : pc_reaction
         if (tags?.includes('pc_reaction')) {
+            this.entity.isRunning = false;
             if (!this.entity.sound.slot('reaction').isPlaying) {
                 this.entity.sound.play("reaction");
             }
@@ -318,14 +386,14 @@ PlayerController.prototype.handleCollisionTags = function () {
         }   
         // tag : hammer  
         if (tags?.includes('hammer')) {
-            if (!this.entity.sound.slot('hammer').isPlaying) {
-                this.entity.sound.play("hammer");
+            if (!this.entity.sound.slot('ggang').isPlaying) {
+                this.entity.sound.play("ggang");
                 this.entity.isHit = true;
 
                 // 1초 후에 isHit를 false로 설정
                 setTimeout(() => {
                     this.entity.isHit = false;
-                }, 1000); // 1000 밀리초 후 실행
+                }, 2000); // 2초 후 실행
             }
         }     
 
@@ -348,6 +416,17 @@ PlayerController.prototype.handleCollisionTags = function () {
                 this.entity.sound.play("hit");
             }
         }  
+        // tag : hit (vfx only)
+        if (tags?.includes('hit')) {
+            this.entity.isRunning = false;
+            if (!this.entity.sound.slot('reaction').isPlaying) {
+                this.entity.sound.play("reaction");
+            }
+
+            const hit = this.vfx.findByName('hit');
+            hit.script.effekseerEmitter.play();
+        } 
+
     }
 }
 
@@ -361,6 +440,14 @@ PlayerController.prototype.sendInputToServer = function () {
     this.clientInput.key_A = this.app.keyboard.isPressed(pc.KEY_A);
     this.clientInput.key_D = this.app.keyboard.isPressed(pc.KEY_D);
     this.clientInput.key_SPACE = this.app.keyboard.isPressed(pc.KEY_SPACE);
+
+    if (this.endPoint) {
+        this.clientInput.key_W = true;
+        this.clientInput.key_S = false;
+        this.clientInput.key_A = false;
+        this.clientInput.key_D = true;
+        this.clientInput.key_SPACE = false;     
+    }
 
     // Get model rotation
     const modelRotation = this.modelEntity.getEulerAngles();

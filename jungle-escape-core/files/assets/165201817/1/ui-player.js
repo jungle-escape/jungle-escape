@@ -14,5 +14,7 @@ UiPlayer.prototype.initialize = function() {
 
 UiPlayer.prototype.update = function() {
     // Adjust name tag angle
-    this.entity.setEulerAngles(0, 40, 0);
+    var valY = CAMERA.isBackView? 0 : 40;
+
+    this.entity.setEulerAngles(0, valY, 0);
 }

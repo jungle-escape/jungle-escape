@@ -9,17 +9,17 @@ Savepoint.prototype.initialize = function () {
 Savepoint.prototype.onTriggerEnter = function (target) {
     // Set player savepoint
     var pos = this.entity.getPosition();
-    if (target.name === ME.name) {
+    if (target.name === ME?.name) {
 
         if (PHASE1.arrived === false) {
             this.faded(PHASE1);
             // CAMERA.switchView(CAMERA);
         } else if (PHASE2.arrived === false && pos.z <= -300) {
             this.faded(PHASE2);
-            // CAMERA.switchView(CAMERA);
-        } else if (PHASE3.arrived === false && pos.z <= -900) {
+            // CAMERA.switchView();
+        } else if (PHASE3.arrived === false && pos.z <= -850) {
             this.faded(PHASE3);
-            // CAMERA.switchView(CAMERA);
+            // CAMERA.switchView();
         }
     };
 

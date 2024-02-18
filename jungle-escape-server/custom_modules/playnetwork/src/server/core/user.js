@@ -40,12 +40,12 @@ import performance from "../libs/performance.js";
  */
 
 export default class User extends pc.EventHandler {
-  constructor(id, socket, serverId) {
+  constructor(id, socket, serverId, nickname) {
     super();
-
     this.id = id;
     this.serverId = serverId;
     this.room = null;
+    this.nickname = nickname; //customize
 
     if (serverId) return;
 
