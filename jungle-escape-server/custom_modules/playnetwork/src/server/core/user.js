@@ -87,9 +87,9 @@ export default class User extends pc.EventHandler {
       if (this.room.id === roomId) return new Error("Already in this room");
       await this.leave();
     }
-
+    /* ROOM SIZE 인원 조정 */
     //check room member, under 4 user (3)
-    if (room.users.size > 0) {
+    if (room.users.size > 3) {
       const userCount = room.users.size;
       console.log(`number of current user in room ${room.id} : `, userCount);
       return new Error("full");

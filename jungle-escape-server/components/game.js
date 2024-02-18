@@ -33,7 +33,6 @@ Game.prototype.swap = function (old) {
 Game.prototype.onJoin = function (user) {
   // user entity
 
-  console.log("game.js에서의 user는 무엇?", Object.keys(user));
   const entity = this.tplUser.instantiate(this.app);
   // entity.name = "User " + user.id;
   entity.name = user.nickname;

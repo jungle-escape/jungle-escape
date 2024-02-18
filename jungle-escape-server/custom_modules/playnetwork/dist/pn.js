@@ -52,11 +52,6 @@ class Room extends pc.EventHandler {
     this.latency = 0;
 
     for (const key in users) {
-      console.log(
-        "대체 Room에서 users가 무엇이냐? / key, users / ",
-        key,
-        users
-      );
       const userData = users[key];
       const user = new User(userData.id, null, userData.nickname);
       this.users.set(user.id, user);
@@ -109,7 +104,8 @@ class Room extends pc.EventHandler {
 
     for (const [parentId, id] of parentIndex) {
       const parent = pc.app.root.findByGuid(parentId);
-      const child = entity.getGuid() === id ? entity : entity.findByGuid(id).clone();
+      const child =
+        entity.getGuid() === id ? entity : entity.findByGuid(id).clone();
       const originalRender = entity.findByGuid(id)?.render;
       if (originalRender) {
         const oldMshinstcs = originalRender.material.meshInstances;
@@ -158,7 +154,7 @@ class Room extends pc.EventHandler {
     this.fire("destroy");
     this.off();
   }
-} 
+}
 
 class Levels {
   constructor() {
@@ -401,18 +397,12 @@ class PlayNetwork extends pc.EventHandler {
       `${useSSL ? "wss" : "ws"}://${host}${port ? `:${port}` : ""}/websocket`
     );
 
-    console.log("pn.js에서의 payload", payload);
-
     this.socket.onmessage = (e) => this._onMessage(e.data);
 
     this.socket.onopen = () => {
       this.isSocketOpened = true;
       this.isSocketClosedLogged = false;
       this._send("_authenticate", payload, null, null, (err, data) => {
-        console.log(
-          "pn의 connect의 data는 대체 어디서 오는가? 정체가 무엇인가?",
-          data
-        );
         if (err) {
           if (callback) callback(err, null);
           this.fire("error", err);
@@ -499,10 +489,6 @@ class PlayNetwork extends pc.EventHandler {
     if (!this.isSocketOpened) {
       return;
     }
-
-    // console.log("_send 안쪽의 data, 넌 뭐니?", data);
-    // console.log("_send inside", name, data, scope, id);
-
     const msg = {
       name,
       scope: {

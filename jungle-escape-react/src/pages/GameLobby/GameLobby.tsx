@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 import { useBlocker, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
+import { useRecoilState } from "recoil";
+import { loginState } from "@/recoil/loginState";
 
-import "./gameLobby.css";
-import "@/components/CustomAlert/modal.css";
+//components
 import BasicBtn from "@/components/Button/BasicButton";
 import GameCloseModal from "@/components/CustomAlert/GameCloseModal";
 import CustomAlert from "@/components/CustomAlert/CustomAlertModal";
 import Loader3d from "@/components/Loading/Loading3d";
-import { useRecoilState } from "recoil";
-import { loginState } from "@/recoil/loginState";
+//css
+import "./gameLobby.css";
+import "@/components/CustomAlert/modal.css";
+
+//API
 import { api_getCurrentUser } from "@/api/API";
+//type
 import { UserData } from "@/lib";
 
 const GameLobby = () => {
@@ -29,7 +34,7 @@ const GameLobby = () => {
 
   const navigate = useNavigate();
 
-  /** check requirements for this page */
+  /** check important requirements for this page */
   useEffect(() => {
     //pn.js가 로드되지 않았을 때, 자동 새로고침
     if (!pn) {
@@ -48,17 +53,10 @@ const GameLobby = () => {
 
   console.log("==========[Game Lobby] session : ", isSessionStart);
 
-  /** 뒤로가기 관련 logic  */
-  // session이 시작했을 때만 blocking
-  const blocker = useBlocker(({ currentLocation, nextLocation }) => {
-    console.log("currentLocation, nextLocation", currentLocation, nextLocation);
-    return isSessionStart && currentLocation.pathname !== nextLocation.pathname;
-  });
-
   /** 이 컴포넌트가 mount되었을 때 pn.connection 을 시작. 게임 접속은 아니다. */
   useEffect(() => {
-    if (loginData.isLoggedIn) {
-      //로그인 상태일 때에만 pn.connection 시작
+    if (loginData.isLoggedIn && userInfo) {
+      //로그인 상태 & userInfo가 load되었을 때에만 pn.connection 시작
 
       let host: string;
       if (hasEndpoint(window)) {
@@ -72,7 +70,10 @@ const GameLobby = () => {
       const isSecure = placeholder === "DEV" ? false : true;
 
       /** [Connection] : connect via pn */
-      console.info(`Connecting to [[[ ${placeholder} ]]] server...`);
+      console.info(
+        `[GAME LOBBY] Connecting to [[[ ${placeholder} ]]] server...`
+      );
+
       // pn.connect(host, port, false, null, () => {
       pn.connect(host, port, isSecure, userInfo, () => {
         pn.on("join", (room) => {
@@ -121,8 +122,6 @@ const GameLobby = () => {
           showRootElement();
           setIsSessionStart(false);
         });
-
-        console.log("커넥트 안쪽의 pn", pn);
       });
     }
 
@@ -139,6 +138,13 @@ const GameLobby = () => {
     };
   }, [userInfo]);
 
+  /** 뒤로가기 관련 logic  */
+  // session이 시작했을 때만 blocking
+  const blocker = useBlocker(({ currentLocation, nextLocation }) => {
+    //console.log("currentLocation, nextLocation", currentLocation, nextLocation);
+    return isSessionStart && currentLocation.pathname !== nextLocation.pathname;
+  });
+
   ///////////// handler functions /////////////////
 
   ////////////////////////
@@ -147,14 +153,25 @@ const GameLobby = () => {
 
   const handleUserInfo = async () => {
     try {
+      ///// for PRODUCTION //////
       //id, nickname, participantedRooms 정보를 얻을 수 있음.
-      const res = await api_getCurrentUser();
-      if (!res || !res.data) {
-        console.log("데이터가 존재하지 않습니다.");
-        return;
-      }
-      const { id, nickname, participatedRooms } = res.data as UserData;
-      setUserInfo({ id, nickname, participatedRooms });
+      // const res = await api_getCurrentUser();
+      // if (!res || !res.data) {
+      //   console.log("데이터가 존재하지 않습니다.");
+      //   return;
+      // }
+      // const { id, nickname, participatedRooms } = res.data as UserData;
+      // setUserInfo({ id, nickname, participatedRooms });
+
+      //// for DEV ////
+      const myNickName = window.localStorage.getItem("nickname");
+      const myUserInfo = {
+        id: "id",
+        nickname: myNickName,
+        participatedRooms: [],
+      };
+      setUserInfo(myUserInfo);
+      //console.log("userInfo?", userInfo);
     } catch (err) {
       console.log(err);
     }
@@ -162,7 +179,8 @@ const GameLobby = () => {
 
   const handleLogOut = () => {
     setLoginData({ ...loginData, isLoggedIn: false, token: "" });
-    localStorage.removeItem("currentUserId");
+    //localStorage.removeItem("currentUserId");
+    localStorage.removeItem("nickname"); //dev
     //navigate("/");
   };
 

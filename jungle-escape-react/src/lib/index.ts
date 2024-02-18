@@ -50,6 +50,7 @@ export interface SignupData extends LoginData {
 
 export interface UserData {
   id: string;
-  nickname: string;
+  //nickname: string;
+  nickname: string | null;
   participatedRooms: string[];
 }

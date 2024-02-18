@@ -245,6 +245,7 @@
             console.error(err);
           }
           app.start();
+
           // app.scenes.loadScene(SCENE_PATH, function (err, scene) {
           //     if (err) {
           //         console.error(err);

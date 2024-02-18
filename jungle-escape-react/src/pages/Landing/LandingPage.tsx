@@ -1,14 +1,13 @@
+import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { loginState } from "@/recoil/loginState";
+
 import JungleLogo from "@/assets/jungle-logo.svg?react";
 import "./landing.css";
 import LoginForm from "@/components/Login/LoginForm";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { loginState } from "@/recoil/loginState";
-import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   const loginData = useRecoilValue(loginState);
-
-  console.log(loginData);
 
   return (
     <>

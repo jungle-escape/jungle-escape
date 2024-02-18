@@ -68,8 +68,8 @@ Lobby.prototype.initialize = function () {
 
         pn.on('pgbar', (dis) => {
             var runner = PROGRESSBAR.entity.findByName(`runner1`);
-            runner.setLocalPosition(-200 + ((1100 - dis) * (5 / 11)), -5, 0);
-            BAR.setProgress((1100 - dis) / 1100);
+            runner.setLocalPosition(-200 + ((1400 - dis) * (5 / 11)), -5, 0);
+            BAR.setProgress((1400 - dis) / 1100);
         });
 
         pn.on('rank', (list) => {

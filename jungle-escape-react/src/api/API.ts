@@ -71,3 +71,28 @@ export const api_getCurrentUser = async () => {
     });
   }
 };
+
+//////// for PRODUCTION ////////
+// type guard funcs
+//   const hasEndpoint = (obj: unknown): obj is Window & { _endpoint: string } =>
+//     typeof obj === "object" && obj !== null && "_endpoint" in obj;
+
+// let host: string;
+// if (hasEndpoint(window)) {
+//   host = window._endpoint;
+// } else {
+//   // window._endpoint가 존재하지 않을 때, .env에 세팅해둔 endpoint를 가져온다.
+//   host = import.meta.env.VITE_ENDPOINT;
+// }
+
+// const placeholder = host === "localhost" ? "DEV" : "PROD";
+// const port = placeholder === "DEV" ? "5000" : "";
+// console.info(`[API] Connecting to [[[ ${placeholder} ]]] server...`);
+
+// const instance = axios.create({
+//   //baseURL: import.meta.env.VITE_API_DOMAIN,
+//   baseURL: `http://${host}:${port}`,
+//   headers: { "Content-Type": "application/json" },
+// });
+
+////////////////////////////////////////////

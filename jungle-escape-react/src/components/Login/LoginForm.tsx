@@ -2,39 +2,72 @@ import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { loginState } from "@/recoil/loginState";
-import { api_login } from "@/api/API";
+//import { api_login } from "@/api/API";
 
 import "./loginform.css";
 
 const LoginForm = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const [nickname, setNickName] = useState("");
+  const [nickname, setNickname] = useState("");
   const [loginData, setLoginData] = useRecoilState(loginState);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isEnglish, setIsEnglish] = useState(true);
+
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
-    console.log("handle login 실행 합니다 ");
     e.preventDefault();
 
     try {
-      console.log(id, password);
-      const res = await api_login({ id, password, nickname });
-      console.log("[LgForm]: res: ", res);
-      //store JWT at Localstorage
-      //toast.success("로그인 성공!", { autoClose: 1500 });
-      const token = res.data.token;
-      // const token = "테스트용";
-      window.localStorage.setItem("currentUserId", token);
-      setLoginData({ ...loginData, isLoggedIn: true, token: token });
+      ///// for PRODUCTION //////
+      // const res = await api_login({ id, password, nickname });
+      // //store JWT at Localstorage
+      // const token = res.data.token;
+      // window.localStorage.setItem("currentUserId", token);
+      // setLoginData({ ...loginData, isLoggedIn: true, token: token });
 
-      console.info("로그인 성공!");
+      //// for DEV ////
+      if (validateEnglish(nickname)) {
+        const token = crypto.randomUUID();
+        window.localStorage.setItem("nickname", nickname);
+        setLoginData({ ...loginData, isLoggedIn: true, token: token });
 
-      navigate("/game");
+        console.info(`ID: ${id} | LOGIN SUCCESS`);
+
+        navigate("/game");
+      } else if (!validateEnglish(nickname)) {
+        setIsEnglish(false);
+        return;
+      }
     } catch (err) {
       console.log(err);
       //toast.error(`에러 발생! ${err}`);
+    }
+  };
+
+  //// handle nickname functions ///
+
+  const validateEnglish = (value: string) => {
+    const regex = /^[A-Za-z]+$/;
+    if (regex.test(value)) {
+      //console.log("Valid value:", value);
+      return true;
+    }
+    //console.log("Invalid value:", value);
+    return false;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const isValidEnglish = validateEnglish(value);
+
+    setIsEnglish(isValidEnglish);
+    if (isValidEnglish || value === "") {
+      setNickname(value);
+    } else if (!isValidEnglish) {
+      // 경고 메시지 표시 여부 결정
+      setIsEnglish(false);
     }
   };
 
@@ -58,6 +91,25 @@ const LoginForm = () => {
       >
         <div className="login-password-container">
           <section className="title-input-box">
+            <label htmlFor="email" id="nickname-label">
+              닉네임을 지어주세요!
+            </label>
+            <div className="email-input-div">
+              <input
+                id="nickname"
+                name="nickname"
+                placeholder="영어로 별명을 지어주세요!"
+                required
+                className="email-input"
+                onChange={handleInputChange}
+              />
+            </div>
+            <p id="nickname-error" className={!isEnglish ? "show" : "hide"}>
+              영어 알파벳만 사용할 수 있습니다.
+            </p>
+          </section>
+
+          {/* <section className="title-input-box">
             <label htmlFor="email" className="email-label">
               아이디
             </label>
@@ -72,7 +124,7 @@ const LoginForm = () => {
                 onChange={(e) => setId(e.target.value)}
               />
             </div>
-          </section>
+          </section> */}
 
           {/* <section className="title-input-box">
             <label htmlFor="email" className="email-label">
@@ -85,12 +137,12 @@ const LoginForm = () => {
                 placeholder="별명"
                 required
                 className="email-input"
-                onChange={(e) => setNickName(e.target.value)}
+                onChange={(e) => setNickname(e.target.value)}
               />
             </div>
           </section> */}
 
-          <section className="title-input-box">
+          {/* <section className="title-input-box">
             <div className="pwd-title-box">
               <label htmlFor="password" className="password-label">
                 비밀번호
@@ -111,20 +163,25 @@ const LoginForm = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-          </section>
+          </section> */}
         </div>
         <section className="two-btn-container-col">
           <div>
-            <button type="submit" className="button-type-3">
-              로그인
+            <button
+              type="submit"
+              className="button-type-3"
+              onClick={handleLogin}
+            >
+              {/* 로그인 */}
+              게임하기
             </button>
           </div>
-          <p className="go-signup">
+          {/* <p className="go-signup">
             회원이 아니신가요?
             <Link to={`../signUp`} className="button-type-3">
               회원가입하기
             </Link>
-          </p>
+          </p> */}
         </section>
       </Form>
       {/* Find Password Modal Component */}

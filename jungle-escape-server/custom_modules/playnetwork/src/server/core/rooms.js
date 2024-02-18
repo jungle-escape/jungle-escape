@@ -39,7 +39,6 @@ class Rooms extends pc.EventHandler {
     });
 
     pn.on("_room:join", async (sender, id, callback) => {
-      console.log("서버의 _room:join- id?", id);
       if (!id) return callback(new Error("Room id is required"));
       // eslint-disable-next-line n/no-callback-literal
       callback(await sender.join(id));

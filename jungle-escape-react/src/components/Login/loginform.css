@@ -25,6 +25,8 @@
   padding: 0.5rem;
 
   font-size: 1.2rem;
+
+  text-align: center; //dev
 }
 
 .login-form {
@@ -144,4 +146,16 @@
   display: flex;
   justify-content: right;
   align-items: center;
+}
+
+#nickname-error {
+  color: red;
+  font-size: 0.9rem;
+}
+#nickname-error.hide {
+  visibility: hidden; /* 메시지를 시각적으로 숨깁니다. 하지만 공간은 차지합니다. */
+}
+
+#nickname-error.show {
+  visibility: visible; /* 메시지를 표시합니다. */
 }

@@ -39,6 +39,10 @@ PlayerController.prototype.initialize = function () {
 
     const worldLight = this.app.root.findByName("WorldLight");
     if (worldLight) worldLight.light.intensity = 0.1;
+
+    // // When user triggers endpoint.
+    // // Refer to both setModelEntityState() and sendInputToServer().
+    // this.app.on('_triggerEndPlayerControl:endpointOn', () => { this.endpoint = true; }, this);
 };
 
 PlayerController.prototype.setupVariables = function () {
@@ -79,7 +83,8 @@ PlayerController.prototype.setupVariables = function () {
     this.animTimerAttack = 0;
 
     // End trigger
-    this.endPoint = false;
+    this.endpoint = false;
+    this.automove = false;
 
     // Rank
     this.entity.rank = 0;
@@ -97,7 +102,17 @@ PlayerController.prototype.onTriggerEnter = function (target) {
 
 PlayerController.prototype.onCollisionStart = function (hit) {
     if (hit.other.tags.has('endpoint')) {
-        this.endPoint = true;
+        this.endpoint = true;
+        CAMERA.endPoint = true;
+    }
+    
+    if (hit.other.tags.has('automove')) {
+        this.automove = true;
+        const spotLight = this.entity.findByName('SpotLightPC');
+        if (spotLight) {
+            console.log("spotlight : ", spotLight);
+            spotLight.enabled = true;
+        }
     }
 
     if (hit.other.tags.has('redcarpet')) {
@@ -281,7 +296,7 @@ PlayerController.prototype.setModelEntityState = function () {
     var isDPressed = this.app.keyboard.isPressed(pc.KEY_D);
     var isSpacePressed = this.app.keyboard.isPressed(pc.KEY_SPACE);
 
-    if (this.endPoint) {
+    if (this.automove) {
         var isWPressed = true;
         var isAPressed = false;
         var isSPressed = false;
@@ -441,12 +456,12 @@ PlayerController.prototype.sendInputToServer = function () {
     this.clientInput.key_D = this.app.keyboard.isPressed(pc.KEY_D);
     this.clientInput.key_SPACE = this.app.keyboard.isPressed(pc.KEY_SPACE);
 
-    if (this.endPoint) {
+    if (this.automove) {
         this.clientInput.key_W = true;
         this.clientInput.key_S = false;
         this.clientInput.key_A = false;
         this.clientInput.key_D = true;
-        this.clientInput.key_SPACE = false;     
+        this.clientInput.key_SPACE = false;
     }
 
     // Get model rotation
