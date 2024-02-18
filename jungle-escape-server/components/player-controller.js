@@ -357,7 +357,7 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
   
   if (hit.other.tags.has("hammer")) {
     this.entity.collisionTags.push("hammer");
-    var movement = new pc.Vec3(1, 0, 0).scale(300000);
+    var movement = new pc.Vec3(1, 0, 0).scale(450000);
     this.entity.rigidbody.applyImpulse(movement);
   }
 
