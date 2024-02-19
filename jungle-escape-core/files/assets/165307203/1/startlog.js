@@ -28,6 +28,12 @@ StartLog.prototype.addText = function (text) {
         if (!bgm.sound.slot('BGM2').isPlaying) {
             bgm.sound.play('BGM2');
         }
+        // Enable phase 2
+        const p2 = level?.findByName('P2. Algorithm');
+        p2.enabled = true;
+
+        const worldLight = this.app.root.findByName('WorldLight');
+        if (worldLight) worldLight.light.intensity = 1;
 
         setTimeout(() => {
             this.entity.element.text = '';

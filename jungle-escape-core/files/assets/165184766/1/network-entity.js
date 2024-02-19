@@ -193,6 +193,23 @@ NetworkEntity.prototype.initialize = function () {
           this.entity.rigidbody.bodyType = data;
         }
       }
+    },
+    'materialDiffuse': {
+      get: state => {
+        return state.materialDiffuse;
+      },
+      set: state => {
+        this.entity.render.material.diffuse = state.materialDiffuse;
+        this.entity.render.material.update();
+      }
+    },
+    'rigidbodyGroup': {
+      get: state => {
+        return state.rigidbodyGroup;
+      },
+      set: state => {
+        this.entity.rigidbody.group = state.rigidbodyGroup;
+      }
     }
   };
   this.rulesInterpolate = {
@@ -230,6 +247,17 @@ NetworkEntity.prototype.initialize = function () {
       },
       set: value => {
         return this.entity.setLocalScale(value);
+      }
+    },
+    'materialDiffuse': {
+      get: () => {
+        // console.debug('getting material interpolate');
+        // return this.entity.render.material.diffuse;
+      },
+      set: value => {
+        // console.debug('setting material interpolate of: ', value);
+        // this.entity.render.material.diffuse = value;
+        // this.entity.render.material.update();
       }
     },
   };

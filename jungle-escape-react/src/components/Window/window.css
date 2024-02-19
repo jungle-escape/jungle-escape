@@ -1,7 +1,4 @@
 .window {
-  width: 100%;
-  height: 100%;
-
   background-color: white;
 
   display: flex;
@@ -9,19 +6,65 @@
   justify-content: center;
   align-items: center;
 
-  border: 5px solid var(--color_DarkerGreen);
-  box-shadow: 15px 15px 0 var(--color_DarkerGreen);
+  //border: 5px solid var(--color_DarkerGreen);
+  //box-shadow: 15px 15px 0 var(--color_DarkerGreen);
   background-color: var(--color_BgWhite);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  width: 35%;
 
-  border-radius: 3px;
+  min-width: 350px;
+  max-width: 550px;
 
-  &:focus-within {
-    /* filter: saturate(1); */
+  max-height: 800px;
+
+  //border-radius: 3px;
+}
+
+.window::before,
+.window::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--color_DarkerGreen),
+    var(--color_VeryLightGreen),
+    var(--color_SlientBlack),
+    var(--color_LightGreen),
+    var(--color_DarkerGreen)
+  );
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: animate 25s linear infinite;
+}
+
+.window::after {
+  filter: blur(25px);
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
   }
 }
 
 .window-title-bar {
-  background-color: var(--color_LightGreen);
+  background-color: var(--color_DeepDarkerGreen);
   color: white;
   padding: 10px 0 10px 0;
   display: flex;
@@ -36,12 +79,13 @@
 }
 
 .window-body {
-  flex-grow: 1;
+  // flex-grow: 1;
   background-color: white;
+
   /* padding: var(--default-padding); */
-  overflow-y: auto;
+  /* overflow-y: auto;
   scrollbar-color: var(--color_DarkerGreen) var(--color_LightGreen);
-  scrollbar-width: thin;
+  scrollbar-width: thin; */
 
   width: 100%;
 
@@ -54,6 +98,8 @@
   &::-webkit-scrollbar-thumb {
     background: var(--color_LightGreen);
   }
+
+  //background-color: var(--color_DarkerGreen);
 }
 
 .window-title {

@@ -10,14 +10,25 @@
   --fontSize_normal: 18px;
   --fontSize_small: 15px;
   /* colors */
+  --color_VeryLightGreen: #8ffba7;
   --color_LightGreen: #75d283;
   --color_DarkerGreen: #007c13;
-  --color_VeryLightGreen: #8ffba7;
+  --color_DeepDarkerGreen: #003c09;
   --color_SlientBlack: #222222;
+  --color_DeepBlack: #111111;
   --color_BgWhite: #f5f5f5;
+
   /*page sizes*/
   --size_container_dtw: 1440;
   --size_container_dth: 900;
 
   --default-padding: 10px;
+
+  /*for loader */
+  --bg: #111111;
+  --fg: #f5f5f5;
+  --fg-t: rgba(227, 228, 232, 0.5);
+  --primary1: #003c09;
+  --primary2: #75d283;
+  --trans-dur: 0.3s;
 }

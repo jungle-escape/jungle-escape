@@ -1,7 +1,7 @@
-import * as pc from 'playcanvas';
-import pn from '../index.js';
+import * as pc from "playcanvas";
+import pn from "../index.js";
 
-import performance from '../libs/performance.js';
+import performance from "../libs/performance.js";
 
 /**
  * @class User
@@ -40,138 +40,155 @@ import performance from '../libs/performance.js';
  */
 
 export default class User extends pc.EventHandler {
-    constructor(id, socket, serverId) {
-        super();
+  constructor(id, socket, serverId, nickname) {
+    super();
+    this.id = id;
+    this.serverId = serverId;
+    this.room = null;
+    this.nickname = nickname; //customize
 
-        this.id = id;
-        this.serverId = serverId;
-        this.room = null;
+    if (serverId) return;
 
-        if (serverId) return;
+    this.socket = socket;
+    performance.addBandwidth(this);
+    performance.addLatency(this);
 
-        this.socket = socket;
-        performance.addBandwidth(this);
-        performance.addLatency(this);
+    this.on(
+      "_send",
+      (_, msg) => {
+        this._send(msg.name, msg.data, msg.scope?.type, msg.scope?.id, msg.id);
+      },
+      this
+    );
+  }
 
-        this.on('_send', (_, msg) => {
-            this._send(msg.name, msg.data, msg.scope?.type, msg.scope?.id, msg.id);
-        }, this);
+  /**
+   * @method join
+   * @description Join to a {@link Room}.
+   * @async
+   * @param {number} roomId ID of the {@link Room} to join.
+   * @returns {null|Error} returns {@link Error} if failed to join.
+   */
+  async join(roomId) {
+    const room = pn.rooms.get(roomId);
+    if (!room) {
+      const serverId = parseInt(
+        await pn.redis.HGET("_route:room", roomId.toString())
+      );
+      if (!serverId) return new Error("Room not found");
+      this.room = roomId;
+      pn.servers.get(serverId, (server) => {
+        server.send("_room:join", roomId, null, null, this.id);
+      });
+      return null;
     }
 
-    /**
-     * @method join
-     * @description Join to a {@link Room}.
-     * @async
-     * @param {number} roomId ID of the {@link Room} to join.
-     * @returns {null|Error} returns {@link Error} if failed to join.
-     */
-    async join(roomId) {
-        const room = pn.rooms.get(roomId);
-        if (!room) {
-            const serverId = parseInt(await pn.redis.HGET('_route:room', roomId.toString()));
-            if (!serverId) return new Error('Room not found');
-            this.room = roomId;
-            pn.servers.get(serverId, (server) => {
-                server.send('_room:join', roomId, null, null, this.id);
-            });
-            return null;
-        };
-
-        if (this.room) {
-            if (this.room.id === roomId) return new Error('Already in this room');
-            await this.leave();
-        }
-
-        const usersData = {};
-        for (const [id, user] of room.users) {
-            usersData[id] = user.toData();
-        }
-
-        this.room = room;
-
-        this.send('_room:join', {
-            tickrate: room.tickrate,
-            users: usersData,
-            level: room.toData(),
-            state: room.networkEntities.getState(true),
-            id: room.id
-        });
-        this.room.users.set(this.id, this);
-        this.room.send('_user:join', this.toData());
-
-        this.room.fire('join', this);
-        this.fire('join', this.room);
-
-        pn.rooms.fire('join', this.room, this);
-
-        return null;
+    if (this.room) {
+      if (this.room.id === roomId) return new Error("Already in this room");
+      await this.leave();
+    }
+    /* ROOM SIZE 인원 조정 */
+    //check room member, under 4 user (3)
+    if (room.users.size > 3) {
+      const userCount = room.users.size;
+      console.log(`number of current user in room ${room.id} : `, userCount);
+      return new Error("full");
     }
 
-    /**
-     * @method leave
-     * @description Leave a {@link Room} to which is currently joined.
-     * @async
-     * @returns {null|Error} returns {@link Error} if failed to leave.
-     */
-    async leave() {
-        if (!this.room) return new Error('Not in a room');
-        if (isFinite(this.room)) {
-            const serverId = parseInt(await pn.redis.HGET('_route:room', this.room.toString()));
-            if (!serverId) return new Error('Room not found');
-            pn.servers.get(serverId, (server) => {
-                server.send('_room:leave', null, null, null, this.id);
-            });
-            return null;
-        }
-        this.send('_room:leave');
-        this.room.users.delete(this.id);
-        this.room.send('_user:leave', this.id);
-
-        this.room.fire('leave', this);
-        this.fire('leave', this.room);
-
-        pn.rooms.fire('leave', this.room, this);
-
-        this.room = null;
-
-        return null;
+    const usersData = {};
+    for (const [id, user] of room.users) {
+      usersData[id] = user.toData();
     }
 
-    /**
-     * @method send
-     * @description Send a named message to a {@link User}.
-     * @param {string} name Name of a message.
-     * @param {object|array|string|number|boolean} [data] JSON friendly message data.
-     */
-    send(name, data) {
-        this._send(name, data, 'user', this.id);
+    this.room = room;
+
+    this.send("_room:join", {
+      tickrate: room.tickrate,
+      users: usersData,
+      level: room.toData(),
+      state: room.networkEntities.getState(true),
+      id: room.id,
+    });
+    this.room.users.set(this.id, this);
+    this.room.send("_user:join", this.toData());
+
+    this.room.fire("join", this);
+    this.fire("join", this.room);
+
+    pn.rooms.fire("join", this.room, this);
+
+    return null;
+  }
+
+  /**
+   * @method leave
+   * @description Leave a {@link Room} to which is currently joined.
+   * @async
+   * @returns {null|Error} returns {@link Error} if failed to leave.
+   */
+  async leave() {
+    if (!this.room) return new Error("Not in a room");
+    if (isFinite(this.room)) {
+      const serverId = parseInt(
+        await pn.redis.HGET("_route:room", this.room.toString())
+      );
+      if (!serverId) return new Error("Room not found");
+      pn.servers.get(serverId, (server) => {
+        server.send("_room:leave", null, null, null, this.id);
+      });
+      return null;
+    }
+    this.send("_room:leave");
+    this.room.users.delete(this.id);
+    this.room.send("_user:leave", this.id);
+
+    this.room.fire("leave", this);
+    this.fire("leave", this.room);
+
+    pn.rooms.fire("leave", this.room, this);
+
+    this.room = null;
+
+    return null;
+  }
+
+  /**
+   * @method send
+   * @description Send a named message to a {@link User}.
+   * @param {string} name Name of a message.
+   * @param {object|array|string|number|boolean} [data] JSON friendly message data.
+   */
+  send(name, data) {
+    this._send(name, data, "user", this.id);
+  }
+
+  _send(name, data, scope, id, msgId) {
+    const msg = { name, data, scope: { type: scope, id }, id: msgId };
+
+    if (!this.serverId) return this.socket.send(JSON.stringify(msg));
+    pn.servers.get(this.serverId, (server) =>
+      server.send("_send", msg, "user", this.id, this.id)
+    );
+  }
+
+  toData() {
+    return {
+      id: this.id,
+    };
+  }
+
+  destroy() {
+    this.leave();
+    this.room = null;
+
+    if (!this.serverId) {
+      performance.removeBandwidth(this);
+      performance.removeLatency(this);
+      pn.redis.HDEL("_route:user", this.id.toString());
+      pn.redis.PUBLISH("_destroy:user", this.id.toString());
     }
 
-    _send(name, data, scope, id, msgId) {
-        const msg = { name, data, scope: { type: scope, id }, id: msgId };
-
-        if (!this.serverId) return this.socket.send(JSON.stringify(msg));
-        pn.servers.get(this.serverId, (server) => server.send('_send', msg, 'user', this.id, this.id));
-    }
-
-    toData() {
-        return {
-            id: this.id
-        };
-    }
-
-    destroy() {
-        this.leave();
-        this.room = null;
-
-        if (!this.serverId) {
-            performance.removeBandwidth(this);
-            performance.removeLatency(this);
-            pn.redis.HDEL('_route:user', this.id.toString());
-            pn.redis.PUBLISH('_destroy:user', this.id.toString());
-        }
-
-        this.fire('destroy');
-        this.off();
-    }
+    this.fire("destroy");
+    this.off();
+  }
 }

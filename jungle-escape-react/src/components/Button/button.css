@@ -1,8 +1,9 @@
+/** button type 1 source: https://codepen.io/yuhomyan/pen/LYNVVNO **/
 .button-type-1 {
   display: flex;
   align-self: center;
 
-  margin: 20px;
+  margin: 15px;
   padding: 0.6em 1.4em;
 
   box-sizing: border-box;
@@ -35,22 +36,34 @@
   background-size: 400%;
   transition: background-position 300ms ease-in-out;
 
+  background-color: var(--color_DarkerGreen);
+  color: var(--color_BgWhite);
+
   &:hover {
     background-position: 0;
 
     color: #fff;
     outline: 0;
   }
+
+  width: 100%;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/** button type 2 source: https://codepen.io/derekmorash/pen/XddZJY **/
 .button-type-2 {
+  all: initial;
   display: inline-block;
   position: relative;
 
   width: 130px;
   height: 50px;
 
-  border: 2px solid var(--color_DarkerGreen);
+  border: 2px solid var(--color_DeepDarkerGreen);
 
   font-family: "SLEIGothicTTF", sans-serif;
   font-weight: 500;
@@ -59,8 +72,8 @@
 
   transition: all 0.3s ease;
 
-  background: var(--color_DarkerGreen);
-  color: var(--color_BgWhite);
+  background: var(--color_DeepDarkerGreen);
+  color: var(--color_LightGreen);
   line-height: 42px;
   padding: 0;
   border: none;
@@ -70,6 +83,7 @@
   line-height: 40px;
 
   font-size: 1.3rem;
+  vertical-align: middle;
 }
 .button-type-2 span {
   position: relative;
@@ -83,7 +97,7 @@
   content: "";
   height: 0%;
   width: 2px;
-  background: var(--color_DarkerGreen);
+  background: var(--color_LightGreen);
 }
 .button-type-2:before {
   right: 0;
@@ -96,8 +110,8 @@
   transition: all 500ms ease;
 }
 .button-type-2:hover {
-  color: var(--color_DarkerGreen);
-  background: transparent;
+  color: black;
+  background: var(--color_DarkerGreen);
 }
 .button-type-2:hover:before {
   transition: all 500ms ease;
@@ -111,7 +125,7 @@
 .button-type-2 span:after {
   position: absolute;
   content: "";
-  background: var(--color_DarkerGreen);
+  background: var(--color_LightGreen);
 }
 .button-type-2 span:before {
   left: 0;
@@ -132,4 +146,35 @@
 }
 .button-type-2 span:hover:after {
   width: 100%;
+}
+
+/* button type 3 : push 
+source: https://cdpn.io/Angelfire/fullembedgrid/mdbpPx?animations=run&type=embed
+*/
+
+.button-type-3 {
+  display: block;
+  position: relative;
+  float: left;
+  width: 10rem;
+  padding: 0;
+  margin: 10px 20px 10px 15px; /* margin-left를 여기에 통합 */
+  font-weight: 600;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  border-radius: 5px;
+  transition: all 0.2s, transform 0.2s; /* transform에 대한 transition 추가 */
+
+  box-shadow: 0px 10px 0px 0px var(--color_DarkerGreen);
+  background-color: var(--color_VeryLightGreen);
+  font-family: "DungGeunMo";
+  color: black;
+  font-size: 1.2rem;
+  text-decoration-line: none;
+}
+
+.button-type-3:hover {
+  transform: translateY(5px); /* 버튼을 위로 5px 이동 */
+  box-shadow: 0px 5px 0px 0px var(--color_DarkerGreen); /* box-shadow를 조정하여 시각적인 높이 변경 효과를 줄 수 있음 */
 }
