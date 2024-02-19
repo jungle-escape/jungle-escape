@@ -88,6 +88,10 @@ PlayerController.prototype.setupVariables = function () {
 
     // Rank
     this.entity.rank = 0;
+
+    // Camera
+    this.bvEnabled = false;
+    this.qvEnabled = false;
 }
 
 PlayerController.prototype.setupEventListeners = function () {
@@ -108,6 +112,10 @@ PlayerController.prototype.onCollisionStart = function (hit) {
     
     if (hit.other.tags.has('automove')) {
         this.automove = true;
+        const worldLight = this.app.root.findByName('WorldLight');
+        if (worldLight) {
+            worldLight.enabled = false;
+        }
         const spotLight = this.entity.findByName('SpotLightPC');
         if (spotLight) {
             spotLight.enabled = true;
@@ -124,10 +132,16 @@ PlayerController.prototype.onCollisionStart = function (hit) {
         }
     }
 
-    if (hit.other.tags.has('backview')) {
+    if (!this.bvEnabled && hit.other.tags.has('backview')) {
+        CAMERA.isMoving = true;
         CAMERA.isBackView = true;
-    } else if (hit.other.tags.has('quarterview')) {
-        CAMERA.isBackview = false;
+        this.bvEnabled = true;
+    }
+    
+    if (!this.qvEnabled && hit.other.tags.has('quarterview')) {
+        CAMERA.isMoving = true;
+        CAMERA.isBackView = false;
+        this.qvEnabled = true;
     }
 
 
