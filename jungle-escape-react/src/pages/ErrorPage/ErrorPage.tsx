@@ -5,7 +5,7 @@ import {
   useRouteError,
   isRouteErrorResponse,
 } from "react-router-dom";
-import BasicBtn from "@/components/Button/BasicButton";
+// import BasicBtn from "@/components/Button/BasicButton";
 import "./errorPage.css";
 import "@/components/Button/button.css";
 

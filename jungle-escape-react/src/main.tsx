@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";

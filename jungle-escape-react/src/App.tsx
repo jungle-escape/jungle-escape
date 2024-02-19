@@ -33,7 +33,7 @@ function App() {
   return (
     <>
       {isImgLoading && <TypoLoader />}
-      <BgImgContainer prop={imageNames} />
+      <BgImgContainer imageNames={imageNames} />
       <div id="root-container">
         <WindowContainer>
           <Outlet />
