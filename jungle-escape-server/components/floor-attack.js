@@ -87,12 +87,12 @@ FloorAttack.prototype.update = function (dt) {
     // Calculate the distance only in the x-axis
     var distanceX = targetPosition.x - currentPosition.x;
 
-    if (Math.abs(distanceX) > 2) {
+    if targetPosition.x >= currentPosition.x) {
       // Use Math.abs for absolute value
       var speedMultiplier = 10;
 
       // Calculate direction only for the x-axis
-      var directionX = distanceX > 0 ? 1 : -1; // Determine the direction on the x-axis
+      var directionX = distanceX > 0 ? 1 : 0; // Determine the direction on the x-axis
 
       // Scale movement by speed, dt, and direction on the x-axis
       var moveDistanceX = directionX * this.speed * dt * speedMultiplier;
