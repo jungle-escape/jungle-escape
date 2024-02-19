@@ -87,7 +87,7 @@ FloorAttack.prototype.update = function (dt) {
     // Calculate the distance only in the x-axis
     var distanceX = targetPosition.x - currentPosition.x;
 
-    if targetPosition.x >= currentPosition.x) {
+    if (targetPosition.x >= currentPosition.x) {
       // Use Math.abs for absolute value
       var speedMultiplier = 10;
 
