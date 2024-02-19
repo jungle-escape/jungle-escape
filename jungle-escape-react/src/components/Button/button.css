@@ -3,7 +3,7 @@
   display: flex;
   align-self: center;
 
-  margin: 20px;
+  margin: 15px;
   padding: 0.6em 1.4em;
 
   box-sizing: border-box;
@@ -45,6 +45,13 @@
     color: #fff;
     outline: 0;
   }
+
+  width: 100%;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /** button type 2 source: https://codepen.io/derekmorash/pen/XddZJY **/

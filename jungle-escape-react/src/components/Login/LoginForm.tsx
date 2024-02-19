@@ -65,6 +65,7 @@ const LoginForm = () => {
     setIsEnglish(isValidEnglish);
     if (isValidEnglish || value === "") {
       setNickname(value);
+      setIsEnglish(true);
     } else if (!isValidEnglish) {
       // 경고 메시지 표시 여부 결정
       setIsEnglish(false);
@@ -92,20 +93,24 @@ const LoginForm = () => {
         <div className="login-password-container">
           <section className="title-input-box">
             <label htmlFor="email" id="nickname-label">
-              닉네임을 지어주세요!
+              닉네임을
+              <br />
+              지어주세요!
             </label>
             <div className="email-input-div">
               <input
                 id="nickname"
                 name="nickname"
-                placeholder="영어로 별명을 지어주세요!"
+                placeholder="영어로 입력해주세요!"
                 required
                 className="email-input"
                 onChange={handleInputChange}
               />
             </div>
             <p id="nickname-error" className={!isEnglish ? "show" : "hide"}>
-              영어 알파벳만 사용할 수 있습니다.
+              공백을 제외한
+              <br />
+              영문자만 사용해주세요!
             </p>
           </section>
 

@@ -25,6 +25,18 @@ input {
 
   border: 2px solid var(--color_LightGreen);
   background-color: #f3f3f3;
+
+  width: 90%;
+
+  color: var(--color_DarkerGreen);
+  font-weight: 700;
+  font-family: "SLEIGothicTTF";
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid var(--color_VeryLightGreen); /* 포커스 상태일 때 보일 새 테두리 색상 */
+  background-color: white; /* 포커스 상태일 때의 배경색 변경 */
 }
 
 #application-canvas {

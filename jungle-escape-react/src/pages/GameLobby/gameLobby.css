@@ -24,3 +24,15 @@
 input.roomInputBox:focus {
   outline: none;
 } */
+
+#roomnumber-error {
+  color: var(--color_LightGreen);
+  font-size: 0.9rem;
+}
+#roomnumber-error.hide {
+  visibility: hidden;
+}
+
+#roomnumber-error.show {
+  visibility: visible;
+}

@@ -6,6 +6,7 @@ HelloWorld.prototype.initialize = function () {
 
 
 HelloWorld.prototype.boom = function () {
+    console.log("왜안터짐?")
     this.entity.children.forEach((child1) => {
         child1.children.forEach((child2) => {
             child2.children.forEach((child3) => {
@@ -19,7 +20,7 @@ HelloWorld.prototype.boom = function () {
                     setTimeout(() => {
                         // 화살표 함수를 사용하여 this의 컨텍스트를 유지합니다.
                         child3.enabled = false;
-                        }, 3000); // 10초 후에 실행
+                    }, 3000); // 10초 후에 실행
                 }
             });
         });

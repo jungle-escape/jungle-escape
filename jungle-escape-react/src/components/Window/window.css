@@ -16,6 +16,11 @@
   height: 80%;
   width: 35%;
 
+  min-width: 350px;
+  max-width: 550px;
+
+  max-height: 800px;
+
   //border-radius: 3px;
 }
 

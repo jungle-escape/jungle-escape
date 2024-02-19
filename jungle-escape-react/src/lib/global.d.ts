@@ -80,6 +80,7 @@ declare class PlayNetwork extends pc.EventHandler {
   bandwidthIn: number;
   bandwidthOut: number;
   levels: Levels;
+  isSocketOpened: boolean;
   constructor();
   initialize(): void;
   connect(
@@ -116,3 +117,4 @@ declare let WINNER: any;
 declare let PROGRESSBAR: any;
 declare let BAR: any;
 declare let RANK: any;
+declare let HELLOWORLD: any;

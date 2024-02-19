@@ -110,7 +110,6 @@ PlayerController.prototype.onCollisionStart = function (hit) {
         this.automove = true;
         const spotLight = this.entity.findByName('SpotLightPC');
         if (spotLight) {
-            console.log("spotlight : ", spotLight);
             spotLight.enabled = true;
         }
     }

@@ -31,11 +31,15 @@ Lobby.prototype.initialize = function () {
             this.entity.enabled = false;
 
             room.on('join', (user) => {
-                LOG.addText(`User ${user.id} joined`);
+                //LOG.addText(`User ${user.id} joined`);
+
+                LOG.addText(`${this.convertUsername(user)} joined`);
             });
 
             room.on('leave', (user) => {
-                LOG.addText(`User ${user.id} left`);
+                //LOG.addText(`User ${user.id} left`);
+
+                LOG.addText(`${this.convertUsername(user)} left`);
             });
         });
 
@@ -44,6 +48,7 @@ Lobby.prototype.initialize = function () {
             ENDLOG.addText(num);
             // pn.off('rank');
             // pn.off('time');
+
         });
 
         pn.on('start', (num) => {
@@ -63,7 +68,17 @@ Lobby.prototype.initialize = function () {
         });
 
         pn.on('winner', (winner) => {
-            WINNER.addText(`User ${winner} win!\n\nGAME OVER`);
+            //기존 winner = user.id를 전달
+            if (typeof winner === 'number') {
+                WINNER.addText(`Guest ${winner} win!\n\nGAME OVER`);
+            }
+            //신규 로직 rankingList를 winner라는 이름으로 전달
+            // rankingList [ [ 11.767155780757323, '[Guest] 716', '195-485' ] ]
+            else {
+                WINNER.addText(`${this.convertWinner(winner)} win!\n\nGAME OVER`);
+            }
+
+
         });
 
         pn.on('pgbar', (dis) => {
@@ -75,6 +90,7 @@ Lobby.prototype.initialize = function () {
         pn.on('rank', (list) => {
             var text = '';
             list.forEach((item, index) => {
+                //console.log("item[1] ", item[1]);
                 text += "[ " + (index + 1) + " ] " + item[1] + '\n';
             });
             RANK.addText(text);
@@ -127,3 +143,28 @@ Lobby.prototype.convertTime = function (timeString) {
     return formattedTime;
 
 }
+
+// for addTexts
+Lobby.prototype.convertUsername = function (user) {
+    let showname;
+    //if nickname is not exist, guest naming
+    if (!user.nickname) {
+        showname = "Guest " + user.id;
+    }
+    //if nickname exist, use the nickname
+    else if (user.nickname) {
+        showname = user.nickname;
+    }
+    // if any other troubles, show user.id(number)
+    else {
+        console.log("[convertUsername] user.nickname issue occured!");
+        showname = `User ${user.id}`;
+    }
+
+    return `${showname}`;
+};
+
+//for winner 
+Lobby.prototype.convertWinner = function (rankingList) {
+    return rankingList[0][1]
+};

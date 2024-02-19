@@ -163,17 +163,24 @@ class PlayNetwork extends pc.EventHandler {
       socket.on("_authenticate", async (payload, callback) => {
         const connectUser = (id) => {
           let nickname = null;
-          if (payload.nickname) {
+          if (payload && payload.nickname) {
             nickname = payload.nickname;
           }
 
-          user = new User(id, socket, null, payload.nickname);
+          user = new User(id, socket, null, nickname);
           this.users.add(user);
           callback(null, user.id);
           performance.connectSocket(socket, user);
-          console.log(
-            `User ${user.id} connected || ${user.nickname}님이 입장하셨습니다.`
-          );
+
+          if (payload && payload.nickname) {
+            console.log(
+              `User ${user.id} connected || ${user.nickname} 님이 접속하셨습니다.`
+            );
+          } else {
+            console.log(
+              `User ${user.id} connected || Guest ${user.id} 님이 접속하셨습니다.`
+            );
+          }
         };
 
         if (!this.users.hasEvent("authenticate")) {

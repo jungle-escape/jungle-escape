@@ -31,6 +31,7 @@ const GameLobby = () => {
   //login logic
   const [loginData, setLoginData] = useRecoilState(loginState);
   const [userInfo, setUserInfo] = useState<UserData | null>(null);
+  const [isNumber, setIsNumber] = useState(true);
 
   const navigate = useNavigate();
 
@@ -74,55 +75,82 @@ const GameLobby = () => {
         `[GAME LOBBY] Connecting to [[[ ${placeholder} ]]] server...`
       );
 
-      // pn.connect(host, port, false, null, () => {
-      pn.connect(host, port, isSecure, userInfo, () => {
-        pn.on("join", (room) => {
-          room.on("join", (user: any) => {
-            LOG.addText(`User ${user.id} / ${user.id} joined`);
+      // 마지막으로 받은 시간을 저장하기 위한 변수
+      let lastReceivedTime: string | null = null;
+
+      /** check websocket before connection */
+      if (!pn.isSocketOpened) {
+        // pn.connect(host, port, false, null, () => {
+        pn.connect(host, port, isSecure, userInfo, () => {
+          pn.on("join", (room) => {
+            room.on("join", (user: any) => {
+              LOG.addText(`${convertUsername(user)} joined`);
+            });
+
+            room.on("leave", (user: any) => {
+              LOG.addText(`${convertUsername(user)} left`);
+            });
           });
 
-          room.on("leave", (user: any) => {
-            LOG.addText(`User ${user.id}  / ${user.id}left`);
+          pn.on("countdown", (num: any) => {
+            ENDLOG.addText(num);
+          });
+
+          pn.on("start", (num) => {
+            STARTLOG.addText(num);
+          });
+
+          pn.on("falling", () => {
+            HELLOWORLD.boom();
+          });
+
+          pn.on("time", (time: any) => {
+            // ELAPSEDTIME.addText(time.toFixed(1));
+            ELAPSEDTIME.addText(convertTime(time.toFixed(1)));
+            lastReceivedTime = convertTime(time.toFixed(1));
+          });
+
+          pn.on("winner", (winner: any) => {
+            //기존 winner = user.id를 전달
+            if (typeof winner === "number") {
+              WINNER.addText(`Guest ${winner} win!\n\nGAME OVER`);
+            }
+            //신규 로직 rankingList를 winner라는 이름으로 전달
+            // rankingList [ [ 11.767155780757323, '[Guest] 716', '195-485' ] ]
+            else {
+              WINNER.addText(`${winner[0][1]} win!\n\nGAME OVER`);
+              if (lastReceivedTime) {
+                console.log(`${winner[0][1]} : ${lastReceivedTime}`);
+                lastReceivedTime = null;
+              }
+            }
+          });
+
+          pn.on("pgbar", (dis: any) => {
+            const runner = PROGRESSBAR.entity.findByName(`runner1`);
+            runner.setLocalPosition(-175 + dis * (4 / 11), -5, 0);
+            BAR.setProgress(dis / 1100);
+          });
+
+          pn.on("rank", (list) => {
+            let text = "";
+            list.forEach((item: any, index: any) => {
+              //console.log("item[1] ", item[1]);
+              text += "[ " + (index + 1) + " ] " + item[1] + "\n";
+            });
+            RANK.addText(text);
+          });
+
+          pn.on("leave", () => {
+            /** 방 떠나기 */
+            showRootElement();
+            setIsSessionStart(false);
           });
         });
-
-        pn.on("countdown", (num: any) => {
-          ENDLOG.addText(num);
-        });
-
-        pn.on("start", (num) => {
-          STARTLOG.addText(num);
-        });
-
-        pn.on("time", (time: any) => {
-          // ELAPSEDTIME.addText(time.toFixed(1));
-          ELAPSEDTIME.addText(convertTime(time.toFixed(1)));
-        });
-
-        pn.on("winner", (winner: any) => {
-          WINNER.addText(`User ${winner} win!\n\nGAME OVER`);
-        });
-
-        pn.on("pgbar", (dis: any) => {
-          const runner = PROGRESSBAR.entity.findByName(`runner1`);
-          runner.setLocalPosition(-175 + dis * (4 / 11), -5, 0);
-          BAR.setProgress(dis / 1100);
-        });
-
-        pn.on("rank", (list) => {
-          let text = "";
-          list.forEach((item: any, index: any) => {
-            text += "[ " + (index + 1) + " ] " + item[1] + "\n";
-          });
-          RANK.addText(text);
-        });
-
-        pn.on("leave", () => {
-          /** 방 떠나기 */
-          showRootElement();
-          setIsSessionStart(false);
-        });
-      });
+      } else {
+        // 이미 연결이 열린 상태일 경우
+        console.log("WebSocket is already connected");
+      }
     }
 
     console.log("[Game Lobby] 컴포넌트가 마운트됐습니다.");
@@ -181,13 +209,23 @@ const GameLobby = () => {
     setLoginData({ ...loginData, isLoggedIn: false, token: "" });
     //localStorage.removeItem("currentUserId");
     localStorage.removeItem("nickname"); //dev
-    //navigate("/");
+    navigate("/");
   };
 
   ////////////// button handlers //////////////////
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRoomName(event.target.value);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const isValidEnglish = validateNumber(value);
+
+    setIsNumber(isValidEnglish);
+    if (isValidEnglish || value === "") {
+      setRoomName(value);
+      setIsNumber(true);
+    } else if (!isValidEnglish) {
+      // 경고 메시지 표시 여부 결정
+      setIsNumber(false);
+    }
   };
 
   const handleCloseModals = () => {
@@ -228,7 +266,7 @@ const GameLobby = () => {
           setShowAlert(true);
         } else {
           console.error(`Failed to join room ${roomId}:`, error);
-          setAlertMessage(`입장에 실패하였습니다. \n:${error}`);
+          setAlertMessage(`입장에 실패하였습니다 :${error}`);
           setShowAlert(true);
         }
       });
@@ -339,6 +377,34 @@ const GameLobby = () => {
     return formattedTime;
   };
 
+  // for addTexts
+  const convertUsername = (user: any) => {
+    let showname;
+    //if nickname is not exist, guest naming
+    if (!user.nickname) {
+      showname = "Guest " + user.id;
+    }
+    //if nickname exist, use the nickname
+    else if (user.nickname) {
+      showname = user.nickname;
+    }
+    // if any other troubles, show user.id(number)
+    else {
+      console.log("[convertUsername] user.nickname issue occured!");
+      showname = `User ${user.id}`;
+    }
+
+    return `${showname}`;
+  };
+
+  const validateNumber = (value: string) => {
+    const regex = /^-?\d+(\.\d+)?$/;
+    if (regex.test(value)) {
+      return true;
+    }
+    return false;
+  };
+
   //////////////////////////
   ///// Modal & Loader /////
   //////////////////////////
@@ -408,6 +474,7 @@ const GameLobby = () => {
           {userInfo ? (
             <p className="newfont-white">
               오늘도 달려볼까요,
+              <br />
               <span className="oldfont-lightgreen">
                 {" "}
                 {userInfo.nickname}
@@ -427,16 +494,17 @@ const GameLobby = () => {
               <input
                 className="roomInputBox"
                 type="text"
-                placeholder="방 번호를 입력하세요"
+                placeholder="합류할 방 번호를 입력하세요"
                 value={roomName}
                 onChange={handleInputChange}
               />
-            </li>
-            <li>
               <BasicBtn
                 onClickHandler={handleJoinRoom}
                 btnContent={"방 합류하기"}
               />
+              <p id="roomnumber-error" className={!isNumber ? "show" : "hide"}>
+                숫자만 입력해주세요!
+              </p>
             </li>
             <li>
               <button

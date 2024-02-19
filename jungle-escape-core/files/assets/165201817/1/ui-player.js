@@ -7,7 +7,7 @@ UiPlayer.prototype.initialize = function() {
     this.entity.element.text = playerEntity.name;
 
     if (playerEntity.networkEntity.mine) {
-        this.entity.element.color = new pc.Color(1, 0, 0);
+        this.entity.element.color = new pc.Color(0, 0.8392156862745098, 0.47843137254901963);
     }
     
 };

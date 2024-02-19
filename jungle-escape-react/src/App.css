@@ -45,6 +45,11 @@
   overflow-y: auto;
   scrollbar-color: var(--color_DarkerGreen) var(--color_LightGreen);
   scrollbar-width: thin;
+
+  min-width: 350px;
+  max-width: 550px;
+
+  max-height: 800px;
 }
 
 .box h1 {
@@ -64,6 +69,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
 }
 

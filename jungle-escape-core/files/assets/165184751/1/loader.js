@@ -14,26 +14,6 @@ const fetchEndpoint = async (url) => {
 const _devPn = fetchEndpoint(`http://${_devUri}:8080/pn.js`);
 const _prodPn = fetchEndpoint(`https://${_prodUri}/pn.js`);
 
-// const pn_loader = async () => {
-//   try {
-//     const devData = await _devPn;
-//     const prodData = await _prodPn;
-
-//     const script = document.createElement('script');
-
-//     if (devData) {
-//       script.textContent = devData;
-//       window._endpoint = _devUri;
-//     } else {
-//       script.textContent = prodData;
-//       window._endpoint = _prodUri;
-//     }
-//     document.head.appendChild(script);
-//   } catch (error) {
-//   }
-//   document.head.appendChild(script);
-// };
-
 const pn_loader = async () => {
   let script = document.createElement('script');
 
