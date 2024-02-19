@@ -457,6 +457,9 @@ PlayerController.prototype.doPush = function () {
         // var pushVec = result.normal.scale(-1 * pushForce);
         var pushVec = this.lookAt.scale(pushForce);
         result.entity.rigidbody.applyImpulse(pushVec);
+        if (result.entity.tags.has("player")) {
+          result.entity.collisionTags.push("hit_receive");
+        }
         this.entity.collisionTags.push("hit_success");
       }
     }
