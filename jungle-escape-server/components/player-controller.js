@@ -83,7 +83,7 @@ PlayerController.prototype.setupVariables = function () {
   this.pcReactDuration = 0;
   this.pcReactOn = false;
   this.controllable = true;
-
+  ``;
   // For moving panels
   this.isOnPanel = false;
   this.panelEntity = null;
@@ -199,6 +199,48 @@ PlayerController.prototype.handleUserInputMovement = function (dt) {
     this.jumpTimeout = setTimeout(() => {
       this.jumpTimeout = null;
     }, 250);
+  }
+
+  // Teleport to savepoint
+  const level = this.app.root.findByName("Level");
+  if (this.clientInput.key_Z) {
+    const p2 = level.findByName("P2. Algorithm");
+    var savepoint = p2.findByName("savepoint1");
+    if (savepoint) {
+      var toPos = savepoint.getPosition();
+      this.entity.setPosition(toPos);
+      this.entity.rigidbody.teleport(toPos);
+    }
+  }
+
+  if (this.clientInput.key_X) {
+    const p3 = level.findByName("P3. Rbtree");
+    var savepoint = p3.findByName("savepoint2");
+    if (savepoint) {
+      var toPos = savepoint.getPosition();
+      this.entity.setPosition(toPos);
+      this.entity.rigidbody.teleport(toPos);
+    }
+  }
+
+  if (this.clientInput.key_C) {
+    const p3_2 = level.findByName("P3-2. Malloc-lab");
+    var savepoint = p3_2.findByName("savepoint3");
+    if (savepoint) {
+      var toPos = savepoint.getPosition();
+      this.entity.setPosition(toPos);
+      this.entity.rigidbody.teleport(toPos);
+    }
+  }
+
+  if (this.clientInput.key_V) {
+    const p4 = level.findByName("circuit board");
+    var savepoint = p4.findByName("savepoint4");
+    if (savepoint) {
+      var toPos = savepoint.getPosition();
+      this.entity.setPosition(toPos);
+      this.entity.rigidbody.teleport(toPos);
+    }
   }
 };
 
