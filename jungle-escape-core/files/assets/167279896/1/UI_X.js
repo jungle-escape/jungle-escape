@@ -9,7 +9,9 @@ UiX.prototype.initialize = function() {
 // update code called every frame
 UiX.prototype.update = function(dt) {
     if (this.entity.enabled) {
-        this.entity.setEulerAngles(0, 40, 0);
+        var valY = CAMERA.isBackView? 0 : 40;
+
+        this.entity.setEulerAngles(0, valY, 0);
 
         this.disableTimer += dt;
 

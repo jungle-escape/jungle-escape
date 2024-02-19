@@ -7,12 +7,14 @@ UiPlayer.prototype.initialize = function() {
     this.entity.element.text = playerEntity.name;
 
     if (playerEntity.networkEntity.mine) {
-        this.entity.element.color = new pc.Color(1, 0, 0);
+        this.entity.element.color = new pc.Color(0, 0.8392156862745098, 0.47843137254901963);
     }
     
 };
 
 UiPlayer.prototype.update = function() {
     // Adjust name tag angle
-    this.entity.setEulerAngles(0, 40, 0);
+    var valY = CAMERA.isBackView? 0 : 40;
+
+    this.entity.setEulerAngles(0, valY, 0);
 }

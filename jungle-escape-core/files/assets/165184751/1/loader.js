@@ -15,19 +15,28 @@ const _devPn = fetchEndpoint(`http://${_devUri}:8080/pn.js`);
 const _prodPn = fetchEndpoint(`https://${_prodUri}/pn.js`);
 
 const pn_loader = async () => {
-  const devData = await _devPn;
-  const prodData = await _prodPn;
+  let script = document.createElement('script');
 
-  const script = document.createElement('script');
-  if (devData) {
-    script.textContent = devData;
-    window._endpoint = _devUri;
-  } else {
-    script.textContent = prodData;
-    window._endpoint = _prodUri;
+  try {
+    const devData = await _devPn;
+    const prodData = await _prodPn;
+
+    if (devData) {
+      script.textContent = devData;
+      window._endpoint = _devUri;
+    } else if (prodData) {
+      script.textContent = prodData;
+      window._endpoint = _prodUri;
+    } else {
+      console.error("No data available for the script");
+      return;
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
+    return;
   }
-  document.head.appendChild(script);
 
+  document.head.appendChild(script);
 };
 
 (async () => {

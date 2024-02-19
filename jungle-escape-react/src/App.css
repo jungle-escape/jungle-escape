@@ -11,35 +11,45 @@
   top: 0;
   left: 0;
 
-  z-index: 2; /*  ober #application-canvas */
+  z-index: 2; /*  over #application-canvas */
 
   height: 100%;
   width: 100%;
 
-  background-color: var(--color_BgWhite);
+  background-color: black;
 }
 
 #root-container {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: 70%;
-  width: 70%;
+  width: 70%; */
 
-  background-color: white;
+  background-color: black;
+  z-index: 3;
 }
 
 .box {
   width: 100%;
   height: 100%;
 
-  background-color: white;
+  background-color: var(--color_DeepBlack);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  overflow-y: auto;
+  scrollbar-color: var(--color_DarkerGreen) var(--color_LightGreen);
+  scrollbar-width: thin;
+
+  min-width: 350px;
+  max-width: 550px;
+
+  max-height: 800px;
 }
 
 .box h1 {
@@ -59,5 +69,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
+}
+
+.box p {
+  font-family: "SLEIGothicTTF";
+  font-size: 1.5rem;
+}
+
+.box h2 {
+  font-family: "SLEIGothicTTF";
+  color: white;
+}
+
+.oldfont-white {
+  font-family: "DungGeunMo";
+  color: white;
+}
+
+.oldfont-lightgreen {
+  font-family: "DungGeunMo";
+  color: var(--color_LightGreen);
+}
+
+.newfont-white {
+  font-family: "Pretendard-Regular";
+  color: var(--color_BgWhite);
 }

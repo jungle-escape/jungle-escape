@@ -1,0 +1,81 @@
+/* custom alert */
+.custom-modal-back-container {
+  /* don't rm */
+}
+.custom-modal-back {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.custom-modal-container {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 500px;
+  width: 90%;
+
+  padding: 20px;
+
+  z-index: 1001;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-modal-container p {
+  font-family: "Pretendard-Regular", sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* lobby modal */
+.modal-back-container {
+  /* don't rm */
+}
+.modal-backdrop {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-back {
+  padding: 20px;
+  z-index: 1001;
+
+  background-color: #fff;
+
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-back p {
+  font-family: "SLEIGothicTTF";
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.two-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

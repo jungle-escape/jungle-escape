@@ -23,10 +23,11 @@ class NetworkEntities {
 }
 
 class User extends pc.EventHandler {
-  constructor(id, mine) {
+  constructor(id, mine, nickname) {
     super();
     this.id = id;
     this.mine = mine;
+    this.nickname = nickname; //클라이언트
   }
 
   send(name, data, callback) {
@@ -52,7 +53,7 @@ class Room extends pc.EventHandler {
 
     for (const key in users) {
       const userData = users[key];
-      const user = new User(userData.id);
+      const user = new User(userData.id, null, userData.nickname);
       this.users.set(user.id, user);
     }
 
@@ -103,7 +104,8 @@ class Room extends pc.EventHandler {
 
     for (const [parentId, id] of parentIndex) {
       const parent = pc.app.root.findByGuid(parentId);
-      const child = entity.getGuid() === id ? entity : entity.findByGuid(id).clone();
+      const child =
+        entity.getGuid() === id ? entity : entity.findByGuid(id).clone();
       const originalRender = entity.findByGuid(id)?.render;
       if (originalRender) {
         const oldMshinstcs = originalRender.material.meshInstances;
@@ -152,7 +154,7 @@ class Room extends pc.EventHandler {
     this.fire("destroy");
     this.off();
   }
-} 
+}
 
 class Levels {
   constructor() {
@@ -487,7 +489,6 @@ class PlayNetwork extends pc.EventHandler {
     if (!this.isSocketOpened) {
       return;
     }
-
     const msg = {
       name,
       scope: {

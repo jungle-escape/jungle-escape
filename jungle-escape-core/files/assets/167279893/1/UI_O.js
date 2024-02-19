@@ -9,12 +9,14 @@ UiO.prototype.initialize = function() {
 // update code called every frame
 UiO.prototype.update = function(dt) {
     if (this.entity.enabled) {
+        var valY = CAMERA.isBackView? 0 : 40;
+
         this.disableTimer += dt;
 
         if (this.disableTimer <= 1) {
             this.entity.rotate(0, 60, 0);
         } else {
-            this.entity.setEulerAngles(0, 40, 0);
+            this.entity.setEulerAngles(0, valY, 0);
         }
 
         if (this.disableTimer >= 2) {
