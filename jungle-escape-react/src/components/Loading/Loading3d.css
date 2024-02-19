@@ -228,8 +228,6 @@ A (fake) 3D spinner featuring tubes that change color when pushed out. Based on 
   position: relative;
   text-shadow: 0 0 0.1em var(--fg-t);
   transform: rotateZ(-45deg);
-
-  //background-color: red;
 }
 
 /* Animations */

@@ -1,4 +1,4 @@
-import { Form, Link, useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { loginState } from "@/recoil/loginState";
@@ -7,11 +7,11 @@ import { loginState } from "@/recoil/loginState";
 import "./loginform.css";
 
 const LoginForm = () => {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
+  // const [id, setId] = useState("");
+  // const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
   const [loginData, setLoginData] = useRecoilState(loginState);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  //const [isModalVisible, setIsModalVisible] = useState(false);
   const [isEnglish, setIsEnglish] = useState(true);
 
   const navigate = useNavigate();
@@ -33,7 +33,8 @@ const LoginForm = () => {
         window.localStorage.setItem("nickname", nickname);
         setLoginData({ ...loginData, isLoggedIn: true, token: token });
 
-        console.info(`ID: ${id} | LOGIN SUCCESS`);
+        //console.info(`ID: ${id} | LOGIN SUCCESS`);
+        console.info(`nickname: ${nickname} | CONNECT SUCCESS`);
 
         navigate("/game");
       } else if (!validateEnglish(nickname)) {
@@ -67,20 +68,19 @@ const LoginForm = () => {
       setNickname(value);
       setIsEnglish(true);
     } else if (!isValidEnglish) {
-      // 경고 메시지 표시 여부 결정
       setIsEnglish(false);
     }
   };
 
   /** Modal  */
 
-  const OpenModal = () => {
-    setIsModalVisible(true);
-  };
+  // const OpenModal = () => {
+  //   setIsModalVisible(true);
+  // };
 
-  const HideModal = () => {
-    setIsModalVisible(false);
-  };
+  // const HideModal = () => {
+  //   setIsModalVisible(false);
+  // };
 
   return (
     <section className="login-form-container">
@@ -190,7 +190,7 @@ const LoginForm = () => {
         </section>
       </Form>
       {/* Find Password Modal Component */}
-      {isModalVisible && (
+      {/* {isModalVisible && (
         <dialog id="x-modal" className="find-pwd-modal">
           <form method="dialog" className="dialog-close-box">
             <button className="dialog-close" onClick={HideModal}>
@@ -224,7 +224,7 @@ const LoginForm = () => {
             </section>
           </section>
         </dialog>
-      )}
+      )} */}
     </section>
   );
 };

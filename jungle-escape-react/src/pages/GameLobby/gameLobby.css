@@ -1,29 +1,4 @@
 /** lobby **/
-.roomInputBox {
-  /* background-color: red; */
-  //width: 200px;
-  /* height: 40px;
-  font-size: 2.1rem;
-  padding: 5px 10px; */
-}
-/* 
-.roomInputBox:focus {
-  outline: none;
-  border-color: green;
-} */
-
-/* input.roomInputBox {
-  height: 1.1rem;
-  padding: 5px 10px;
-  font-size: 0.9rem;
-
-  border: 2px solid var(--color_LightGreen);
-  background-color: #f3f3f3;
-}
-
-input.roomInputBox:focus {
-  outline: none;
-} */
 
 #roomnumber-error {
   color: var(--color_LightGreen);
