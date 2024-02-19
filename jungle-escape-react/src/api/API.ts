@@ -62,7 +62,7 @@ export const api_getCurrentUser = async () => {
     const token = parsedData.loginState.token;
     //console.log("[API]", token);
 
-    console.log("parsedData?", parsedData);
+    //console.log("parsedData?", parsedData);
 
     return instance.get(url, {
       headers: {

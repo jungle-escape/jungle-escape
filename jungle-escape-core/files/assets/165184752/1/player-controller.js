@@ -88,6 +88,10 @@ PlayerController.prototype.setupVariables = function () {
 
     // Rank
     this.entity.rank = 0;
+
+    // Camera
+    this.bvEnabled = false;
+    this.qvEnabled = false;
 }
 
 PlayerController.prototype.setupEventListeners = function () {
@@ -108,6 +112,10 @@ PlayerController.prototype.onCollisionStart = function (hit) {
     
     if (hit.other.tags.has('automove')) {
         this.automove = true;
+        const worldLight = this.app.root.findByName('WorldLight');
+        if (worldLight) {
+            worldLight.enabled = false;
+        }
         const spotLight = this.entity.findByName('SpotLightPC');
         if (spotLight) {
             spotLight.enabled = true;
@@ -123,6 +131,19 @@ PlayerController.prototype.onCollisionStart = function (hit) {
             firework.script.effekseerEmitter.play();
         }
     }
+
+    if (!this.bvEnabled && hit.other.tags.has('backview')) {
+        CAMERA.isMoving = true;
+        CAMERA.isBackView = true;
+        this.bvEnabled = true;
+    }
+    
+    if (!this.qvEnabled && hit.other.tags.has('quarterview')) {
+        CAMERA.isMoving = true;
+        CAMERA.isBackView = false;
+        this.qvEnabled = true;
+    }
+
 
     const level = this.app.root.findByName('Level');
     const points = [
@@ -444,7 +465,6 @@ PlayerController.prototype.handleCollisionTags = function () {
             const hit = this.vfx.findByName('hit');
             hit.script.effekseerEmitter.play();
         } 
-
     }
 }
 
@@ -459,10 +479,10 @@ PlayerController.prototype.sendInputToServer = function () {
     this.clientInput.key_D = this.app.keyboard.isPressed(pc.KEY_D);
     this.clientInput.key_SPACE = this.app.keyboard.isPressed(pc.KEY_SPACE);
 
-    this.clientInput.key_Z = this.app.keyboard.wasPressed(pc.KEY_Z);
-    this.clientInput.key_X = this.app.keyboard.wasPressed(pc.KEY_X);
-    this.clientInput.key_C = this.app.keyboard.wasPressed(pc.KEY_C);
-    this.clientInput.key_V = this.app.keyboard.wasPressed(pc.KEY_V);
+    this.clientInput.key_Z = this.app.keyboard.isPressed(pc.KEY_Z);
+    this.clientInput.key_X = this.app.keyboard.isPressed(pc.KEY_X);
+    this.clientInput.key_C = this.app.keyboard.isPressed(pc.KEY_C);
+    this.clientInput.key_V = this.app.keyboard.isPressed(pc.KEY_V);
 
     if (this.automove) {
         this.clientInput.key_W = true;

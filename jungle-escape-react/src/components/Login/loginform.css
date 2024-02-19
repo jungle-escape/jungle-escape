@@ -26,7 +26,7 @@
 
   font-size: 1.5rem;
 
-  text-align: center; //dev
+  text-align: center;
 }
 
 .login-form {
@@ -89,7 +89,7 @@
 
   padding: 0.3rem;
   display: grid;
-  grid-template-row: 1fr 5fr;
+  grid-template-rows: 1fr 5fr;
 }
 
 .modal-box {
@@ -135,7 +135,7 @@
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 
-.dialog-close: hover {
+.dialog-close:hover {
   background-color: red;
   color: white;
   border: 2px solid red;

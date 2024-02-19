@@ -14,7 +14,7 @@ import "./gameLobby.css";
 import "@/components/CustomAlert/modal.css";
 
 //API
-import { api_getCurrentUser } from "@/api/API";
+// import { api_getCurrentUser } from "@/api/API";
 //type
 import { UserData } from "@/lib";
 
@@ -52,7 +52,7 @@ const GameLobby = () => {
     }
   }, [loginData, navigate]);
 
-  console.log("==========[Game Lobby] session : ", isSessionStart);
+  //console.log("==========[Game Lobby] session : ", isSessionStart);
 
   /** 이 컴포넌트가 mount되었을 때 pn.connection 을 시작. 게임 접속은 아니다. */
   useEffect(() => {
@@ -149,11 +149,11 @@ const GameLobby = () => {
         });
       } else {
         // 이미 연결이 열린 상태일 경우
-        console.log("WebSocket is already connected");
+        //console.log("WebSocket is already connected");
       }
     }
 
-    console.log("[Game Lobby] 컴포넌트가 마운트됐습니다.");
+    //console.log("[Game Lobby] 컴포넌트가 마운트됐습니다.");
 
     return () => {
       if (isSessionStart) {
@@ -161,8 +161,8 @@ const GameLobby = () => {
         pn.off();
       }
 
-      console.log("[Game Lobby] 첫 번째 작업 클린업");
-      console.log("[Game Lobby] 컴포넌트가 언마운트됐습니다.");
+      //console.log("[Game Lobby] 첫 번째 작업 클린업");
+      //console.log("[Game Lobby] 컴포넌트가 언마운트됐습니다.");
     };
   }, [userInfo]);
 

@@ -12,6 +12,10 @@ export interface ComponentProps {
 export interface SetterProps {
   setter: (arg: boolean) => void;
 }
+
+export interface ImageNames {
+  imageNames: string[];
+}
 /* TYPES for button */
 
 export interface BtnProps {

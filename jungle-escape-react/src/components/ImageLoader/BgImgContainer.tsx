@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "./bgImgContainer.css";
+import { ImageNames } from "@/lib";
 
 /** Container for background-slider */
-const BgImgContainer = ({ prop }) => {
-  const imageNames = prop;
+const BgImgContainer = ({ imageNames }: ImageNames) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
