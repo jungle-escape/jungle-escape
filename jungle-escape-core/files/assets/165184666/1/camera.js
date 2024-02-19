@@ -4,7 +4,8 @@ var Camera = pc.createScript('camera');
 // Camera.attributes.add('rot', { type: "vec3", default: [-45, 0, 0]});
 Camera.attributes.add('ofs', { type: "vec3", default: [60, 60, 60]}); // 왼쪽 위 오프셋
 Camera.attributes.add('rot', { type: "vec3", default: [0, 0, 0]}); // 수정된 초기 회전 값
-Camera.attributes.add('backViewOfs', { type: "vec3", default: [0, 0, 40]}); // 뒤쪽 뷰 오프셋
+Camera.attributes.add('backViewOfs', { type: "vec3", default: [0, 0, 40]}); // 뒤쪽 뷰 
+Camera.attributes.add('backViewRot', { type: "vec3", default: [0, 0, 0]});
 
 Camera.prototype.initialize = function () {
     this.isBackView = false; // 현재 뷰 상태
@@ -40,7 +41,10 @@ Camera.prototype.update = function (dt) {
         var backViewPoint = targetPos.clone().add(this.backViewOfs);
         var quarterViewPoint = targetPos.clone().add(this.ofs);
         var quarterViewRot = new pc.Quat(-0.27984814887095943, 0.3647052007993578, 0.11591690325292761, 0.8804762363964862);
-        var backViewRot = new pc.Quat(0, 0, 0, 1);
+        // var backViewRot = new pc.Quat(0, 0, 0, 1);
+        var backViewRot = new pc.Quat();
+        backViewRot.setFromEulerAngles(this.backViewRot.x, this.backViewRot.y, this.backViewRot.z);
+
 
         if (this.isBackView) {
             if (!this.isMoving) {

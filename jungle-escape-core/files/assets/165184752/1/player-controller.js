@@ -124,6 +124,13 @@ PlayerController.prototype.onCollisionStart = function (hit) {
         }
     }
 
+    if (hit.other.tags.has('backview')) {
+        CAMERA.isBackView = true;
+    } else if (hit.other.tags.has('quarterview')) {
+        CAMERA.isBackview = false;
+    }
+
+
     const level = this.app.root.findByName('Level');
     const points = [
         'P0. Start_Bedroom',
@@ -444,7 +451,6 @@ PlayerController.prototype.handleCollisionTags = function () {
             const hit = this.vfx.findByName('hit');
             hit.script.effekseerEmitter.play();
         } 
-
     }
 }
 
@@ -459,10 +465,10 @@ PlayerController.prototype.sendInputToServer = function () {
     this.clientInput.key_D = this.app.keyboard.isPressed(pc.KEY_D);
     this.clientInput.key_SPACE = this.app.keyboard.isPressed(pc.KEY_SPACE);
 
-    this.clientInput.key_Z = this.app.keyboard.wasPressed(pc.KEY_Z);
-    this.clientInput.key_X = this.app.keyboard.wasPressed(pc.KEY_X);
-    this.clientInput.key_C = this.app.keyboard.wasPressed(pc.KEY_C);
-    this.clientInput.key_V = this.app.keyboard.wasPressed(pc.KEY_V);
+    this.clientInput.key_Z = this.app.keyboard.isPressed(pc.KEY_Z);
+    this.clientInput.key_X = this.app.keyboard.isPressed(pc.KEY_X);
+    this.clientInput.key_C = this.app.keyboard.isPressed(pc.KEY_C);
+    this.clientInput.key_V = this.app.keyboard.isPressed(pc.KEY_V);
 
     if (this.automove) {
         this.clientInput.key_W = true;
