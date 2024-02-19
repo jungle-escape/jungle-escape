@@ -216,6 +216,7 @@ PlayerController.prototype.checkCustomTimer = function (dt) {
   // Check if custom reaction is active and reset if it should be
   if (this.pcReactOn) {
     this.pcReactTimer += dt;
+    this.entity.rigidbody.linearVelocity.y = 0;
     if (this.pcReactTimer >= this.pcReactDuration) {
       this.pcReactOn = false;
       this.pcReactTimer = 0;
@@ -251,7 +252,11 @@ PlayerController.prototype.applyLinearDamping = function (dt) {
   var lv = this.entity.rigidbody.linearVelocity;
   if (this.canJump) {
     lv.x *= Math.pow(1 - this.linearDamping.x, dt);
-    lv.y *= Math.pow(1 - this.linearDamping.y, dt);
+    if (lv.y > 0) {
+      lv.y *= Math.pow(1 - 0.99, dt);
+    } else {
+      lv.y *= Math.pow(1 - this.linearDamping.y, dt);
+    }
     lv.z *= Math.pow(1 - this.linearDamping.z, dt);
   } else if (!this.canJump) {
     // Damping applied when player is jumping
@@ -354,7 +359,7 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
   if (hit.other.tags.has("rightanswer")) {
     this.entity.collisionTags.push("rightanswer");
   }
-  
+
   if (hit.other.tags.has("hammer")) {
     this.entity.collisionTags.push("hammer");
     var movement = new pc.Vec3(1, 0, 0).scale(450000);
