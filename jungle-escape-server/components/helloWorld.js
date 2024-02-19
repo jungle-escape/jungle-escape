@@ -77,7 +77,8 @@ HelloWorld.prototype.update = function (dt) {
                 // child3.rigidbody.applyForce(force, position);
                 setTimeout(() => {
                   // 화살표 함수를 사용하여 this의 컨텍스트를 유지합니다.
-                  child3.destroy();
+                  child3.rigidbody.enabled = false;
+                  // child3.destroy();
                 }, 3000); // 3초 후에 실행
               }
             });

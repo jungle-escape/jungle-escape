@@ -15,11 +15,11 @@ FloorAttack.prototype.initialize = function () {
   this.blockPos = this.targetCell.getPosition().clone();
 
   this.attackStartPos = this.blockPos.clone();
-  this.attackStartPos.x -= 50;
+  this.attackStartPos.x -= 100;
 
   // Set target point Position
   this.targetPos = this.blockPos.clone();
-  this.targetPos.x += 120;
+  this.targetPos.x += 70;
 
   // setting for controller
   this.isMovedToStartPos = false;
@@ -89,7 +89,7 @@ FloorAttack.prototype.update = function (dt) {
 
     if (Math.abs(distanceX) > 2) {
       // Use Math.abs for absolute value
-      var speedMultiplier = 10;
+      var speedMultiplier = 15;
 
       // Calculate direction only for the x-axis
       var directionX = distanceX > 0 ? 1 : -1; // Determine the direction on the x-axis
@@ -101,7 +101,7 @@ FloorAttack.prototype.update = function (dt) {
       // Keep y and z positions the same as the current position
       var newPosition = new pc.Vec3(
         currentPosition.x + moveDistanceX,
-        currentPosition.y,
+        this.originPos.y,
         currentPosition.z
       );
       this.entity.setPosition(newPosition);
