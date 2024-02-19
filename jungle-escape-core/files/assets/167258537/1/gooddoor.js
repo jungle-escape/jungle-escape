@@ -1,4 +1,4 @@
-// var Gooddoor = pc.createScript('gooddoor');
+var Gooddoor = pc.createScript('gooddoor');
 
 // // initialize code called once per entity
 // Gooddoor.prototype.initialize = function() {

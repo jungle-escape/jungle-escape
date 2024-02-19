@@ -6,7 +6,6 @@ HelloWorld.prototype.initialize = function () {
 
 
 HelloWorld.prototype.boom = function () {
-    console.log("왜안터짐?")
     this.entity.children.forEach((child1) => {
         child1.children.forEach((child2) => {
             child2.children.forEach((child3) => {

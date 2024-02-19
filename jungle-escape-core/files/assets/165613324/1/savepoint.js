@@ -17,8 +17,11 @@ Savepoint.prototype.onTriggerEnter = function (target) {
         } else if (PHASE2.arrived === false && pos.z <= -300) {
             this.faded(PHASE2);
             // CAMERA.switchView();
-        } else if (PHASE3.arrived === false && pos.z <= -850) {
+        } else if (PHASE3.arrived === false && pos.z <= -600) {
             this.faded(PHASE3);
+            // CAMERA.switchView();
+        } else if (PHASE4.arrived === false && pos.z <= -850) {
+            this.faded(PHASE4);
             // CAMERA.switchView();
         }
     };

@@ -3,11 +3,12 @@ var MovementPropeller = pc.createScript("movementPropeller");
 MovementPropeller.attributes.add('speed', {
   type: 'number',
   enum: [
-      { 'slow': 50 },
-      { 'standard': 100 },
-      { 'fast': 150 },
-      { 'superfast': 200 },
-      { 'insane': 300 }
+    { 'slower': 30 },
+    { 'slow': 50 },
+    { 'standard': 100 },
+    { 'fast': 150 },
+    { 'superfast': 200 },
+    { 'insane': 300 }
   ],
   default: 100
 });

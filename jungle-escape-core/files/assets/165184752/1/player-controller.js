@@ -285,6 +285,10 @@ PlayerController.prototype.togglePhase = function () {
 PlayerController.prototype.setModelEntityState = function () {
     // If there is custom pc react, skip setting model entities
     if (this.entity.pcReactOn) {
+        this.modelEntity.anim.setBoolean("isRunning", false);
+        this.modelEntity.anim.setBoolean("isJumping", false);
+        this.modelEntity.anim.setBoolean("isAttacking", false);
+        this.modelEntity.anim.setBoolean("isHit", false);
         return;
     }
 
@@ -454,6 +458,11 @@ PlayerController.prototype.sendInputToServer = function () {
     this.clientInput.key_A = this.app.keyboard.isPressed(pc.KEY_A);
     this.clientInput.key_D = this.app.keyboard.isPressed(pc.KEY_D);
     this.clientInput.key_SPACE = this.app.keyboard.isPressed(pc.KEY_SPACE);
+
+    this.clientInput.key_Z = this.app.keyboard.wasPressed(pc.KEY_Z);
+    this.clientInput.key_X = this.app.keyboard.wasPressed(pc.KEY_X);
+    this.clientInput.key_C = this.app.keyboard.wasPressed(pc.KEY_C);
+    this.clientInput.key_V = this.app.keyboard.wasPressed(pc.KEY_V);
 
     if (this.automove) {
         this.clientInput.key_W = true;
