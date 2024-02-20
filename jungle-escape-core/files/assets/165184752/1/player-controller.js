@@ -2,6 +2,7 @@
 var PlayerController = pc.createScript('playerController');
 
 PlayerController.prototype.initialize = function () {
+    this.app.playerController = this;
     this.networkEntity = this.entity.script.networkEntity;
     // Set up model
     if (this.networkEntity.user) {

@@ -21,3 +21,7 @@ RollingStones.attributes.add('stones', {
         name: 'template'
     }]
 });
+
+RollingStones.prototype.initialize = function () {
+    this.app.rollingStones = this;
+}

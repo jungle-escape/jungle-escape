@@ -13,8 +13,6 @@ DecayObject.attributes.add('onCollision', {
     description: 'Should the object decay on collision'
 });
 
-// DecayObject.prototype.initialize = function () {
-//     pn.on('teststone', (data) => {
-//         console.log(data);
-//     });
-// }
+DecayObject.prototype.initialize = function () {
+    this.app.decayObject = this;
+}

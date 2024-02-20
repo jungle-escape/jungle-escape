@@ -54,6 +54,7 @@ NetworkEntity.attributes.add('properties', {
 });
 
 NetworkEntity.prototype.initialize = function () {
+  this.app.networkEntity = this;
   this.entity.networkEntity = this;
   this.user = pn.room.users.get(this.owner);
   this.mine = this.user?.mine;
