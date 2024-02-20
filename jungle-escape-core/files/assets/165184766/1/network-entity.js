@@ -222,9 +222,9 @@ NetworkEntity.prototype.initialize = function () {
       set: value => {
         this.entity.setPosition(value);
 
-        if (this.entity.rigidbody) {
-          this.entity.rigidbody.teleport(value.x, value.y, value.z);
-        }
+        // if (this.entity.rigidbody) {
+        //   this.entity.rigidbody.teleport(value.x, value.y, value.z);
+        // }
       }
     },
     'rotation': {
