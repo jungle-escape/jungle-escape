@@ -451,7 +451,7 @@ const GameLobby = () => {
   };
 
   const handleRanking = async (
-    rankingList: Array<T>,
+    rankingList: Array<string>,
     lastReceivedTime: string
   ) => {
     const winner = rankingList[0][1];
