@@ -1,0 +1,119 @@
+{
+    "name": "beatle2",
+    "tags": [],
+    "meta": null,
+    "data": {
+        "entities": {
+            "b3f898a1-2a94-45ce-855e-f73e16385585": {
+                "name": "beatle2",
+                "tags": ["pc_reaction", "push_opposite", "take_control", "hit"],
+                "enabled": true,
+                "resource_id": "b3f898a1-2a94-45ce-855e-f73e16385585",
+                "parent": null,
+                "children": [],
+                "position": [21.136, 98.455, -1013.938],
+                "rotation": [-90, 0, 0],
+                "scale": [5, 5, 5],
+                "components": {
+                    "render": {
+                        "enabled": true,
+                        "type": "asset",
+                        "asset": 168070595,
+                        "materialAssets": [168070586],
+                        "layers": [0],
+                        "batchGroupId": null,
+                        "castShadows": true,
+                        "castShadowsLightmap": true,
+                        "receiveShadows": true,
+                        "lightmapped": false,
+                        "lightmapSizeMultiplier": 1,
+                        "castShadowsLightMap": true,
+                        "lightMapped": false,
+                        "lightMapSizeMultiplier": 1,
+                        "isStatic": false,
+                        "rootBone": null
+                    },
+                    "collision": {
+                        "enabled": true,
+                        "type": "sphere",
+                        "halfExtents": [0.5, 0.5, 0.5],
+                        "radius": 5,
+                        "axis": 1,
+                        "height": 2,
+                        "asset": null,
+                        "renderAsset": null,
+                        "linearOffset": [0, 0, 0],
+                        "angularOffset": [0, 0, 0]
+                    },
+                    "rigidbody": {
+                        "enabled": true,
+                        "type": "dynamic",
+                        "mass": 1000,
+                        "linearDamping": 0,
+                        "angularDamping": 0,
+                        "linearFactor": [1, 1, 1],
+                        "angularFactor": [1, 1, 1],
+                        "friction": 0.5,
+                        "restitution": 0.5
+                    },
+                    "script": {
+                        "enabled": true,
+                        "order": ["networkEntity", "decayObject"],
+                        "scripts": {
+                            "networkEntity": {
+                                "enabled": true,
+                                "attributes": {
+                                    "id": "",
+                                    "owner": "",
+                                    "properties": [{
+                                        "path": "position",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }, {
+                                        "path": "rotation",
+                                        "interpolate": true,
+                                        "ignoreForOwner": false
+                                    }, {
+                                        "path": "materialDiffuse",
+                                        "interpolate": false,
+                                        "ignoreForOwner": false
+                                    }, {
+                                        "path": "rigidbodyGroup",
+                                        "interpolate": false,
+                                        "ignoreForOwner": false
+                                    }]
+                                }
+                            },
+                            "decayObject": {
+                                "enabled": true,
+                                "attributes": {
+                                    "decayTime": 7,
+                                    "onCollision": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "file": null,
+    "path": [165184693],
+    "id": 168073039,
+    "uniqueId": 168073039,
+    "type": "template",
+    "source": false,
+    "source_asset_id": null,
+    "createdAt": "2024-02-20T06:51:21.343Z",
+    "scope": {
+        "type": "project",
+        "id": 1185257
+    },
+    "user_id": 502250,
+    "revision": 1,
+    "preload": true,
+    "exclude": false,
+    "region": "eu-west-1",
+    "task": null,
+    "i18n": {}
+}
