@@ -49,33 +49,33 @@
   min-width: 350px;
   max-width: 550px;
 
-  max-height: 800px;
+  max-height: 1000px;
 }
 
 .box h1 {
   font-family: "SLEIGothicTTF";
 }
 
-.box ul {
+/* .box ul {
   list-style-type: none;
   padding: 0;
   margin: 1.5em;
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
+} */
 
-.box ul li {
+/* .box ul li {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
-}
+} */
 
 .box p {
   font-family: "SLEIGothicTTF";
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .box h2 {

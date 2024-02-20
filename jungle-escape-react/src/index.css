@@ -20,8 +20,8 @@ body {
 
 input {
   height: 1.1rem;
-  padding: 5px 10px;
-  font-size: 0.9rem;
+  padding: 10px 10px;
+  font-size: 1.5rem;
 
   border: 2px solid var(--color_LightGreen);
   background-color: #f3f3f3;
@@ -35,8 +35,8 @@ input {
 
 input:focus {
   outline: none;
-  border: 2px solid var(--color_VeryLightGreen); /* 포커스 상태일 때 보일 새 테두리 색상 */
-  background-color: white; /* 포커스 상태일 때의 배경색 변경 */
+  border: 2px solid var(--color_VeryLightGreen);
+  background-color: white;
 }
 
 #application-canvas {

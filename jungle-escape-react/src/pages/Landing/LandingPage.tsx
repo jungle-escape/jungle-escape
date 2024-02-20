@@ -28,10 +28,28 @@ const LandingPage = () => {
         <section className="login-form-animation">
           {loginData.isLoggedIn ? (
             <>
-              <Link to={`game`} className="button-type-3">
-                {" "}
-                게임하러 가기
-              </Link>
+              <div className="two-btn-container-col">
+                <Link
+                  to={`game`}
+                  className="button-type-3"
+                  style={{
+                    fontSize: "2rem",
+                    width: "15rem",
+                    color: "var(--color_DarkerGreen)",
+                  }}
+                >
+                  {" "}
+                  게임하기
+                </Link>
+                <Link
+                  to={`ranking`}
+                  className="button-type-3"
+                  style={{ fontSize: "2rem", width: "15rem" }}
+                >
+                  {" "}
+                  렝킹보기
+                </Link>
+              </div>
             </>
           ) : (
             <>

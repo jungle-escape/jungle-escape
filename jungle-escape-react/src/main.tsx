@@ -7,6 +7,8 @@ import App from "@/App";
 import TypoLoader from "@/components/Loading/TypoLoader";
 import ErrorPage from "@/pages/ErrorPage/ErrorPage";
 
+import ResultPage from "@/pages/ResultPage";
+
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -21,6 +23,7 @@ const router = createBrowserRouter([
     element: <TypoLoader />,
     errorElement: <ErrorPage />,
   },
+  { path: "result", element: <ResultPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
