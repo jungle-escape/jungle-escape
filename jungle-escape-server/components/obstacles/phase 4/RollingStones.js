@@ -21,7 +21,7 @@ RollingStones.attributes.add("stones", {
 
 RollingStones.prototype.initialize = function () {
   this.time = 0;
-  this.stoneEntities = [];
+  // this.stoneEntities = [];
   this.playerArrivedHandler = () => {
     // Store the function reference
     this.intervalId = setInterval(() => {
@@ -41,7 +41,7 @@ RollingStones.prototype.initialize = function () {
 RollingStones.prototype.onDynamic = function () {
   const stone = this._stones[Math.floor(Math.random() * this._stones.length)];
   const entity = stone.instantiate(this.app);
-  this.stoneEntities.push(entity);
+  // this.stoneEntities.push(entity);
   entity.enabled = true;
   this.entity.addChild(entity);
 };
