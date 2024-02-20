@@ -1,0 +1,229 @@
+.winner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.winner h1 {
+  color: var(--color_LightGreen);
+  font-size: 2rem;
+}
+
+.winner span {
+  color: var(--color_VeryLightGreen);
+  font-size: 3rem;
+  font-family: "DungGeunMo";
+}
+
+.winner-time {
+  font-family: "DungGeunMo";
+}
+
+.winner-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.winner-box > * {
+  margin: 0;
+  padding: 0;
+}
+.crown {
+  margin: 0;
+}
+.member {
+  color: var(--color_DarkerGreen);
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    color: var(--color_DarkerGreen);
+  }
+  33% {
+    color: var(--color_VeryLightGreen);
+  }
+
+  50% {
+    color: var(--color_BgWhite);
+  }
+}
+
+@keyframes blink-res {
+  0%,
+  100% {
+    color: var(--color_DarkerGreen);
+    border-color: var(--color_DarkerGreen);
+  }
+  20%,
+  80% {
+    color: var(--color_VeryLightGreen);
+    border-color: var(--color_VeryLightGreen);
+  }
+  50% {
+    color: var(--color_BgWhite);
+    border-color: var(--color_BgWhite);
+  }
+}
+
+@keyframes border-blink {
+  0%,
+  100% {
+    box-shadow: 0 0 0px var(--color_DarkerGreen);
+  }
+  50% {
+    box-shadow: 0 0 8px var(--color_VeryLightGreen);
+  }
+}
+
+.record-li-result {
+  display: grid;
+  grid-template-columns: 2fr 5fr 3fr;
+  gap: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  max-width: 90%;
+  min-width: 200px;
+  align-items: center;
+
+  color: white;
+}
+
+.record-li-result span:first-child {
+  flex: 1;
+  text-align: left;
+
+  font-size: 1.5rem;
+  font-family: "SLEIGothicTTF";
+}
+
+.record-li-result span:nth-child(2) {
+  flex: 8;
+  text-align: left;
+
+  font-size: 1.5rem;
+  font-family: "DungGeunMo";
+}
+
+.record-li-result span:last-child {
+  flex: 8;
+  text-align: left;
+
+  font-size: 1.5rem;
+  font-family: "DungGeunMo";
+}
+
+.iam {
+  color: gold;
+  visibility: visible;
+}
+
+.itsme {
+  visibility: hidden;
+}
+
+.iamWinner {
+  animation: blink-res 1s infinite, border-blink 1s infinite;
+
+  border: 2px solid var(--color_DarkerGreen);
+  padding: 20px;
+  padding-bottom: 30px;
+  margin: 5px;
+}
+
+/** Ranking page css **/
+
+.record-container {
+  width: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 1px;
+}
+
+.record-box {
+  width: 100%;
+  border: 2px solid gray;
+  margin: 30px 0 10px 0;
+}
+
+#ranking-title {
+  color: var(--color_LightGreen);
+  font-size: 3rem;
+
+  font-family: "SLEIGothicTTF";
+
+  margin: 0;
+}
+
+.record-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+
+  color: white;
+
+  padding: 5px;
+}
+
+.record-li {
+  display: grid;
+  grid-template-columns: 2fr 5fr 3fr;
+  gap: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  max-width: 90%;
+  min-width: 200px;
+  align-items: center;
+
+  color: white;
+}
+
+.record-li span:first-child {
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "SLEIGothicTTF";
+}
+
+.record-li span:nth-child(2) {
+  text-align: left;
+  font-size: 1.6rem;
+  font-family: "DungGeunMo";
+}
+
+.record-li span:last-child {
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "DungGeunMo";
+}
+
+@keyframes blinkRank {
+  0%,
+  100% {
+    color: var(--color_BgWhite);
+  }
+  33% {
+    color: var(--color_VeryLightGreen);
+  }
+
+  50% {
+    color: #ffd700;
+  }
+}
+
+.gold {
+  color: gold;
+}
+.silver {
+  color: silver;
+}
+.bronze {
+  color: #cd7f32;
+}

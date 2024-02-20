@@ -1,6 +1,6 @@
 import axios from "axios";
 // import env from "@/utils/validateEnv";
-import { LoginData, SignupData } from "@/lib";
+import { LoginData, RecordData, SignupData } from "@/lib";
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_API_DOMAIN,
@@ -73,10 +73,21 @@ export const api_getCurrentUser = async () => {
 };
 
 /** RANKING */
-export const api_recordRanking = async (data: string) => {
+export const api_recordRanking = async ({
+  winner,
+  endtime,
+  participants,
+}: RecordData) => {
   const url = "rank/register";
-  console.log("data?", data);
-  return true;
+  //console.log(`[api_recordRanking] ${data} 들어왔어요 ${url}`);
+  const data = { winner, endtime, participants };
+  console.log("[api_recordRanking] data: ", data);
+  return instance.post(url, data);
+};
+
+export const api_getRanking = async () => {
+  const url = "rank/records";
+  return instance.get(url);
 };
 
 //////// for PRODUCTION ////////

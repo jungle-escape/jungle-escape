@@ -58,3 +58,20 @@ export interface UserData {
   nickname: string | null;
   participatedRooms: string[];
 }
+
+export interface RecordData {
+  winner: string;
+  endtime: string;
+  participants: Array<string>;
+}
+
+export interface WinnerData {
+  rankingList: Array<string>;
+  endtime: string;
+  topRender?: boolean;
+}
+
+// RankingData는 result 또는 records 중 하나를 반드시 포함해야 하지만 둘 다 가질 수는 없는 구조
+export type RankingData =
+  | { result: WinnerData; records?: never } // records는 없고 result만 있음
+  | { result?: never; records: RecordData[] }; // result는 없고 records만 있음

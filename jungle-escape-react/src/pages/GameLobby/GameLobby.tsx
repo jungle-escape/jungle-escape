@@ -24,6 +24,8 @@ const GameLobby = () => {
   //game logic
   const [roomName, setRoomName] = useState("");
   const [isSessionStart, setIsSessionStart] = useState(false);
+  const [isSessionEnd, setIsSessionEnd] = useState(false);
+  const [isUpdateRanking, setIsUpdateRanking] = useState(false);
   //ui logic
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -53,7 +55,7 @@ const GameLobby = () => {
     }
   }, [loginData, navigate]);
 
-  //console.log("==========[Game Lobby] session : ", isSessionStart);
+  console.log("==========[Game Lobby] session : ", isSessionStart);
 
   /** 이 컴포넌트가 mount되었을 때 pn.connection 을 시작. 게임 접속은 아니다. */
   useEffect(() => {
@@ -112,6 +114,10 @@ const GameLobby = () => {
           });
 
           pn.on("winner", (winner: any) => {
+            setIsSessionEnd(true);
+            setIsUpdateRanking(true);
+
+            console.log("[gameLobby] isSessionEnd : ", isSessionEnd);
             //기존 winner = user.id를 전달
             if (typeof winner === "number") {
               WINNER.addText(`Guest ${winner} win!\n\nGAME OVER`);
@@ -119,12 +125,39 @@ const GameLobby = () => {
             //신규 로직 rankingList를 winner라는 이름으로 전달
             // rankingList [ [ 11.767155780757323, '[Guest] 716', '195-485' ] ]
             else {
+              const endtime = lastReceivedTime;
               WINNER.addText(`${winner[0][1]} win!\n\nGAME OVER`);
-              handleRanking(winner, lastReceivedTime);
-              if (lastReceivedTime) {
-                console.log(`${winner[0][1]} : ${lastReceivedTime}`);
-                lastReceivedTime = null;
+              if (winner[0][1] === userInfo.nickname) {
+                //자신이 winner일 때
+                if (endtime === null) {
+                  handleRanking([winner], "-");
+                }
+                if (endtime) {
+                  handleRanking(winner, endtime);
+                  console.log(`${winner[0][1]} : ${endtime}`);
+                  lastReceivedTime = null;
+                }
+                setTimeout(function () {
+                  console.log("승자 게임 끝, 결과 화면으로 이동합니다.");
+                  navigate("/result", {
+                    state: { rankingList: winner, endtime: endtime },
+                  });
+                  setIsUpdateRanking(false);
+                }, 2100);
+
+                console.log("승자 게임 끝 이동 완료?");
+              } else {
+                setTimeout(function () {
+                  console.log("참가자 게임 끝, 결과 화면으로 이동합니다.");
+                  navigate("/result", {
+                    state: { rankingList: winner, endtime: endtime },
+                  });
+                  setIsUpdateRanking(false);
+                }, 2500);
+                console.log("참가자 게임 끝 이동 완료?");
               }
+
+              lastReceivedTime = null;
             }
           });
 
@@ -145,8 +178,29 @@ const GameLobby = () => {
 
           pn.on("leave", () => {
             /** 방 떠나기 */
-            showRootElement();
-            setIsSessionStart(false);
+
+            console.log("방 떠나기 신호 받음");
+
+            if (!isUpdateRanking) {
+              //게임이 끝나서 랭킹 계산 중이 아닐 때 바로 퇴장
+              console.log(
+                "이상 없어서 바로 퇴장했어요 isUpdateRanking: ",
+                isUpdateRanking
+              );
+              setIsSessionStart(false);
+              showRootElement();
+            } else {
+              //게임이 끝났는데 랭킹 계산 중일 때
+              console.log(
+                "게임이 끝나서 랭킹 계산 중입니다...isUpdateRanking: ",
+                isUpdateRanking
+              );
+              setTimeout(function () {
+                console.log("그런데 뭔가 바뀌지 않았나보네요? 얍.");
+                setIsSessionStart(false);
+                showRootElement();
+              }, 1000);
+            }
           });
         });
       } else {
@@ -169,10 +223,14 @@ const GameLobby = () => {
   }, [userInfo]);
 
   /** 뒤로가기 관련 logic  */
-  // session이 시작했을 때만 blocking
+  // session이 시작하고 끝나지 않았을(=winner 이벤트 발생하지 않았을) 때만 blocking
   const blocker = useBlocker(({ currentLocation, nextLocation }) => {
-    //console.log("currentLocation, nextLocation", currentLocation, nextLocation);
-    return isSessionStart && currentLocation.pathname !== nextLocation.pathname;
+    return (
+      isSessionStart &&
+      !isSessionEnd &&
+      !isUpdateRanking &&
+      currentLocation.pathname !== nextLocation.pathname
+    );
   });
 
   ///////////// handler functions /////////////////
@@ -354,6 +412,7 @@ const GameLobby = () => {
   };
   // handling the root div func
   const showRootElement = () => {
+    console.log("[gameLobby] show room complete");
     const rootElement = document.getElementById("root");
     if (rootElement) {
       rootElement.style.display = "flex";
@@ -411,14 +470,13 @@ const GameLobby = () => {
     rankingList: Array<T>,
     lastReceivedTime: string
   ) => {
-    if (userInfo?.nickname === rankingList[0][1]) {
-      //자신이 winner일 때 API 호출
-      const res = await api_recordRanking(
-        `winner ${rankingList[0][1]} : ${lastReceivedTime}`
-      );
-      console.log("handleRanking res: ", res);
-      return;
-    }
+    const winner = rankingList[0][1];
+    [0][1];
+    const endtime = lastReceivedTime;
+    const participants = rankingList.map((item) => item[1]);
+    // `winner ${rankingList[0][1]} : ${lastReceivedTime}`
+    await api_recordRanking({ winner, endtime, participants });
+    return;
   };
 
   //////////////////////////
@@ -499,11 +557,11 @@ const GameLobby = () => {
             </p>
           ) : null}
 
-          <ul>
+          <ul className="lobby-ul">
             <li>
               <BasicBtn
                 onClickHandler={handleCreateRoom}
-                btnContent={"방 만들기"}
+                btnContent={"게임 시작하기"}
               />
             </li>
             <li>
@@ -522,6 +580,12 @@ const GameLobby = () => {
                 숫자만 입력해주세요!
               </p>
             </li>
+            {/* <li>
+            <BasicBtn
+              onClickHandler={handleShowRanking}
+              btnContent={"랭킹 가져오기"}
+            />
+          </li> */}
             <li>
               <button
                 onClick={() => setshowLogOutModal(true)}
