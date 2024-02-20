@@ -47,3 +47,9 @@ StartLog.prototype.addText = function (text) {
     }
 
 };
+
+StartLog.prototype.playSound = function () {
+    if (!this.entity.sound.slot('countdown').isPlaying) {
+        this.entity.sound.play("countdown");
+    };
+}
