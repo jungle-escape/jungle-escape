@@ -27,6 +27,8 @@ FloorAttack.prototype.initialize = function () {
   this.isReturn = false;
 
   this.isRunning = false;
+
+  this.entity.collision.on("collisionstart", this.onCollisionStart, this);
 };
 
 FloorAttack.prototype.swap = function (old) {
@@ -125,3 +127,9 @@ FloorAttack.prototype.update = function (dt) {
 //     }
 //   }
 // };
+
+FloorAttack.prototype.onCollisionStart = function (hit) {
+    if (hit.other.tags.has('player')) {
+      this.entity.networkEntity.send(`${this.entity.name}`);
+    };
+}
