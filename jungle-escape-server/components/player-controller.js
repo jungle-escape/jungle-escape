@@ -83,10 +83,6 @@ PlayerController.prototype.setupVariables = function () {
   this.pcReactDuration = 0;
   this.pcReactOn = false;
   this.controllable = true;
-  ``;
-  // For moving panels
-  this.isOnPanel = false;
-  this.panelEntity = null;
 
   // For handling collisions, will be sent to clinet
   this.entity.collisionTags = [];
@@ -96,6 +92,9 @@ PlayerController.prototype.setupVariables = function () {
   this.entity.savepoint2 = false;
   this.entity.savepoint3 = false;
   this.entity.savepoint4 = false;
+
+  // Boxcast
+  this.boxCast = this.entity.findByName("BoxCast");
 };
 
 PlayerController.prototype.setupEventListeners = function () {
@@ -290,6 +289,21 @@ PlayerController.prototype.applyLinearDamping = function (dt) {
   // m_linearVelocity *= btPow(btScalar(1) - m_linearDamping, timeStep);
   //////////////////////////////////////////////////////////////////////
 
+  // ld : 속도의 감쇠율
+  // 플레이캔버스가 linear damping 적용을 할 때, xyz 일괄로 때려요
+  // 1번케이스 : ld === 0.99로 준다
+  /// x, y, z의 속도가 굉장히 빨리 감소해요.
+  //// x, z(지면에서움직이는거) : 내가 원하는대로 어느정도 잘 움직여요
+  //// y(문제) : 점프가 안돼요..... 시발.....
+  // 2번케이스 : ld === 0으로 할게 .감소? 안할게
+
+  // 처음 : x 0.99, y 0 z 0.99
+
+  // 문제 1번 : 올라갈땐 괜찮은데.. 내려올때 늦게내려옴...
+  //// 1번 해결 : 점프 중이고, lv.y <0(추락중일때) 추가적인 중력을 주도록 할게
+  // 문제 2번 : y로 힘이 작용되는 경우에(점프제외), 갑자기 퍽 튀는 현상이 일어남
+  //// 2번 해결 :
+
   // Apply linear damping
   var lv = this.entity.rigidbody.linearVelocity;
   if (this.canJump) {
@@ -377,13 +391,6 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
     this.entity.collisionTags.push("push_opposite");
   }
 
-  //
-  if (hit.other.tags.has("movingPanel")) {
-    this.isOnPanel = true;
-    this.panelEntity = hit.other;
-    this.entity.collisionTags.push("movingPanel");
-  }
-
   // Push player back in the direction opposite to 'other'.
   if (hit.other.tags.has("push_error")) {
     var otherPos = hit.other.getPosition();
@@ -432,65 +439,38 @@ PlayerController.prototype.onContact = function (hit) {
 PlayerController.prototype.checkContactRules = function (hit) {};
 
 // Event listner on collision end
-PlayerController.prototype.onCollisionEnd = function (hit) {
-  if (hit.tags?.has("movingPanel")) {
-    this.isOnPanel = false;
-    this.panelEntity = null;
-  }
-};
+PlayerController.prototype.onCollisionEnd = function (hit) {};
 
 // Do push, invoked by client mouse left-click
 PlayerController.prototype.doPush = function () {
   if (this.clientInput.mouse_LEFT) {
-    // Cast from player
-    var castStart = this.entity.getPosition();
-    var distance = 5;
-    var castEnd = castStart.clone().add(this.lookAt.scale(distance));
+    // // Cast from player
+    // var pcPos = this.entity.getPosition().clone();
+    // var castStart = pcPos.clone().add(this.lookAt.clone().scale(3));
+    // var castEnd = pcPos.clone().add(this.lookAt.clone().scale(6));
 
-    // Cast from player
-    var result = this.app.systems.rigidbody.raycastFirst(castStart, castEnd);
+    // // Cast from player
+    // var result = this.app.systems.rigidbody.raycastFirst(castStart, castEnd);
 
-    // Apply force, opposite to given normal vector
-    if (result) {
-      if (result.entity.rigidbody) {
-        var pushForce = 10000;
-        // var pushVec = result.normal.scale(-1 * pushForce);
-        var pushVec = this.lookAt.scale(pushForce);
-        result.entity.rigidbody.applyImpulse(pushVec);
-        if (result.entity.tags.has("player")) {
-          result.entity.collisionTags.push("hit_receive");
-        }
-        this.entity.collisionTags.push("hit_success");
+    // // Apply force, opposite to given normal vector
+    // if (result) {
+    //   if (result.entity.rigidbody) {
+    //     var pushForce = 10000;
+    //     // var pushVec = result.normal.scale(-1 * pushForce);
+    //     var pushVec = this.lookAt.scale(pushForce);
+    //     result.entity.rigidbody.applyImpulse(pushVec);
+    //     if (result.entity.tags.has("player")) {
+    //       result.entity.collisionTags.push("hit_receive");
+    //     }
+    //     this.entity.collisionTags.push("hit_success");
+    //   }
+    // }
+
+    // Push by boxcast
+    if (this.boxCast) {
+      if (!this.boxCast.enabled) {
+        this.boxCast.enabled = true;
       }
     }
   }
 };
-
-// //////////////////////////////
-// // Logics for Moving Panels //
-// //////////////////////////////
-
-// // logic for calculating panel's movement vector
-// PlayerController.prototype.syncPosWithPanel = function () {
-//     if (this.isOnPanel && this.panelEntity) {
-//         var panelDeltaMovement = this.calculatePanelDeltaMovement();
-
-//         if (panelDeltaMovement) {
-//             var currentPosition = this.entity.getPosition();
-//             this.entity.rigidbody.teleport(
-//                 currentPosition.x + panelDeltaMovement.x,
-//                 currentPosition.y + panelDeltaMovement.y,
-//                 currentPosition.z + panelDeltaMovement.z
-//             );
-//         }
-//     }
-// }
-
-// PlayerController.prototype.calculatePanelDeltaMovement = function () {
-//     var panelEntity = this.panelEntity;
-//     var lastPosition = panelEntity.script.movementConstSpeed.lastPosition || panelEntity.getPosition().clone();
-//     var currentPosition = panelEntity.getPosition();
-//     panelEntity.script.movementConstSpeed.lastPosition = currentPosition.clone();
-
-//     return currentPosition.clone().sub(lastPosition);
-// }

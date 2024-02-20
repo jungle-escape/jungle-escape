@@ -19,9 +19,10 @@
           "e81ec6e6-276d-45bc-90e5-92dc8152406f",
           "a647d260-2190-45bc-8438-3dc267b7b2a3",
           "9681d615-c89d-4c83-93f1-c61a8baae2e9",
-          "9493d8f1-b9de-4353-8a18-88481c71c1d7"
+          "9493d8f1-b9de-4353-8a18-88481c71c1d7",
+          "acd8dda7-7e59-499e-a94d-2d76e76ebbec"
         ],
-        "position": [0, 5, -5],
+        "position": [0, 0, 0],
         "rotation": [0, 0, 0],
         "scale": [2, 2, 2],
         "components": {
@@ -1396,13 +1397,66 @@
             "layers": [0]
           }
         }
+      },
+      "acd8dda7-7e59-499e-a94d-2d76e76ebbec": {
+        "name": "BoxCast",
+        "tags": [],
+        "enabled": false,
+        "resource_id": "acd8dda7-7e59-499e-a94d-2d76e76ebbec",
+        "parent": "c66a84df-2d99-411e-8bee-bb105ba7277c",
+        "children": [],
+        "position": [0, 0, 0.7567618837617358],
+        "rotation": [0, 0, 0],
+        "scale": [2.5, 2.5, 2.5],
+        "components": {
+          "render": {
+            "enabled": true,
+            "type": "asset",
+            "asset": null,
+            "materialAssets": [null],
+            "layers": [0],
+            "batchGroupId": null,
+            "castShadows": true,
+            "castShadowsLightmap": true,
+            "receiveShadows": true,
+            "lightmapped": false,
+            "lightmapSizeMultiplier": 1,
+            "castShadowsLightMap": true,
+            "lightMapped": false,
+            "lightMapSizeMultiplier": 1,
+            "isStatic": false,
+            "rootBone": null
+          },
+          "collision": {
+            "enabled": true,
+            "type": "cylinder",
+            "halfExtents": [3, 2, 2],
+            "radius": 2.5,
+            "axis": 1,
+            "height": 4,
+            "asset": null,
+            "renderAsset": null,
+            "linearOffset": [0, 0, 0],
+            "angularOffset": [0, 0, 0]
+          },
+          "script": {
+            "enabled": true,
+            "order": ["boxCast"],
+            "scripts": {
+              "boxCast": {
+                "enabled": true,
+                "attributes": {}
+              }
+            }
+          }
+        }
       }
     }
   },
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 165184745,
+  "uniqueId": 168089411,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -1419,5 +1473,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "9ab0866c-7d8d-4bfa-adfd-f358d0afc050"
+  "checkpoint_id": "7511c8fa-1205-4c19-8bab-381f05525dba"
 }
