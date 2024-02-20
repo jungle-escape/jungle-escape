@@ -20,13 +20,11 @@ Lobby.prototype.initialize = function () {
     // const params = new URLSearchParams(window.location.search);
 
     const host = window._endpoint;
-    console.log("host is : ", host);
-    // const host = 'localhost';
     const placeholder = host === 'localhost' ? 'DEV' : 'PROD';
     const port = placeholder === 'DEV' ? '8080' : null;
     const isSecure = placeholder === 'DEV' ? false : true;
 
-    console.info(`Connecting to [[[ ${placeholder} ]]] server...`)
+    console.info(`Connecting to ${placeholder}(${host}) server...`)
     pn.connect(host, port, isSecure, null, () => {
         pn.on('join', (room) => {
             this.entity.enabled = false;
@@ -56,6 +54,7 @@ Lobby.prototype.initialize = function () {
             STARTLOG.addText(num);
             if (num === "3...") {
                 // CAMERA.switchView();
+                STARTLOG.playSound();
             }
         });
 
@@ -78,8 +77,6 @@ Lobby.prototype.initialize = function () {
             else {
                 WINNER.addText(`${this.convertWinner(winner)} win!\n\nGAME OVER`);
             }
-
-
         });
 
         pn.on('pgbar', (dis) => {

@@ -4,6 +4,7 @@ var PlayerController = pc.createScript('playerController');
 PlayerController.prototype.initialize = function () {
     this.app.playerController = this;
     this.networkEntity = this.entity.script.networkEntity;
+
     // Set up model
     if (this.networkEntity.user) {
         const charNum = this.networkEntity.user.id % 4;
@@ -421,17 +422,17 @@ PlayerController.prototype.handleCollisionTags = function () {
             }
         }   
         // tag : hammer  
-        if (tags?.includes('hammer')) {
-            if (!this.entity.sound.slot('ggang').isPlaying) {
-                this.entity.sound.play("ggang");
-                this.entity.isHit = true;
-
-                // 1초 후에 isHit를 false로 설정
-                setTimeout(() => {
-                    this.entity.isHit = false;
-                }, 2000); // 2초 후 실행
-            }
-        }     
+        // if (tags?.includes('hammer')) {
+        //     if (!this.entity.sound.slot('ggang').isPlaying) {
+        //         this.entity.sound.play("ggang");
+        //         this.entity.isHit = true;
+    
+        //         // // 1초 후에 isHit를 false로 설정
+        //         // setTimeout(() => {
+        //         //     this.entity.isHit = false;
+        //         // }, 2000); // 2초 후 실행
+        //     }
+        // }     
 
         // tag : p1_right
         if (tags?.includes('p1_right')) {

@@ -171,10 +171,22 @@ export default class User extends pc.EventHandler {
     );
   }
 
+  // toData() {
+  //   return {
+  //     id: this.id,
+  //   };
+  // }
+
   toData() {
-    return {
+    const data = {
       id: this.id,
     };
+
+    if (this.nickname != null && this.nickname !== "") {
+      data.nickname = this.nickname;
+    }
+
+    return data;
   }
 
   destroy() {

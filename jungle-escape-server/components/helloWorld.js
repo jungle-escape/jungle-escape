@@ -78,7 +78,7 @@ HelloWorld.prototype.update = function (dt) {
                 setTimeout(() => {
                   child3.rigidbody.enabled = false;
                   // child3.destroy();
-                }, 3000); // 3초 후에 실행
+                }, 1000); // 3초 후에 실행
               }
             });
           });

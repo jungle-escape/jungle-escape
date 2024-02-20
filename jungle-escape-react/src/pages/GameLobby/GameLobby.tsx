@@ -13,16 +13,17 @@ import Loader3d from "@/components/Loading/Loading3d";
 import "./gameLobby.css";
 import "@/components/CustomAlert/modal.css";
 
-//API
-// import { api_getCurrentUser } from "@/api/API";
 //type
 import { UserData } from "@/lib";
+import { api_recordRanking } from "@/api/API";
 
 const GameLobby = () => {
   const _levelId = 1940848;
   //game logic
   const [roomName, setRoomName] = useState("");
   const [isSessionStart, setIsSessionStart] = useState(false);
+  const [isSessionEnd, setIsSessionEnd] = useState(false);
+  const [isUpdateRanking, setIsUpdateRanking] = useState(false);
   //ui logic
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -52,7 +53,7 @@ const GameLobby = () => {
     }
   }, [loginData, navigate]);
 
-  //console.log("==========[Game Lobby] session : ", isSessionStart);
+  console.log("==========[Game Lobby] session : ", isSessionStart);
 
   /** 이 컴포넌트가 mount되었을 때 pn.connection 을 시작. 게임 접속은 아니다. */
   useEffect(() => {
@@ -104,13 +105,17 @@ const GameLobby = () => {
             HELLOWORLD.boom();
           });
 
-          pn.on("time", (time: any) => {
+          pn.on("time", (time: number) => {
             // ELAPSEDTIME.addText(time.toFixed(1));
             ELAPSEDTIME.addText(convertTime(time.toFixed(1)));
             lastReceivedTime = convertTime(time.toFixed(1));
           });
 
           pn.on("winner", (winner: any) => {
+            setIsSessionEnd(true);
+            setIsUpdateRanking(true);
+
+            console.log("[gameLobby] isSessionEnd : ", isSessionEnd);
             //기존 winner = user.id를 전달
             if (typeof winner === "number") {
               WINNER.addText(`Guest ${winner} win!\n\nGAME OVER`);
@@ -118,33 +123,67 @@ const GameLobby = () => {
             //신규 로직 rankingList를 winner라는 이름으로 전달
             // rankingList [ [ 11.767155780757323, '[Guest] 716', '195-485' ] ]
             else {
+              const endtime = lastReceivedTime;
               WINNER.addText(`${winner[0][1]} win!\n\nGAME OVER`);
-              if (lastReceivedTime) {
-                console.log(`${winner[0][1]} : ${lastReceivedTime}`);
-                lastReceivedTime = null;
+              if (winner[0][1] === userInfo.nickname) {
+                //자신이 winner일 때
+                if (endtime === null) {
+                  handleRanking([winner], "-");
+                }
+                if (endtime) {
+                  handleRanking(winner, endtime);
+                  console.log(`${winner[0][1]} : ${endtime}`);
+                  lastReceivedTime = null;
+                }
+                setTimeout(function () {
+                  console.log("승자 게임 끝, 결과 화면으로 이동합니다.");
+                  navigate("/result", {
+                    state: { rankingList: winner, endtime: endtime },
+                  });
+                  setIsUpdateRanking(false);
+                }, 2100);
+              } else {
+                setTimeout(function () {
+                  console.log("참가자 게임 끝, 결과 화면으로 이동합니다.");
+                  navigate("/result", {
+                    state: { rankingList: winner, endtime: endtime },
+                  });
+                  setIsUpdateRanking(false);
+                }, 2500);
               }
+
+              lastReceivedTime = null;
             }
           });
 
-          pn.on("pgbar", (dis: any) => {
+          pn.on("pgbar", (dis: number) => {
             const runner = PROGRESSBAR.entity.findByName(`runner1`);
-            runner.setLocalPosition(-175 + dis * (4 / 11), -5, 0);
-            BAR.setProgress(dis / 1100);
+            runner.setLocalPosition(-200 + (1400 - dis) * (5 / 11), -5, 0);
+            BAR.setProgress((1400 - dis) / 1100);
           });
 
           pn.on("rank", (list) => {
             let text = "";
-            list.forEach((item: any, index: any) => {
-              //console.log("item[1] ", item[1]);
-              text += "[ " + (index + 1) + " ] " + item[1] + "\n";
+            list.forEach((item: any, index: number) => {
+              text += "[" + (index + 1) + "] " + item[1] + "\n";
             });
             RANK.addText(text);
           });
 
           pn.on("leave", () => {
             /** 방 떠나기 */
-            showRootElement();
-            setIsSessionStart(false);
+
+            if (!isUpdateRanking) {
+              //게임이 끝나서 랭킹 계산 중이 아닐 때 바로 퇴장
+              setIsSessionStart(false);
+              showRootElement();
+            } else {
+              //게임이 끝났는데 랭킹 계산 중일 때
+              setTimeout(function () {
+                setIsSessionStart(false);
+                showRootElement();
+              }, 1000);
+            }
           });
         });
       } else {
@@ -167,10 +206,14 @@ const GameLobby = () => {
   }, [userInfo]);
 
   /** 뒤로가기 관련 logic  */
-  // session이 시작했을 때만 blocking
+  // session이 시작하고 끝나지 않았을(=winner 이벤트 발생하지 않았을) 때만 blocking
   const blocker = useBlocker(({ currentLocation, nextLocation }) => {
-    //console.log("currentLocation, nextLocation", currentLocation, nextLocation);
-    return isSessionStart && currentLocation.pathname !== nextLocation.pathname;
+    return (
+      isSessionStart &&
+      !isSessionEnd &&
+      !isUpdateRanking &&
+      currentLocation.pathname !== nextLocation.pathname
+    );
   });
 
   ///////////// handler functions /////////////////
@@ -352,6 +395,7 @@ const GameLobby = () => {
   };
   // handling the root div func
   const showRootElement = () => {
+    console.log("[gameLobby] show room complete");
     const rootElement = document.getElementById("root");
     if (rootElement) {
       rootElement.style.display = "flex";
@@ -379,6 +423,7 @@ const GameLobby = () => {
 
   // for addTexts
   const convertUsername = (user: any) => {
+    console.log("user?", user);
     let showname;
     //if nickname is not exist, guest naming
     if (!user.nickname) {
@@ -403,6 +448,19 @@ const GameLobby = () => {
       return true;
     }
     return false;
+  };
+
+  const handleRanking = async (
+    rankingList: Array<T>,
+    lastReceivedTime: string
+  ) => {
+    const winner = rankingList[0][1];
+    [0][1];
+    const endtime = lastReceivedTime;
+    const participants = rankingList.map((item) => item[1]);
+    // `winner ${rankingList[0][1]} : ${lastReceivedTime}`
+    await api_recordRanking({ winner, endtime, participants });
+    return;
   };
 
   //////////////////////////
@@ -483,11 +541,11 @@ const GameLobby = () => {
             </p>
           ) : null}
 
-          <ul>
+          <ul className="lobby-ul">
             <li>
               <BasicBtn
                 onClickHandler={handleCreateRoom}
-                btnContent={"방 만들기"}
+                btnContent={"게임 시작하기"}
               />
             </li>
             <li>
@@ -506,6 +564,12 @@ const GameLobby = () => {
                 숫자만 입력해주세요!
               </p>
             </li>
+            {/* <li>
+            <BasicBtn
+              onClickHandler={handleShowRanking}
+              btnContent={"랭킹 가져오기"}
+            />
+          </li> */}
             <li>
               <button
                 onClick={() => setshowLogOutModal(true)}

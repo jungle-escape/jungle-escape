@@ -1,6 +1,6 @@
 import axios from "axios";
 // import env from "@/utils/validateEnv";
-import { LoginData, SignupData } from "@/lib";
+import { LoginData, RecordData, SignupData } from "@/lib";
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_API_DOMAIN,
@@ -9,15 +9,11 @@ const instance = axios.create({
 
 /** intercept */
 
-// 요청 인터셉터 추가하기
 instance.interceptors.request.use(
   function (res) {
-    // console.log("instance.interceptors.request", res);
-    // 요청이 전달되기 전에 작업 수행
     return res;
   },
   function (error) {
-    // 요청 오류가 있는 작업 수행
     return Promise.reject(error);
   }
 );
@@ -25,14 +21,9 @@ instance.interceptors.request.use(
 // 응답 인터셉터 추가하기
 instance.interceptors.response.use(
   function (response) {
-    // console.log("instance.interceptors.response", response);
-    // 2xx 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
-    // 응답 데이터가 있는 작업 수행
     return response;
   },
   function (error) {
-    // 2xx 외의 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
-    // 응답 오류가 있는 작업 수행
     return Promise.reject(error);
   }
 );
@@ -70,6 +61,24 @@ export const api_getCurrentUser = async () => {
       },
     });
   }
+};
+
+/** RANKING */
+export const api_recordRanking = async ({
+  winner,
+  endtime,
+  participants,
+}: RecordData) => {
+  const url = "rank/register";
+  //console.log(`[api_recordRanking] ${data} 들어왔어요 ${url}`);
+  const data = { winner, endtime, participants };
+  console.log("[api_recordRanking] data: ", data);
+  return instance.post(url, data);
+};
+
+export const api_getRanking = async () => {
+  const url = "rank/records";
+  return instance.get(url);
 };
 
 //////// for PRODUCTION ////////

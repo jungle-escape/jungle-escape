@@ -292,6 +292,7 @@ NetworkEntity.prototype.initialize = function () {
     }
   });
   this.entity.room.fire('_networkEntities:add', this);
+  console.debug('Network entity haXs been added: ', this.entity.networkEntity.id, 'entity: ', this.entity);
 };
 
 NetworkEntity.prototype.postInitialize = function () {
