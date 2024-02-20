@@ -44,17 +44,4 @@ RollingStones.prototype.onDynamic = function () {
   this.stoneEntities.push(entity);
   entity.enabled = true;
   this.entity.addChild(entity);
-
-  setTimeout(() => {
-    // 엔티티 파괴 전에 배열에서 제거
-    const index = this.stoneEntities.indexOf(entity);
-    if (index > -1) {
-      this.stoneEntities.splice(index, 1);
-    }
-
-    // 엔티티가 이미 파괴되지 않았는지 확인
-    if (entity && !entity.destroyed) {
-      entity.destroy();
-    }
-  }, 15000);
 };
