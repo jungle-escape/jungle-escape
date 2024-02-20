@@ -72,6 +72,13 @@ export const api_getCurrentUser = async () => {
   }
 };
 
+/** RANKING */
+export const api_recordRanking = async (data: string) => {
+  const url = "rank/register";
+  console.log("data?", data);
+  return true;
+};
+
 //////// for PRODUCTION ////////
 // type guard funcs
 //   const hasEndpoint = (obj: unknown): obj is Window & { _endpoint: string } =>

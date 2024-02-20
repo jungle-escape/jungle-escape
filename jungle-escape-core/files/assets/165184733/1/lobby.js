@@ -20,6 +20,7 @@ Lobby.prototype.initialize = function () {
     // const params = new URLSearchParams(window.location.search);
 
     const host = window._endpoint;
+    console.log("host is : ", host);
     // const host = 'localhost';
     const placeholder = host === 'localhost' ? 'DEV' : 'PROD';
     const port = placeholder === 'DEV' ? '8080' : null;

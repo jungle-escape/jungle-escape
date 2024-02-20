@@ -17,6 +17,7 @@ import "@/components/CustomAlert/modal.css";
 // import { api_getCurrentUser } from "@/api/API";
 //type
 import { UserData } from "@/lib";
+import { api_recordRanking } from "@/api/API";
 
 const GameLobby = () => {
   const _levelId = 1940848;
@@ -119,6 +120,7 @@ const GameLobby = () => {
             // rankingList [ [ 11.767155780757323, '[Guest] 716', '195-485' ] ]
             else {
               WINNER.addText(`${winner[0][1]} win!\n\nGAME OVER`);
+              handleRanking(winner, lastReceivedTime);
               if (lastReceivedTime) {
                 console.log(`${winner[0][1]} : ${lastReceivedTime}`);
                 lastReceivedTime = null;
@@ -403,6 +405,20 @@ const GameLobby = () => {
       return true;
     }
     return false;
+  };
+
+  const handleRanking = async (
+    rankingList: Array<T>,
+    lastReceivedTime: string
+  ) => {
+    if (userInfo?.nickname === rankingList[0][1]) {
+      //자신이 winner일 때 API 호출
+      const res = await api_recordRanking(
+        `winner ${rankingList[0][1]} : ${lastReceivedTime}`
+      );
+      console.log("handleRanking res: ", res);
+      return;
+    }
   };
 
   //////////////////////////

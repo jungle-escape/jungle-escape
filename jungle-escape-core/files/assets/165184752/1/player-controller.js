@@ -39,10 +39,6 @@ PlayerController.prototype.initialize = function () {
 
     const worldLight = this.app.root.findByName("WorldLight");
     if (worldLight) worldLight.light.intensity = 0.1;
-
-    // // When user triggers endpoint.
-    // // Refer to both setModelEntityState() and sendInputToServer().
-    // this.app.on('_triggerEndPlayerControl:endpointOn', () => { this.endpoint = true; }, this);
 };
 
 PlayerController.prototype.setupVariables = function () {
