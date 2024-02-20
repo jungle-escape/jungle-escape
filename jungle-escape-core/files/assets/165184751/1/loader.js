@@ -22,9 +22,11 @@ const pn_loader = async () => {
     const prodData = await _prodPn;
 
     if (devData) {
+      console.log("fetched dev data");
       script.textContent = devData;
       window._endpoint = _devUri;
     } else if (prodData) {
+      console.log("fetched prod data");
       script.textContent = prodData;
       window._endpoint = _prodUri;
     } else {
