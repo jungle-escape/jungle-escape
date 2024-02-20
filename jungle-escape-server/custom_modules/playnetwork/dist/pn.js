@@ -131,7 +131,6 @@ class Room extends pc.EventHandler {
   }
 
   _onNetworkEntityDelete(id) {
-    console.debug('deleting network entity: ', id);
     const networkEntity = this.networkEntities.get(id);
     if (!networkEntity) return;
     networkEntity.entity.destroy();
