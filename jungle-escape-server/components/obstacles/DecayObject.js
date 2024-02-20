@@ -16,7 +16,16 @@ DecayObject.attributes.add('onCollision', {
 DecayObject.prototype.initialize = function () {
     this.entity.render.material = this.entity.render.material.clone();
     this.entity.render.material.update();
-    this.entity.rigidbody.on('collisionstart', this.onCollisionStart, this);
+
+    const generate = setTimeout(() => {
+        console.debug('DecayObject generated');
+        this.onCollisionStart();
+    }, 2000);
+    this.entity.once('destroy', () => {
+        console.debug('DecayObject destroyed');
+        clearTimeout(generate);
+    });
+    this.entity.rigidbody.on('collisionstart', generate, this);
 }
 
 DecayObject.prototype.onCollisionStart = function () {
@@ -24,8 +33,9 @@ DecayObject.prototype.onCollisionStart = function () {
     
     this.fromDiffuse = new pc.Color(1, 1, 1);
     this.toDiffuse = new pc.Color(0, 0, 0);
-    this.app.tween(this.fromDiffuse)
-        .to(this.toDiffuse, 7, pc.ExponentialOut)
+    console.debug('DecayObject decay started');
+    this.entity.tween(this.fromDiffuse)
+        .to(this.toDiffuse, 5, pc.ExponentialOut)
         .onUpdate(() => {
             this.entity.render.material.diffuse = this.fromDiffuse;
             this.entity.render.material.update();

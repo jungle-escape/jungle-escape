@@ -21,7 +21,6 @@ RollingStones.attributes.add("stones", {
 
 RollingStones.prototype.initialize = function () {
   this.time = 0;
-  // this.stoneEntities = [];
   this.playerArrivedHandler = () => {
     // Store the function reference
     this.intervalId = setInterval(() => {
