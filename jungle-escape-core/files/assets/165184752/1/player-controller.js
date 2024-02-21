@@ -168,7 +168,7 @@ PlayerController.prototype.onCollisionStart = function (hit) {
 
 // Event listner on mouse click
 PlayerController.prototype.mouseDown = function (e) {
-    if (e.button === pc.MOUSEBUTTON_LEFT && !this.entity.isAttacking && this.entity.canJump) {
+    if (e.button === pc.MOUSEBUTTON_LEFT && !this.entity.isAttacking && this.entity.canJump && !this.entity.isHit) {
         // Set mouse input
         this.clientInput.mouse_LEFT = true;
 
@@ -447,8 +447,11 @@ PlayerController.prototype.handleCollisionTags = function () {
             }
         }  
 
-        // tag : p1_right
+        // tag : hit successs
         if (tags?.includes('hit_success')) {
+            // const hit = this.vfx.findByName('hit');
+            // hit.script.effekseerEmitter.play(); 
+
             if (!this.entity.sound.slot('hit').isPlaying) {
                 this.entity.sound.play("hit");
             }
@@ -463,6 +466,19 @@ PlayerController.prototype.handleCollisionTags = function () {
             const hit = this.vfx.findByName('hit');
             hit.script.effekseerEmitter.play();
         } 
+
+        // tag : hit receive
+        if (tags?.includes('hit_receive')) {
+                const hit = this.vfx.findByName('hit');
+                hit.script.effekseerEmitter.play(); 
+
+                this.entity.isHit = true;
+    
+                // 1초 후에 isHit를 false로 설정
+                setTimeout(() => {
+                    this.entity.isHit = false;
+                }, 1000); // 1초 후 실행
+        }  
     }
 }
 

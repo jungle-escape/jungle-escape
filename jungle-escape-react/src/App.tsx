@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
+import { useRecoilValue } from "recoil";
+import { gameState } from "@/recoil/gameState";
+
 import "./App.css";
 
 import TypoLoader from "@/components/Loading/TypoLoader";
@@ -10,9 +13,6 @@ import MusicBox from "@/components/BGM/BackgroundMusic";
 //import BgCanvas from "@/components/Background_3d/BgCanvas";
 
 import { playGlobalUISounds } from "@/components/BGM/uiPlaySound";
-
-import { gameState } from "@/recoil/gameState";
-import { useRecoilValue } from "recoil";
 
 function App() {
   const [imageNames, setImagePaths] = useState<string[]>([]);
