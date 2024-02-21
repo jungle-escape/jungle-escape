@@ -572,6 +572,12 @@
               },
               "Base:hit": {
                 "asset": 167287116
+              },
+              "Base:victory": {
+                "asset": 167287127
+              },
+              "Base:sit": {
+                "asset": 167287124
               }
             },
             "enabled": true,
@@ -1461,7 +1467,7 @@
   "file": null,
   "path": [165184693],
   "id": 165184745,
-  "uniqueId": 168089411,
+  "uniqueId": 165184745,
   "createdAt": "2024-01-27T01:23:51.794Z",
   "modifiedAt": null,
   "scope": {
@@ -1478,5 +1484,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "7511c8fa-1205-4c19-8bab-381f05525dba"
+  "checkpoint_id": "74d07c80-a2e5-4e5f-b5b8-fb4954ed8831"
 }
