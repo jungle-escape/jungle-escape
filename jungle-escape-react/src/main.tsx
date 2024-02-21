@@ -23,7 +23,8 @@ const router = createBrowserRouter([
     element: <TypoLoader />,
     errorElement: <ErrorPage />,
   },
-  { path: "result", element: <ResultPage /> },
+  { path: "result", element: <ResultPage />, errorElement: <ErrorPage /> },
+  { path: "error", element: <ErrorPage />, errorElement: <ErrorPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

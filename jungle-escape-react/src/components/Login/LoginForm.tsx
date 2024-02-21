@@ -6,7 +6,7 @@ import { loginState } from "@/recoil/loginState";
 import { musicState } from "@/recoil/musicState";
 
 import "./loginform.css";
-import { buttonClickSound } from "@/components/Button/buttonPlaySound";
+import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
 
 const LoginForm = () => {
   // const [id, setId] = useState("");

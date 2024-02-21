@@ -9,9 +9,16 @@ import WindowContainer from "@/components/Window/Window_container";
 import MusicBox from "@/components/BGM/BackgroundMusic";
 //import BgCanvas from "@/components/Background_3d/BgCanvas";
 
+import { playGlobalUISounds } from "@/components/BGM/uiPlaySound";
+
+import { gameState } from "@/recoil/gameState";
+import { useRecoilValue } from "recoil";
+
 function App() {
   const [imageNames, setImagePaths] = useState<string[]>([]);
   const [isImgLoading, setIsImgLoading] = useState(true);
+
+  const gameData = useRecoilValue(gameState);
 
   // load background images
   useEffect(() => {
@@ -31,6 +38,18 @@ function App() {
 
     loadImages();
   }, []);
+
+  useEffect(() => {
+    const handleGlobalClick = () => {
+      playGlobalUISounds("click", gameData.isGameStart);
+    };
+
+    document.addEventListener("click", handleGlobalClick);
+
+    return () => {
+      document.removeEventListener("click", handleGlobalClick);
+    };
+  }, [gameData.isGameStart]);
 
   return (
     <>

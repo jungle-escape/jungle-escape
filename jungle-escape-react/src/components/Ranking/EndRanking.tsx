@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { RankingData, RecordData } from "@/lib";
 
 import WindowContainer from "@/components/Window/Window_container";
 import BasicUILink from "@/components/Button/BasicUILink";
 
-import { buttonClickSound } from "@/components/Button/buttonPlaySound";
+import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
 
 import "./ranking.css";
 import CrownIcon from "@/assets/crown-icon.svg?react";

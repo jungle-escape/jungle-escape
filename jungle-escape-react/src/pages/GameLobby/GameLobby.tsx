@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useBlocker, useNavigate } from "react-router-dom";
+import { useBlocker, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { useRecoilState } from "recoil";
 import { loginState } from "@/recoil/loginState";
@@ -19,7 +19,8 @@ import "@/components/CustomAlert/modal.css";
 import { UserData, WinnerDataFromServer } from "@/lib";
 import { musicState } from "@/recoil/musicState";
 import { api_recordRanking } from "@/api/API";
-import { buttonClickSound } from "@/components/Button/buttonPlaySound";
+import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
+import { gameState } from "@/recoil/gameState";
 
 const GameLobby = () => {
   const _levelId = 1940848;
@@ -39,6 +40,7 @@ const GameLobby = () => {
 
   //music logic
   const [musicData, setMusicData] = useRecoilState(musicState);
+  const [gameData, setGameData] = useRecoilState(gameState);
 
   const navigate = useNavigate();
 
@@ -177,11 +179,13 @@ const GameLobby = () => {
                 console.log(" Update Ranking ...");
                 setIsSessionStart(false);
                 showRootElement();
+                setGameData({ ...gameData, isGameStart: false });
               }, 1000);
             } else {
               console.log("Leaving the room . . . ");
               setIsSessionStart(false);
               showRootElement();
+              setGameData({ ...gameData, isGameStart: false });
             }
 
             console.log("leave Room [2] |  isSessionStart | ", isSessionStart);
@@ -210,6 +214,7 @@ const GameLobby = () => {
   // session이 시작하고 끝나지 않았을(=winner 이벤트 발생하지 않았을) 때만 blocking
   const blocker = useBlocker(({ currentLocation, nextLocation }) => {
     if (nextLocation.pathname === "/result") return false;
+    if (!gameData.isGameStart) return false;
     return (
       isSessionStart && //세션(게임 방 입장)이 시작했으며
       currentLocation.pathname !== nextLocation.pathname //이동이 감지된다면 blocking
@@ -334,6 +339,7 @@ const GameLobby = () => {
           setIsSessionStart(true);
 
           setShowLoader(false);
+          setGameData({ ...gameData, isGameStart: true });
         })
         .catch((error: Error) => {
           console.error(`Failed to join room ${id}:`, error);
@@ -358,6 +364,7 @@ const GameLobby = () => {
         console.log("Room left successfully");
         if (blocker.proceed) {
           setShowLoader(true);
+          setGameData({ ...gameData, isGameStart: false });
           //blocker.proceed(); //go out lobby page, bad for ux
           blocker.reset();
           showRootElement();
@@ -386,6 +393,7 @@ const GameLobby = () => {
     isWinner: boolean,
     winnerData: WinnerDataFromServer
   ) => {
+    setGameData({ ...gameData, isGameStart: false });
     let readyTime = 2500;
     const { winner, endtime } = winnerData;
 

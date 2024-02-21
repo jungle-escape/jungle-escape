@@ -1,7 +1,7 @@
 import { BasicUILinkProps } from "@/lib";
 import { Link } from "react-router-dom";
 
-import { buttonClickSound } from "@/components/Button/buttonPlaySound";
+import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
 /** button for Routing, used as UI link */
 const BasicUILink = ({ to, btnContent, style }: BasicUILinkProps) => {
   const handleClick = () => {

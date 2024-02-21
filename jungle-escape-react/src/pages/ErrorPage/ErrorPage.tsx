@@ -1,18 +1,22 @@
 import {
-  Link,
   useLocation,
   useNavigate,
   useRouteError,
   isRouteErrorResponse,
 } from "react-router-dom";
+import BasicUILink from "@/components/Button/BasicUILink";
 // import BasicBtn from "@/components/Button/BasicButton";
 import "./errorPage.css";
 import "@/components/Button/button.css";
+import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
 
 const ErrorPage = () => {
   const error = useRouteError();
   const currentLoc = useLocation();
   const history = useNavigate();
+
+  const location = useLocation();
+  const otherErrorMsg = location.state?.errorMessage || "Unknown error";
 
   console.log("[Error] : ", error);
 
@@ -26,7 +30,7 @@ const ErrorPage = () => {
     errorMessage = error;
   } else {
     console.error("[Error/UnKnown] :", error);
-    errorMessage = "Unknown error";
+    errorMessage = otherErrorMsg;
   }
   return (
     <>
@@ -50,10 +54,14 @@ const ErrorPage = () => {
             </div>
           </div>
           <div className="two-btn-container">
-            <Link className="button-type-3" to={`/`}>
-              메인으로
-            </Link>
-            <button onClick={() => history(-1)} className="button-type-3">
+            <BasicUILink to={`/`} btnContent="메인으로" />
+            <button
+              onClick={() => {
+                buttonClickSound(3);
+                history(-1);
+              }}
+              className="button-type-3"
+            >
               뒤로가기
             </button>
           </div>

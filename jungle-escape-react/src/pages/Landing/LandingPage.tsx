@@ -10,7 +10,7 @@ import LoginForm from "@/components/Login/LoginForm";
 import JungleLogo from "@/assets/jungle-logo.svg?react";
 import "./landing.css";
 import BasicUILink from "@/components/Button/BasicUILink";
-import { buttonClickSound } from "@/components/Button/buttonPlaySound";
+import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
 
 const LandingPage = () => {
   const loginData = useRecoilValue(loginState);
