@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useBlocker, useNavigate } from "react-router-dom";
+import { Link, useBlocker, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import { useRecoilState } from "recoil";
 import { loginState } from "@/recoil/loginState";
@@ -9,12 +9,14 @@ import BasicBtn from "@/components/Button/BasicButton";
 import GameCloseModal from "@/components/CustomAlert/GameCloseModal";
 import CustomAlert from "@/components/CustomAlert/CustomAlertModal";
 import Loader3d from "@/components/Loading/Loading3d";
+
 //css
 import "./gameLobby.css";
 import "@/components/CustomAlert/modal.css";
 
-//type
+//type, reocil, API
 import { UserData, WinnerDataFromServer } from "@/lib";
+import { musicState } from "@/recoil/musicState";
 import { api_recordRanking } from "@/api/API";
 
 const GameLobby = () => {
@@ -22,7 +24,6 @@ const GameLobby = () => {
   //game logic
   const [roomName, setRoomName] = useState("");
   const [isSessionStart, setIsSessionStart] = useState(false);
-  const [isGameEnd, setIsGameEnd] = useState(false);
   const [isUpdateRanking, setIsUpdateRanking] = useState(false);
   //ui logic
   const [showAlert, setShowAlert] = useState(false);
@@ -33,6 +34,9 @@ const GameLobby = () => {
   const [loginData, setLoginData] = useRecoilState(loginState);
   const [userInfo, setUserInfo] = useState<UserData | null>(null);
   const [isNumber, setIsNumber] = useState(true);
+
+  //music logic
+  const [musicData, setMusicData] = useRecoilState(musicState);
 
   const navigate = useNavigate();
 
@@ -48,13 +52,12 @@ const GameLobby = () => {
       navigate("/");
     }
     //pn이 존재하고, 로그인 상태일 시 데이터를 가져옴
-    //if logged in, get current use's data
     else {
       handleUserInfo();
     }
   }, [loginData, navigate]);
 
-  console.log("==========[Game Lobby] session [mounted] : ", isSessionStart);
+  console.log("[Game Lobby] mounted | session: ", isSessionStart);
 
   /** 이 컴포넌트가 mount되었을 때 pn.connection 을 시작. 게임 접속은 아니다. */
   useEffect(() => {
@@ -113,7 +116,6 @@ const GameLobby = () => {
           });
 
           pn.on("winner", (winner: any) => {
-            setIsGameEnd(true);
             setIsUpdateRanking(true);
 
             //기존 winner = user.id를 전달
@@ -166,17 +168,21 @@ const GameLobby = () => {
           pn.on("leave", () => {
             /** 방 떠나기 */
 
-            if (!isUpdateRanking) {
-              //게임이 끝나서 랭킹 계산 중이 아닐 때 바로 퇴장
-              setIsSessionStart(false);
-              showRootElement();
-            } else {
-              //게임이 끝났는데 랭킹 계산 중일 때
-              setTimeout(function () {
+            console.log("leave Room [1] |  isSessionStart | ", isSessionStart);
+
+            if (isUpdateRanking) {
+              setTimeout(() => {
+                console.log(" Update Ranking ...");
                 setIsSessionStart(false);
                 showRootElement();
               }, 1000);
+            } else {
+              console.log("Leaving the room . . . ");
+              setIsSessionStart(false);
+              showRootElement();
             }
+
+            console.log("leave Room [2] |  isSessionStart | ", isSessionStart);
           });
         });
       } else {
@@ -277,6 +283,7 @@ const GameLobby = () => {
       setShowAlert(true);
       return;
     }
+
     setShowLoader(true);
 
     const roomId = parseInt(roomName, 10);
@@ -338,8 +345,7 @@ const GameLobby = () => {
     pn.leaveRoom()
       .then(() => {
         console.log("Room left successfully");
-        if (blocker.proceed && !isGameEnd) {
-          //게임이 시작되고, 끝나지 않았음에도 뒤로가기를 눌렀을 때
+        if (blocker.proceed) {
           setShowLoader(true);
           //blocker.proceed(); //go out lobby page, bad for ux
           blocker.reset();
@@ -374,9 +380,9 @@ const GameLobby = () => {
     if (isWinner) readyTime = 2100;
     //게임에서 끝나고 카운트다운을 하는 동안 화면에서 대기
     setTimeout(function () {
-      if (isWinner)
-        console.log("[moving] 승자 게임 끝, 결과 화면으로 이동합니다.");
-      else console.log("[moving] 참가자 게임 끝, 결과 화면으로 이동합니다.");
+      // if (isWinner)
+      //   console.log("[moving] 승자 게임 끝, 결과 화면으로 이동합니다.");
+      // else console.log("[moving] 참가자 게임 끝, 결과 화면으로 이동합니다.");
 
       navigate("/result", {
         state: { rankingList: winner, endtime: endtime },
@@ -384,8 +390,6 @@ const GameLobby = () => {
 
       setIsUpdateRanking(false);
     }, readyTime);
-
-    console.log("[[moving]유저 이동 종료");
   };
 
   ////////////// support functions /////////////////
@@ -399,6 +403,7 @@ const GameLobby = () => {
     const rootElement = document.getElementById("root");
     if (rootElement) {
       rootElement.style.display = "none";
+      setMusicData({ ...musicData, isPlay: false }); //music off
     } else {
       console.error("Element with id 'root' not found.");
     }
@@ -409,6 +414,7 @@ const GameLobby = () => {
     const rootElement = document.getElementById("root");
     if (rootElement) {
       rootElement.style.display = "flex";
+      setMusicData({ ...musicData, isPlay: true }); //music on
     } else {
       console.error("Element with id 'root' not found.");
     }
@@ -536,61 +542,69 @@ const GameLobby = () => {
 
   return (
     <>
-      {isSessionStart ? null : (
-        <div className="box">
-          {userInfo ? (
-            <p className="newfont-white">
-              오늘도 달려볼까요,
-              <br />
-              <span className="oldfont-lightgreen">
-                {" "}
-                {userInfo.nickname}
-              </span>{" "}
-              님
-            </p>
-          ) : null}
+      {/* {isSessionStart ? null : (
+        
+      )} */}
 
-          <ul className="lobby-ul">
-            <li>
-              <BasicBtn
-                onClickHandler={handleCreateRoom}
-                btnContent={"게임 시작하기"}
-              />
-            </li>
-            <li>
-              <input
-                className="roomInputBox"
-                type="text"
-                placeholder="합류할 방 번호를 입력하세요"
-                value={roomName}
-                onChange={handleInputChange}
-              />
-              <BasicBtn
-                onClickHandler={handleJoinRoom}
-                btnContent={"방 합류하기"}
-              />
-              <p id="roomnumber-error" className={!isNumber ? "show" : "hide"}>
-                숫자만 입력해주세요!
-              </p>
-            </li>
-            {/* <li>
+      <div className="box">
+        {userInfo ? (
+          <p className="newfont-white">
+            오늘도 달려볼까요,
+            <br />
+            <span className="oldfont-lightgreen"> {userInfo.nickname}</span> 님
+          </p>
+        ) : null}
+
+        <ul className="lobby-ul">
+          <li>
+            <BasicBtn
+              onClickHandler={handleCreateRoom}
+              btnContent={"방 만들기"}
+            />
+          </li>
+          <li>
+            <input
+              className="roomInputBox"
+              type="text"
+              placeholder="합류할 방 번호를 입력하세요"
+              value={roomName}
+              onChange={handleInputChange}
+            />
+            <BasicBtn
+              onClickHandler={handleJoinRoom}
+              btnContent={"방 합류하기"}
+            />
+            <p id="roomnumber-error" className={!isNumber ? "show" : "hide"}>
+              숫자만 입력해주세요!
+            </p>
+          </li>
+          {/* <li>
             <BasicBtn
               onClickHandler={handleShowRanking}
               btnContent={"랭킹 가져오기"}
             />
           </li> */}
-            <li>
-              <button
-                onClick={() => setshowLogOutModal(true)}
-                className="button-type-3"
-                style={{ width: "50%", height: "70%" }}
-              >
-                로그아웃
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
+          <li>
+            <button
+              onClick={() => setshowLogOutModal(true)}
+              className="button-type-3"
+              style={{ width: "50%", height: "70%" }}
+            >
+              로그아웃
+            </button>
+          </li>
+          <li>
+            <Link
+              to={`/ranking`}
+              className="button-type-3"
+              style={{ width: "50%", height: "70%" }}
+            >
+              {" "}
+              렝킹보기
+            </Link>
+          </li>
+        </ul>
+      </div>
       {blocker.state === "blocked" ? portalContent : null}
       {customAlertModal}
       {loader3d}

@@ -3,6 +3,7 @@ import Ranking from "@/components/Ranking/EndRanking";
 import { useLocation, useNavigate } from "react-router-dom";
 import BgImgContainer from "@/components/ImageLoader/BgImgContainer";
 import { useEffect, useState } from "react";
+import MusicBox from "@/components/BGM/BackgroundMusic";
 //import resultImg1 from "@/assets/bgImgs/02.algo.webp";
 
 const ResultPage = () => {
@@ -41,7 +42,9 @@ const ResultPage = () => {
   return (
     <>
       {isImgLoading && <TypoLoader />}
+
       <BgImgContainer imageNames={imageNames} />
+      <MusicBox />
       {currResult ? <Ranking data={{ result: currResult }} /> : <TypoLoader />}
     </>
   );

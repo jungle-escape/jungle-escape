@@ -1,8 +1,9 @@
-import { Form, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Form, useNavigate } from "react-router-dom";
+
 import { useRecoilState } from "recoil";
 import { loginState } from "@/recoil/loginState";
-//import { api_login } from "@/api/API";
+import { musicState } from "@/recoil/musicState";
 
 import "./loginform.css";
 
@@ -13,6 +14,7 @@ const LoginForm = () => {
   const [loginData, setLoginData] = useRecoilState(loginState);
   //const [isModalVisible, setIsModalVisible] = useState(false);
   const [isEnglish, setIsEnglish] = useState(true);
+  const [musicData, setMusicData] = useRecoilState(musicState);
 
   const navigate = useNavigate();
 
@@ -32,6 +34,7 @@ const LoginForm = () => {
         const token = crypto.randomUUID();
         window.localStorage.setItem("nickname", nickname);
         setLoginData({ ...loginData, isLoggedIn: true, token: token });
+        setMusicData({ ...musicData, isPlay: true }); //music on
 
         //console.info(`ID: ${id} | LOGIN SUCCESS`);
         console.info(`nickname: ${nickname} | CONNECT SUCCESS`);
@@ -93,9 +96,7 @@ const LoginForm = () => {
         <div className="login-password-container">
           <section className="title-input-box">
             <label htmlFor="email" id="nickname-label">
-              닉네임을
-              <br />
-              지어주세요!
+              닉네임을 지어주세요
             </label>
             <div className="email-input-div">
               <input
@@ -108,9 +109,7 @@ const LoginForm = () => {
               />
             </div>
             <p id="nickname-error" className={!isEnglish ? "show" : "hide"}>
-              공백을 제외한
-              <br />
-              영문자만 사용해주세요!
+              공백을 제외한 영문자만 사용해주세요!
             </p>
           </section>
 

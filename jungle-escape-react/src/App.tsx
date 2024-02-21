@@ -6,6 +6,7 @@ import "./App.css";
 import TypoLoader from "@/components/Loading/TypoLoader";
 import BgImgContainer from "@/components/ImageLoader/BgImgContainer";
 import WindowContainer from "@/components/Window/Window_container";
+import MusicBox from "@/components/BGM/BackgroundMusic";
 //import BgCanvas from "@/components/Background_3d/BgCanvas";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
     <>
       {isImgLoading && <TypoLoader />}
       <BgImgContainer imageNames={imageNames} />
+      <MusicBox />
       {/* <BgCanvas /> */}
       <div id="root-container">
         <WindowContainer>

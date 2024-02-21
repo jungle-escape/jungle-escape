@@ -13,7 +13,7 @@ const RankingPage = () => {
       try {
         const rankingData = await api_getRanking();
 
-        console.log("rankingData", rankingData.data);
+        //console.log("rankingData", rankingData.data);
 
         setRecords(rankingData.data);
         setIsLoading(false);
