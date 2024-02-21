@@ -1,0 +1,84 @@
+.music-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  z-index: 5;
+
+  pointer-events: none;
+}
+
+.music-ui-container {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 5%;
+  height: 10%;
+
+  margin-left: 90%;
+
+  gap: 10px;
+
+  pointer-events: auto;
+}
+
+/* src: https://css-tricks.com/making-pure-css-playpause-button/ */
+.playpause {
+  align-items: center;
+  height: 100%;
+
+  label {
+    display: block;
+    box-sizing: border-box;
+
+    width: 0;
+    height: 30px;
+
+    cursor: pointer;
+
+    border-color: transparent transparent transparent var(--color_LightGreen);
+    transition: 100ms all ease;
+    will-change: border-width;
+
+    /* 재생  */
+    border-style: solid;
+    border-width: 15px 0 15px 25px;
+  }
+  &:hover {
+    animation: flashColor 1s infinite;
+  }
+  input[type="checkbox"] {
+    visibility: hidden;
+
+    &:checked + label {
+      /* 일시 정지 */
+      border-style: double;
+      border-width: 0px 0 0px 26px;
+    }
+  }
+}
+
+.playpause label:hover {
+  animation: flashColor 1s infinite;
+}
+
+@keyframes flashColor {
+  0%,
+  100% {
+    border-color: transparent transparent transparent var(--color_LightGreen);
+  }
+  50% {
+    border-color: transparent transparent transparent var(--color_DarkerGreen);
+  }
+}

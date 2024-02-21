@@ -3,8 +3,9 @@ import Ranking from "@/components/Ranking/EndRanking";
 import { useLocation, useNavigate } from "react-router-dom";
 import BgImgContainer from "@/components/ImageLoader/BgImgContainer";
 import { useEffect, useState } from "react";
+import MusicBox from "@/components/BGM/BackgroundMusic";
 //import resultImg1 from "@/assets/bgImgs/02.algo.webp";
-
+import { playGlobalUISounds } from "@/components/BGM/uiPlaySound";
 const ResultPage = () => {
   const naivate = useNavigate();
   const location = useLocation();
@@ -35,13 +36,25 @@ const ResultPage = () => {
       setIsImgLoading(false);
     };
 
+    const handleGlobalClick = () => {
+      playGlobalUISounds("click", false);
+    };
+
+    document.addEventListener("click", handleGlobalClick);
+
     loadImages();
+
+    return () => {
+      document.removeEventListener("click", handleGlobalClick);
+    };
   }, []);
 
   return (
     <>
       {isImgLoading && <TypoLoader />}
+
       <BgImgContainer imageNames={imageNames} />
+      <MusicBox />
       {currResult ? <Ranking data={{ result: currResult }} /> : <TypoLoader />}
     </>
   );

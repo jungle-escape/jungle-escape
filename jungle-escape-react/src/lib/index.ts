@@ -27,6 +27,13 @@ export interface BtnTextProps {
   btnContent: string;
 }
 
+export interface BasicUILinkProps {
+  to: string;
+  btnContent: string;
+  style?: React.CSSProperties;
+  soundType?: number;
+}
+
 /** TYPES for Modals */
 export interface ModalProp {
   modalContent: string;
@@ -59,6 +66,7 @@ export interface UserData {
   participatedRooms: string[];
 }
 
+/** TYPES for Ranking */
 export interface RecordData {
   winner: string;
   endtime: string;

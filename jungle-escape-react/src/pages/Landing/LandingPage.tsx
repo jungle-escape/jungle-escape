@@ -1,13 +1,25 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+
+import { useRecoilState, useRecoilValue } from "recoil";
 import { loginState } from "@/recoil/loginState";
+import { musicState } from "@/recoil/musicState";
+
+import LoginForm from "@/components/Login/LoginForm";
 
 import JungleLogo from "@/assets/jungle-logo.svg?react";
 import "./landing.css";
-import LoginForm from "@/components/Login/LoginForm";
+import BasicUILink from "@/components/Button/BasicUILink";
+import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
 
 const LandingPage = () => {
   const loginData = useRecoilValue(loginState);
+  const [musicData, setMusicData] = useRecoilState(musicState);
+
+  useEffect(() => {
+    //랜딩 화면에 진입시 play 를 끔.
+    setMusicData({ ...musicData, isPlay: false });
+  }, []);
 
   return (
     <>
@@ -30,6 +42,10 @@ const LandingPage = () => {
             <>
               <div className="two-btn-container-col">
                 <Link
+                  onClick={() => {
+                    buttonClickSound(3);
+                    setMusicData({ ...musicData, isPlay: true });
+                  }}
                   to={`game`}
                   className="button-type-3"
                   style={{
@@ -41,14 +57,12 @@ const LandingPage = () => {
                   {" "}
                   게임하기
                 </Link>
-                <Link
+
+                <BasicUILink
                   to={`ranking`}
-                  className="button-type-3"
                   style={{ fontSize: "2rem", width: "15rem" }}
-                >
-                  {" "}
-                  렝킹보기
-                </Link>
+                  btnContent="랭킹보기"
+                />
               </div>
             </>
           ) : (

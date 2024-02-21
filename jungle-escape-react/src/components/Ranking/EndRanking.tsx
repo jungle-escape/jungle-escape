@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { RankingData, RecordData } from "@/lib";
+
 import WindowContainer from "@/components/Window/Window_container";
+import BasicUILink from "@/components/Button/BasicUILink";
+
+import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
+
 import "./ranking.css";
-import { Link, useNavigate } from "react-router-dom";
 import CrownIcon from "@/assets/crown-icon.svg?react";
+
 //const Ranking = ({ rankingList, endtime, topRender }: WinnerData) => {
 const Ranking = ({ data }: { data: RankingData }) => {
   // winnerData = {winner(배열), endtime(stirng)}
@@ -72,10 +79,15 @@ const Ranking = ({ data }: { data: RankingData }) => {
                 </ul>
               </section>
               <div className="two-btn-container" style={{ marginTop: "30px" }}>
-                <Link className="button-type-3" to={`/`}>
-                  메인으로
-                </Link>
-                <button onClick={() => history(-1)} className="button-type-3">
+                <BasicUILink to={`/`} btnContent="메인으로" />
+
+                <button
+                  onClick={() => {
+                    buttonClickSound(3);
+                    history(-1);
+                  }}
+                  className="button-type-3"
+                >
                   뒤로가기
                 </button>
               </div>
@@ -110,10 +122,14 @@ const Ranking = ({ data }: { data: RankingData }) => {
             </div>
           </section>
           <div className="two-btn-container" style={{ marginTop: "20px" }}>
-            <Link className="button-type-3" to={`/`}>
-              메인으로
-            </Link>
-            <button onClick={() => history(-1)} className="button-type-3">
+            <BasicUILink to={`/`} btnContent="메인으로" />
+            <button
+              onClick={() => {
+                buttonClickSound(3);
+                history(-1);
+              }}
+              className="button-type-3"
+            >
               뒤로가기
             </button>
           </div>

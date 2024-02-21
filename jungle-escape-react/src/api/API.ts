@@ -72,7 +72,6 @@ export const api_recordRanking = async ({
   const url = "rank/register";
   //console.log(`[api_recordRanking] ${data} 들어왔어요 ${url}`);
   const data = { winner, endtime, participants };
-  console.log("[api_recordRanking] data: ", data);
   return instance.post(url, data);
 };
 

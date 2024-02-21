@@ -9,20 +9,24 @@ import BasicBtn from "@/components/Button/BasicButton";
 import GameCloseModal from "@/components/CustomAlert/GameCloseModal";
 import CustomAlert from "@/components/CustomAlert/CustomAlertModal";
 import Loader3d from "@/components/Loading/Loading3d";
+import BasicUILink from "@/components/Button/BasicUILink";
+
 //css
 import "./gameLobby.css";
 import "@/components/CustomAlert/modal.css";
 
-//type
+//type, reocil, API
 import { UserData, WinnerDataFromServer } from "@/lib";
+import { musicState } from "@/recoil/musicState";
 import { api_recordRanking } from "@/api/API";
+import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
+import { gameState } from "@/recoil/gameState";
 
 const GameLobby = () => {
   const _levelId = 1940848;
   //game logic
   const [roomName, setRoomName] = useState("");
   const [isSessionStart, setIsSessionStart] = useState(false);
-  const [isGameEnd, setIsGameEnd] = useState(false);
   const [isUpdateRanking, setIsUpdateRanking] = useState(false);
   //ui logic
   const [showAlert, setShowAlert] = useState(false);
@@ -34,6 +38,10 @@ const GameLobby = () => {
   const [userInfo, setUserInfo] = useState<UserData | null>(null);
   const [isNumber, setIsNumber] = useState(true);
 
+  //music logic
+  const [musicData, setMusicData] = useRecoilState(musicState);
+  const [gameData, setGameData] = useRecoilState(gameState);
+
   const navigate = useNavigate();
 
   /** check important requirements for this page */
@@ -43,18 +51,18 @@ const GameLobby = () => {
       window.location.reload();
     }
 
+
     //로그인 하지 않았을 시, 메인으로
     if (!loginData.isLoggedIn) {
       navigate("/");
     }
     //pn이 존재하고, 로그인 상태일 시 데이터를 가져옴
-    //if logged in, get current use's data
     else {
       handleUserInfo();
     }
   }, [loginData, navigate]);
 
-  console.log("==========[Game Lobby] session [mounted] : ", isSessionStart);
+  console.log("[Game Lobby] mounted | session: ", isSessionStart);
 
   /** 이 컴포넌트가 mount되었을 때 pn.connection 을 시작. 게임 접속은 아니다. */
   useEffect(() => {
@@ -113,7 +121,6 @@ const GameLobby = () => {
           });
 
           pn.on("winner", (winner: any) => {
-            setIsGameEnd(true);
             setIsUpdateRanking(true);
 
             //기존 winner = user.id를 전달
@@ -121,25 +128,35 @@ const GameLobby = () => {
               WINNER.addText(`Guest ${winner} win!\n\nGAME OVER`);
             }
 
+
             //신규 로직 rankingList를 winner라는 이름으로 전달
             // rankingList [ [ 11.767155780757323, '[Guest] 716', '195-485' ] ]
             else {
               let endtime = lastReceivedTime;
+              let endtime = lastReceivedTime;
               WINNER.addText(`${winner[0][1]} win!\n\nGAME OVER`);
+
 
               if (winner[0][1] === userInfo.nickname) {
                 //자신이 winner일 때
                 if (endtime === null) {
                   handleRanking([winner], "-");
                   endtime = "-";
+                  endtime = "-";
                 }
                 if (endtime) {
+                  handleRanking(winner, endtime); //API 통신
+                  console.log(`${winner[0][1]} : ${endtime} recorded`);
                   handleRanking(winner, endtime); //API 통신
                   console.log(`${winner[0][1]} : ${endtime} recorded`);
                   lastReceivedTime = null;
                 }
                 moveUserToResultPage(true, { winner, endtime });
+                moveUserToResultPage(true, { winner, endtime });
               } else {
+                //자신이 winner가 아닐 때
+                if (endtime === null) endtime = "-";
+                moveUserToResultPage(false, { winner, endtime });
                 //자신이 winner가 아닐 때
                 if (endtime === null) endtime = "-";
                 moveUserToResultPage(false, { winner, endtime });
@@ -166,17 +183,23 @@ const GameLobby = () => {
           pn.on("leave", () => {
             /** 방 떠나기 */
 
-            if (!isUpdateRanking) {
-              //게임이 끝나서 랭킹 계산 중이 아닐 때 바로 퇴장
-              setIsSessionStart(false);
-              showRootElement();
-            } else {
-              //게임이 끝났는데 랭킹 계산 중일 때
-              setTimeout(function () {
+            console.log("leave Room [1] |  isSessionStart | ", isSessionStart);
+
+            if (isUpdateRanking) {
+              setTimeout(() => {
+                console.log(" Update Ranking ...");
                 setIsSessionStart(false);
                 showRootElement();
+                setGameData({ ...gameData, isGameStart: false });
               }, 1000);
+            } else {
+              console.log("Leaving the room . . . ");
+              setIsSessionStart(false);
+              showRootElement();
+              setGameData({ ...gameData, isGameStart: false });
             }
+
+            console.log("leave Room [2] |  isSessionStart | ", isSessionStart);
           });
         });
       } else {
@@ -195,6 +218,7 @@ const GameLobby = () => {
 
       //console.log("[Game Lobby] 첫 번째 작업 클린업");
       console.log("[Game Lobby] ummounted.");
+      console.log("[Game Lobby] ummounted.");
     };
   }, [userInfo]);
 
@@ -202,7 +226,10 @@ const GameLobby = () => {
   // session이 시작하고 끝나지 않았을(=winner 이벤트 발생하지 않았을) 때만 blocking
   const blocker = useBlocker(({ currentLocation, nextLocation }) => {
     if (nextLocation.pathname === "/result") return false;
+    if (!gameData.isGameStart) return false;
     return (
+      isSessionStart && //세션(게임 방 입장)이 시작했으며
+      currentLocation.pathname !== nextLocation.pathname //이동이 감지된다면 blocking
       isSessionStart && //세션(게임 방 입장)이 시작했으며
       currentLocation.pathname !== nextLocation.pathname //이동이 감지된다면 blocking
     );
@@ -240,6 +267,7 @@ const GameLobby = () => {
   };
 
   const handleLogOut = () => {
+    buttonClickSound(1);
     setLoginData({ ...loginData, isLoggedIn: false, token: "" });
     //localStorage.removeItem("currentUserId");
     localStorage.removeItem("nickname"); //dev
@@ -263,6 +291,7 @@ const GameLobby = () => {
   };
 
   const handleCloseModals = () => {
+    buttonClickSound(1);
     setShowAlert(false);
     setShowLoader(false);
   };
@@ -272,11 +301,14 @@ const GameLobby = () => {
   ///////////////////////
 
   const handleJoinRoom = () => {
+    buttonClickSound(1);
     if (roomName === "") {
       setAlertMessage("방 번호가 입력되지 않았습니다!");
       setShowAlert(true);
+      buttonClickSound("alert_open");
       return;
     }
+
     setShowLoader(true);
 
     const roomId = parseInt(roomName, 10);
@@ -292,10 +324,12 @@ const GameLobby = () => {
           setShowLoader(false);
           setAlertMessage("방이 가득 찼습니다. 다른 방으로 참가해주세요.");
           setShowAlert(true);
+          buttonClickSound("alert_open");
         } else {
           console.error(`Failed to join room ${roomId}:`, error);
           setAlertMessage(`입장에 실패하였습니다 :${error}`);
           setShowAlert(true);
+          buttonClickSound("alert_open");
         }
       });
   };
@@ -305,6 +339,7 @@ const GameLobby = () => {
   /////////////////////////
 
   const handleCreateRoom = () => {
+    buttonClickSound("make_room");
     setShowLoader(true);
 
     pn.createRoom({ levelId: _levelId, tickrate: 20 }, (_, id) => {
@@ -318,11 +353,13 @@ const GameLobby = () => {
           setIsSessionStart(true);
 
           setShowLoader(false);
+          setGameData({ ...gameData, isGameStart: true });
         })
         .catch((error: Error) => {
           console.error(`Failed to join room ${id}:`, error);
           setAlertMessage(`방 생성에 실패하였습니다. \n:${error}`);
           setShowAlert(true);
+          buttonClickSound("alert_open");
         });
     });
 
@@ -334,6 +371,7 @@ const GameLobby = () => {
   //////////////////////
 
   const handleBlockerProceed = () => {
+    buttonClickSound(1);
     /** game 방 떠나기 */
     pn.leaveRoom()
       .then(() => {
@@ -341,6 +379,7 @@ const GameLobby = () => {
         if (blocker.proceed && !isGameEnd) {
           //게임이 시작되고, 끝나지 않았음에도 뒤로가기를 눌렀을 때
           setShowLoader(true);
+          setGameData({ ...gameData, isGameStart: false });
           //blocker.proceed(); //go out lobby page, bad for ux
           blocker.reset();
           showRootElement();
@@ -357,6 +396,7 @@ const GameLobby = () => {
   };
 
   const handleBlockerReset = () => {
+    buttonClickSound(1);
     if (blocker.reset) {
       blocker.reset();
     } else {
@@ -368,15 +408,16 @@ const GameLobby = () => {
     isWinner: boolean,
     winnerData: WinnerDataFromServer
   ) => {
+    setGameData({ ...gameData, isGameStart: false });
     let readyTime = 2500;
     const { winner, endtime } = winnerData;
 
     if (isWinner) readyTime = 2100;
     //게임에서 끝나고 카운트다운을 하는 동안 화면에서 대기
     setTimeout(function () {
-      if (isWinner)
-        console.log("[moving] 승자 게임 끝, 결과 화면으로 이동합니다.");
-      else console.log("[moving] 참가자 게임 끝, 결과 화면으로 이동합니다.");
+      // if (isWinner)
+      //   console.log("[moving] 승자 게임 끝, 결과 화면으로 이동합니다.");
+      // else console.log("[moving] 참가자 게임 끝, 결과 화면으로 이동합니다.");
 
       navigate("/result", {
         state: { rankingList: winner, endtime: endtime },
@@ -384,8 +425,6 @@ const GameLobby = () => {
 
       setIsUpdateRanking(false);
     }, readyTime);
-
-    console.log("[[moving]유저 이동 종료");
   };
 
   ////////////// support functions /////////////////
@@ -399,6 +438,7 @@ const GameLobby = () => {
     const rootElement = document.getElementById("root");
     if (rootElement) {
       rootElement.style.display = "none";
+      setMusicData({ ...musicData, isPlay: false }); //music off
     } else {
       console.error("Element with id 'root' not found.");
     }
@@ -409,6 +449,7 @@ const GameLobby = () => {
     const rootElement = document.getElementById("root");
     if (rootElement) {
       rootElement.style.display = "flex";
+      setMusicData({ ...musicData, isPlay: true }); //music on
     } else {
       console.error("Element with id 'root' not found.");
     }
@@ -523,6 +564,7 @@ const GameLobby = () => {
             handleBlockerProceed={handleLogOut}
             handleBlockerReset={() => {
               //로그아웃 취소시 행동
+              buttonClickSound(1);
               setshowLogOutModal(false);
             }}
             processMsg={"로그아웃"}
@@ -536,61 +578,69 @@ const GameLobby = () => {
 
   return (
     <>
-      {isSessionStart ? null : (
-        <div className="box">
-          {userInfo ? (
-            <p className="newfont-white">
-              오늘도 달려볼까요,
-              <br />
-              <span className="oldfont-lightgreen">
-                {" "}
-                {userInfo.nickname}
-              </span>{" "}
-              님
-            </p>
-          ) : null}
+      {/* {isSessionStart ? null : (
+        
+      )} */}
 
-          <ul className="lobby-ul">
-            <li>
-              <BasicBtn
-                onClickHandler={handleCreateRoom}
-                btnContent={"게임 시작하기"}
-              />
-            </li>
-            <li>
-              <input
-                className="roomInputBox"
-                type="text"
-                placeholder="합류할 방 번호를 입력하세요"
-                value={roomName}
-                onChange={handleInputChange}
-              />
-              <BasicBtn
-                onClickHandler={handleJoinRoom}
-                btnContent={"방 합류하기"}
-              />
-              <p id="roomnumber-error" className={!isNumber ? "show" : "hide"}>
-                숫자만 입력해주세요!
-              </p>
-            </li>
-            {/* <li>
+      <div className="box">
+        {userInfo ? (
+          <p className="newfont-white">
+            오늘도 달려볼까요,
+            <br />
+            <span className="oldfont-lightgreen"> {userInfo.nickname}</span> 님
+          </p>
+        ) : null}
+
+        <ul className="lobby-ul">
+          <li>
+            <BasicBtn
+              onClickHandler={handleCreateRoom}
+              btnContent={"방 만들기"}
+            />
+          </li>
+          <li>
+            <input
+              className="roomInputBox"
+              type="text"
+              placeholder="합류할 방 번호를 입력하세요"
+              value={roomName}
+              onChange={handleInputChange}
+            />
+            <BasicBtn
+              onClickHandler={handleJoinRoom}
+              btnContent={"방 합류하기"}
+            />
+            <p id="roomnumber-error" className={!isNumber ? "show" : "hide"}>
+              숫자만 입력해주세요!
+            </p>
+          </li>
+          {/* <li>
             <BasicBtn
               onClickHandler={handleShowRanking}
               btnContent={"랭킹 가져오기"}
             />
           </li> */}
-            <li>
-              <button
-                onClick={() => setshowLogOutModal(true)}
-                className="button-type-3"
-                style={{ width: "50%", height: "70%" }}
-              >
-                로그아웃
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
+          <li>
+            <button
+              onClick={() => {
+                buttonClickSound(3);
+                setshowLogOutModal(true);
+              }}
+              className="button-type-3"
+              style={{ width: "50%", height: "70%" }}
+            >
+              로그아웃
+            </button>
+          </li>
+          <li>
+            <BasicUILink
+              to={`/ranking`}
+              style={{ width: "50%", height: "70%" }}
+              btnContent="랭킹보기"
+            />
+          </li>
+        </ul>
+      </div>
       {blocker.state === "blocked" ? portalContent : null}
       {customAlertModal}
       {loader3d}
