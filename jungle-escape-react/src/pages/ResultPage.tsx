@@ -13,8 +13,6 @@ const ResultPage = () => {
   const [imageNames, setImagePaths] = useState<string[]>([]);
   const [isImgLoading, setIsImgLoading] = useState(true);
 
-  console.log("[ResultPage] currResult? ", currResult);
-
   useEffect(() => {
     if (!currResult) {
       // url을 통한 접속, 현재 끝난 랭킹 정보가 없으므로 메인으로 리다이렉트
@@ -30,7 +28,6 @@ const ResultPage = () => {
       const modules = await Promise.all(imports);
 
       const paths = modules.map((mod: any) => {
-        console.log("[mod] typeof mod ", typeof mod);
         return mod.default;
       });
 

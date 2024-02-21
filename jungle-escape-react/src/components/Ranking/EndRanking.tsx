@@ -33,7 +33,7 @@ const Ranking = ({ data }: { data: RankingData }) => {
       setParticipants(userlist);
       setRecord(endtime);
 
-      console.log("[Result] nowUser : ", nowUser, "/winner : ", winner);
+      //console.log("[Result] nowUser : ", nowUser, "/winner : ", winner);
     } else if ("records" in data) {
       const recordsData = data.records.slice(0, 5);
       setRankingRecords(recordsData);

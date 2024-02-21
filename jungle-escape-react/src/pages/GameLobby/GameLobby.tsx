@@ -14,7 +14,7 @@ import "./gameLobby.css";
 import "@/components/CustomAlert/modal.css";
 
 //type
-import { UserData } from "@/lib";
+import { UserData, WinnerDataFromServer } from "@/lib";
 import { api_recordRanking } from "@/api/API";
 
 const GameLobby = () => {
@@ -22,7 +22,7 @@ const GameLobby = () => {
   //game logic
   const [roomName, setRoomName] = useState("");
   const [isSessionStart, setIsSessionStart] = useState(false);
-  const [isSessionEnd, setIsSessionEnd] = useState(false);
+  const [isGameEnd, setIsGameEnd] = useState(false);
   const [isUpdateRanking, setIsUpdateRanking] = useState(false);
   //ui logic
   const [showAlert, setShowAlert] = useState(false);
@@ -42,6 +42,7 @@ const GameLobby = () => {
     if (!pn) {
       window.location.reload();
     }
+
     //로그인 하지 않았을 시, 메인으로
     if (!loginData.isLoggedIn) {
       navigate("/");
@@ -53,7 +54,7 @@ const GameLobby = () => {
     }
   }, [loginData, navigate]);
 
-  console.log("==========[Game Lobby] session : ", isSessionStart);
+  console.log("==========[Game Lobby] session [mounted] : ", isSessionStart);
 
   /** 이 컴포넌트가 mount되었을 때 pn.connection 을 시작. 게임 접속은 아니다. */
   useEffect(() => {
@@ -112,44 +113,36 @@ const GameLobby = () => {
           });
 
           pn.on("winner", (winner: any) => {
-            setIsSessionEnd(true);
+            setIsGameEnd(true);
             setIsUpdateRanking(true);
 
-            console.log("[gameLobby] isSessionEnd : ", isSessionEnd);
             //기존 winner = user.id를 전달
             if (typeof winner === "number") {
               WINNER.addText(`Guest ${winner} win!\n\nGAME OVER`);
             }
+
             //신규 로직 rankingList를 winner라는 이름으로 전달
             // rankingList [ [ 11.767155780757323, '[Guest] 716', '195-485' ] ]
             else {
-              const endtime = lastReceivedTime;
+              let endtime = lastReceivedTime;
               WINNER.addText(`${winner[0][1]} win!\n\nGAME OVER`);
+
               if (winner[0][1] === userInfo.nickname) {
                 //자신이 winner일 때
                 if (endtime === null) {
                   handleRanking([winner], "-");
+                  endtime = "-";
                 }
                 if (endtime) {
-                  handleRanking(winner, endtime);
-                  console.log(`${winner[0][1]} : ${endtime}`);
+                  handleRanking(winner, endtime); //API 통신
+                  console.log(`${winner[0][1]} : ${endtime} recorded`);
                   lastReceivedTime = null;
                 }
-                setTimeout(function () {
-                  console.log("승자 게임 끝, 결과 화면으로 이동합니다.");
-                  navigate("/result", {
-                    state: { rankingList: winner, endtime: endtime },
-                  });
-                  setIsUpdateRanking(false);
-                }, 2100);
+                moveUserToResultPage(true, { winner, endtime });
               } else {
-                setTimeout(function () {
-                  console.log("참가자 게임 끝, 결과 화면으로 이동합니다.");
-                  navigate("/result", {
-                    state: { rankingList: winner, endtime: endtime },
-                  });
-                  setIsUpdateRanking(false);
-                }, 2500);
+                //자신이 winner가 아닐 때
+                if (endtime === null) endtime = "-";
+                moveUserToResultPage(false, { winner, endtime });
               }
 
               lastReceivedTime = null;
@@ -201,18 +194,17 @@ const GameLobby = () => {
       }
 
       //console.log("[Game Lobby] 첫 번째 작업 클린업");
-      //console.log("[Game Lobby] 컴포넌트가 언마운트됐습니다.");
+      console.log("[Game Lobby] ummounted.");
     };
   }, [userInfo]);
 
   /** 뒤로가기 관련 logic  */
   // session이 시작하고 끝나지 않았을(=winner 이벤트 발생하지 않았을) 때만 blocking
   const blocker = useBlocker(({ currentLocation, nextLocation }) => {
+    if (nextLocation.pathname === "/result") return false;
     return (
-      isSessionStart &&
-      !isSessionEnd &&
-      !isUpdateRanking &&
-      currentLocation.pathname !== nextLocation.pathname
+      isSessionStart && //세션(게임 방 입장)이 시작했으며
+      currentLocation.pathname !== nextLocation.pathname //이동이 감지된다면 blocking
     );
   });
 
@@ -242,7 +234,6 @@ const GameLobby = () => {
         participatedRooms: [],
       };
       setUserInfo(myUserInfo);
-      //console.log("userInfo?", userInfo);
     } catch (err) {
       console.log(err);
     }
@@ -286,17 +277,11 @@ const GameLobby = () => {
       setShowAlert(true);
       return;
     }
-    console.log(`[Game Lobby/handleJoinRoom] Joining room: ${roomName}`);
-
     setShowLoader(true);
 
     const roomId = parseInt(roomName, 10);
     pn.joinRoom(roomId)
       .then(() => {
-        console.log(
-          `[Game Lobby/handleJoinRoom] Successfully joined room ${roomId}`
-        );
-
         hideRootElement();
         setIsSessionStart(true);
 
@@ -353,7 +338,8 @@ const GameLobby = () => {
     pn.leaveRoom()
       .then(() => {
         console.log("Room left successfully");
-        if (blocker.proceed) {
+        if (blocker.proceed && !isGameEnd) {
+          //게임이 시작되고, 끝나지 않았음에도 뒤로가기를 눌렀을 때
           setShowLoader(true);
           //blocker.proceed(); //go out lobby page, bad for ux
           blocker.reset();
@@ -376,6 +362,30 @@ const GameLobby = () => {
     } else {
       console.error("blocker.reset() error!");
     }
+  };
+
+  const moveUserToResultPage = (
+    isWinner: boolean,
+    winnerData: WinnerDataFromServer
+  ) => {
+    let readyTime = 2500;
+    const { winner, endtime } = winnerData;
+
+    if (isWinner) readyTime = 2100;
+    //게임에서 끝나고 카운트다운을 하는 동안 화면에서 대기
+    setTimeout(function () {
+      if (isWinner)
+        console.log("[moving] 승자 게임 끝, 결과 화면으로 이동합니다.");
+      else console.log("[moving] 참가자 게임 끝, 결과 화면으로 이동합니다.");
+
+      navigate("/result", {
+        state: { rankingList: winner, endtime: endtime },
+      });
+
+      setIsUpdateRanking(false);
+    }, readyTime);
+
+    console.log("[[moving]유저 이동 종료");
   };
 
   ////////////// support functions /////////////////
@@ -423,7 +433,6 @@ const GameLobby = () => {
 
   // for addTexts
   const convertUsername = (user: any) => {
-    console.log("user?", user);
     let showname;
     //if nickname is not exist, guest naming
     if (!user.nickname) {
