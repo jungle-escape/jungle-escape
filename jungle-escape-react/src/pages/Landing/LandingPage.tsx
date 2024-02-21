@@ -9,6 +9,8 @@ import LoginForm from "@/components/Login/LoginForm";
 
 import JungleLogo from "@/assets/jungle-logo.svg?react";
 import "./landing.css";
+import BasicUILink from "@/components/Button/BasicUILink";
+import { buttonClickSound } from "@/components/Button/buttonPlaySound";
 
 const LandingPage = () => {
   const loginData = useRecoilValue(loginState);
@@ -40,7 +42,10 @@ const LandingPage = () => {
             <>
               <div className="two-btn-container-col">
                 <Link
-                  onClick={() => setMusicData({ ...musicData, isPlay: true })}
+                  onClick={() => {
+                    buttonClickSound(3);
+                    setMusicData({ ...musicData, isPlay: true });
+                  }}
                   to={`game`}
                   className="button-type-3"
                   style={{
@@ -52,14 +57,12 @@ const LandingPage = () => {
                   {" "}
                   게임하기
                 </Link>
-                <Link
+
+                <BasicUILink
                   to={`ranking`}
-                  className="button-type-3"
                   style={{ fontSize: "2rem", width: "15rem" }}
-                >
-                  {" "}
-                  렝킹보기
-                </Link>
+                  btnContent="랭킹보기"
+                />
               </div>
             </>
           ) : (

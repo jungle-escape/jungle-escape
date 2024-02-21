@@ -6,6 +6,7 @@ import { loginState } from "@/recoil/loginState";
 import { musicState } from "@/recoil/musicState";
 
 import "./loginform.css";
+import { buttonClickSound } from "@/components/Button/buttonPlaySound";
 
 const LoginForm = () => {
   // const [id, setId] = useState("");
@@ -174,7 +175,10 @@ const LoginForm = () => {
             <button
               type="submit"
               className="button-type-3"
-              onClick={handleLogin}
+              onClick={() => {
+                buttonClickSound(3);
+                handleLogin;
+              }}
             >
               {/* 로그인 */}
               게임하기

@@ -9,6 +9,7 @@ import BasicBtn from "@/components/Button/BasicButton";
 import GameCloseModal from "@/components/CustomAlert/GameCloseModal";
 import CustomAlert from "@/components/CustomAlert/CustomAlertModal";
 import Loader3d from "@/components/Loading/Loading3d";
+import BasicUILink from "@/components/Button/BasicUILink";
 
 //css
 import "./gameLobby.css";
@@ -18,6 +19,7 @@ import "@/components/CustomAlert/modal.css";
 import { UserData, WinnerDataFromServer } from "@/lib";
 import { musicState } from "@/recoil/musicState";
 import { api_recordRanking } from "@/api/API";
+import { buttonClickSound } from "@/components/Button/buttonPlaySound";
 
 const GameLobby = () => {
   const _levelId = 1940848;
@@ -246,6 +248,7 @@ const GameLobby = () => {
   };
 
   const handleLogOut = () => {
+    buttonClickSound(1);
     setLoginData({ ...loginData, isLoggedIn: false, token: "" });
     //localStorage.removeItem("currentUserId");
     localStorage.removeItem("nickname"); //dev
@@ -269,6 +272,7 @@ const GameLobby = () => {
   };
 
   const handleCloseModals = () => {
+    buttonClickSound(1);
     setShowAlert(false);
     setShowLoader(false);
   };
@@ -278,9 +282,11 @@ const GameLobby = () => {
   ///////////////////////
 
   const handleJoinRoom = () => {
+    buttonClickSound(1);
     if (roomName === "") {
       setAlertMessage("방 번호가 입력되지 않았습니다!");
       setShowAlert(true);
+      buttonClickSound("alert_open");
       return;
     }
 
@@ -299,10 +305,12 @@ const GameLobby = () => {
           setShowLoader(false);
           setAlertMessage("방이 가득 찼습니다. 다른 방으로 참가해주세요.");
           setShowAlert(true);
+          buttonClickSound("alert_open");
         } else {
           console.error(`Failed to join room ${roomId}:`, error);
           setAlertMessage(`입장에 실패하였습니다 :${error}`);
           setShowAlert(true);
+          buttonClickSound("alert_open");
         }
       });
   };
@@ -312,6 +320,7 @@ const GameLobby = () => {
   /////////////////////////
 
   const handleCreateRoom = () => {
+    buttonClickSound("make_room");
     setShowLoader(true);
 
     pn.createRoom({ levelId: _levelId, tickrate: 20 }, (_, id) => {
@@ -330,6 +339,7 @@ const GameLobby = () => {
           console.error(`Failed to join room ${id}:`, error);
           setAlertMessage(`방 생성에 실패하였습니다. \n:${error}`);
           setShowAlert(true);
+          buttonClickSound("alert_open");
         });
     });
 
@@ -341,6 +351,7 @@ const GameLobby = () => {
   //////////////////////
 
   const handleBlockerProceed = () => {
+    buttonClickSound(1);
     /** game 방 떠나기 */
     pn.leaveRoom()
       .then(() => {
@@ -363,6 +374,7 @@ const GameLobby = () => {
   };
 
   const handleBlockerReset = () => {
+    buttonClickSound(1);
     if (blocker.reset) {
       blocker.reset();
     } else {
@@ -529,6 +541,7 @@ const GameLobby = () => {
             handleBlockerProceed={handleLogOut}
             handleBlockerReset={() => {
               //로그아웃 취소시 행동
+              buttonClickSound(1);
               setshowLogOutModal(false);
             }}
             processMsg={"로그아웃"}
@@ -586,7 +599,10 @@ const GameLobby = () => {
           </li> */}
           <li>
             <button
-              onClick={() => setshowLogOutModal(true)}
+              onClick={() => {
+                buttonClickSound(3);
+                setshowLogOutModal(true);
+              }}
               className="button-type-3"
               style={{ width: "50%", height: "70%" }}
             >
@@ -594,14 +610,11 @@ const GameLobby = () => {
             </button>
           </li>
           <li>
-            <Link
+            <BasicUILink
               to={`/ranking`}
-              className="button-type-3"
               style={{ width: "50%", height: "70%" }}
-            >
-              {" "}
-              렝킹보기
-            </Link>
+              btnContent="랭킹보기"
+            />
           </li>
         </ul>
       </div>
