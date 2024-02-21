@@ -51,7 +51,6 @@ const GameLobby = () => {
       window.location.reload();
     }
 
-
     //로그인 하지 않았을 시, 메인으로
     if (!loginData.isLoggedIn) {
       navigate("/");
@@ -128,35 +127,25 @@ const GameLobby = () => {
               WINNER.addText(`Guest ${winner} win!\n\nGAME OVER`);
             }
 
-
             //신규 로직 rankingList를 winner라는 이름으로 전달
             // rankingList [ [ 11.767155780757323, '[Guest] 716', '195-485' ] ]
             else {
               let endtime = lastReceivedTime;
-              let endtime = lastReceivedTime;
               WINNER.addText(`${winner[0][1]} win!\n\nGAME OVER`);
-
 
               if (winner[0][1] === userInfo.nickname) {
                 //자신이 winner일 때
                 if (endtime === null) {
                   handleRanking([winner], "-");
                   endtime = "-";
-                  endtime = "-";
                 }
                 if (endtime) {
-                  handleRanking(winner, endtime); //API 통신
-                  console.log(`${winner[0][1]} : ${endtime} recorded`);
                   handleRanking(winner, endtime); //API 통신
                   console.log(`${winner[0][1]} : ${endtime} recorded`);
                   lastReceivedTime = null;
                 }
                 moveUserToResultPage(true, { winner, endtime });
-                moveUserToResultPage(true, { winner, endtime });
               } else {
-                //자신이 winner가 아닐 때
-                if (endtime === null) endtime = "-";
-                moveUserToResultPage(false, { winner, endtime });
                 //자신이 winner가 아닐 때
                 if (endtime === null) endtime = "-";
                 moveUserToResultPage(false, { winner, endtime });
@@ -218,7 +207,6 @@ const GameLobby = () => {
 
       //console.log("[Game Lobby] 첫 번째 작업 클린업");
       console.log("[Game Lobby] ummounted.");
-      console.log("[Game Lobby] ummounted.");
     };
   }, [userInfo]);
 
@@ -228,8 +216,6 @@ const GameLobby = () => {
     if (nextLocation.pathname === "/result") return false;
     if (!gameData.isGameStart) return false;
     return (
-      isSessionStart && //세션(게임 방 입장)이 시작했으며
-      currentLocation.pathname !== nextLocation.pathname //이동이 감지된다면 blocking
       isSessionStart && //세션(게임 방 입장)이 시작했으며
       currentLocation.pathname !== nextLocation.pathname //이동이 감지된다면 blocking
     );
@@ -376,8 +362,7 @@ const GameLobby = () => {
     pn.leaveRoom()
       .then(() => {
         console.log("Room left successfully");
-        if (blocker.proceed && !isGameEnd) {
-          //게임이 시작되고, 끝나지 않았음에도 뒤로가기를 눌렀을 때
+        if (blocker.proceed) {
           setShowLoader(true);
           setGameData({ ...gameData, isGameStart: false });
           //blocker.proceed(); //go out lobby page, bad for ux
