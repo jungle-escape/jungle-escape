@@ -167,6 +167,7 @@ NetworkEntity.prototype.initialize = function () {
           this.entity.children[0].anim.setBoolean('isRunning', data.isRunning);
           this.entity.children[0].anim.setBoolean('isJumping', data.isJumping);
           this.entity.children[0].anim.setBoolean('isAttacking', data.isAttacking);
+          this.entity.children[0].anim.setBoolean('isHit', data.isHit);
           this.entity.canJump = data.canJump;
           this.entity.pcReactOn = data.pcReactOn;
           this.entity.collisionTags = data.collisionTags;
@@ -222,9 +223,9 @@ NetworkEntity.prototype.initialize = function () {
       set: value => {
         this.entity.setPosition(value);
 
-        // if (this.entity.rigidbody) {
-        //   this.entity.rigidbody.teleport(value.x, value.y, value.z);
-        // }
+        if (this.entity.rigidbody) {
+          this.entity.rigidbody.teleport(value.x, value.y, value.z);
+        }
       }
     },
     'rotation': {
@@ -292,7 +293,6 @@ NetworkEntity.prototype.initialize = function () {
     }
   });
   this.entity.room.fire('_networkEntities:add', this);
-  console.debug('Network entity haXs been added: ', this.entity.networkEntity.id, 'entity: ', this.entity);
 };
 
 NetworkEntity.prototype.postInitialize = function () {

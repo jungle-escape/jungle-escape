@@ -403,6 +403,14 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
   if (hit.other.tags.has("hit")) {
     this.entity.collisionTags.push("hit");
   }
+
+  if (hit.other.tags.has("automove")) {
+    this.moveForce = 120000;
+  }
+
+  if (hit.other.tags.has("endpoint")) {
+    this.moveForce = 180000;
+  }
 };
 
 // Event listener on collision contact
