@@ -289,21 +289,6 @@ PlayerController.prototype.applyLinearDamping = function (dt) {
   // m_linearVelocity *= btPow(btScalar(1) - m_linearDamping, timeStep);
   //////////////////////////////////////////////////////////////////////
 
-  // ld : 속도의 감쇠율
-  // 플레이캔버스가 linear damping 적용을 할 때, xyz 일괄로 때려요
-  // 1번케이스 : ld === 0.99로 준다
-  /// x, y, z의 속도가 굉장히 빨리 감소해요.
-  //// x, z(지면에서움직이는거) : 내가 원하는대로 어느정도 잘 움직여요
-  //// y(문제) : 점프가 안돼요..... 시발.....
-  // 2번케이스 : ld === 0으로 할게 .감소? 안할게
-
-  // 처음 : x 0.99, y 0 z 0.99
-
-  // 문제 1번 : 올라갈땐 괜찮은데.. 내려올때 늦게내려옴...
-  //// 1번 해결 : 점프 중이고, lv.y <0(추락중일때) 추가적인 중력을 주도록 할게
-  // 문제 2번 : y로 힘이 작용되는 경우에(점프제외), 갑자기 퍽 튀는 현상이 일어남
-  //// 2번 해결 :
-
   // Apply linear damping
   var lv = this.entity.rigidbody.linearVelocity;
   if (this.canJump) {
