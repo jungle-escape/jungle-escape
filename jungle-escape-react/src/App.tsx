@@ -6,6 +6,7 @@ import "./App.css";
 import TypoLoader from "@/components/Loading/TypoLoader";
 import BgImgContainer from "@/components/ImageLoader/BgImgContainer";
 import WindowContainer from "@/components/Window/Window_container";
+//import BgCanvas from "@/components/Background_3d/BgCanvas";
 
 function App() {
   const [imageNames, setImagePaths] = useState<string[]>([]);
@@ -34,6 +35,7 @@ function App() {
     <>
       {isImgLoading && <TypoLoader />}
       <BgImgContainer imageNames={imageNames} />
+      {/* <BgCanvas /> */}
       <div id="root-container">
         <WindowContainer>
           <Outlet />

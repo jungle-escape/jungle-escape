@@ -75,3 +75,8 @@ export interface WinnerData {
 export type RankingData =
   | { result: WinnerData; records?: never } // records는 없고 result만 있음
   | { result?: never; records: RecordData[] }; // result는 없고 records만 있음
+
+export interface WinnerDataFromServer {
+  winner: string;
+  endtime: string;
+}
