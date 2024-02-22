@@ -349,7 +349,8 @@ class InterpolateValue {
         }
       }
     } else {
-      this.value = this.from * lerp + this.value * (1 - lerp);
+      // this.value = this.from * lerp + this.value * (1 - lerp);
+      this.value = this.from * (1 - lerp) + to * lerp;
     }
 
     if (this.setter) {

@@ -48,9 +48,8 @@ DecayObject.prototype.initialize = function () {
 DecayObject.prototype.onCollisionStart = function () {
   this.entity.rigidbody.off("collisionstart");
 
-  const decayTimer = this.tweenTimeoutEvent(6);
-  this.entity.once("destroy", () => {
-    clearTimeout(decayTimer);
+  const decayTimerId = this.tweenTimeoutEvent(6);
+  this.once("destroy", () => {
+    clearTimeout(decayTimerId);
   });
-  decayTimer();
 };
