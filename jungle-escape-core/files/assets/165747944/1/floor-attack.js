@@ -7,13 +7,13 @@ FloorAttack.attributes.add("targetCell", {
     description: "The attacker block will be attack here",
 });
 
-FloorAttack.prototype.initialize = function () {
-    pn.on(`${this.entity.name}`, () => {
-        if (!this.entity.sound.slot('ggang').isPlaying) {
-            this.entity.sound.play("ggang");
-        };
-    });
-}
+// FloorAttack.prototype.initialize = function () {
+//     pn.on(`${this.entity.name}`, () => {
+//         if (!this.entity.sound.slot('ggang').isPlaying) {
+//             this.entity.sound.play("ggang");
+//         };
+//     });
+// }
 
 // FloorAttack.prototype.onCollisionStart = function (hit) {
 //     if (hit.other.tags.has('player')) {

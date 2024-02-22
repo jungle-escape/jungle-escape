@@ -272,7 +272,7 @@ NetworkEntity.prototype.initialize = function () {
         }   
 
         // tag : hammer  
-        if (tags?.includes('hammer')) {
+        if (tags?.includes('ggang')) {
             if (!this.entity.sound.slot('ggang').isPlaying) {
                 this.modelEntity.setEulerAngles(0, -90, 0);
                 this.entity.sound.play("ggang");
