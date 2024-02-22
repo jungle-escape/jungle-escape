@@ -28,23 +28,8 @@ PlayerController.prototype.initialize = function () {
   // Setup all event listener
   this.setupEventListeners();
 
-  // Test code
-  const level = this.app.root.findByName("Level");
-
-  const p2 = level.findByName("P2. Algorithm");
-  if (p2) p2.enabled = true;
-
-  const p3 = level.findByName("P3. Rbtree");
-  if (p3) p3.enabled = true;
-
-  const p3_2 = level.findByName("P3-2. Malloc-lab");
-  if (p3_2) p3_2.enabled = true;
-
-  const p4 = level.findByName("circuit board");
-  if (p4) p4.enabled = true;
-
-  const p5 = level.findByName("P5. End");
-  if (p5) p5.enabled = true;
+  // Set level data
+  this.setupLevelData();
 };
 
 PlayerController.prototype.setupVariables = function () {
@@ -103,20 +88,23 @@ PlayerController.prototype.setupEventListeners = function () {
   this.entity.collision.on("collisionend", this.onCollisionEnd, this);
 };
 
-PlayerController.prototype.swap = function (old) {
-  this.user = old.user;
+PlayerController.prototype.setupLevelData = function () {
+  const level = this.app.root.findByName("Level");
 
-  if (old.user) {
-    old.user.off("input", old.setInput, old);
-    old.user.off("leave", old.removeInputHandler, old);
-    old.off("destroy", old.removeInputHandler, old);
-  }
+  const p2 = level.findByName("P2. Algorithm");
+  if (p2) p2.enabled = true;
 
-  if (this.user) {
-    this.user.on("input", this.setInput, this);
-    this.user.once("leave", this.removeInputHandler, this);
-    this.once("destroy", this.removeInputHandler, this);
-  }
+  const p3 = level.findByName("P3. Rbtree");
+  if (p3) p3.enabled = true;
+
+  const p3_2 = level.findByName("P3-2. Malloc-lab");
+  if (p3_2) p3_2.enabled = true;
+
+  const p4 = level.findByName("circuit board");
+  if (p4) p4.enabled = true;
+
+  const p5 = level.findByName("P5. End");
+  if (p5) p5.enabled = true;
 };
 
 PlayerController.prototype.setInput = function (sender, data) {
@@ -143,12 +131,12 @@ PlayerController.prototype.update = function (dt) {
 
   this.checkCustomTimer(dt);
 
-  // Handle user falling
-  this.handleUserFalling();
+  // Check if user has to be respawned
+  this.checkUserRespawn();
 
   // Handling user input if player is controllable
   if (this.controllable) {
-    this.handleUserInputMovement(dt); // Related to user movement
+    this.handleUserInput(dt);
   }
 
   // Apply linear damping to player
@@ -158,8 +146,8 @@ PlayerController.prototype.update = function (dt) {
   this.clampPlayerVelocity();
 };
 
-// Given input from client, move player character in server world
-PlayerController.prototype.handleUserInputMovement = function (dt) {
+// Given input from client, manipulate character in server world
+PlayerController.prototype.handleUserInput = function (dt) {
   // Set player direction with user keyboard input
   if (!this.view) {
     this.direction.x =
@@ -252,6 +240,7 @@ PlayerController.prototype.handleUserInputMovement = function (dt) {
     }
   }
 
+  // For playing sound
   if (this.clientInput.key_U) {
     this.entity.collisionTags.push("haha");
   }
@@ -285,9 +274,14 @@ PlayerController.prototype.checkCustomTimer = function (dt) {
   }
 };
 
-PlayerController.prototype.handleUserFalling = function () {
+PlayerController.prototype.checkUserRespawn = function () {
   // Respawn if fell below the floor
-  if (this.entity.getPosition().y < -10) {
+  const playerPos = this.entity.getPosition();
+  if (playerPos.y < -10 || playerPos.x > 100) {
+    this.doRespawn = true;
+  }
+
+  if (this.doRespawn) {
     var savePoint = this.entity.savePoint;
     if (savePoint) {
       this.entity.setPosition(savePoint);
@@ -299,6 +293,7 @@ PlayerController.prototype.handleUserFalling = function () {
     this.entity.rigidbody.linearVelocity =
       this.entity.rigidbody.linearVelocity.set(0, 0, 0);
     this.entity.collisionTags.push("fall");
+    this.doRespawn = false;
   }
 };
 
@@ -369,6 +364,13 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
     this.entity.collisionTags.push("pc_reaction");
   }
 
+  if (hit.other.tags.has("spin")) {
+    this.entity.rigidbody.applyTorqueImpulse(0, 10000, 0);
+    this.pcReactTimer = 0;
+    this.pcReactDuration = 1;
+    this.pcReactOn = true;
+  }
+
   // Wrong answer sound
   if (hit.other.tags.has("wrong")) {
     this.entity.collisionTags.push("wrong");
@@ -413,7 +415,6 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
   }
 
   if (hit.other.tags.has("hammer")) {
-    // this.entity.collisionTags.push("hammer");
     const playerPos = this.entity.getPosition();
     this.entity.setPosition(playerPos.z, playerPos.y + 1, playerPos.z);
     var movement = new pc.Vec3(1, 0.01, 0).scale(450000);
@@ -451,9 +452,6 @@ PlayerController.prototype.onContact = function (hit) {
 
 PlayerController.prototype.checkContactRules = function (hit) {};
 
-// Event listner on collision end
-PlayerController.prototype.onCollisionEnd = function (hit) {};
-
 // Do push, invoked by client mouse left-click
 PlayerController.prototype.doPush = function () {
   if (this.clientInput.mouse_LEFT) {
@@ -485,5 +483,21 @@ PlayerController.prototype.doPush = function () {
         this.boxCast.enabled = true;
       }
     }
+  }
+};
+
+PlayerController.prototype.swap = function (old) {
+  this.user = old.user;
+
+  if (old.user) {
+    old.user.off("input", old.setInput, old);
+    old.user.off("leave", old.removeInputHandler, old);
+    old.off("destroy", old.removeInputHandler, old);
+  }
+
+  if (this.user) {
+    this.user.on("input", this.setInput, this);
+    this.user.once("leave", this.removeInputHandler, this);
+    this.once("destroy", this.removeInputHandler, this);
   }
 };
