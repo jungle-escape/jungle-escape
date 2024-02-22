@@ -56,10 +56,12 @@ HelloWorld.prototype.update = function (dt) {
     if (this.countdownTimer >= 1 && this.countdown > 0) {
       this.countdownTimer = 0;
       this.countdown -= 1;
-      this.entity.networkEntity.send(
-        "start",
-        `${this.countdown.toString()}...`
-      );
+      if (this.countdown != 0) {
+        this.entity.networkEntity.send(
+          "start",
+          `${this.countdown.toString()}...`
+        );
+      }
 
       if (this.countdown === 0) {
         this.isCountingDown = false;
