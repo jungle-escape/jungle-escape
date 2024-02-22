@@ -274,6 +274,7 @@ NetworkEntity.prototype.initialize = function () {
         // tag : hammer  
         if (tags?.includes('ggang')) {
             if (!this.entity.sound.slot('ggang').isPlaying) {
+                this.modelEntity = this.entity.children[0];
                 this.modelEntity.setEulerAngles(0, -90, 0);
                 this.entity.sound.play("ggang");
                 this.entity.isHit = true;
