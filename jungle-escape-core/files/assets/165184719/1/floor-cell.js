@@ -32,11 +32,6 @@ FloorCell.prototype.initialize = function () {
     // console.log("this.isAcitve? / init", this.isActive)
 
     this.timer = 0
-
-
-
-
-
 };
 
 FloorCell.prototype.swap = function (old) {

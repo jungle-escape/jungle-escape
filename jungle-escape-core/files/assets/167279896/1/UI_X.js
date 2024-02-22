@@ -4,11 +4,15 @@ var UiX = pc.createScript('uiX');
 UiX.prototype.initialize = function() {
     this.entity.setEulerAngles(0, 40, 0);
     this.disableTimer = 0;
+    this.playerEntity = this.entity.parent;
 };
 
 // update code called every frame
 UiX.prototype.update = function(dt) {
     if (this.entity.enabled) {
+        if (this.playerEntity.pcReactOn) {
+            return;
+        }
         var valY = CAMERA.isBackView? 0 : 40;
 
         this.entity.setEulerAngles(0, valY, 0);

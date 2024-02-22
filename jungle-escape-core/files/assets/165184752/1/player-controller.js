@@ -69,6 +69,8 @@ PlayerController.prototype.setupVariables = function () {
     this.entity.isJumping = false;  
     this.entity.isAttacking = false;
     this.entity.isHit = false;
+    this.entity.isVictory = false;
+    this.entity.isVow = false;
 
     // For custom PC reaction
     this.entity.pcReactOn = false;
@@ -172,15 +174,9 @@ PlayerController.prototype.mouseDown = function (e) {
         // Set mouse input
         this.clientInput.mouse_LEFT = true;
 
-        // // Visualize raycast
-        // var castStart = this.entity.getPosition();
-        // var distance = 5;
-        // var forward = this.modelEntity.forward.scale(-1);
-        // var castEnd = castStart.clone().add(forward.clone().scale(distance));
-
-        // this.app.drawLine(castStart, castEnd, new pc.Color(1, 0, 0));
-
         // Set anim state to attacking
+        this.entity.isVictory = false;
+        this.entity.isVow = false;
         this.entity.isAttacking = true;
 
         // Play swing sound
@@ -197,7 +193,7 @@ PlayerController.prototype.update = function (dt) {
     // Set state of model entity
     this.setModelEntityState();
 
-    // Handle collision tags to apply appropriate responses or actions
+    // Handle collision tags to apply appropriate responses or actions, 'Local'
     this.handleCollisionTags();
 
     // Send input data to server
@@ -307,7 +303,9 @@ PlayerController.prototype.setModelEntityState = function () {
         this.modelEntity.anim.setBoolean("isRunning", false);
         this.modelEntity.anim.setBoolean("isJumping", false);
         this.modelEntity.anim.setBoolean("isAttacking", false);
-        this.modelEntity.anim.setBoolean("isHit", false);
+        this.modelEntity.anim.setBoolean("isHit", this.entity.isHit);
+        this.modelEntity.anim.setBoolean("isVictory", false);
+        this.modelEntity.anim.setBoolean("isVow", false);
         return;
     }
 
@@ -336,6 +334,8 @@ PlayerController.prototype.setModelEntityState = function () {
 
     // If there is a direction, set 'isRunning' to true
     if (dirZ != 0 || dirX != 0) {
+        this.entity.isVictory = false;
+        this.entity.isVow = false;
         this.entity.isRunning = true;
     } else {
         this.entity.isRunning = false;
@@ -357,7 +357,20 @@ PlayerController.prototype.setModelEntityState = function () {
             }
         }
     } else {
+        this.entity.isVictory = false;
+        this.entity.isVow = false;
         this.entity.isJumping = true;
+    }
+
+    if (this.app.keyboard.wasPressed(pc.KEY_U)) {
+        this.entity.isVow = false;
+        this.entity.isVictory = !this.entity.isVictory
+        // this.app.keyboard.preventDefault()
+    }
+
+    if (this.app.keyboard.wasPressed(pc.KEY_I)) {
+        this.entity.isVictory = false;
+        this.entity.isVow = !this.entity.isVow
     }
 
     // Update anim state of player
@@ -365,6 +378,8 @@ PlayerController.prototype.setModelEntityState = function () {
     this.modelEntity.anim.setBoolean("isJumping", this.entity.isJumping);
     this.modelEntity.anim.setBoolean("isAttacking", this.entity.isAttacking);
     this.modelEntity.anim.setBoolean("isHit", this.entity.isHit);
+    this.modelEntity.anim.setBoolean("isVictory", this.entity.isVictory);
+    this.modelEntity.anim.setBoolean("isVow", this.entity.isVow);
 }
 
 // 
@@ -374,25 +389,8 @@ PlayerController.prototype.handleCollisionTags = function () {
         // tag : pc_reaction
         if (tags?.includes('pc_reaction')) {
             this.entity.isRunning = false;
-            if (!this.entity.sound.slot('reaction').isPlaying) {
-                this.entity.sound.play("reaction");
-            }
         }
-        // tag : wrong
-        if (tags?.includes('wrong')) {
-            if (!this.entity.sound.slot('wrong').isPlaying) {
-                this.entity.sound.play("wrong");
-            }
-            // Play vfx
-            const hit = this.vfx.findByName('hit');
-            hit.script.effekseerEmitter.play();
 
-            // Enable UI
-            const ui_x = this.entity.findByName('X');
-            if (!ui_x?.enabled) {
-                ui_x.enabled = true;
-            }
-        }
         // tag : savepoint
         if (tags?.includes('savepoint')) {
             if (!this.entity.sound.slot('cheer').isPlaying) {
@@ -402,84 +400,8 @@ PlayerController.prototype.handleCollisionTags = function () {
             const firework = this.vfx.findByName('firework');
             firework.script.effekseerEmitter.play();
             }
-        }   
-        // tag : fall
-        if (tags?.includes('fall')) {
-            if (!this.entity.sound.slot('fall').isPlaying) {
-                this.entity.sound.play("fall");
-            }
-        } 
-        // tag : segfault
-        if (tags?.includes('segfault')) {
-            if (!this.entity.sound.slot('segfault').isPlaying) {
-                this.entity.sound.play("segfault");
-            }
-        }    
-        // tag : rightanswer  
-        if (tags?.includes('rightanswer')) {
-            if (!this.entity.sound.slot('rightanswer').isPlaying) {
-                this.entity.sound.play("rightanswer");
-            }
-        }   
-        // tag : hammer  
-        // if (tags?.includes('hammer')) {
-        //     if (!this.entity.sound.slot('ggang').isPlaying) {
-        //         this.entity.sound.play("ggang");
-        //         this.entity.isHit = true;
-    
-        //         // // 1초 후에 isHit를 false로 설정
-        //         // setTimeout(() => {
-        //         //     this.entity.isHit = false;
-        //         // }, 2000); // 2초 후 실행
-        //     }
-        // }     
-
-        // tag : p1_right
-        if (tags?.includes('p1_right')) {
-            if (!this.entity.sound.slot('rightanswer2').isPlaying) {
-                this.entity.sound.play("rightanswer2");
-            }
-
-            // Enable UI
-            const ui_o = this.entity.findByName('O');
-            if (!ui_o?.enabled) {
-                ui_o.enabled = true;
-            }
         }  
-
-        // tag : hit successs
-        if (tags?.includes('hit_success')) {
-            // const hit = this.vfx.findByName('hit');
-            // hit.script.effekseerEmitter.play(); 
-
-            if (!this.entity.sound.slot('hit').isPlaying) {
-                this.entity.sound.play("hit");
-            }
-        }  
-        // tag : hit (vfx only)
-        if (tags?.includes('hit')) {
-            this.entity.isRunning = false;
-            if (!this.entity.sound.slot('reaction').isPlaying) {
-                this.entity.sound.play("reaction");
-            }
-
-            const hit = this.vfx.findByName('hit');
-            hit.script.effekseerEmitter.play();
-        } 
-
-        // tag : hit receive
-        if (tags?.includes('hit_receive')) {
-                const hit = this.vfx.findByName('hit');
-                hit.script.effekseerEmitter.play(); 
-
-                this.entity.isHit = true;
-    
-                // 1초 후에 isHit를 false로 설정
-                setTimeout(() => {
-                    this.entity.isHit = false;
-                }, 1000); // 1초 후 실행
-        }  
-    }
+    } 
 }
 
 // Send input data to server
@@ -511,7 +433,7 @@ PlayerController.prototype.sendInputToServer = function () {
 
     this.networkEntity.send('input', {
         clientInput : this.clientInput,
-        animState : {isRunning : this.entity.isRunning, isJumping : this.entity.isJumping, isAttacking : this.entity.isAttacking, isHit : this.entity.isHit},
+        animState : {isRunning : this.entity.isRunning, isJumping : this.entity.isJumping, isAttacking : this.entity.isAttacking, isHit : this.entity.isHit, isVictory : this.entity.isVictory, isVow : this.entity.isVow},
         modelRotation : {x : modelRotation.x, y : modelRotation.y, z : modelRotation.z},
         view : CAMERA.isBackView
     })

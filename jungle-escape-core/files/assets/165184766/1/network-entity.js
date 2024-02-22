@@ -65,6 +65,7 @@ NetworkEntity.prototype.initialize = function () {
   this.tmpObjects.set(pc.Vec4, new pc.Vec4());
   this.tmpObjects.set(pc.Quat, new pc.Quat());
   this.tmpObjects.set(pc.Color, new pc.Color());
+  this.vfx = this.entity.findByName('vfx');
   this.rules = {
     'parent': {
       get: state => {
@@ -168,6 +169,8 @@ NetworkEntity.prototype.initialize = function () {
           this.entity.children[0].anim.setBoolean('isJumping', data.isJumping);
           this.entity.children[0].anim.setBoolean('isAttacking', data.isAttacking);
           this.entity.children[0].anim.setBoolean('isHit', data.isHit);
+          this.entity.children[0].anim.setBoolean('isVictory', data.isVictory);
+          this.entity.children[0].anim.setBoolean('isVow', data.isVow);
           this.entity.canJump = data.canJump;
           this.entity.pcReactOn = data.pcReactOn;
           this.entity.collisionTags = data.collisionTags;
@@ -212,7 +215,125 @@ NetworkEntity.prototype.initialize = function () {
       set: state => {
         this.entity.rigidbody.group = state.rigidbodyGroup;
       }
-    }
+    },
+    'collisionTags' : {
+      get: state => {
+      },
+      set: state => {
+        if (!this.entity.tags.has('player')) {
+          return;
+        }
+
+        const tags = state.collisionTags;
+        if (tags?.length !== 0) {
+        // tag : pc_reaction
+        if (tags?.includes('pc_reaction')) {
+            this.entity.isRunning = false;
+            if (!this.entity.sound.slot('reaction').isPlaying) {
+                this.entity.sound.play("reaction");
+            }
+        }
+
+        // tag : wrong
+        if (tags?.includes('wrong')) {
+            if (!this.entity.sound.slot('wrong').isPlaying) {
+                this.entity.sound.play("wrong");
+            }
+            // Play vfx
+            const hit = this.vfx.findByName('hit');
+            hit.script.effekseerEmitter.play();
+
+            // Enable UI
+            const ui_x = this.entity.findByName('X');
+            if (!ui_x?.enabled) {
+                ui_x.enabled = true;
+            }
+        }
+
+        // tag : fall
+        if (tags?.includes('fall')) {
+            if (!this.entity.sound.slot('fall').isPlaying) {
+                this.entity.sound.play("fall");
+            }
+        } 
+
+        // tag : segfault
+        if (tags?.includes('segfault')) {
+            if (!this.entity.sound.slot('segfault').isPlaying) {
+                this.entity.sound.play("segfault");
+            }
+        }    
+
+        // tag : rightanswer  
+        if (tags?.includes('rightanswer')) {
+            if (!this.entity.sound.slot('rightanswer').isPlaying) {
+                this.entity.sound.play("rightanswer");
+            }
+        }   
+
+        // tag : hammer  
+        if (tags?.includes('hammer')) {
+            if (!this.entity.sound.slot('ggang').isPlaying) {
+                this.modelEntity.setEulerAngles(0, -90, 0);
+                this.entity.sound.play("ggang");
+                this.entity.isHit = true;
+    
+                // 1초 후에 isHit를 false로 설정
+                setTimeout(() => {
+                    this.entity.isHit = false;
+                }, 500); // 0.5초 후 실행
+            }
+        }     
+
+        // tag : p1_right
+        if (tags?.includes('p1_right')) {
+            if (!this.entity.sound.slot('rightanswer2').isPlaying) {
+                this.entity.sound.play("rightanswer2");
+            }
+
+            // Enable UI
+            const ui_o = this.entity.findByName('O');
+            if (!ui_o?.enabled) {
+                ui_o.enabled = true;
+            }
+        }  
+
+        // tag : p1_right
+        if (tags?.includes('hit_success')) {
+            if (!this.entity.sound.slot('hit').isPlaying) {
+                this.entity.sound.play("hit");
+            }
+        }  
+
+        // tag : hit (vfx only)
+        if (tags?.includes('hit')) {
+            this.entity.isRunning = false;
+            if (!this.entity.sound.slot('hit').isPlaying) {
+                this.entity.sound.play("hit");
+            }
+
+            const hit = this.vfx.findByName('hit');
+            hit.script.effekseerEmitter.play();
+        } 
+
+        if (tags?.includes('hit_receive')) {
+            this.entity.isHit = true;
+            if (!this.entity.sound.slot('hit').isPlaying) {
+                this.entity.sound.play("hit");
+            }
+
+            // Play vfx
+            const hit = this.vfx.findByName('hit');
+            hit.script.effekseerEmitter.play();
+
+            // 1초 후에 isHit를 false로 설정
+            setTimeout(() => {
+                this.entity.isHit = false;
+            }, 500); // 0.5초 후 실행
+        }
+       }
+      }
+    },
   };
   this.rulesInterpolate = {
     // TODO: add interpolation for localPosition/localRotation

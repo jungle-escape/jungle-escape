@@ -7,6 +7,7 @@ UiRank.prototype.initialize = function() {
     this.gold = this.entity.findByName('gold');
     this.silver = this.entity.findByName('silver');
     this.bronze = this.entity.findByName('bronze');
+    this.playerEntity = this.entity;
 
     pn.on('rank', (list) => {
         let found = false;
@@ -37,6 +38,9 @@ UiRank.prototype.setRankUi = function (rank) {
 }
 
 UiRank.prototype.update = function (dt) {
+    if (this.playerEntity.pcReactOn) {
+        return;
+    }
     var valY = CAMERA.isBackView? 0 : 40;
 
     this.gold?.setEulerAngles(0, valY, 0);
