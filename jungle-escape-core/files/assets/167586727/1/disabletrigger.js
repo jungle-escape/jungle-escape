@@ -9,10 +9,9 @@ Disabletrigger.prototype.onTriggerEnter = function (target) {
     if (target.tags.has('player')) {
         const modelEntity = target.children[0];
         const tag = target.children[1];
-
-        const gold = target.findByName('gold');
-        const silver = target.findByName('silver');
-        const bronze = target.findByName('bronze');
+        const gold = target.children[2];
+        const silver = target.children[3];
+        const bronze = target.children[4];
 
         [modelEntity, tag, gold, silver, bronze].forEach(item => {
         if (item) {
@@ -25,11 +24,3 @@ Disabletrigger.prototype.onTriggerEnter = function (target) {
         target.sound.play("warp");
     }
 }
-
-
-// swap method called for script hot-reloading
-// inherit your script state here
-// Disabletrigger.prototype.swap = function(old) { };
-
-// to learn more about script anatomy, please read:
-// https://developer.playcanvas.com/en/user-manual/scripting/

@@ -419,6 +419,8 @@ PlayerController.prototype.sendInputToServer = function () {
     this.clientInput.key_X = this.app.keyboard.isPressed(pc.KEY_X);
     this.clientInput.key_C = this.app.keyboard.isPressed(pc.KEY_C);
     this.clientInput.key_V = this.app.keyboard.isPressed(pc.KEY_V);
+    this.clientInput.key_U = this.app.keyboard.isPressed(pc.KEY_U);
+    this.clientInput.key_I = this.app.keyboard.isPressed(pc.KEY_I);
 
     if (this.automove) {
         this.clientInput.key_W = true;

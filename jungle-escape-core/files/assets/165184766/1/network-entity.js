@@ -332,6 +332,19 @@ NetworkEntity.prototype.initialize = function () {
                 this.entity.isHit = false;
             }, 500); // 0.5초 후 실행
         }
+
+        if (tags?.includes('haha')) {
+          if (!this.entity.sound.slot('haha').isPlaying) {
+            this.entity.sound.play('haha');
+          }
+        }
+
+        if (tags?.includes('byebye')) {
+          if (!this.entity.sound.slot('byebye').isPlaying) {
+            this.entity.sound.play('byebye');
+          }
+        }
+        
        }
       }
     },
