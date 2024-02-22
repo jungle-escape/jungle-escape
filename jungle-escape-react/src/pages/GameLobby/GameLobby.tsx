@@ -107,6 +107,11 @@ const GameLobby = () => {
 
           pn.on("start", (num) => {
             STARTLOG.addText(num);
+
+            // 얘가 추가되어야 해
+            if (num === "3...") {
+              STARTLOG.playSound();
+            }
           });
 
           pn.on("falling", () => {

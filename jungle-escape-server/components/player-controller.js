@@ -242,6 +242,16 @@ PlayerController.prototype.handleUserInputMovement = function (dt) {
     }
   }
 
+  if (this.clientInput.key_B) {
+    const p5 = level.findByName("P5. End");
+    var savepoint = p5.findByName("teleport");
+    if (savepoint) {
+      var toPos = savepoint.getPosition();
+      this.entity.setPosition(toPos);
+      this.entity.rigidbody.teleport(toPos);
+    }
+  }
+
   if (this.clientInput.key_U) {
     this.entity.collisionTags.push("haha");
   }
