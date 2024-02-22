@@ -270,6 +270,28 @@
                 "duration": null,
                 "volume": 1,
                 "pitch": 1
+              },
+              "14": {
+                "name": "haha",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": false,
+                "asset": 168390226,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
+              },
+              "15": {
+                "name": "byebye",
+                "loop": false,
+                "autoPlay": false,
+                "overlap": false,
+                "asset": 168390683,
+                "startTime": 0,
+                "duration": null,
+                "volume": 1,
+                "pitch": 1
               }
             }
           }
@@ -1484,5 +1506,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "74d07c80-a2e5-4e5f-b5b8-fb4954ed8831"
+  "checkpoint_id": "23b4c039-3bcb-48ce-8210-f9b4920d86c6"
 }

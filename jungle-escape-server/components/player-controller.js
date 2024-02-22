@@ -241,6 +241,14 @@ PlayerController.prototype.handleUserInputMovement = function (dt) {
       this.entity.rigidbody.teleport(toPos);
     }
   }
+
+  if (this.clientInput.key_U) {
+    this.entity.collisionTags.push("haha");
+  }
+
+  if (this.clientInput.key_I) {
+    this.entity.collisionTags.push("byebye");
+  }
 };
 
 PlayerController.prototype.checkCustomTimer = function (dt) {
@@ -396,7 +404,9 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
 
   if (hit.other.tags.has("hammer")) {
     // this.entity.collisionTags.push("hammer");
-    var movement = new pc.Vec3(1, 0.001, 0).scale(450000);
+    const playerPos = this.entity.getPosition();
+    this.entity.setPosition(playerPos.z, playerPos.y + 1, playerPos.z);
+    var movement = new pc.Vec3(1, 0.01, 0).scale(450000);
     this.entity.rigidbody.applyImpulse(movement);
   }
 
