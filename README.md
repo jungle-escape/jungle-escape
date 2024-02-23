@@ -1,15 +1,25 @@
 # 정글 이스케이프 (링크 대체 예정)
 
+## 목차
+1. [소개](#1-소개)
+2. [프로젝트 구조](#2-프로젝트-구조)
+3. [Try-errors](#3-try-errors)
+4. [아키텍처](#4-아키텍처)
+5. [멤버 소개](#5-멤버-소개)
+6. [Script](#6-script)
+
+   
 ## 1. 소개
-
+![Feb-23-2024 19-49-32](https://github.com/jungle-escape/jungle-escape/assets/145897206/ab113649-63f0-440d-8a87-f4a858593ac6)
+<br><br>
 크래프톤 정글 3기 쌈마이팀의 '나만의 무기 가지기' 프로젝트 결과물입니다.
-
-![image](https://github.com/jungle-escape/jungle-escape/assets/145897206/a108939b-ba79-4a92-b5e4-a0e00916c48b)
-
-🌐 **정글 이스케이프는 WebGL 세션 기반 멀티플레이어 러너 게임입니다.** <br>
-🎮 **4명의 동시 멀티플레이를 지원하며, 3D physics에 기반한 유저-유저, 유저-월드 상호작용을 지원합니다.** <br>
-🏃 **크래프톤 정글 교육과정을 본따 만든 테마와 장애물들을 즐겨 보세요!** <br>
 <br>
+🌐 **정글 이스케이프는 WebGL 세션 기반 멀티플레이어 러너 게임입니다.** 
+<br>
+🎮 **4명의 동시 멀티플레이를 지원하며, 3D physics에 기반한 유저-유저, 유저-월드 상호작용을 지원합니다.** 
+<br>
+🏃 **크래프톤 정글 교육과정을 본따 만든 테마와 장애물들을 즐겨 보세요!** 
+<br><br>
 **조작방법**  
 - 이동: W, A, S, D
 - 점프: SPACE
@@ -191,6 +201,6 @@
 ##### `postInitialize`
 - **기능**: interpolation이 설정된 property에 한해, 해당 [property - class InterpolateValue] 쌍을 매핑하여 interpolation이 진행될 수 있도록 기반을 만듭니다
 ##### `setState`
-- **기능**: 각 property에 대해 setter함수를 호출하여, 실제로 서버로부터 받은 데이터를 클라이언트에 세팅합니다. 만약 interpolation을 적용해야하는 경우, 해당 값을 class InterpolateValue의 this.state에 단순 add하여 interpolation이 진행될 수 있도록 합니다.
+- **기능**: 각 property에 대해 setter함수를 호출하여, 실제로 서버로부터 받은 데이터를 클라이언트에 세팅합니다. 만약 interpolation을 적용해야하는 경우, 해당 값을 class InterpolateValue의 this.state에 단순 add하고 이후 InterpolateValue의 update 함수를 통해 interpolation이 진행될 수 있도록 합니다.
 ##### `update`
 - **기능**: class InterpolateValue의 update함수를 호출하여, 실제 클라이언트 사이드의 interpolation을 진행합니다.

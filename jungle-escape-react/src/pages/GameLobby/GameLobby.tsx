@@ -250,6 +250,13 @@ const GameLobby = () => {
       // }
       // const { id, nickname, participatedRooms } = res.data as UserData;
       // setUserInfo({ id, nickname, participatedRooms });
+      // const res = await api_getCurrentUser();
+      // if (!res || !res.data) {
+      //   console.log("데이터가 존재하지 않습니다.");
+      //   return;
+      // }
+      // const { id, nickname, participatedRooms } = res.data as UserData;
+      // setUserInfo({ id, nickname, participatedRooms });
 
       //// for DEV ////
       const myNickName = window.localStorage.getItem("nickname");
