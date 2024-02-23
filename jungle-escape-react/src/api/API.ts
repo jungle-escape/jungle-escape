@@ -39,50 +39,74 @@ const getBaseUrl = () => {
   }
 
   const placeholder = host === "localhost" ? "DEV" : "PROD";
-  console.info(`[API] Connecting to [[[ ${placeholder} ]]] server...`);
+  console.info(`[API] Connected to [[[ ${placeholder} ]]] server dynamically`);
 
   return myBaseURL;
 };
 
-const instance = axios.create({
-  baseURL: getBaseUrl(),
-  headers: { "Content-Type": "application/json" },
-});
+// const instance = axios.create({
+//   baseURL: getBaseUrl(),
+//   headers: { "Content-Type": "application/json" },
+// });
+
+// API 요청을 보낼 때마다 baseURL을 설정하는 함수
+const sendRequest = async (
+  method: string,
+  url: string,
+  data = {},
+  headers = {}
+) => {
+  const fullUrl = `${getBaseUrl()}/${url}`;
+
+  try {
+    const response = await axios({
+      method,
+      url: fullUrl,
+      data,
+      headers: {
+        "Content-Type": "application/json",
+        ...headers,
+      },
+    });
+    return response;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
 
 /** intercept */
 
-instance.interceptors.request.use(
-  function (res) {
-    return res;
-  },
-  function (error) {
-    return Promise.reject(error);
-  }
-);
+// instance.interceptors.request.use(
+//   function (res) {
+//     return res;
+//   },
+//   function (error) {
+//     return Promise.reject(error);
+//   }
+// );
 
-// 응답 인터셉터 추가하기
-instance.interceptors.response.use(
-  function (response) {
-    return response;
-  },
-  function (error) {
-    return Promise.reject(error);
-  }
-);
+// // 응답 인터셉터 추가하기
+// instance.interceptors.response.use(
+//   function (response) {
+//     return response;
+//   },
+//   function (error) {
+//     return Promise.reject(error);
+//   }
+// );
 
 /** USER */
 
 // login
 export const api_login = async (data: LoginData) => {
-  const body = data;
   const url = "user/login";
 
-  return instance.post(url, body);
+  return sendRequest("post", url, data);
 };
 // signup
 export const api_signUp = async (data: SignupData) => {
   const url = "user/register";
-  return instance.post(url, data);
+  return sendRequest("post", url, data);
 };
 
 // get current user for checking: login_required
@@ -94,11 +118,14 @@ export const api_getCurrentUser = async () => {
     const parsedData = JSON.parse(storageData);
     const token = parsedData.loginState.token;
 
-    return instance.get(url, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    return sendRequest(
+      "get",
+      url,
+      {},
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    );
   }
 };
 
@@ -110,10 +137,10 @@ export const api_recordRanking = async ({
 }: RecordData) => {
   const url = "rank/register";
   const data = { winner, endtime, participants };
-  return instance.post(url, data);
+  return sendRequest("post", url, data);
 };
 
 export const api_getRanking = async () => {
   const url = "rank/records";
-  return instance.get(url);
+  return sendRequest("get", url);
 };
