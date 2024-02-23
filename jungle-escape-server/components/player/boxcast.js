@@ -22,9 +22,9 @@ BoxCast.prototype.onTriggerEnter = function (target) {
     target.rigidbody.applyImpulse(pushVec);
     this.pushed.push(target);
     if (target.tags.has("player")) {
-      target.collisionTags.push("hit_receive");
+      target.signalToClient.push("hit_receive");
     }
-    this.entity.parent.collisionTags.push("hit_success");
+    this.entity.parent.signalToClient.push("hit_success");
   }
 };
 

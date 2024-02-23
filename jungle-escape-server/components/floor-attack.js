@@ -131,6 +131,6 @@ FloorAttack.prototype.update = function (dt) {
 FloorAttack.prototype.onCollisionStart = function (hit) {
   if (hit.other.tags.has("player")) {
     // this.entity.networkEntity.send(`${this.entity.name}`);
-    hit.other.collisionTags?.push("ggang");
+    hit.other.signalToClient?.push("ggang");
   }
 };

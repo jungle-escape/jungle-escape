@@ -16,8 +16,8 @@ Gooddoor.prototype.onCollisionStart = function (hit) {
     this.entity.rigidbody.type = pc.BODYTYPE_DYNAMIC;
     var impulse = new pc.Vec3(0, 0, -5000);
     this.entity.rigidbody.applyImpulse(impulse);
-    hit.other.collisionTags.push("p1_right");
-    hit.other.collisionTags.push("hit_success");
+    hit.other.signalToClient.push("p1_right");
+    hit.other.signalToClient.push("hit_success");
     this.triggered = true;
   }
 };

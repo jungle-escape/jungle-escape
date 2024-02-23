@@ -68,7 +68,7 @@ PlayerController.prototype.setupVariables = function () {
   this.controllable = true;
 
   // For handling collisions, will be sent to client
-  this.entity.collisionTags = [];
+  this.entity.signalToClient = [];
 
   // Savepoint
   this.entity.savepoint1 = false;
@@ -111,7 +111,7 @@ PlayerController.prototype.setInput = function (sender, data) {
   this.clientInput = data.clientInput;
   data.animState.canJump = this.canJump;
   data.animState.pcReactOn = this.pcReactOn;
-  data.animState.collisionTags = this.entity.collisionTags;
+  data.animState.signalToClient = this.entity.signalToClient;
   this.entity.animState = data.animState;
   this.entity.modelRotation = data.modelRotation;
   this.view = data.view;
@@ -126,7 +126,7 @@ PlayerController.prototype.removeInputHandler = function () {
 
 PlayerController.prototype.update = function (dt) {
   // Reset collision tags when update function starts
-  this.entity.collisionTags = [];
+  this.entity.signalToClient = [];
 
   // Check custom timer of PC entity
   this.checkCustomTimer(dt);
@@ -196,11 +196,11 @@ PlayerController.prototype.handleUserInput = function (dt) {
 
   // For playing sound
   if (this.clientInput.key_U) {
-    this.entity.collisionTags.push("haha");
+    this.entity.signalToClient.push("haha");
   }
 
   if (this.clientInput.key_I) {
-    this.entity.collisionTags.push("byebye");
+    this.entity.signalToClient.push("byebye");
   }
 };
 
@@ -258,7 +258,7 @@ PlayerController.prototype.checkUserRespawn = function () {
     this.entity.setPosition(respawnPoint);
     this.entity.rigidbody.teleport(respawnPoint);
     this.entity.rigidbody.linearVelocity.set(0, 0, 0);
-    this.entity.collisionTags.push("fall");
+    this.entity.signalToClient.push("fall");
   }
 };
 
@@ -333,7 +333,7 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
     this.pcReactTimer = 0;
     this.pcReactDuration = 1;
     this.pcReactOn = true;
-    this.entity.collisionTags.push("pc_reaction");
+    this.entity.signalToClient.push("pc_reaction");
   }
 
   if (hit.other.tags.has("spin")) {
@@ -345,7 +345,7 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
 
   // Wrong answer sound
   if (hit.other.tags.has("wrong")) {
-    this.entity.collisionTags.push("wrong");
+    this.entity.signalToClient.push("wrong");
   }
 
   // Make player out of control for 1 sec
@@ -354,7 +354,7 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
     this.pcReactTimer = 0;
     this.pcReactDuration = 1;
     this.pcReactOn = true;
-    this.entity.collisionTags.push("take_control");
+    this.entity.signalToClient.push("take_control");
   }
 
   // Push player back in the direction opposite to 'other'.
@@ -365,7 +365,7 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
     pushDirection.y = 0;
     var movement = pushDirection.scale(50000);
     this.entity.rigidbody.applyImpulse(movement);
-    this.entity.collisionTags.push("push_opposite");
+    this.entity.signalToClient.push("push_opposite");
   }
 
   // Push player back in the direction opposite to 'other'.
@@ -379,11 +379,11 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
   }
 
   if (hit.other.tags.has("segfault")) {
-    this.entity.collisionTags.push("segfault");
+    this.entity.signalToClient.push("segfault");
   }
 
   if (hit.other.tags.has("rightanswer")) {
-    this.entity.collisionTags.push("rightanswer");
+    this.entity.signalToClient.push("rightanswer");
   }
 
   if (hit.other.tags.has("hammer")) {
@@ -394,7 +394,7 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
   }
 
   if (hit.other.tags.has("hit")) {
-    this.entity.collisionTags.push("hit");
+    this.entity.signalToClient.push("hit");
   }
 
   if (hit.other.tags.has("automove")) {
@@ -443,9 +443,9 @@ PlayerController.prototype.doPush = function () {
     //     var pushVec = this.lookAt.scale(pushForce);
     //     result.entity.rigidbody.applyImpulse(pushVec);
     //     if (result.entity.tags.has("player")) {
-    //       result.entity.collisionTags.push("hit_receive");
+    //       result.entity.signalToClient.push("hit_receive");
     //     }
-    //     this.entity.collisionTags.push("hit_success");
+    //     this.entity.signalToClient.push("hit_success");
     //   }
     // }
 

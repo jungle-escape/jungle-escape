@@ -111,8 +111,8 @@ NetworkEntity.prototype.initialize = function () {
         return value;
       }
     },
-    collisionTags: () => {
-      const value = this.entity.collisionTags;
+    signalToClient: () => {
+      const value = this.entity.signalToClient;
       if (value) {
         return value;
       }

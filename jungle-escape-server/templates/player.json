@@ -95,7 +95,7 @@
                       "ignoreForOwner": true
                     },
                     {
-                      "path": "collisionTags",
+                      "path": "signalToClient",
                       "interpolate": false,
                       "ignoreForOwner": false
                     }
@@ -1506,5 +1506,5 @@
   "region": "eu-west-1",
   "task": null,
   "i18n": {},
-  "checkpoint_id": "d8f67087-2d22-4de8-91b1-0bfb5b1fbf98"
+  "checkpoint_id": "a9f27f8a-24ab-48b5-88ec-cd9ce73402ab"
 }
