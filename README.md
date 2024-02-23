@@ -134,35 +134,62 @@
 <br><br>
 
 
---
-## `PlayerController(Server)`
+## 6. Script
 
-### Attributes
+### `PlayerController(Server)`
+
+#### Attributes
 - **speed**: 플레이어의 이동 속도.
 - **maxSpeed**: 플레이어의 최대 속도 제한.
 - **moveForce**: 이동 시 적용되는 힘.
 - **jumpForce**: 점프 시 적용되는 힘.
 - **linearDamping**: 움직임에 대한 선형 감쇠, 자연스러운 마찰 및 저항 효과를 제공합니다.
 
-### Major Functions
-#### `handleUserInput`
+#### Major Functions
+##### `handleUserInput`
 - **기능**: 클라이언트로부터 받은 사용자 입력을 처리합니다. 이동, 점프, 텔레포트 등의 동작을 수행합니다.
 
-#### `applyLinearDamping`
+##### `applyLinearDamping`
 - **기능**: 플레이어의 선형 속도에 감쇠를 적용합니다. 점프 상태와 현재 속도를 고려하여 X, Y, Z축에 적절한 감쇠 값을 적용합니다.
 
-#### `clampPlayerVelocity`
+##### `clampPlayerVelocity`
 - **기능**: 플레이어의 속도를 설정된 최대 속도 이내로 제한합니다.
 
-#### `checkCollisionStartRules`
+##### `checkCollisionStartRules`
 - **기능**: 충돌 이벤트를 처리하고, 필요한 경우 클라이언트에 시그널을 보냅니다. 플레이어에 적용되는 물리적 반응 및 게임 로직을 결정합니다.
 
-#### `doPush` & `boxCast.js`
+##### `doPush` & `boxCast.js`
 - **기능**: 플레이어 전방에 특정 형태의 충돌 영역을 생성하고, 이 영역과 충돌하는 모든 객체에 대해 밀어내기 효과를 적용합니다. 이는 `boxCast.js` 스크립트와 연동하여 작동합니다.
 
-## `PlayerController(Client)`
-#### `getUserInput`
+### `PlayerController(Client)`
+#### Major Functions
+##### `getUserInput`
 - **기능**: 유저의 입력값을 저장합니다
   
-#### `onCollisionStart`
+##### `onCollisionStart`
 - **기능**: 클라이언트 사이드의 콜리젼 이벤트를 처리합니다
+
+##### `setModelEntityState`
+- **기능**: 주어진 데이터에 따라 PC 모델의 상태(회전, 애니메이션 등)를 설정합니다
+
+##### `handleServerSignals`
+- **기능**: 서버가 주는 시그널을 처리합니다.
+
+##### `sendInputToServer`
+- **기능**: 클라이언트 인풋을 서버에 전달합니다
+
+### `NetworkEntity(Server)`
+##### `initialize`
+- **기능**: Network entity를 초기화하고 특별하게 정의된 property가 있는 경우 해당 rule을 정의합니다. 
+##### `getState`
+- **기능**: 해당 entity의 서버 state를, 설정된 각 properties에 따라 가져옵니다.
+  
+### `NetworkEntity(Client)`
+##### `initialize`
+- **기능**: Network entity를 초기화하고 특별하게 정의된 property가 있는 경우 해당 rule(getter, setter 설정)을 정의합니다. rule에 대한 정의는 interpolation 여부에 따라 이원화되어 이루어집니다.
+##### `postInitialize`
+- **기능**: interpolation이 설정된 property에 한해, 해당 [property - class InterpolateValue] 쌍을 매핑하여 interpolation이 진행될 수 있도록 기반을 만듭니다
+##### `setState`
+- **기능**: 각 property에 대해 setter함수를 호출하여, 실제로 서버로부터 받은 데이터를 클라이언트에 세팅합니다. 만약 interpolation을 적용해야하는 경우, 해당 값을 class InterpolateValue의 this.state에 단순 add하여 interpolation이 진행될 수 있도록 합니다.
+##### `update`
+- **기능**: class InterpolateValue의 update함수를 호출하여, 실제 클라이언트 사이드의 interpolation을 진행합니다.
