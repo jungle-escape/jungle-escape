@@ -148,11 +148,11 @@ const GameLobby = () => {
               if (winner[0][1] === userInfo.nickname) {
                 //자신이 winner일 때
                 if (endtime === null) {
-                  handleRanking([winner], "-");
+                  //handleRanking([winner], "-");
                   endtime = "-";
                 }
                 if (endtime) {
-                  handleRanking(winner, endtime); //API 통신
+                  //handleRanking(winner, endtime); //API 통신
                   console.log(`${winner[0][1]} : ${endtime} recorded`);
                   lastReceivedTime = null;
                 }
@@ -498,18 +498,19 @@ const GameLobby = () => {
     return false;
   };
 
-  const handleRanking = async (
-    rankingList: Array<string>,
-    lastReceivedTime: string
-  ) => {
-    const winner = rankingList[0][1];
-    [0][1];
-    const endtime = lastReceivedTime;
-    const participants = rankingList.map((item) => item[1]);
-    // `winner ${rankingList[0][1]} : ${lastReceivedTime}`
-    // await api_recordRanking({ winner, endtime, participants }); //for dev
-    return;
-  };
+  // const handleRanking = async (
+  //   rankingList: Array<string>,
+  //   lastReceivedTime: string
+  // ) => {
+  //   const winner = rankingList[0][1];
+  //   [0][1];
+  //   const endtime = lastReceivedTime;
+  //   const participants = rankingList.map((item) => item[1]);
+
+  //   `winner ${rankingList[0][1]} : ${lastReceivedTime}`
+  //   await api_recordRanking({ winner, endtime, participants }); //for dev
+  //   return;
+  // };
 
   //////////////////////////
   ///// Modal & Loader /////
