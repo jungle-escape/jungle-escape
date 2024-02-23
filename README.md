@@ -2,17 +2,19 @@
 
 ## 1. 소개
 
-크래프톤 정글 3기 쌈마이팀 프로젝트 산출물입니다.
+크래프톤 정글 3기 쌈마이팀의 '나만의 무기 가지기' 프로젝트 결과물입니다.
 
 (그림 삽입 예정)
 
-정글 이스케이프는 WebGL 세션 기반 멀티플레이어 게임입니다. 4명의 동시 멀티플레이를 지원하며, 유저와 월드간 상호작용을 지원합니다. 크래프톤 정글 교육과정을 본따 만든 테마와 장애물들을 즐겨 보세요.
-
-- 조작
-  - 이동: W, A, S, D
-  - 점프: SPACE
-  - 공격: LEFT CLICK
-  - 감정표현: U(웃음), I(인사)
+🌍 **정글 이스케이프는 WebGL 세션 기반 멀티플레이어 러너 게임입니다.** <br>
+🎮 **4명의 동시 멀티플레이를 지원하며, 3D physics에 기반한 유저-유저, 유저-월드 상호작용을 지원합니다.** <br>
+🏃 **크래프톤 정글 교육과정을 본따 만든 테마와 장애물들을 즐겨 보세요!** <br>
+<br>
+**조작방법**  
+- 이동: W, A, S, D
+- 점프: SPACE
+- 공격(밀기): LEFT CLICK
+- 감정표현: U(웃음), I(인사)
 
 <br><br>
 
@@ -20,22 +22,21 @@
 
 
 ## 2. 프로젝트 구조
-
 ```
 .
 ├── 1️⃣ jungle-escape-core
 ├── 2️⃣ jungle-escape-react.src
-│   ├── api							: 유저/랭킹관리 api
-│   ├── components			: 컴포넌트 모음
-│   ├── pages						: 로그인, 로비, 랭킹, 에러 페이지 등
-│   ├── recoil					: 게임, 로그인, 사운드 상태관리
-│   └── main.tsx				: 클라이언트 엔트리포인트
+│   ├── api                     : 유저/랭킹관리 api
+│   ├── components              : 컴포넌트 모음
+│   ├── pages                   : 로그인, 로비, 랭킹, 에러 페이지 등
+│   ├── recoil                  : 게임, 로그인, 사운드 상태관리
+│   └── main.tsx                : 클라이언트 엔트리포인트
 └── 3️⃣ jungle-escape-server
-    ├── components			: 서버사이드 게임 엔진 스크립트 모음
-    ├── custom_modules	: 멀티플레이어 커스텀 모듈(playnetwork)
-    ├── levels					: 서버사이드 레벨 정보(json)
-    ├── templates				: 서버사이드 엔티티 정보(json)
-    └── index.js				: 서버 엔트리포인트
+    ├── components              : 서버사이드 게임 엔진 스크립트 모음
+    ├── custom_modules          : 멀티플레이어 커스텀 모듈(playnetwork)
+    ├── levels                  : 서버사이드 레벨 정보(json)
+    ├── templates               : 서버사이드 엔티티 템플릿(json)
+    └── index.js                : 서버 엔트리포인트
 ```
 
 <br><br>
@@ -119,8 +120,7 @@
 
 
 ## 4. 아키텍처
-
-(그림 대체 예정)
+<img width="760" alt="image" src="https://github.com/jungle-escape/jungle-escape/assets/145897206/dcb75e9d-dc9d-4469-925f-8cf5e3fa062f">
 
 <br><br>
 
@@ -128,41 +128,67 @@
 
 
 ## 5. 멤버 소개
-
-(그림 대체 예정)
+<img width="390" alt="image" src="https://github.com/jungle-escape/jungle-escape/assets/145897206/f7cea912-3d95-458a-8257-0c7fe7964f85">
 
 <br><br>
 
 
---
-## `PlayerController(Server)`
+## 6. Script
 
-### Attributes
+### 📄 `PlayerController(Server)`
+
+#### `Attributes`
 - **speed**: 플레이어의 이동 속도.
 - **maxSpeed**: 플레이어의 최대 속도 제한.
 - **moveForce**: 이동 시 적용되는 힘.
 - **jumpForce**: 점프 시 적용되는 힘.
 - **linearDamping**: 움직임에 대한 선형 감쇠, 자연스러운 마찰 및 저항 효과를 제공합니다.
 
-### Major Functions
-#### `handleUserInput`
+#### `Major Functions`
+##### `handleUserInput`
 - **기능**: 클라이언트로부터 받은 사용자 입력을 처리합니다. 이동, 점프, 텔레포트 등의 동작을 수행합니다.
 
-#### `applyLinearDamping`
+##### `applyLinearDamping`
 - **기능**: 플레이어의 선형 속도에 감쇠를 적용합니다. 점프 상태와 현재 속도를 고려하여 X, Y, Z축에 적절한 감쇠 값을 적용합니다.
 
-#### `clampPlayerVelocity`
+##### `clampPlayerVelocity`
 - **기능**: 플레이어의 속도를 설정된 최대 속도 이내로 제한합니다.
 
-#### `checkCollisionStartRules`
+##### `checkCollisionStartRules`
 - **기능**: 충돌 이벤트를 처리하고, 필요한 경우 클라이언트에 시그널을 보냅니다. 플레이어에 적용되는 물리적 반응 및 게임 로직을 결정합니다.
 
-#### `doPush` & `boxCast.js`
+##### `doPush` & `boxCast.js`
 - **기능**: 플레이어 전방에 특정 형태의 충돌 영역을 생성하고, 이 영역과 충돌하는 모든 객체에 대해 밀어내기 효과를 적용합니다. 이는 `boxCast.js` 스크립트와 연동하여 작동합니다.
 
-## `PlayerController(Client)`
-#### `getUserInput`
-- **기능**: 유저의 입력값을 저장합니다
+### 📄 `PlayerController(Client)`
+#### `Major Functions`
+##### `getUserInput`
+- **기능**: 유저의 입력값을 저장합니다
   
-#### `onCollisionStart`
-- **기능**: 클라이언트 사이드의 콜리젼 이벤트를 처리합니다
+##### `onCollisionStart`
+- **기능**: 클라이언트 사이드의 콜리젼 이벤트를 처리합니다
+
+##### `setModelEntityState`
+- **기능**: 주어진 데이터에 따라 PC 모델의 상태(회전, 애니메이션 등)를 설정합니다
+
+##### `handleServerSignals`
+- **기능**: 서버가 주는 시그널을 처리합니다.
+
+##### `sendInputToServer`
+- **기능**: 클라이언트 인풋을 서버에 전달합니다
+
+### 📄 `NetworkEntity(Server)`
+##### `initialize`
+- **기능**: Network entity를 초기화하고 특별하게 정의된 property가 있는 경우 해당 rule을 정의합니다. 
+##### `getState`
+- **기능**: 해당 entity의 서버 state를, 설정된 각 properties에 따라 가져옵니다.
+  
+### 📄 `NetworkEntity(Client)`
+##### `initialize`
+- **기능**: Network entity를 초기화하고 특별하게 정의된 property가 있는 경우 해당 rule(getter, setter 설정)을 정의합니다. rule에 대한 정의는 interpolation 여부에 따라 이원화되어 이루어집니다.
+##### `postInitialize`
+- **기능**: interpolation이 설정된 property에 한해, 해당 [property - class InterpolateValue] 쌍을 매핑하여 interpolation이 진행될 수 있도록 기반을 만듭니다
+##### `setState`
+- **기능**: 각 property에 대해 setter함수를 호출하여, 실제로 서버로부터 받은 데이터를 클라이언트에 세팅합니다. 만약 interpolation을 적용해야하는 경우, 해당 값을 class InterpolateValue의 this.state에 단순 add하여 interpolation이 진행될 수 있도록 합니다.
+##### `update`
+- **기능**: class InterpolateValue의 update함수를 호출하여, 실제 클라이언트 사이드의 interpolation을 진행합니다.
