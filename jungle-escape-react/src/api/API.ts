@@ -2,21 +2,20 @@ import axios from "axios";
 // import env from "@/utils/validateEnv";
 import { LoginData, RecordData, SignupData } from "@/lib";
 
-// type guard funcs
-const hasEndpoint = (obj: unknown): obj is Window & { _endpoint: string } =>
-  typeof obj === "object" && obj !== null && "_endpoint" in obj;
+//const isLocalhost = (hostname: string): boolean => hostname === "localhost" || hostname === "127.0.0.1";
 
 let host: string;
-if (hasEndpoint(window)) {
-  host = window._endpoint;
-  console.log("[host_API] host | ", host);
+if (typeof window !== "undefined") {
+  host = window.location.hostname;
+  if (host !== "jungle-escape.site") {
+    host = "jungle-escape.site";
+  }
 } else {
   host = "localhost";
-  console.log("[host_API] host | ", host);
 }
 
 const placeholder = host === "localhost" ? "DEV" : "PROD";
-const port = placeholder === "DEV" ? "5000" : "";
+const port = 5000;
 console.info(`[API] Connecting to [[[ ${placeholder} ]]] server...`);
 
 const instance = axios.create({
