@@ -102,6 +102,7 @@ declare class PlayNetwork extends pc.EventHandler {
     callback?: (err?: Error, data?: any) => void
   ): void;
   // Add other methods and properties here
+  disconnect(): void;
 }
 
 // // Extend window interface to include PlayNetwork instance

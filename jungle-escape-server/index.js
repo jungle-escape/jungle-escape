@@ -13,6 +13,7 @@ import FileLevelProvider from "./file-level-provider.js";
 import mongoose from "mongoose";
 import errorHandler from "./db/middlewares/errorMiddleware.js";
 import { gameRecordRouter } from "./db/routes/GameRoutes.js";
+import { userAuthRouter } from "./db/routes/UserRoutes.js";
 
 const __filename =
   os.platform() === "win32" //for window
@@ -70,6 +71,6 @@ if (db_port && db_url) {
 /** express's basic middlewares  */
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-//app.use(userAuthRouter);
+app.use(userAuthRouter);
 app.use(gameRecordRouter);
 app.use(errorHandler);
