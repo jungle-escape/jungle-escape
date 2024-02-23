@@ -10,6 +10,7 @@ import GameCloseModal from "@/components/CustomAlert/GameCloseModal";
 import CustomAlert from "@/components/CustomAlert/CustomAlertModal";
 import Loader3d from "@/components/Loading/Loading3d";
 import BasicUILink from "@/components/Button/BasicUILink";
+import RingLoader from "@/components/Loading/ringLoader";
 
 //css
 import "./gameLobby.css";
@@ -17,10 +18,12 @@ import "@/components/CustomAlert/modal.css";
 
 //type, reocil, API
 import { UserData, WinnerDataFromServer } from "@/lib";
-import { musicState } from "@/recoil/musicState";
-import { api_recordRanking } from "@/api/API";
 import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
+
+import { musicState } from "@/recoil/musicState";
 import { gameState } from "@/recoil/gameState";
+
+import { api_recordRanking, api_getCurrentUser } from "@/api/API";
 
 const GameLobby = () => {
   const _levelId = 1940848;
@@ -37,7 +40,8 @@ const GameLobby = () => {
   const [loginData, setLoginData] = useRecoilState(loginState);
   const [userInfo, setUserInfo] = useState<UserData | null>(null);
   const [isNumber, setIsNumber] = useState(true);
-
+  //logout logic
+  const [isReload, setIsReload] = useState(false);
   //music logic
   const [musicData, setMusicData] = useRecoilState(musicState);
   const [gameData, setGameData] = useRecoilState(gameState);
@@ -46,22 +50,29 @@ const GameLobby = () => {
 
   /** check important requirements for this page */
   useEffect(() => {
+    if (typeof pn === "undefined") {
+      window.location.reload();
+    }
     //pn.js가 로드되지 않았을 때, 자동 새로고침
     if (!pn) {
       window.location.reload();
     }
-
     //로그인 하지 않았을 시, 메인으로
     if (!loginData.isLoggedIn) {
-      navigate("/");
+      if (isReload) {
+        // IF log out
+        setShowLoader(true);
+        window.location.reload();
+      } else {
+        // other reason
+        navigate("/");
+      }
     }
     //pn이 존재하고, 로그인 상태일 시 데이터를 가져옴
     else {
       handleUserInfo();
     }
   }, [loginData, navigate]);
-
-  console.log("[Game Lobby] mounted | session: ", isSessionStart);
 
   /** 이 컴포넌트가 mount되었을 때 pn.connection 을 시작. 게임 접속은 아니다. */
   useEffect(() => {
@@ -91,6 +102,7 @@ const GameLobby = () => {
       if (!pn.isSocketOpened) {
         // pn.connect(host, port, false, null, () => {
         pn.connect(host, port, isSecure, userInfo, () => {
+          console.log("[INFO] | ", `${userInfo.nickname} is connectiong...`);
           pn.on("join", (room) => {
             room.on("join", (user: any) => {
               LOG.addText(`${convertUsername(user)} joined`);
@@ -107,11 +119,6 @@ const GameLobby = () => {
 
           pn.on("start", (num) => {
             STARTLOG.addText(num);
-
-            // 얘가 추가되어야 해
-            if (num === "3...") {
-              STARTLOG.playSound();
-            }
           });
 
           pn.on("falling", () => {
@@ -236,22 +243,22 @@ const GameLobby = () => {
     try {
       ///// for PRODUCTION //////
       //id, nickname, participantedRooms 정보를 얻을 수 있음.
-      // const res = await api_getCurrentUser();
-      // if (!res || !res.data) {
-      //   console.log("데이터가 존재하지 않습니다.");
-      //   return;
-      // }
-      // const { id, nickname, participatedRooms } = res.data as UserData;
-      // setUserInfo({ id, nickname, participatedRooms });
+      const res = await api_getCurrentUser();
+      if (!res || !res.data) {
+        console.log("데이터가 존재하지 않습니다.");
+        return;
+      }
+      const { id, nickname, participatedRooms } = res.data as UserData;
+      setUserInfo({ id, nickname, participatedRooms });
 
       //// for DEV ////
-      const myNickName = window.localStorage.getItem("nickname");
-      const myUserInfo = {
-        id: "id",
-        nickname: myNickName,
-        participatedRooms: [],
-      };
-      setUserInfo(myUserInfo);
+      // const myNickName = window.localStorage.getItem("nickname");
+      // const myUserInfo = {
+      //   id: "id",
+      //   nickname: myNickName,
+      //   participatedRooms: [],
+      // };
+      // setUserInfo(myUserInfo);
     } catch (err) {
       console.log(err);
     }
@@ -259,10 +266,11 @@ const GameLobby = () => {
 
   const handleLogOut = () => {
     buttonClickSound(1);
+    setIsReload(true);
+
     setLoginData({ ...loginData, isLoggedIn: false, token: "" });
-    //localStorage.removeItem("currentUserId");
-    localStorage.removeItem("nickname"); //dev
-    navigate("/");
+    localStorage.removeItem("currentUserId");
+    //localStorage.removeItem("nickname"); //dev
   };
 
   ////////////// button handlers //////////////////
@@ -574,62 +582,73 @@ const GameLobby = () => {
 
       <div className="box">
         {userInfo ? (
-          <p className="newfont-white">
-            오늘도 달려볼까요,
-            <br />
-            <span className="oldfont-lightgreen"> {userInfo.nickname}</span> 님
-          </p>
-        ) : null}
-
-        <ul className="lobby-ul">
-          <li>
-            <BasicBtn
-              onClickHandler={handleCreateRoom}
-              btnContent={"방 만들기"}
-            />
-          </li>
-          <li>
-            <input
-              className="roomInputBox"
-              type="text"
-              placeholder="합류할 방 번호를 입력하세요"
-              value={roomName}
-              onChange={handleInputChange}
-            />
-            <BasicBtn
-              onClickHandler={handleJoinRoom}
-              btnContent={"방 합류하기"}
-            />
-            <p id="roomnumber-error" className={!isNumber ? "show" : "hide"}>
-              숫자만 입력해주세요!
+          <>
+            <p className="newfont-white">
+              오늘도 달려볼까요,
+              <br />
+              <span className="oldfont-lightgreen">
+                {" "}
+                {userInfo.nickname}
+              </span>{" "}
+              님
             </p>
-          </li>
-          {/* <li>
-            <BasicBtn
-              onClickHandler={handleShowRanking}
-              btnContent={"랭킹 가져오기"}
-            />
-          </li> */}
-          <li>
-            <button
-              onClick={() => {
-                buttonClickSound(3);
-                setshowLogOutModal(true);
-              }}
-              className="button-type-3"
-              style={{ width: "50%", height: "70%" }}
-            >
-              로그아웃
-            </button>
-          </li>
-          <li>
-            <BasicUILink
-              to={`/ranking`}
-              style={{ width: "50%", height: "70%" }}
-              btnContent="랭킹보기"
-            />
-          </li>
-        </ul>
+
+            <ul className="lobby-ul">
+              <li>
+                <BasicBtn
+                  onClickHandler={handleCreateRoom}
+                  btnContent={"방 만들기"}
+                />
+              </li>
+              <li>
+                <input
+                  className="roomInputBox"
+                  type="text"
+                  placeholder="합류할 방 번호를 입력하세요"
+                  value={roomName}
+                  onChange={handleInputChange}
+                />
+                <BasicBtn
+                  onClickHandler={handleJoinRoom}
+                  btnContent={"방 합류하기"}
+                />
+                <p
+                  id="roomnumber-error"
+                  className={!isNumber ? "show" : "hide"}
+                >
+                  숫자만 입력해주세요!
+                </p>
+              </li>
+              {/* <li>
+  <BasicBtn
+    onClickHandler={handleShowRanking}
+    btnContent={"랭킹 가져오기"}
+  />
+</li> */}
+              <li>
+                <button
+                  onClick={() => {
+                    buttonClickSound(3);
+                    setshowLogOutModal(true);
+                  }}
+                  className="button-type-3"
+                  style={{ width: "50%", height: "70%" }}
+                >
+                  로그아웃
+                </button>
+              </li>
+              <li>
+                <BasicUILink
+                  to={`/ranking`}
+                  style={{ width: "50%", height: "70%" }}
+                  btnContent="랭킹보기"
+                />
+              </li>
+            </ul>
+          </>
+        ) : (
+          <RingLoader />
+        )}
       </div>
       {blocker.state === "blocked" ? portalContent : null}
       {customAlertModal}

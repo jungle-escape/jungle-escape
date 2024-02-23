@@ -40,10 +40,6 @@ gameRecordRouter.post("/rank/register", async function (req, res, next) {
 
 gameRecordRouter.get("/rank/records", async function (req, res, next) {
   try {
-    console.log(
-      "[gameRecordRouter] gameRecordRouter.get 진입 성공, req.body",
-      req.body
-    );
     const allRecords = await gameRecordService.getRecord();
 
     res.status(250).json(allRecords);

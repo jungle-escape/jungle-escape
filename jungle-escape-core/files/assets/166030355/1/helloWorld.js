@@ -4,7 +4,6 @@ HelloWorld.prototype.initialize = function () {
     HELLOWORLD = this;
 };
 
-
 HelloWorld.prototype.boom = function () {
     this.entity.children.forEach((child1) => {
         child1.children.forEach((child2) => {

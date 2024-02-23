@@ -52,7 +52,7 @@ export interface GameCloseModalProp {
 export interface LoginData {
   id: string;
   password: string;
-  nickname: string;
+  nickname?: string;
 }
 
 export interface SignupData extends LoginData {

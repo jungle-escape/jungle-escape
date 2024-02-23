@@ -1,46 +1,46 @@
 const _devUri = 'localhost';
+const _devUrl = `http://${_devUri}:8080/pn.js`;
 const _prodUri = 'sangwookim.store';
+const _prodUrl = `https://${_prodUri}/pn.js`;
 
-const fetchEndpoint = async (url) => {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('No valid response');
-    return await response.text();
-  } catch (error) {
-    return false;
-  }
-};
+window.__pn_loader = async () => {
 
-const _devPn = fetchEndpoint(`http://${_devUri}:8080/pn.js`);
-const _prodPn = fetchEndpoint(`https://${_prodUri}/pn.js`);
-
-const pn_loader = async () => {
   let script = document.createElement('script');
 
-  try {
-    const devData = await _devPn;
-    const prodData = await _prodPn;
-
-    if (devData) {
-      console.log("fetched dev data");
-      script.textContent = devData;
+  await fetch(_devUrl)
+    .then(async (response) => {
+      if (!response.ok) throw new Error('[loader.js] No valid response from dev');
+      script.textContent = await response.text();
+      if (!script.textContent) throw new Error('[loader.js] No valid script returned from dev');
+      console.info(`[loader.js] pn.js fetched from dev.`);
       window._endpoint = _devUri;
-    } else if (prodData) {
-      console.log("fetched prod data");
-      script.textContent = prodData;
-      window._endpoint = _prodUri;
-    } else {
-      console.error("No data available for the script");
-      return;
-    }
-  } catch (error) {
-    console.error("An error occurred:", error);
+      document.head.appendChild(script);
+    })
+    .catch(error => {
+      console.error("[loader.js] Fetching dev server error:", error);
+    });
+  
+
+  if (script.textContent) {
     return;
   }
+  
 
-  document.head.appendChild(script);
+  await fetch(_prodUrl)
+    .then(async (response) => {
+      if (!response.ok) throw new Error('[loader.js] No valid response from prod');
+      script.textContent = await response.text();
+      if (!script.textContent) throw new Error('[loader.js] No valid script returned from prod');
+      console.info(`[loader.js] pn.js fetched from prod.`);
+      window._endpoint = _prodUri;
+      document.head.appendChild(script);
+    })
+    .catch(error => {
+      console.error("[loader.js] Fetching prod server error:", error);
+    });
+
 };
 
 (async () => {
-  await pn_loader();
+  await window.__pn_loader();
 })();

@@ -3,6 +3,13 @@ var StartLog = pc.createScript('startlog');
 StartLog.prototype.initialize = function () {
     STARTLOG = this;
     this.entity.element.text = '';
+    pn.on('start', (num) => {
+        if (num === "START!!") {
+            this.startSound();
+        } else {
+            this.countdownSound();
+        }
+    })
 };
 
 // update code called every frame
@@ -48,8 +55,16 @@ StartLog.prototype.addText = function (text) {
 
 };
 
-StartLog.prototype.playSound = function () {
-    if (!this.entity.sound.slot('countdown').isPlaying) {
-        this.entity.sound.play("countdown");
-    };
+StartLog.prototype.countdownSound = function () {
+    const bgm = this.app.root.findByName('BGM');
+    if (!bgm.sound.slot('countdown').isPlaying) {
+        bgm.sound.play('countdown');
+    }
+}
+
+StartLog.prototype.startSound = function () {
+    const bgm = this.app.root.findByName('BGM');
+    if (!bgm.sound.slot('startsound').isPlaying) {
+        bgm.sound.play('startsound');
+    }
 }

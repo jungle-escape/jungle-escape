@@ -2,8 +2,25 @@ import axios from "axios";
 // import env from "@/utils/validateEnv";
 import { LoginData, RecordData, SignupData } from "@/lib";
 
+// type guard funcs
+const hasEndpoint = (obj: unknown): obj is Window & { _endpoint: string } =>
+  typeof obj === "object" && obj !== null && "_endpoint" in obj;
+
+let host: string;
+if (hasEndpoint(window)) {
+  host = window._endpoint;
+  console.log("[host_API] host | ", host);
+} else {
+  host = "localhost";
+  console.log("[host_API] host | ", host);
+}
+
+const placeholder = host === "localhost" ? "DEV" : "PROD";
+const port = placeholder === "DEV" ? "5000" : "";
+console.info(`[API] Connecting to [[[ ${placeholder} ]]] server...`);
+
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_API_DOMAIN,
+  baseURL: `http://${host}:${port}`,
   headers: { "Content-Type": "application/json" },
 });
 
@@ -40,20 +57,17 @@ export const api_login = async (data: LoginData) => {
 // signup
 export const api_signUp = async (data: SignupData) => {
   const url = "user/register";
-
   return instance.post(url, data);
 };
 
 // get current user for checking: login_required
 export const api_getCurrentUser = async () => {
   const url = "user/current";
+
   const storageData = sessionStorage.getItem("loginState-atom-persist");
   if (storageData) {
     const parsedData = JSON.parse(storageData);
     const token = parsedData.loginState.token;
-    //console.log("[API]", token);
-
-    //console.log("parsedData?", parsedData);
 
     return instance.get(url, {
       headers: {
@@ -70,7 +84,6 @@ export const api_recordRanking = async ({
   participants,
 }: RecordData) => {
   const url = "rank/register";
-  //console.log(`[api_recordRanking] ${data} 들어왔어요 ${url}`);
   const data = { winner, endtime, participants };
   return instance.post(url, data);
 };
@@ -79,28 +92,3 @@ export const api_getRanking = async () => {
   const url = "rank/records";
   return instance.get(url);
 };
-
-//////// for PRODUCTION ////////
-// type guard funcs
-//   const hasEndpoint = (obj: unknown): obj is Window & { _endpoint: string } =>
-//     typeof obj === "object" && obj !== null && "_endpoint" in obj;
-
-// let host: string;
-// if (hasEndpoint(window)) {
-//   host = window._endpoint;
-// } else {
-//   // window._endpoint가 존재하지 않을 때, .env에 세팅해둔 endpoint를 가져온다.
-//   host = import.meta.env.VITE_ENDPOINT;
-// }
-
-// const placeholder = host === "localhost" ? "DEV" : "PROD";
-// const port = placeholder === "DEV" ? "5000" : "";
-// console.info(`[API] Connecting to [[[ ${placeholder} ]]] server...`);
-
-// const instance = axios.create({
-//   //baseURL: import.meta.env.VITE_API_DOMAIN,
-//   baseURL: `http://${host}:${port}`,
-//   headers: { "Content-Type": "application/json" },
-// });
-
-////////////////////////////////////////////

@@ -24,9 +24,18 @@
   color: white;
   padding: 0.5rem;
 
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 
-  text-align: center;
+  text-align: left;
+}
+
+.login-password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 0.5rem;
 }
 
 .login-form {
@@ -43,6 +52,8 @@
   gap: 0.5rem;
 
   font-size: 2.5rem;
+
+  text-align: left;
 }
 
 .login-form {
@@ -60,6 +71,9 @@
   flex-direction: row;
 
   gap: 20%;
+
+  display: grid;
+  grid-template-columns: 6fr 4fr;
 }
 
 .two-btn-container-col {
@@ -160,4 +174,21 @@
 
 #nickname-error.show {
   visibility: visible;
+}
+
+#find-pwd {
+  font-size: 1rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#not-user {
+  font-size: 1rem;
+}
+
+.span-findId {
+  font-size: 1rem;
+  color: white;
+  padding-bottom: 10px;
 }

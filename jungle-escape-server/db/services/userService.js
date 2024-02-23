@@ -44,8 +44,6 @@ class userAuthService {
       nickname: nickname,
     };
 
-    console.log("[addUser] newUser", newUser);
-
     const createdNewUser = await User.create({ newUser });
     createdNewUser.errormsg = null; // 문제 없이 db 저장 완료되었으므로 에러가 없음.
 
