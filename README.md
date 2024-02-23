@@ -6,15 +6,15 @@
 
 (그림 삽입 예정)
 
-🌍 정글 이스케이프는 WebGL 세션 기반 멀티플레이어 러너 게임입니다. <br>
-🎮 4명의 동시 멀티플레이를 지원하며, 3D physics에 기반한 유저-유저, 유저-월드 상호작용을 지원합니다. <br>
-🏃 크래프톤 정글 교육과정을 본따 만든 테마와 장애물들을 즐겨 보세요! <br>
-
-- 조작
-  - 이동: W, A, S, D
-  - 점프: SPACE
-  - 공격(밀기): LEFT CLICK
-  - 감정표현: U(웃음), I(인사)
+🌍 **정글 이스케이프는 WebGL 세션 기반 멀티플레이어 러너 게임입니다.** <br>
+🎮 **4명의 동시 멀티플레이를 지원하며, 3D physics에 기반한 유저-유저, 유저-월드 상호작용을 지원합니다.** <br>
+🏃 **크래프톤 정글 교육과정을 본따 만든 테마와 장애물들을 즐겨 보세요!** <br>
+<br>
+**조작방법**  
+- 이동: W, A, S, D
+- 점프: SPACE
+- 공격(밀기): LEFT CLICK
+- 감정표현: U(웃음), I(인사)
 
 <br><br>
 
@@ -136,7 +136,7 @@
 
 ## 6. Script
 
-### `PlayerController(Server)`
+### 📄 `PlayerController(Server)`
 
 #### `Attributes`
 - **speed**: 플레이어의 이동 속도.
@@ -161,7 +161,7 @@
 ##### `doPush` & `boxCast.js`
 - **기능**: 플레이어 전방에 특정 형태의 충돌 영역을 생성하고, 이 영역과 충돌하는 모든 객체에 대해 밀어내기 효과를 적용합니다. 이는 `boxCast.js` 스크립트와 연동하여 작동합니다.
 
-### `PlayerController(Client)`
+### 📄 `PlayerController(Client)`
 #### `Major Functions`
 ##### `getUserInput`
 - **기능**: 유저의 입력값을 저장합니다
@@ -178,13 +178,13 @@
 ##### `sendInputToServer`
 - **기능**: 클라이언트 인풋을 서버에 전달합니다
 
-### `NetworkEntity(Server)`
+### 📄 `NetworkEntity(Server)`
 ##### `initialize`
 - **기능**: Network entity를 초기화하고 특별하게 정의된 property가 있는 경우 해당 rule을 정의합니다. 
 ##### `getState`
 - **기능**: 해당 entity의 서버 state를, 설정된 각 properties에 따라 가져옵니다.
   
-### `NetworkEntity(Client)`
+### 📄 `NetworkEntity(Client)`
 ##### `initialize`
 - **기능**: Network entity를 초기화하고 특별하게 정의된 property가 있는 경우 해당 rule(getter, setter 설정)을 정의합니다. rule에 대한 정의는 interpolation 여부에 따라 이원화되어 이루어집니다.
 ##### `postInitialize`
