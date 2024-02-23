@@ -22,22 +22,21 @@
 
 
 ## 2. 프로젝트 구조
-
 ```
 .
 ├── 1️⃣ jungle-escape-core
 ├── 2️⃣ jungle-escape-react.src
-│   ├── api						: 유저/랭킹관리 api
-│   ├── components			    : 컴포넌트 모음
-│   ├── pages					: 로그인, 로비, 랭킹, 에러 페이지 등
-│   ├── recoil					: 게임, 로그인, 사운드 상태관리
-│   └── main.tsx				: 클라이언트 엔트리포인트
+│   ├── api                     : 유저/랭킹관리 api
+│   ├── components              : 컴포넌트 모음
+│   ├── pages                   : 로그인, 로비, 랭킹, 에러 페이지 등
+│   ├── recoil                  : 게임, 로그인, 사운드 상태관리
+│   └── main.tsx                : 클라이언트 엔트리포인트
 └── 3️⃣ jungle-escape-server
-    ├── components			    : 서버사이드 게임 엔진 스크립트 모음
-    ├── custom_modules	        : 멀티플레이어 커스텀 모듈(playnetwork)
-    ├── levels					: 서버사이드 레벨 정보(json)
-    ├── templates				: 서버사이드 엔티티 정보(json)
-    └── index.js				: 서버 엔트리포인트
+    ├── components              : 서버사이드 게임 엔진 스크립트 모음
+    ├── custom_modules          : 멀티플레이어 커스텀 모듈(playnetwork)
+    ├── levels                  : 서버사이드 레벨 정보(json)
+    ├── templates               : 서버사이드 엔티티 템플릿(json)
+    └── index.js                : 서버 엔트리포인트
 ```
 
 <br><br>
