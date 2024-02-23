@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, useNavigate, Link } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
 import { loginState } from "@/recoil/loginState";
