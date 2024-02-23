@@ -164,10 +164,10 @@
 ### `PlayerController(Client)`
 #### Major Functions
 ##### `getUserInput`
-- **기능**: 유저의 입력값을 저장합니다
+- **기능**:유저의 입력값을 저장합니다
   
 ##### `onCollisionStart`
-- **기능**: 클라이언트 사이드의 콜리젼 이벤트를 처리합니다
+- **기능**:클라이언트 사이드의 콜리젼 이벤트를 처리합니다
 
 ##### `setModelEntityState`
 - **기능**: 주어진 데이터에 따라 PC 모델의 상태(회전, 애니메이션 등)를 설정합니다
