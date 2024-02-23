@@ -127,6 +127,15 @@ NetworkEntity.prototype.initialize = function () {
         } else {
           this.entity.setPosition(data.x, data.y, data.z);
         }
+      // set: value => {
+      //   var oldPos = this.entity.getPosition();
+      //   var targetPos = value;
+
+      //   this.entity.setPosition(value);
+
+      //   if (this.entity.rigidbody) {
+      //     this.entity.rigidbody.teleport(value.x, value.y, value.z);
+      //   }
       }
     },
     'rotation': {
@@ -173,7 +182,7 @@ NetworkEntity.prototype.initialize = function () {
           this.entity.children[0].anim.setBoolean('isVow', data.isVow);
           this.entity.canJump = data.canJump;
           this.entity.pcReactOn = data.pcReactOn;
-          this.entity.collisionTags = data.collisionTags;
+          // this.entity.signalToClient = data.signalToClient;
         }
       }
     },
@@ -216,7 +225,7 @@ NetworkEntity.prototype.initialize = function () {
         this.entity.rigidbody.group = state.rigidbodyGroup;
       }
     },
-    'collisionTags' : {
+    'signalToClient' : {
       get: state => {
       },
       set: state => {
@@ -224,18 +233,19 @@ NetworkEntity.prototype.initialize = function () {
           return;
         }
 
-        const tags = state.collisionTags;
-        if (tags?.length !== 0) {
-        // tag : pc_reaction
-        if (tags?.includes('pc_reaction')) {
+        const signals = state.signalToClient;
+        this.entity.signalToClient = signals;
+
+        if (signals?.length !== 0) {
+
+        if (signals?.includes('pc_reaction')) {
             this.entity.isRunning = false;
             if (!this.entity.sound.slot('reaction').isPlaying) {
                 this.entity.sound.play("reaction");
             }
         }
 
-        // tag : wrong
-        if (tags?.includes('wrong')) {
+        if (signals?.includes('wrong')) {
             if (!this.entity.sound.slot('wrong').isPlaying) {
                 this.entity.sound.play("wrong");
             }
@@ -250,29 +260,25 @@ NetworkEntity.prototype.initialize = function () {
             }
         }
 
-        // tag : fall
-        if (tags?.includes('fall')) {
+        if (signals?.includes('fall')) {
             if (!this.entity.sound.slot('fall').isPlaying) {
                 this.entity.sound.play("fall");
             }
         } 
 
-        // tag : segfault
-        if (tags?.includes('segfault')) {
+        if (signals?.includes('segfault')) {
             if (!this.entity.sound.slot('segfault').isPlaying) {
                 this.entity.sound.play("segfault");
             }
         }    
 
-        // tag : rightanswer  
-        if (tags?.includes('rightanswer')) {
+        if (signals?.includes('rightanswer')) {
             if (!this.entity.sound.slot('rightanswer').isPlaying) {
                 this.entity.sound.play("rightanswer");
             }
         }   
 
-        // tag : hammer  
-        if (tags?.includes('ggang')) {
+        if (signals?.includes('ggang')) {
             if (!this.entity.sound.slot('ggang').isPlaying) {
                 this.modelEntity = this.entity.children[0];
                 this.modelEntity.setEulerAngles(0, -90, 0);
@@ -286,8 +292,7 @@ NetworkEntity.prototype.initialize = function () {
             }
         }     
 
-        // tag : p1_right
-        if (tags?.includes('p1_right')) {
+        if (signals?.includes('p1_right')) {
             if (!this.entity.sound.slot('rightanswer2').isPlaying) {
                 this.entity.sound.play("rightanswer2");
             }
@@ -299,15 +304,13 @@ NetworkEntity.prototype.initialize = function () {
             }
         }  
 
-        // tag : p1_right
-        if (tags?.includes('hit_success')) {
+        if (signals?.includes('hit_success')) {
             if (!this.entity.sound.slot('hit').isPlaying) {
                 this.entity.sound.play("hit");
             }
         }  
 
-        // tag : hit (vfx only)
-        if (tags?.includes('hit')) {
+        if (signals?.includes('hit')) {
             this.entity.isRunning = false;
             if (!this.entity.sound.slot('hit').isPlaying) {
                 this.entity.sound.play("hit");
@@ -317,7 +320,7 @@ NetworkEntity.prototype.initialize = function () {
             hit.script.effekseerEmitter.play();
         } 
 
-        if (tags?.includes('hit_receive')) {
+        if (signals?.includes('hit_receive')) {
             this.entity.isHit = true;
             if (!this.entity.sound.slot('hit').isPlaying) {
                 this.entity.sound.play("hit");
@@ -333,13 +336,13 @@ NetworkEntity.prototype.initialize = function () {
             }, 500); // 0.5초 후 실행
         }
 
-        if (tags?.includes('haha')) {
+        if (signals?.includes('haha')) {
           if (!this.entity.sound.slot('haha').isPlaying) {
             this.entity.sound.play('haha');
           }
         }
 
-        if (tags?.includes('byebye')) {
+        if (signals?.includes('byebye')) {
           if (!this.entity.sound.slot('byebye').isPlaying) {
             this.entity.sound.play('byebye');
           }
@@ -356,6 +359,9 @@ NetworkEntity.prototype.initialize = function () {
         return this.entity.getPosition();
       },
       set: value => {
+        var oldPos = this.entity.getPosition();
+        var targetPos = value;
+
         this.entity.setPosition(value);
 
         if (this.entity.rigidbody) {
