@@ -39,6 +39,7 @@ const getBaseUrl = () => {
   }
 
   const placeholder = host === "localhost" ? "DEV" : "PROD";
+
   console.info(`[API] Connected to [[[ ${placeholder} ]]] server dynamically`);
 
   return myBaseURL;
