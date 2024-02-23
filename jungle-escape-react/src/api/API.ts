@@ -2,24 +2,50 @@ import axios from "axios";
 // import env from "@/utils/validateEnv";
 import { LoginData, RecordData, SignupData } from "@/lib";
 
-//const isLocalhost = (hostname: string): boolean => hostname === "localhost" || hostname === "127.0.0.1";
+// type guard funcs
+const hasEndpoint = (obj: unknown): obj is Window & { _endpoint: string } =>
+  typeof obj === "object" && obj !== null && "_endpoint" in obj;
+const isLocalhost = (hostname: string): boolean =>
+  hostname === "localhost" || hostname === "127.0.0.1";
 
-let host: string;
-if (typeof window !== "undefined") {
-  host = window.location.hostname;
-  if (host !== "jungle-escape.site") {
-    host = "jungle-escape.site";
+const getBaseUrl = () => {
+  let host: string;
+  let port: number;
+  let myBaseURL: string;
+
+  if (hasEndpoint(window)) {
+    if (isLocalhost(window._endpoint)) {
+      //localhost일 때
+      host = "localhost";
+      port = 5000;
+
+      myBaseURL = `http://${host}:${port}`;
+
+      console.log(`[API/1] host : ${host} || baseURL: ${myBaseURL}`);
+    }
+    //localhost가 아닐 때, 즉 도메인이 있는 배포 서버에서 돌릴 때
+    else {
+      host = "sangwookim.store";
+      myBaseURL = `https://${host}`;
+
+      console.log(`[API/2] host : ${host} || ${myBaseURL}`);
+    }
   }
-} else {
-  host = "localhost";
-}
+  // 만약 enpoint가 없을 때, 정말 최후의 방어선
+  else {
+    host = "localhost";
+    myBaseURL = `http://localhost:5000`; //final defence code
+    console.log(`[API/3] host : ${host} || ${myBaseURL}`);
+  }
 
-const placeholder = host === "localhost" ? "DEV" : "PROD";
-const port = 5000;
-console.info(`[API] Connecting to [[[ ${placeholder} ]]] server...`);
+  const placeholder = host === "localhost" ? "DEV" : "PROD";
+  console.info(`[API] Connecting to [[[ ${placeholder} ]]] server...`);
+
+  return myBaseURL;
+};
 
 const instance = axios.create({
-  baseURL: `http://${host}:${port}`,
+  baseURL: getBaseUrl(),
   headers: { "Content-Type": "application/json" },
 });
 
