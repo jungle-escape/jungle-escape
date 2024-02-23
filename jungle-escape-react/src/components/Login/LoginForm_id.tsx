@@ -5,20 +5,19 @@ import { useRecoilState } from "recoil";
 import { loginState } from "@/recoil/loginState";
 import { musicState } from "@/recoil/musicState";
 
-//import { api_login } from "@/api/API";
+import { api_login } from "@/api/API";
 
 import axios from "axios";
 
 import "./loginform.css";
 import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
 import CustomAlert from "@/components/CustomAlert/CustomAlertModal";
-// import BasicBtn from "@/components/Button/BasicButton";
 
 import ReactDOM from "react-dom";
 
-const LoginForm_dev = () => {
-  // const [id, setId] = useState("");
-  // const [password, setPassword] = useState("");
+const LoginForm = () => {
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
 
   const [loginData, setLoginData] = useRecoilState(loginState);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -28,8 +27,8 @@ const LoginForm_dev = () => {
   const [alertMessage, setAlertMessage] = useState("");
 
   //for dev
-  const [isEnglish, setIsEnglish] = useState(true);
-  const [nickname, setNickname] = useState("");
+  // const [isEnglish, setIsEnglish] = useState(true);
+  // const [nickname, setNickname] = useState("");
 
   const navigate = useNavigate();
 
@@ -37,31 +36,34 @@ const LoginForm_dev = () => {
     e.preventDefault();
 
     try {
-      // /// for PRODUCTION //////
-      // const res = await api_login({ id, password });
-      // //store JWT at Localstorage
-      // const token = res.data.token;
-      // window.localStorage.setItem("currentUserId", token);
-      // setLoginData({ ...loginData, isLoggedIn: true, token: token });
-      // setMusicData({ ...musicData, isPlay: true }); //music on
-      // console.info(`ID: ${id} | LOGIN SUCCESS`);
-      // navigate("/game");
+      /// for PRODUCTION //////
 
-      // for DEV ////
-      if (validateEnglish(nickname)) {
-        const token = crypto.randomUUID();
-        window.localStorage.setItem("nickname", nickname);
-        setLoginData({ ...loginData, isLoggedIn: true, token: token });
-        setMusicData({ ...musicData, isPlay: true }); //music on
+      const res = await api_login({ id, password });
+      //store JWT at Localstorage
+      const token = res.data.token;
+      window.localStorage.setItem("currentUserId", token);
+      setLoginData({ ...loginData, isLoggedIn: true, token: token });
+      setMusicData({ ...musicData, isPlay: true }); //music on
 
-        //console.info(`ID: ${id} | LOGIN SUCCESS`);
-        console.info(`nickname: ${nickname} | CONNECT SUCCESS`);
+      console.info(`ID: ${id} | LOGIN SUCCESS`);
 
-        navigate("/game");
-      } else if (!validateEnglish(nickname)) {
-        setIsEnglish(false);
-        return;
-      }
+      navigate("/game");
+
+      //// for DEV ////
+      // if (validateEnglish(nickname)) {
+      //   const token = crypto.randomUUID();
+      //   window.localStorage.setItem("nickname", nickname);
+      //   setLoginData({ ...loginData, isLoggedIn: true, token: token });
+      //   setMusicData({ ...musicData, isPlay: true }); //music on
+
+      //   //console.info(`ID: ${id} | LOGIN SUCCESS`);
+      //   console.info(`nickname: ${nickname} | CONNECT SUCCESS`);
+
+      //   navigate("/game");
+      // } else if (!validateEnglish(nickname)) {
+      //   setIsEnglish(false);
+      //   return;
+      // }
     } catch (err) {
       console.log(err);
       if (axios.isAxiosError(err) && err.response) {
@@ -77,30 +79,30 @@ const LoginForm_dev = () => {
     }
   };
 
-  // handle nickname functions : for dev ///
+  //// handle nickname functions : for dev ///
 
-  const validateEnglish = (value: string) => {
-    const regex = /^[A-Za-z]+$/;
-    if (regex.test(value)) {
-      //console.log("Valid value:", value);
-      return true;
-    }
-    //console.log("Invalid value:", value);
-    return false;
-  };
+  // const validateEnglish = (value: string) => {
+  //   const regex = /^[A-Za-z]+$/;
+  //   if (regex.test(value)) {
+  //     //console.log("Valid value:", value);
+  //     return true;
+  //   }
+  //   //console.log("Invalid value:", value);
+  //   return false;
+  // };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    const isValidEnglish = validateEnglish(value);
+  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { value } = e.target;
+  //   const isValidEnglish = validateEnglish(value);
 
-    setIsEnglish(isValidEnglish);
-    if (isValidEnglish || value === "") {
-      setNickname(value);
-      setIsEnglish(true);
-    } else if (!isValidEnglish) {
-      setIsEnglish(false);
-    }
-  };
+  //   setIsEnglish(isValidEnglish);
+  //   if (isValidEnglish || value === "") {
+  //     setNickname(value);
+  //     setIsEnglish(true);
+  //   } else if (!isValidEnglish) {
+  //     setIsEnglish(false);
+  //   }
+  // };
 
   /** Modal  */
 
@@ -131,7 +133,7 @@ const LoginForm_dev = () => {
         onSubmit={handleLogin}
       >
         <div className="login-password-container">
-          FOR DEV
+          {/* FOR DEV
           <section className="title-input-box">
             <label htmlFor="email" id="nickname-label">
               닉네임을 지어주세요
@@ -149,8 +151,9 @@ const LoginForm_dev = () => {
             <p id="nickname-error" className={!isEnglish ? "show" : "hide"}>
               공백을 제외한 영문자만 사용해주세요!
             </p>
-          </section>
-          {/* <section className="title-input-box">
+          </section> */}
+
+          <section className="title-input-box">
             <label htmlFor="email" className="id-label">
               아이디
             </label>
@@ -167,16 +170,35 @@ const LoginForm_dev = () => {
             </div>
           </section>
 
+          {/* <section className="title-input-box">
+            <label htmlFor="email" id="nickname-label">
+              닉네임을 지어주세요
+            </label>
+            <div className="email-input-div">
+              <input
+                id="nickname"
+                name="nickname"
+                placeholder="영어로 입력해주세요!"
+                required
+                className="email-input"
+                onChange={handleInputChange}
+              />
+            </div>
+            <p id="nickname-error" className={!isEnglish ? "show" : "hide"}>
+              공백을 제외한 영문자만 사용해주세요!
+            </p>
+          </section> */}
+
           <section className="title-input-box">
             <div className="pwd-title-box">
               <label htmlFor="password" className="password-label">
                 비밀번호
               </label>
-              <div className="password-findme">
+              {/* <div className="password-findme">
                 <p onClick={OpenModal} id="find-pwd">
                   비밀번호 찾기
                 </p>
-              </div>
+              </div> */}
             </div>
             <div className="password-input-div">
               <input
@@ -190,7 +212,7 @@ const LoginForm_dev = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-          </section> */}
+          </section>
         </div>
         <section className="two-btn-container-col">
           <div>
@@ -206,7 +228,7 @@ const LoginForm_dev = () => {
               게임하기
             </button>
           </div>
-          {/* <p className="go-signup">
+          <p className="go-signup">
             <span id="not-user">회원이 아니신가요?</span>
             <Link
               to={`../signUp`}
@@ -217,7 +239,7 @@ const LoginForm_dev = () => {
             >
               회원가입
             </Link>
-          </p> */}
+          </p>
         </section>
       </Form>
       {/* Find Password Modal Component */}
@@ -269,4 +291,4 @@ const LoginForm_dev = () => {
   );
 };
 
-export default LoginForm_dev;
+export default LoginForm;

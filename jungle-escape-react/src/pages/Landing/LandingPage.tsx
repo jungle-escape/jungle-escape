@@ -5,12 +5,13 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { loginState } from "@/recoil/loginState";
 import { musicState } from "@/recoil/musicState";
 
-import LoginForm from "@/components/Login/LoginForm";
+//import LoginForm from "@/components/Login/LoginForm";
 
 import JungleLogo from "@/assets/jungle-logo.svg?react";
 import "./landing.css";
 import BasicUILink from "@/components/Button/BasicUILink";
 import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
+import LoginForm_dev from "@/components/Login/LoginForm";
 
 const LandingPage = () => {
   const loginData = useRecoilValue(loginState);
@@ -67,7 +68,7 @@ const LandingPage = () => {
             </>
           ) : (
             <>
-              <LoginForm />
+              <LoginForm_dev />
             </>
           )}
         </section>

@@ -70,7 +70,7 @@ export interface UserData {
 export interface RecordData {
   winner: string;
   endtime: string;
-  participants: Array<string>;
+  participants?: Array<string>;
 }
 
 export interface WinnerData {
