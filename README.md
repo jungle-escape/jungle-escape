@@ -1,5 +1,5 @@
 # Jungle Escape
-## `PlayerController`
+## Script `PlayerController`
 
 ### Attributes
 - **speed**: 플레이어의 이동 속도.
