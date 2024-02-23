@@ -47,5 +47,5 @@ jobs:
             docker pull electronyoon/jungle-escape:latest
             
             # Run the new container with port 8080 exposed
-            docker run -d --name jungle-escape-server -p 8080:8080 electronyoon/jungle-escape:latest
+            docker run -d --name jungle-escape-server -p 8080:8080 -p 5000:5000 electronyoon/jungle-escape:latest
           EOF
