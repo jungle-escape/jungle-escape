@@ -2,16 +2,18 @@
 
 ## 1. 소개
 
-크래프톤 정글 3기 쌈마이팀 프로젝트 산출물입니다.
+크래프톤 정글 3기 쌈마이팀의 '나만의 무기 가지기' 프로젝트 결과물입니다.
 
 (그림 삽입 예정)
 
-정글 이스케이프는 WebGL 세션 기반 멀티플레이어 게임입니다. 4명의 동시 멀티플레이를 지원하며, 유저와 월드간 상호작용을 지원합니다. 크래프톤 정글 교육과정을 본따 만든 테마와 장애물들을 즐겨 보세요.
+🌍 정글 이스케이프는 WebGL 세션 기반 멀티플레이어 러너 게임입니다. <br>
+🎮 4명의 동시 멀티플레이를 지원하며, 3D physics에 기반한 유저-유저, 유저-월드 상호작용을 지원합니다. <br>
+🏃 크래프톤 정글 교육과정을 본따 만든 테마와 장애물들을 즐겨 보세요! <br>
 
 - 조작
   - 이동: W, A, S, D
   - 점프: SPACE
-  - 공격: LEFT CLICK
+  - 공격(밀기): LEFT CLICK
   - 감정표현: U(웃음), I(인사)
 
 <br><br>
@@ -119,8 +121,7 @@
 
 
 ## 4. 아키텍처
-
-(그림 대체 예정)
+<img width="760" alt="image" src="https://github.com/jungle-escape/jungle-escape/assets/145897206/dcb75e9d-dc9d-4469-925f-8cf5e3fa062f">
 
 <br><br>
 
@@ -128,8 +129,7 @@
 
 
 ## 5. 멤버 소개
-
-(그림 대체 예정)
+<img width="390" alt="image" src="https://github.com/jungle-escape/jungle-escape/assets/145897206/f7cea912-3d95-458a-8257-0c7fe7964f85">
 
 <br><br>
 
@@ -138,14 +138,14 @@
 
 ### `PlayerController(Server)`
 
-#### Attributes
+#### `Attributes`
 - **speed**: 플레이어의 이동 속도.
 - **maxSpeed**: 플레이어의 최대 속도 제한.
 - **moveForce**: 이동 시 적용되는 힘.
 - **jumpForce**: 점프 시 적용되는 힘.
 - **linearDamping**: 움직임에 대한 선형 감쇠, 자연스러운 마찰 및 저항 효과를 제공합니다.
 
-#### Major Functions
+#### `Major Functions`
 ##### `handleUserInput`
 - **기능**: 클라이언트로부터 받은 사용자 입력을 처리합니다. 이동, 점프, 텔레포트 등의 동작을 수행합니다.
 
@@ -162,12 +162,12 @@
 - **기능**: 플레이어 전방에 특정 형태의 충돌 영역을 생성하고, 이 영역과 충돌하는 모든 객체에 대해 밀어내기 효과를 적용합니다. 이는 `boxCast.js` 스크립트와 연동하여 작동합니다.
 
 ### `PlayerController(Client)`
-#### Major Functions
+#### `Major Functions`
 ##### `getUserInput`
-- **기능**:유저의 입력값을 저장합니다
+- **기능**: 유저의 입력값을 저장합니다
   
 ##### `onCollisionStart`
-- **기능**:클라이언트 사이드의 콜리젼 이벤트를 처리합니다
+- **기능**: 클라이언트 사이드의 콜리젼 이벤트를 처리합니다
 
 ##### `setModelEntityState`
 - **기능**: 주어진 데이터에 따라 PC 모델의 상태(회전, 애니메이션 등)를 설정합니다
