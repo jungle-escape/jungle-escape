@@ -38,7 +38,7 @@ Savepoint.prototype.onTriggerEnter = function (target) {
 
     var pos = this.entity.getPosition();
     target.savePoint = pos;
-    target.collisionTags.push("savepoint");
+    target.signalToClient.push("savepoint");
     // this.entity.enabled = false;
   }
 };
