@@ -1,7 +1,7 @@
 # 정글 이스케이프 (링크 대체 예정)
 
 ## 1. 소개
-![image](https://github.com/jungle-escape/jungle-escape/assets/145897206/a108939b-ba79-4a92-b5e4-a0e00916c48b)
+![Feb-23-2024 19-49-32](https://github.com/jungle-escape/jungle-escape/assets/145897206/ab113649-63f0-440d-8a87-f4a858593ac6)
 <br><br>
 크래프톤 정글 3기 쌈마이팀의 '나만의 무기 가지기' 프로젝트 결과물입니다.
 <br>
