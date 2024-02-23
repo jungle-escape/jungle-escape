@@ -23,7 +23,7 @@ import { buttonClickSound } from "@/components/BGM/buttonPlaySound";
 import { musicState } from "@/recoil/musicState";
 import { gameState } from "@/recoil/gameState";
 
-import { api_recordRanking, api_getCurrentUser } from "@/api/API";
+//import { api_recordRanking, api_getCurrentUser } from "@/api/API";
 
 const GameLobby = () => {
   const _levelId = 1940848;
@@ -243,22 +243,22 @@ const GameLobby = () => {
     try {
       ///// for PRODUCTION //////
       //id, nickname, participantedRooms 정보를 얻을 수 있음.
-      const res = await api_getCurrentUser();
-      if (!res || !res.data) {
-        console.log("데이터가 존재하지 않습니다.");
-        return;
-      }
-      const { id, nickname, participatedRooms } = res.data as UserData;
-      setUserInfo({ id, nickname, participatedRooms });
+      // const res = await api_getCurrentUser();
+      // if (!res || !res.data) {
+      //   console.log("데이터가 존재하지 않습니다.");
+      //   return;
+      // }
+      // const { id, nickname, participatedRooms } = res.data as UserData;
+      // setUserInfo({ id, nickname, participatedRooms });
 
       //// for DEV ////
-      // const myNickName = window.localStorage.getItem("nickname");
-      // const myUserInfo = {
-      //   id: "id",
-      //   nickname: myNickName,
-      //   participatedRooms: [],
-      // };
-      // setUserInfo(myUserInfo);
+      const myNickName = window.localStorage.getItem("nickname");
+      const myUserInfo = {
+        id: "id",
+        nickname: myNickName,
+        participatedRooms: [],
+      };
+      setUserInfo(myUserInfo);
     } catch (err) {
       console.log(err);
     }
@@ -269,8 +269,8 @@ const GameLobby = () => {
     setIsReload(true);
 
     setLoginData({ ...loginData, isLoggedIn: false, token: "" });
-    localStorage.removeItem("currentUserId");
-    //localStorage.removeItem("nickname"); //dev
+    //localStorage.removeItem("currentUserId"); //prd
+    localStorage.removeItem("nickname"); //dev
   };
 
   ////////////// button handlers //////////////////
@@ -507,7 +507,7 @@ const GameLobby = () => {
     const endtime = lastReceivedTime;
     const participants = rankingList.map((item) => item[1]);
     // `winner ${rankingList[0][1]} : ${lastReceivedTime}`
-    await api_recordRanking({ winner, endtime, participants });
+    // await api_recordRanking({ winner, endtime, participants }); //for dev
     return;
   };
 

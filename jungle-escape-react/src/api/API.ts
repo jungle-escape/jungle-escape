@@ -15,6 +15,7 @@ const getBaseUrl = () => {
 
   if (hasEndpoint(window)) {
     if (isLocalhost(window._endpoint)) {
+      console.log("[API] window._endpoint  ||| ", window._endpoint);
       //localhost일 때
       host = "localhost";
       port = 5000;
