@@ -192,6 +192,6 @@
 ##### `postInitialize`
 - **기능**: interpolation이 설정된 property에 한해, 해당 [property - class InterpolateValue] 쌍을 매핑하여 interpolation이 진행될 수 있도록 기반을 만듭니다
 ##### `setState`
-- **기능**: 각 property에 대해 setter함수를 호출하여, 실제로 서버로부터 받은 데이터를 클라이언트에 세팅합니다. 만약 interpolation을 적용해야하는 경우, 해당 값을 class InterpolateValue의 this.state에 단순 add하여 interpolation이 진행될 수 있도록 합니다.
+- **기능**: 각 property에 대해 setter함수를 호출하여, 실제로 서버로부터 받은 데이터를 클라이언트에 세팅합니다. 만약 interpolation을 적용해야하는 경우, 해당 값을 class InterpolateValue의 this.state에 단순 add하고 이후 InterpolateValue의 update 함수를 통해 interpolation이 진행될 수 있도록 합니다.
 ##### `update`
 - **기능**: class InterpolateValue의 update함수를 호출하여, 실제 클라이언트 사이드의 interpolation을 진행합니다.
