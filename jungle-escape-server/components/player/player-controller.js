@@ -111,7 +111,6 @@ PlayerController.prototype.setInput = function (sender, data) {
   this.clientInput = data.clientInput;
   data.animState.canJump = this.canJump;
   data.animState.pcReactOn = this.pcReactOn;
-  data.animState.signalToClient = this.entity.signalToClient;
   this.entity.animState = data.animState;
   this.entity.modelRotation = data.modelRotation;
   this.view = data.view;
@@ -389,7 +388,7 @@ PlayerController.prototype.checkCollisionStartRules = function (hit) {
   if (hit.other.tags.has("hammer")) {
     const playerPos = this.entity.getPosition();
     this.entity.setPosition(playerPos.z, playerPos.y + 1, playerPos.z);
-    var movement = new pc.Vec3(1, 0.01, 0).scale(450000);
+    var movement = new pc.Vec3(1, 0.1, 0).scale(450000);
     this.entity.rigidbody.applyImpulse(movement);
   }
 
