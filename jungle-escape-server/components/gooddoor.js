@@ -26,13 +26,3 @@ Gooddoor.prototype.swap = function (old) {
   this.entity.collision.off("collisionstart", old.onCollisionStart, old);
   this.entity.collision.on("collisionstart", this.onCollisionStart, this);
 };
-
-// // update code called every frame
-// Gooddoor.prototype.update = function (dt) {};
-
-// swap method called for script hot-reloading
-// inherit your script state here
-// Gooddoor.prototype.swap = function(old) { };
-
-// to learn more about script anatomy, please read:
-// https://developer.playcanvas.com/en/user-manual/scripting/

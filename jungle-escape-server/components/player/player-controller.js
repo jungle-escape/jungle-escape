@@ -35,6 +35,7 @@ PlayerController.prototype.initialize = function () {
 PlayerController.prototype.setupVariables = function () {
   global.ME = this.entity;
 
+  // Default client input value
   this.clientInput = {
     key_W: false,
     key_A: false,
@@ -44,14 +45,11 @@ PlayerController.prototype.setupVariables = function () {
     mouse_LEFT: false,
   };
 
+  // Player state
   this.direction = new pc.Vec3(0, 0, 0);
   this.velocity = new pc.Vec3(0, 0, 0);
   this.lookAt = new pc.Vec3(0, 0, 0);
   this.canJump = true;
-
-  // Get component of template 'PC'
-  this.modelEntity = this.entity.children[0]; // NOTE : Model must be FIRST children of entity
-  this.nameTag = this.entity.children[1];
 
   // For custom linear damping
   this.linearDampingOriginal = new pc.Vec3(
@@ -69,16 +67,16 @@ PlayerController.prototype.setupVariables = function () {
   this.pcReactOn = false;
   this.controllable = true;
 
-  // For handling collisions, will be sent to clinet
+  // For handling collisions, will be sent to client
   this.entity.collisionTags = [];
 
-  // Savepoint temp fix
+  // Savepoint
   this.entity.savepoint1 = false;
   this.entity.savepoint2 = false;
   this.entity.savepoint3 = false;
   this.entity.savepoint4 = false;
 
-  // Boxcast
+  // Get boxcast entity
   this.boxCast = this.entity.findByName("BoxCast");
 };
 
@@ -89,6 +87,7 @@ PlayerController.prototype.setupEventListeners = function () {
 };
 
 PlayerController.prototype.setupLevelData = function () {
+  // NOTE : Server-side levels will always be enaled
   const level = this.app.root.findByName("Level");
 
   const p2 = level.findByName("P2. Algorithm");
@@ -117,7 +116,7 @@ PlayerController.prototype.setInput = function (sender, data) {
   this.entity.modelRotation = data.modelRotation;
   this.view = data.view;
 
-  // Check push
+  // Check if a push should be executed given client input
   this.doPush();
 };
 
@@ -126,15 +125,16 @@ PlayerController.prototype.removeInputHandler = function () {
 };
 
 PlayerController.prototype.update = function (dt) {
-  // Reset collision tags
+  // Reset collision tags when update function starts
   this.entity.collisionTags = [];
 
+  // Check custom timer of PC entity
   this.checkCustomTimer(dt);
 
   // Check if user has to be respawned
   this.checkUserRespawn();
 
-  // Handling user input if player is controllable
+  // Handling user input, if player is controllable
   if (this.controllable) {
     this.handleUserInput(dt);
   }
@@ -148,7 +148,7 @@ PlayerController.prototype.update = function (dt) {
 
 // Given input from client, manipulate character in server world
 PlayerController.prototype.handleUserInput = function (dt) {
-  // Set player direction with user keyboard input
+  // Set direction of server-side player with user keyboard input, considering player camera view
   if (!this.view) {
     this.direction.x =
       this.clientInput.key_D +
@@ -172,13 +172,12 @@ PlayerController.prototype.handleUserInput = function (dt) {
     );
   }
 
-  // Apply force for X, Z movement
+  // Apply force(move) for X, Z movement
   var movement = moveDirection.scale(dt * this.moveForce);
   // var radian = 45 * Math.PI / 180;
-  // 쿼터뷰시 너무 빠르다면 movementForce / radian 해주세요
   this.entity.rigidbody.applyForce(movement);
 
-  // Jump
+  // Do jump with user keyboard input
   if (this.canJump && this.clientInput.key_SPACE) {
     this.canJump = false;
     this.entity.rigidbody.applyImpulse(0, this.jumpForce, 0);
@@ -188,57 +187,12 @@ PlayerController.prototype.handleUserInput = function (dt) {
     }, 250);
   }
 
-  // Teleport to savepoint
-  const level = this.app.root.findByName("Level");
-  if (this.clientInput.key_Z) {
-    const p2 = level.findByName("P2. Algorithm");
-    var savepoint = p2.findByName("savepoint1");
-    if (savepoint) {
-      var toPos = savepoint.getPosition();
-      this.entity.setPosition(toPos);
-      this.entity.rigidbody.teleport(toPos);
-    }
-  }
-
-  if (this.clientInput.key_X) {
-    const p3 = level.findByName("P3. Rbtree");
-    var savepoint = p3.findByName("savepoint2");
-    if (savepoint) {
-      var toPos = savepoint.getPosition();
-      this.entity.setPosition(toPos);
-      this.entity.rigidbody.teleport(toPos);
-    }
-  }
-
-  if (this.clientInput.key_C) {
-    const p3_2 = level.findByName("P3-2. Malloc-lab");
-    var savepoint = p3_2.findByName("savepoint3");
-    if (savepoint) {
-      var toPos = savepoint.getPosition();
-      this.entity.setPosition(toPos);
-      this.entity.rigidbody.teleport(toPos);
-    }
-  }
-
-  if (this.clientInput.key_V) {
-    const p4 = level.findByName("circuit board");
-    var savepoint = p4.findByName("savepoint4");
-    if (savepoint) {
-      var toPos = savepoint.getPosition();
-      this.entity.setPosition(toPos);
-      this.entity.rigidbody.teleport(toPos);
-    }
-  }
-
-  if (this.clientInput.key_B) {
-    const p5 = level.findByName("P5. End");
-    var savepoint = p5.findByName("teleport");
-    if (savepoint) {
-      var toPos = savepoint.getPosition();
-      this.entity.setPosition(toPos);
-      this.entity.rigidbody.teleport(toPos);
-    }
-  }
+  // Teleporting based on client input
+  this.teleportToSavepoint("key_Z", "P2. Algorithm", "savepoint1");
+  this.teleportToSavepoint("key_X", "P3. Rbtree", "savepoint2");
+  this.teleportToSavepoint("key_C", "P3-2. Malloc-lab", "savepoint3");
+  this.teleportToSavepoint("key_V", "circuit board", "savepoint4");
+  this.teleportToSavepoint("key_B", "P5. End", "teleport");
 
   // For playing sound
   if (this.clientInput.key_U) {
@@ -247,6 +201,23 @@ PlayerController.prototype.handleUserInput = function (dt) {
 
   if (this.clientInput.key_I) {
     this.entity.collisionTags.push("byebye");
+  }
+};
+
+// Teleport to savepoint based on key input
+PlayerController.prototype.teleportToSavepoint = function (
+  key,
+  sectionName,
+  savepointName
+) {
+  if (this.clientInput[key]) {
+    const section = this.app.root.findByName("Level").findByName(sectionName);
+    const savepoint = section ? section.findByName(savepointName) : null;
+    if (savepoint) {
+      const toPos = savepoint.getPosition();
+      this.entity.setPosition(toPos);
+      this.entity.rigidbody.teleport(toPos);
+    }
   }
 };
 
@@ -275,25 +246,19 @@ PlayerController.prototype.checkCustomTimer = function (dt) {
 };
 
 PlayerController.prototype.checkUserRespawn = function () {
-  // Respawn if fell below the floor
-  const playerPos = this.entity.getPosition();
-  if (playerPos.y < -10 || playerPos.x > 100) {
-    this.doRespawn = true;
-  }
+  // Check if player should be respawned, with its position
+  const MIN_Y = -10;
+  const MAX_X = 300;
+  const DEFAULT_RESPAWN_POS = new pc.Vec3(0, 4, 0);
 
-  if (this.doRespawn) {
-    var savePoint = this.entity.savePoint;
-    if (savePoint) {
-      this.entity.setPosition(savePoint);
-      this.entity.rigidbody.teleport(savePoint);
-    } else {
-      this.entity.setPosition(0, 4, 0);
-      this.entity.rigidbody.teleport(0, 4, 0);
-    }
-    this.entity.rigidbody.linearVelocity =
-      this.entity.rigidbody.linearVelocity.set(0, 0, 0);
+  const playerPos = this.entity.getPosition();
+
+  if (playerPos.y < MIN_Y || playerPos.x > MAX_X) {
+    const respawnPoint = this.entity.savePoint || DEFAULT_RESPAWN_POS;
+    this.entity.setPosition(respawnPoint);
+    this.entity.rigidbody.teleport(respawnPoint);
+    this.entity.rigidbody.linearVelocity.set(0, 0, 0);
     this.entity.collisionTags.push("fall");
-    this.doRespawn = false;
   }
 };
 
@@ -302,24 +267,31 @@ PlayerController.prototype.applyLinearDamping = function (dt) {
   // m_linearVelocity *= btPow(btScalar(1) - m_linearDamping, timeStep);
   //////////////////////////////////////////////////////////////////////
 
-  // Apply linear damping
   var lv = this.entity.rigidbody.linearVelocity;
+  const EXTRA_GRAVITY = -15;
+  const JUMP_DAMPING = 0.999;
+
   if (this.canJump) {
-    lv.x *= Math.pow(1 - this.linearDamping.x, dt);
-    if (lv.y > 0) {
-      lv.y *= Math.pow(1 - 0.99, dt);
-    } else {
-      lv.y *= Math.pow(1 - this.linearDamping.y, dt);
-    }
-    lv.z *= Math.pow(1 - this.linearDamping.z, dt);
-  } else if (!this.canJump) {
-    // Damping applied when player is jumping
-    lv.x *= Math.pow(1 - 0.999, dt);
+    // Grounded linear damping
+    const dampingX = Math.pow(1 - this.linearDamping.x, dt);
+    const dampingY =
+      lv.y > 0
+        ? Math.pow(1 - 0.99, dt)
+        : Math.pow(1 - this.linearDamping.y, dt);
+    const dampingZ = Math.pow(1 - this.linearDamping.z, dt);
+
+    lv.x *= dampingX;
+    lv.y *= dampingY;
+    lv.z *= dampingZ;
+  } else {
+    // Airborne linear damping
+    const airDamping = Math.pow(1 - JUMP_DAMPING, dt);
+    lv.x *= airDamping;
+    lv.z *= airDamping;
+
     if (lv.y <= 0) {
-      var extraGravity = -15;
-      lv.y += extraGravity * dt;
+      lv.y += EXTRA_GRAVITY * dt;
     }
-    lv.z *= Math.pow(1 - 0.999, dt);
   }
 
   this.entity.rigidbody.linearVelocity = new pc.Vec3(lv.x, lv.y, lv.z);
