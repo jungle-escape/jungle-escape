@@ -1,4 +1,4 @@
-# 정글 이스케이프   [↗️ 바로가기](https:/jungle-escape.site)
+# 정글 이스케이프 <a href="https:/jungle-escape.site/">바로가기</a>
 
 ## 목차
 1. [소개](#1-소개)
