@@ -2,13 +2,16 @@
 https:/jungle-escape.site
 * 크롬이 접속되지 않을 경우, 다른 브라우저로 시도 부탁드려요.
 
+<br><br>
+
 ## 목차
 1. [소개](#1-소개)
 2. [프로젝트 구조](#2-프로젝트-구조)
-3. [Try-errors](#3-try-errors)
-4. [포스터](#4-포스터)
+3. [포스터](#3-포스터)
+4. [Try-errors](#4-try-errors)
 5. [Script](#5-script)
 
+<br><br>
    
 ## 1. 소개
 ![Feb-23-2024 19-49-32](https://github.com/jungle-escape/jungle-escape/assets/145897206/ab113649-63f0-440d-8a87-f4a858593ac6)
@@ -52,10 +55,13 @@ https:/jungle-escape.site
 
 <br><br>
 
+## 3. 포스터
 
+![Poster](https://github.com/jungle-escape/jungle-escape/assets/52403430/0459d0a4-9bd6-4b87-bf33-2f8472420582)
 
+<br><br>
 
-## 3. Try-errors
+## 4. Try-errors
 
 게임을 제작하면서 저희가 겪었던 문제점들과, 이를 해결하기 위해 시도한 방법들입니다.
 
@@ -126,16 +132,6 @@ https:/jungle-escape.site
     - https://www.notion.so/Interpolation-1e6e37033dea4825ae433e68b2940656
 
 <br><br>
-
-
-
-
-## 4. 포스터
-
-![Poster](https://github.com/jungle-escape/jungle-escape/assets/52403430/0459d0a4-9bd6-4b87-bf33-2f8472420582)
-
-<br><br>
-
 
 ## 5. Script
 
