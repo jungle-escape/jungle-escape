@@ -6,9 +6,8 @@ https:/jungle-escape.site
 1. [소개](#1-소개)
 2. [프로젝트 구조](#2-프로젝트-구조)
 3. [Try-errors](#3-try-errors)
-4. [아키텍처](#4-아키텍처)
-5. [멤버 소개](#5-멤버-소개)
-6. [Script](#6-script)
+4. [포스터](#4-포스터)
+5. [Script](#5-script)
 
    
 ## 1. 소개
@@ -131,21 +130,14 @@ https:/jungle-escape.site
 
 
 
-## 4. 아키텍처
-<img width="760" alt="image" src="https://github.com/jungle-escape/jungle-escape/assets/145897206/dcb75e9d-dc9d-4469-925f-8cf5e3fa062f">
+## 4. 포스터
+
+![Poster](https://github.com/jungle-escape/jungle-escape/assets/52403430/0459d0a4-9bd6-4b87-bf33-2f8472420582)
 
 <br><br>
 
 
-
-
-## 5. 멤버 소개
-<img width="390" alt="image" src="https://github.com/jungle-escape/jungle-escape/assets/145897206/f7cea912-3d95-458a-8257-0c7fe7964f85">
-
-<br><br>
-
-
-## 6. Script
+## 5. Script
 
 ### 📄 `PlayerController(Server)`
 
