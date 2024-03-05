@@ -1,5 +1,6 @@
 # 정글 이스케이프
 https:/jungle-escape.site
+* 모바일을 지원하지 않습니다 😱🙀 키보드가 필요해요!
 * 크롬이 접속되지 않을 경우, 다른 브라우저로 시도 부탁드려요.
 
 <br><br>
@@ -36,6 +37,7 @@ https:/jungle-escape.site
 
 
 ## 2. 프로젝트 구조
+WebGL용 게임엔진인 PlayCanvas를 이용합니다. PlayCanvas의 정적 파일들은 jungle-escape-core에 담겨 있습니다.
 ```
 .
 ├── 1️⃣ jungle-escape-core
